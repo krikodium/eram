@@ -1,0 +1,82 @@
+.hero-section {
+  background-color: var(--gris-fondo);
+  padding: 4rem 2rem;
+}
+
+.hero-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-subtitle {
+  text-transform: uppercase;
+  color: var(--blanco-puro);
+  letter-spacing: 1px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  color: var(--blanco-puro);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.hero-button {
+  background-color: var(--rojo-principal);
+  color: var(--blanco-puro);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #b71c1c;
+}
+
+.hero-image {
+  flex: 1;
+  text-align: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--blanco-puro);
+  margin-top: 4rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--blanco-puro);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.main-footer {
+  margin-top: 4rem;
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}

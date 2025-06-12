@@ -1,0 +1,86 @@
+.category-scroll-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 3rem 0;
+}
+
+.category-grid-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1.5rem;
+  padding: 0 3rem;
+  scrollbar-width: none;
+}
+
+.category-grid-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-card {
+  flex: 0 0 auto;
+  background-color: var(--negro-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 180px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  background-color: var(--rojo-principal);
+}
+
+.category-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: white;
+}
+
+.category-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* --- Flechas laterales --- */
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80px;
+  width: 28px;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-color 0.2s ease;
+}
+
+.scroll-arrow:hover {
+  background: var(--rojo-principal);
+}
+
+.scroll-arrow.left {
+  left: 0.5rem;
+}
+
+.scroll-arrow.right {
+  right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .scroll-arrow {
+    display: none;
+  }
+}

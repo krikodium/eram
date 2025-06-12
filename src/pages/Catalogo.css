@@ -1,0 +1,31 @@
+/* src/pages/Catalogo.css */
+
+.catalogo-container {
+  padding: 2rem;
+  color: var(--blanco-texto);
+  background-color: var(--negro-fondo);
+  min-height: 100vh;
+}
+
+.catalogo-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--blanco-texto);
+  margin-bottom: 2rem;
+  border-left: 6px solid var(--rojo-principal);
+  padding-left: 1rem;
+}
+
+.catalogo-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.product-list-container {
+  flex-grow: 1;
+  background-color: var(--negro-card);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}

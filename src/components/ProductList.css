@@ -1,0 +1,9 @@
+/* src/components/ProductList.css */
+.product-grid {
+  display: grid;
+  /* Crea columnas flexibles que se ajustan al tamaño de la pantalla */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem; /* Espacio entre las tarjetas */
+  padding: 0;
+  margin: 0;
+}

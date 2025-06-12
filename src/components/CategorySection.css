@@ -1,0 +1,17 @@
+/* src/components/CategorySection.css */
+
+.category-section {
+  margin-bottom: 4rem;
+  padding: 1rem 2rem;
+  background-color: var(--negro-card);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.category-header {
+  border-left: 6px solid var(--rojo-principal);
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  color: var(--blanco-texto);
+  margin-bottom: 1.5rem;
+}

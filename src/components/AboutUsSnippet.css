@@ -1,0 +1,67 @@
+/* src/components/AboutUsSnippet.css */
+
+.about-us-snippet {
+  padding: 6rem 2rem; /* Espaciado vertical y horizontal */
+  background-color: #f8f9fa; /* Un gris muy claro para diferenciarla del fondo blanco */
+}
+
+/* Usaremos un contenedor para centrar el contenido y limitar su ancho */
+.about-us-snippet .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-us-layout {
+  display: flex;
+  align-items: center; /* Alinea verticalmente la imagen y el texto */
+  gap: 4rem; /* Espacio entre la imagen y el texto */
+}
+
+/* --- Estilos para la columna de la imagen --- */
+.about-us-image {
+  flex: 1; /* Ocupa una parte del espacio */
+}
+
+.about-us-image img {
+  width: 100%;
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* --- Estilos para la columna de texto --- */
+.about-us-text {
+  flex: 1.2; /* Ocupa un poco más de espacio que la imagen */
+}
+
+.about-us-text h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.about-us-text p {
+  font-size: 1.1rem;
+  line-height: 1.7; /* Altura de línea para mejor legibilidad */
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilo para un botón secundario (diferente al del Hero) */
+.btn.btn-secondary {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: transparent;
+  color: #333;
+  text-decoration: none;
+  border: 2px solid #333;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn.btn-secondary:hover {
+  background-color: #333;
+  color: white;
+}

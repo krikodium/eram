@@ -1,0 +1,113 @@
+.category-sidebar {
+  width: 250px;
+  padding: 1rem;
+  background-color: #1a1a1a;
+  border-right: 1px solid #333;
+  flex-shrink: 0;
+  color: #fff;
+  height: fit-content;
+}
+
+.category-sidebar h3 {
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f0f0f0;
+  text-transform: uppercase;
+  border-bottom: 1px solid #333;
+}
+
+.category-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-sidebar li {
+  position: relative;
+}
+
+.category-sidebar li a {
+  display: block;
+  padding: 0.8rem 1rem;
+  margin-bottom: 6px;
+  text-decoration: none;
+  color: #ccc;
+  border-radius: 8px;
+  font-weight: 500;
+  background-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.category-sidebar li a:hover {
+  background-color: #292929;
+  color: #fff;
+}
+
+.category-sidebar li a.active {
+  background-color: #D32F2F;
+  color: white;
+  font-weight: 700;
+}
+
+.category-popup {
+  position: absolute;
+  top: -10px;
+  left: 100%;
+  width: 280px;
+  background-color: #202020;
+  border: 1px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-out forwards;
+  opacity: 0;
+  transform: translateX(10px);
+  color: #f0f0f0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.category-popup h4 {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #f0f0f0;
+}
+
+.popup-slideshow {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.popup-slideshow .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-slideshow .slide.active {
+  opacity: 1;
+}
+
+.popup-slideshow img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}

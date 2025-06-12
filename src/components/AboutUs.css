@@ -1,0 +1,46 @@
+.aboutus-section {
+  background-color: var(--negro-fondo);
+  color: var(--blanco-texto);
+  padding: 5rem 2rem;
+}
+
+.aboutus-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutus-text {
+  flex: 1 1 500px;
+}
+
+.aboutus-title {
+  font-size: 2.4rem;
+  color: var(--blanco-puro);
+  margin-bottom: 1.2rem;
+}
+
+.aboutus-description {
+  font-size: 1.1rem;
+  color: var(--gris-texto);
+  line-height: 1.7;
+}
+
+.aboutus-gallery {
+  flex: 1 1 500px;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.aboutus-gallery img {
+  width: 48%;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
