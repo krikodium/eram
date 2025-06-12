@@ -20,7 +20,7 @@ function Catalogo() {
     setLoading(true);
 
     // Construimos la URL de la API dinámicamente
-    let apiUrl = 'http://localhost:3001/api/productos';
+let apiUrl = `${import.meta.env.VITE_API_URL}/api/productos`;
     if (categoryId) {
       // Si hay un ID de categoría en la URL, lo añadimos a la petición
       apiUrl += `?categoria=${categoryId}`;
