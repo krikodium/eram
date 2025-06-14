@@ -1,3 +1,8 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 :root {
   --rojo-principal: #D32F2F;
   --rojo-hover: #b71c1c;
