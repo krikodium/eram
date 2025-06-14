@@ -1,6 +1,8 @@
 import React from 'react';
 import './AboutUs.css';
 
+
+
 function AboutUs() {
   return (
     <section className="aboutus-section">
@@ -18,9 +20,9 @@ function AboutUs() {
         </div>
 
         <div className="aboutus-gallery">
-          <img src="eram-frontend\public\industria.jpg" alt="Industria" />
-          <img src="eram-frontend\public\equipo.jpg" alt="Nuestro equipo" />
-          <img src="eram-frontend\public\feria.jpg" alt="Stand en feria" />
+          <img src="\industria.jpg" alt="Industria" />
+          <img src="\equipo.jpg" alt="Nuestro equipo" />
+          <img src="\feria.jpg" alt="Stand en feria" />
         </div>
       </div>
     </section>
