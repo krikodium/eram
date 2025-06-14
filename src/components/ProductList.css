@@ -1,9 +1,19 @@
-/* src/components/ProductList.css */
 .product-grid {
   display: grid;
-  /* Crea columnas flexibles que se ajustan al tamaño de la pantalla */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem; /* Espacio entre las tarjetas */
-  padding: 0;
-  margin: 0;
+  gap: 1.4rem;
+  /* 1 col — mobile */
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 600px) {
+  /* 2 cols — tablet */
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 900px) {
+  /* 3 cols — desktop */
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }

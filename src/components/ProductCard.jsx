@@ -1,20 +1,21 @@
-// src/components/ProductCard.jsx
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaImage } from 'react-icons/fa6';
 import './ProductCard.css';
 
 function ProductCard({ producto }) {
+  const { id, nombre, precio, sku, imagen_url } = producto;
+
+  // Usar imagen real si hay, si no: fallback local
+  const imagenFinal = imagen_url || '/default-product.jpg';
+
   return (
-    <Link to={`/producto/${producto.id}`} className="card">
-      <div className="card-image-placeholder">
-        <FaImage />
-        <span>Sin imagen</span>
-      </div>
+    <Link to={`/producto/${id}`} className="card">
+      <img src={imagenFinal} alt={nombre} className="card-img" />
       <div className="card-content">
-        <h3>{producto.nombre}</h3>
-        <p className="card-price">${Number(producto.precio).toFixed(2)}</p>
-        <p className="card-sku">SKU: {producto.sku}</p>
+        <h3>{nombre}</h3>
+        <p className="card-price">
+          ${Number(precio).toFixed(2)}
+        </p>
+        <p className="card-sku">SKU: {sku}</p>
       </div>
     </Link>
   );
