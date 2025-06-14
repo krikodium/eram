@@ -1,11 +1,10 @@
-// src/components/CategorySidebar.jsx
-
 import { useState, useEffect, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import './CategorySidebar.css';
 
-function CategorySidebar({ setNombreSeleccionado }) {
+// 1. Recibimos la nueva prop 'onCategorySelect'
+function CategorySidebar({ setNombreSeleccionado, onCategorySelect }) {
   const [categories, setCategories] = useState([]);
   const [popupData, setPopupData] = useState({ visible: false, categoryId: null, products: [] });
   const [slideIndex, setSlideIndex] = useState(0);
@@ -14,8 +13,7 @@ function CategorySidebar({ setNombreSeleccionado }) {
 
   const slideIntervalRef = useRef(null);
   const hoverTimeoutRef = useRef(null);
-  const activeCategoryRef = useRef(null);
-
+  
   const api = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
   useEffect(() => {
@@ -27,16 +25,16 @@ function CategorySidebar({ setNombreSeleccionado }) {
       .catch(error => {
         console.error("Error al obtener las categorías:", error);
       });
-  }, []);
+  }, [api]);
 
   useEffect(() => {
     if (categoriaSeleccionada && categories.length > 0) {
       const encontrada = categories.find(c => String(c.id) === categoriaSeleccionada);
       if (encontrada) setNombreSeleccionado(encontrada.nombre);
-    } else {
+    } else if (setNombreSeleccionado) {
       setNombreSeleccionado('Todos');
     }
-  }, [categoriaSeleccionada, categories]);
+  }, [categoriaSeleccionada, categories, setNombreSeleccionado]);
 
   const startSlideshow = (products) => {
     setSlideIndex(0);
@@ -79,7 +77,10 @@ function CategorySidebar({ setNombreSeleccionado }) {
       <h3>Categorías</h3>
       <ul>
         <li>
-          <Link to="/catalogo" className={!categoriaSeleccionada ? 'active' : ''}>Ver Todos</Link>
+          {/* 2. Añadimos el evento onClick que llama a la función del padre */}
+          <Link to="/catalogo" className={!categoriaSeleccionada ? 'active' : ''} onClick={onCategorySelect}>
+            Ver Todos
+          </Link>
         </li>
         {categories.map(cat => (
           <li
@@ -87,9 +88,11 @@ function CategorySidebar({ setNombreSeleccionado }) {
             onMouseEnter={() => handleMouseEnter(cat.id)}
             onMouseLeave={handleMouseLeave}
           >
+            {/* 3. También lo añadimos en cada categoría del map */}
             <Link
               to={`/catalogo?categoria_id=${cat.id}`}
               className={`${String(cat.id) === categoriaSeleccionada ? 'active' : ''}`}
+              onClick={onCategorySelect}
             >
               {cat.nombre}
             </Link>

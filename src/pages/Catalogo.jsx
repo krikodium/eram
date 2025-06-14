@@ -4,7 +4,6 @@ import axios from 'axios';
 import CategorySidebar from '../components/CategorySidebar';
 import ProductList from '../components/ProductList';
 import './Catalogo.css';
-// 1. Importamos los íconos que vamos a usar
 import { FaFilter, FaTimes } from 'react-icons/fa';
 
 const PRODUCTOS_POR_PAGINA = 18;
@@ -82,11 +81,18 @@ function Catalogo() {
     }
   };
 
+  // Función para manejar el cierre del menú al seleccionar categoría
+  const handleCategorySelect = () => {
+    // Solo cerramos el menú en pantallas pequeñas (móvil)
+    if (window.innerWidth <= 768) {
+      setShowCategories(false);
+    }
+  };
+
   return (
     <div className="catalogo-container">
       <h1>Catálogo de Productos</h1>
 
-      {/* 2. El botón ahora tiene íconos y un texto más corto */}
       <button className="toggle-categories" onClick={() => setShowCategories(prev => !prev)}>
         {showCategories ? (
           <>
@@ -106,7 +112,13 @@ function Catalogo() {
       )}
 
       <div className={`catalogo-layout ${showCategories ? 'menu-abierto' : 'menu-cerrado'}`}>
-        {showCategories && <CategorySidebar setNombreSeleccionado={setNombreSeleccionado} />}
+        {/* Aquí pasamos la nueva función como prop */}
+        {showCategories && (
+          <CategorySidebar 
+            setNombreSeleccionado={setNombreSeleccionado} 
+            onCategorySelect={handleCategorySelect}
+          />
+        )}
 
         <main className="product-list-container">
           {loading ? (
