@@ -1,59 +1,51 @@
-// src/pages/Catalogo.jsx
-
+// ✅ src/pages/Catalogo.jsx (actualizado con estado para desplegar menú y control de columnas)
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom'; // <-- 1. IMPORTANTE: Hook para leer la URL
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
-import CategorySidebar from '../components/CategorySidebar'; // <-- 2. Importamos la barra lateral
-import ProductList from '../components/ProductList';       // <-- 3. Usaremos tu ProductList
-import './Catalogo.css'; // <-- 4. Añadiremos un CSS para el layout
+import CategorySidebar from '../components/CategorySidebar';
+import ProductList from '../components/ProductList';
+import './Catalogo.css';
 
 function Catalogo() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  
-  // Hook para leer los parámetros de la URL (ej: ?categoria_id=2)
+  const [showCategories, setShowCategories] = useState(false);
+
   const [searchParams] = useSearchParams();
   const categoryId = searchParams.get('categoria_id');
 
-  // Este efecto se ejecutará cada vez que 'categoryId' cambie
   useEffect(() => {
     setLoading(true);
-
-    // Construimos la URL de la API dinámicamente
-  const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-let apiUrl = `${import.meta.env.VITE_API_URL}/api/productos`;
-    if (categoryId) {
-      // Si hay un ID de categoría en la URL, lo añadimos a la petición
-      apiUrl += `?categoria=${categoryId}`;
-    }
-
+    const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/productos` + (categoryId ? `?categoria=${categoryId}` : '');
     axios.get(apiUrl)
-      .then(response => {
-        setProducts(response.data);
-      })
+      .then(response => setProducts(response.data))
       .catch(error => {
         console.error("Error al obtener los productos:", error);
-        setProducts([]); // En caso de error, vaciamos la lista
+        setProducts([]);
       })
-      .finally(() => {
-        setLoading(false);
-      });
-      
-  }, [categoryId]); // <-- 5. El efecto depende del categoryId de la URL
+      .finally(() => setLoading(false));
+  }, [categoryId]);
 
   return (
     <div className="catalogo-container">
       <h1>Catálogo de Productos</h1>
-      <div className="catalogo-layout">
-        {/* Columna 1: La Barra Lateral */}
-        <CategorySidebar />
 
-        {/* Columna 2: La Lista de Productos */}
+      {/* Menú desplegable en mobile */}
+      <button className="toggle-categories" onClick={() => setShowCategories(prev => !prev)}>
+        {showCategories ? 'Ocultar Categorías' : 'Mostrar Categorías'}
+      </button>
+
+      {categoryId && (
+        <div className="categoria-seleccionada">Categoría seleccionada: {categoryId}</div>
+      )}
+
+      <div className={`catalogo-layout ${showCategories ? 'menu-abierto' : 'menu-cerrado'}`}>
+        {showCategories && <CategorySidebar />}
         <main className="product-list-container">
           {loading ? (
             <p>Cargando productos...</p>
           ) : (
-            <ProductList productos={products} />
+            <ProductList productos={products} columnas={showCategories ? 2 : 3} />
           )}
         </main>
       </div>

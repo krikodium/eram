@@ -1,11 +1,12 @@
+/* ✅ src/components/CategorySidebar.css completo adaptado para mobile y desktop */
+
 .category-sidebar {
-  width: 250px;
+  background-color: var(--negro-card);
   padding: 1rem;
-  background-color: #1a1a1a;
-  border-right: 1px solid #333;
-  flex-shrink: 0;
-  color: #fff;
-  height: fit-content;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .category-sidebar h3 {
@@ -110,4 +111,12 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .category-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    height: fit-content;
+  }
 }

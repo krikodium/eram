@@ -11,15 +11,19 @@
   box-shadow: 0 4px 14px rgba(0 0 0 / .35);
   transition: transform .25s ease, box-shadow .25s ease;
   min-height: 330px;
+  width: 100%; /* ✅ importante para el grid */
+  max-width: 100%;
+  box-sizing: border-box; /* ✅ previene deformaciones */
 }
 
+/* Hover */
 .card:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 24px rgba(0 0 0 / .55);
   border: 1px solid var(--rojo-principal);
 }
 
-/* ───────────────────────── Imagen (o placeholder) ───────────────────────── */
+/* Imagen o Placeholder */
 .card-img,
 .card-placeholder {
   width: 100%;
@@ -34,21 +38,21 @@
 
 .card-placeholder {
   flex-direction: column;
-  gap: .35rem;
+  gap: 0.35rem;
   color: #888;
-  font-size: .85rem;
+  font-size: 0.85rem;
 }
 
 .card-placeholder svg {
   font-size: 2.2rem;
 }
 
-/* ───────────────────────── Contenido ───────────────────────── */
+/* Contenido */
 .card-content {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: .4rem;
+  gap: 0.4rem;
 }
 
 .card-content h3 {
@@ -67,5 +71,5 @@
 
 .card-sku {
   color: var(--gris-texto);
-  font-size: .75rem;
+  font-size: 0.75rem;
 }

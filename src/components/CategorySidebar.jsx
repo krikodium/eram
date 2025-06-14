@@ -16,8 +16,10 @@ function CategorySidebar() {
   const hoverTimeoutRef = useRef(null);
   const activeCategoryRef = useRef(null);
 
+  const api = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
   useEffect(() => {
-    axios.get('http://localhost:3001/api/categorias')
+    axios.get(`${api}/api/categorias`)
       .then(response => {
         const topCategories = response.data.filter(cat => cat.categoria_padre_id === null);
         setCategories(topCategories);
@@ -44,7 +46,7 @@ function CategorySidebar() {
   const handleMouseEnter = (categoryId) => {
     clearTimeout(hoverTimeoutRef.current);
     hoverTimeoutRef.current = setTimeout(() => {
-      axios.get(`http://localhost:3001/api/productos?categoria=${categoryId}&limit=5`)
+      axios.get(`${api}/api/productos?categoria=${categoryId}&limit=5`)
         .then(response => {
           const productos = response.data;
           setPopupData({ visible: true, categoryId, products: productos });
