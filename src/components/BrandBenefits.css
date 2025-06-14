@@ -1,4 +1,4 @@
-/* ✅ BrandBenefits.css (versión corregida con 2 columnas en mobile y responsivo profesional) */
+/* src/components/BrandBenefits.css */
 
 .brand-benefits {
   background-color: var(--negro-fondo);
@@ -9,24 +9,27 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-
-  /* ✅ Mobile: 2 columnas */
-  grid-template-columns: repeat(2, 1fr);
+  /* Por defecto (móvil): 1 columna */
+  grid-template-columns: 1fr;
   gap: 2rem;
   text-align: center;
 }
 
-@media (min-width: 768px) {
+/* Tablets pequeñas: 2 columnas */
+@media (min-width: 600px) {
   .benefits-container {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* Desktop: 4 columnas */
 @media (min-width: 1024px) {
   .benefits-container {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* El resto de las clases (.benefit-card, .benefit-icon, etc.) no necesitan cambios */
 
 .benefit-card {
   background-color: var(--negro-card);
