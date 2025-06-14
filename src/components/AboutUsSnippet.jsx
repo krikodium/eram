@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './AboutUsSnippet.css'; // Su propia hoja de estilos
 
 // Usamos una imagen de placeholder. La ideal sería una del equipo, oficina o un proyecto.
-import aboutImage from '../assets/about-us-placeholder.jpg'; 
+import aboutImage from 'eram-frontend\public\about-us-placeholder.jpg'; 
 
 function AboutUsSnippet() {
   return (

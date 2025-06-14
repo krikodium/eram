@@ -18,9 +18,9 @@ function AboutUs() {
         </div>
 
         <div className="aboutus-gallery">
-          <img src="/src/assets/industria.jpg" alt="Industria" />
-          <img src="/src/assets/equipo.jpg" alt="Nuestro equipo" />
-          <img src="/src/assets/feria.jpg" alt="Stand en feria" />
+          <img src="eram-frontend\public\industria.jpg" alt="Industria" />
+          <img src="eram-frontend\public\equipo.jpg" alt="Nuestro equipo" />
+          <img src="eram-frontend\public\feria.jpg" alt="Stand en feria" />
         </div>
       </div>
     </section>

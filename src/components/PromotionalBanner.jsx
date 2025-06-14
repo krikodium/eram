@@ -6,7 +6,7 @@
       <a href="/catalogo" className="hero-button">VER MÁS +</a>
     </div>
     <div className="hero-image">
-      <img src="/src/assets/proteccion-respiratoria.jpg" alt="Guantes de protección" />
+      <img src="eram-frontend\public\proteccion-respiratoria.jpg" alt="Guantes de protección" />
     </div>
   </div>
 </section>
