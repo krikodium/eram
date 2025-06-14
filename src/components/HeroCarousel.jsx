@@ -1,10 +1,10 @@
-// src/components/HeroCarousel.jsx
+// ✅ src/components/HeroCarousel.jsx
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules'; // ❌ Quitamos Navigation
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+// ❌ Eliminamos: import 'swiper/css/navigation';
 import './HeroCarousel.css';
 
 function HeroCarousel() {
@@ -35,11 +35,11 @@ function HeroCarousel() {
   return (
     <section className="hero-carousel-section">
       <Swiper
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay, Pagination]} // ✅ Quitamos Navigation
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop={true}
         pagination={{ clickable: true }}
-        navigation={true}
+        // ❌ Quitamos navigation={true}
         className="hero-swiper"
       >
         {banners.map((item, index) => (

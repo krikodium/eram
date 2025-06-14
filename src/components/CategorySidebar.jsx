@@ -5,7 +5,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import './CategorySidebar.css';
 
-function CategorySidebar() {
+function CategorySidebar({ setNombreSeleccionado }) {
   const [categories, setCategories] = useState([]);
   const [popupData, setPopupData] = useState({ visible: false, categoryId: null, products: [] });
   const [slideIndex, setSlideIndex] = useState(0);
@@ -28,6 +28,15 @@ function CategorySidebar() {
         console.error("Error al obtener las categorías:", error);
       });
   }, []);
+
+  useEffect(() => {
+    if (categoriaSeleccionada && categories.length > 0) {
+      const encontrada = categories.find(c => String(c.id) === categoriaSeleccionada);
+      if (encontrada) setNombreSeleccionado(encontrada.nombre);
+    } else {
+      setNombreSeleccionado('Todos');
+    }
+  }, [categoriaSeleccionada, categories]);
 
   const startSlideshow = (products) => {
     setSlideIndex(0);

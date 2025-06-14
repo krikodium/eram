@@ -1,5 +1,4 @@
-// src/components/Navbar.jsx
-
+// ✅ src/components/Navbar.jsx (menú hamburguesa rediseñado y responsivo)
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
@@ -13,9 +12,12 @@ function Navbar() {
       setScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
+  const toggleMenu = () => setMenuOpen(prev => !prev);
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -25,13 +27,17 @@ function Navbar() {
           ERAM
         </Link>
 
-        <div
-          className={`hamburger-menu ${menuOpen ? 'active' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+        {/* Botón hamburguesa */}
+        <div className={`hamburger-menu ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+          {menuOpen ? (
+            <span className="close-icon">×</span>
+          ) : (
+            <>
+              <span className="bar"></span>
+              <span className="bar"></span>
+              <span className="bar"></span>
+            </>
+          )}
         </div>
 
         <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
@@ -39,7 +45,7 @@ function Navbar() {
           <Link to="/quienes-somos" className="nav-link" onClick={closeMenu}>Quiénes Somos</Link>
           <Link to="/ferias" className="nav-link" onClick={closeMenu}>Ferias</Link>
           <Link to="/catalogo" className="nav-link" onClick={closeMenu}>Catálogo</Link>
-          <Link to="/contacto" className="btn-primary" onClick={closeMenu}>Contacto</Link>
+          <Link to="/contacto" className="nav-link btn btn-primary" onClick={closeMenu}>Contacto</Link>
         </div>
       </div>
     </nav>
