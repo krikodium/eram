@@ -1,3 +1,5 @@
+/* src/pages/Catalogo.css */
+
 .catalogo-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -11,32 +13,29 @@
   align-items: flex-start;
 }
 
-.category-sidebar {
-  width: 250px;
-  min-width: 200px;
-}
-
-/* Contenedor de productos */
+/*
+  El contenedor de la lista de productos.
+  Le quitamos la responsabilidad de ser una grilla, ya que de eso se encarga el componente ProductList.
+  Añadimos min-width: 0 para que el flexbox se comporte correctamente.
+*/
 .product-list-container {
   flex: 1;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.2rem;
+  min-width: 0;
 }
 
-/* 📱 MOBILE FIX */
+/*
+  Ajustes para Móviles
+*/
 @media (max-width: 768px) {
   .catalogo-layout {
+    /* En móvil, la barra lateral y los productos se apilan verticalmente */
     flex-direction: column;
+    gap: 1.5rem;
   }
 
   .category-sidebar {
+    /* La barra lateral ocupa todo el ancho cuando está visible en móvil */
     width: 100%;
     min-width: unset;
-  }
-
-  .product-list-container {
-    grid-template-columns: 1fr;
   }
 }

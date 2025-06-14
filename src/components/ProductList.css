@@ -1,22 +1,4 @@
-.product-grid {
-  display: grid;
-  gap: 1.4rem;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  padding: 1rem;
-  justify-content: center;
-}
-
-@media (min-width: 600px) {
-  .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 900px) {
-  .product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
+/* src/components/ProductList.css */
 
 .product-grid {
   display: grid;
@@ -25,23 +7,37 @@
   box-sizing: border-box;
 }
 
+/*
+  Estilos para DESKTOP (pantallas grandes)
+*/
 .product-grid.cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .product-grid.cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
 }
 
+/*
+  Ajustes para MÓVILES (la corrección clave)
+*/
 @media (max-width: 768px) {
-  .product-grid.cols-2 {
-    grid-template-columns: repeat(2, minmax(150px, 1fr));
+  .product-grid {
+    /* Reducimos el espacio entre tarjetas en móvil */
+    gap: 1rem;
   }
 
+  /*
+    AQUÍ ESTÁ LA MAGIA:
+    En móvil, forzamos a que AMBOS casos (cols-2 y cols-3)
+    se muestren como 2 columnas para evitar el desbordamiento.
+  */
+  .product-grid.cols-2,
   .product-grid.cols-3 {
-    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Estilos del botón que muestra/oculta categorías en móvil */
   .toggle-categories {
     background: var(--rojo-principal);
     color: white;
