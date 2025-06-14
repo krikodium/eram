@@ -20,9 +20,10 @@ function AboutUs() {
         </div>
 
         <div className="aboutus-gallery">
-          <img src="\industria.jpg" alt="Industria" />
-          <img src="\equipo.jpg" alt="Nuestro equipo" />
-          <img src="\feria.jpg" alt="Stand en feria" />
+          <img src="/industria.jpg" alt="Industria" />
+          <img src="/equipo.jpg" alt="Nuestro equipo" />
+          <img src="/feria.jpg" alt="Stand en feria" />
+
         </div>
       </div>
     </section>

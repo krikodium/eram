@@ -12,21 +12,21 @@ function HeroCarousel() {
     {
       title: "GUANTES DE PROTECCIÓN",
       subtitle: "Ampliamos nuestra línea de",
-      img: "/src/assets/proteccion-respiratoria.jpg",
+      img: "/proteccion-respiratoria.jpg",
       cta: "VER MÁS +",
       link: "/catalogo?categoria_id=1"
     },
     {
       title: "CAPACITACIÓN EN ALTURA",
       subtitle: "Formación por bomberos especialistas",
-      img: "/src/assets/banner-altura.jpg",
+      img: "/banner-altura.jpg",
       cta: "VER MÁS +",
       link: "/formacion"
     },
     {
       title: "INDUSTRIA NACIONAL",
       subtitle: "Desde 1974 apostando a la",
-      img: "/src/assets/banner-industria.jpg",
+      img: "/banner-industria.jpg",
       cta: "NACIONALES",
       link: "/catalogo"
     }
