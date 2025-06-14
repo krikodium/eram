@@ -3,7 +3,6 @@ import React from 'react';
 import HeroCarousel from '../components/HeroCarousel';
 import CategoryIcons from '../components/CategoryIcons';
 import BrandBenefits from '../components/BrandBenefits';
-import ClientReviews from '../components/ClientReviews';
 import AboutUs from '../components/AboutUs';
 import FindUs from '../components/FindUs';
 import './Home.css';
@@ -30,11 +29,6 @@ function Home() {
       {/* Beneficios de Marca */}
       <section className="brand-benefits">
         <BrandBenefits />
-      </section>
-
-      {/* Reseñas de Clientes */}
-      <section className="client-review">
-        <ClientReviews />
       </section>
 
       {/* Ubicación en Google Maps */}
