@@ -2,41 +2,48 @@
 
 .brand-benefits {
   background-color: var(--negro-fondo);
-  padding: 4rem 2rem;
+  /* 1. Reducimos el padding horizontal en pantallas pequeñas */
+  padding: 4rem 1rem;
+  transition: padding 0.3s ease;
 }
 
 .benefits-container {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  gap: 2rem;
   text-align: center;
 
-  /*
-    Esta es la única regla que necesitamos para las columnas.
-    Se establece un diseño fijo de 2 columnas.
-  */
+  /* 2. Definimos 2 columnas y un espacio (gap) más pequeño para móviles */
   grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
-/*
-  IMPORTANTE: Se eliminaron todos los @media queries para que el diseño
-  de 2 columnas se mantenga en todos los tamaños de pantalla.
-*/
+/* 3. Para pantallas más grandes (tablets/desktop), volvemos a un layout más espacioso */
+@media (min-width: 768px) {
+  .brand-benefits {
+    /* Restauramos el padding original */
+    padding: 4rem 2rem;
+  }
+
+  .benefits-container {
+    /* Pasamos a 4 columnas para aprovechar el espacio */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
 
 .benefit-card {
   background-color: var(--negro-card);
-  padding: 2rem;
+  padding: 2rem 1rem;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, background-color 0.3s ease;
-
-  /* Para asegurar que el contenido interno esté siempre bien alineado */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 220px; /* Le damos una altura mínima para que las tarjetas sean uniformes */
+  /* Ayuda a que palabras largas no rompan el layout */
+  overflow-wrap: break-word;
 }
 
 .benefit-card:hover {
@@ -45,19 +52,19 @@
 }
 
 .benefit-icon {
-  font-size: 2.5rem;
+  font-size: 2.2rem; /* Un poco más pequeño para móvil */
   color: var(--rojo-principal);
   margin-bottom: 1rem;
 }
 
 .benefit-card h4 {
   color: var(--blanco-puro);
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Un poco más pequeño para móvil */
   margin-bottom: 0.5rem;
 }
 
 .benefit-card p {
   color: var(--gris-texto);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.5;
 }
