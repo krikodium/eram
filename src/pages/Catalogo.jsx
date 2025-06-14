@@ -1,29 +1,27 @@
-// src/pages/Catalogo.jsx
-
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import CategorySidebar from '../components/CategorySidebar';
 import ProductList from '../components/ProductList';
 import './Catalogo.css';
+// 1. Importamos los íconos que vamos a usar
+import { FaFilter, FaTimes } from 'react-icons/fa';
 
-const PRODUCTOS_POR_PAGINA = 18; // Podés ajustar este número
+const PRODUCTOS_POR_PAGINA = 18;
 
 function Catalogo() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
   const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true); // Para saber si hay más productos por cargar
+  const [hasMore, setHasMore] = useState(true);
   const [showCategories, setShowCategories] = useState(false);
   const [nombreSeleccionado, setNombreSeleccionado] = useState(null);
 
   const [searchParams] = useSearchParams();
   const categoryId = searchParams.get('categoria_id');
 
-  // Hook para cargar productos iniciales o cuando cambia la categoría
   useEffect(() => {
-    // Reseteamos todo cuando cambia la categoría
     setProducts([]);
     setPage(1);
     setHasMore(true);
@@ -42,7 +40,6 @@ function Catalogo() {
         });
         
         setProducts(response.data);
-        // Si la API devuelve menos productos de los que pedimos, no hay más páginas
         if (response.data.length < PRODUCTOS_POR_PAGINA) {
           setHasMore(false);
         }
@@ -55,15 +52,12 @@ function Catalogo() {
     };
 
     fetchInitialProducts();
-  }, [categoryId]); // Se ejecuta cada vez que cambia la categoría
+  }, [categoryId]);
 
-  // Función para cargar más productos
   const handleLoadMore = async () => {
     if (loadingMore || !hasMore) return;
-
     setLoadingMore(true);
     const nextPage = page + 1;
-    
     const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/productos`;
     
     try {
@@ -74,14 +68,10 @@ function Catalogo() {
           page: nextPage,
         },
       });
-
       if (response.data.length > 0) {
-        // Añadimos los nuevos productos a la lista existente
         setProducts(prevProducts => [...prevProducts, ...response.data]);
         setPage(nextPage);
       }
-      
-      // Si la API devuelve menos productos de los que pedimos, ya no hay más
       if (response.data.length < PRODUCTOS_POR_PAGINA) {
         setHasMore(false);
       }
@@ -96,8 +86,17 @@ function Catalogo() {
     <div className="catalogo-container">
       <h1>Catálogo de Productos</h1>
 
+      {/* 2. El botón ahora tiene íconos y un texto más corto */}
       <button className="toggle-categories" onClick={() => setShowCategories(prev => !prev)}>
-        {showCategories ? 'Ocultar Categorías' : 'Mostrar Categorías'}
+        {showCategories ? (
+          <>
+            <FaTimes /> Ocultar Filtros
+          </>
+        ) : (
+          <>
+            <FaFilter /> Mostrar Filtros
+          </>
+        )}
       </button>
 
       {categoryId && (
@@ -116,7 +115,6 @@ function Catalogo() {
             <ProductList productos={products} columnas={showCategories ? 2 : 3} />
           )}
 
-          {/* Botón para Cargar Más */}
           <div className="load-more-container">
             {hasMore && !loading && (
               <button onClick={handleLoadMore} disabled={loadingMore} className="load-more-btn">

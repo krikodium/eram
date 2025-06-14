@@ -50,6 +50,49 @@
   background-color: #555;
   cursor: not-allowed;
 }
+
+.toggle-categories {
+  display: none;
+}
+
+.categoria-seleccionada {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--blanco-puro);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background-color: var(--negro-card);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* En móvil, mostramos y estilizamos el botón */
+@media (max-width: 768px) {
+  .toggle-categories {
+    display: inline-flex; /* Usamos flex para alinear ícono y texto */
+    align-items: center;
+    gap: 0.5rem; /* Espacio entre ícono y texto */
+    background-color: var(--rojo-principal);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+
+  .toggle-categories:hover {
+    background-color: var(--rojo-hover);
+    transform: translateY(-2px);
+  }
+
+  .toggle-categories svg {
+    font-size: 1rem;
+  }
+}
 /*
   Ajustes para Móviles
 */
