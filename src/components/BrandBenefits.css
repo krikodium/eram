@@ -9,13 +9,14 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  /* Por defecto (móvil): 1 columna */
-  grid-template-columns: 1fr;
   gap: 2rem;
   text-align: center;
+
+  /* Por defecto (móvil): 1 sola columna para mejor lectura */
+  grid-template-columns: 1fr;
 }
 
-/* Tablets pequeñas: 2 columnas */
+/* Tablets y pantallas pequeñas: 2 columnas */
 @media (min-width: 600px) {
   .benefits-container {
     grid-template-columns: repeat(2, 1fr);
@@ -29,14 +30,18 @@
   }
 }
 
-/* El resto de las clases (.benefit-card, .benefit-icon, etc.) no necesitan cambios */
-
 .benefit-card {
   background-color: var(--negro-card);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, background-color 0.3s ease;
+  
+  /* Añadido para centrar verticalmente el contenido */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .benefit-card:hover {
@@ -59,4 +64,5 @@
 .benefit-card p {
   color: var(--gris-texto);
   font-size: 0.95rem;
+  line-height: 1.5; /* Mejora la legibilidad del párrafo */
 }
