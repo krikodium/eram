@@ -1,15 +1,22 @@
+// src/components/ProductCard.jsx
+
 import { Link } from 'react-router-dom';
 import './ProductCard.css';
 
 function ProductCard({ producto }) {
   const { id, nombre, precio, sku, imagen_url } = producto;
 
-  // Usar imagen real si hay, si no: fallback local
   const imagenFinal = imagen_url || '/default-product.jpg';
 
   return (
     <Link to={`/producto/${id}`} className="card">
-      <img src={imagenFinal} alt={nombre} className="card-img" />
+      {/* Añadí loading="lazy" aquí */}
+      <img
+        src={imagenFinal}
+        alt={nombre}
+        className="card-img"
+        loading="lazy" 
+      />
       <div className="card-content">
         <h3>{nombre}</h3>
         <p className="card-price">
