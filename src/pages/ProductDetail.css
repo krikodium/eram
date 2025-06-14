@@ -93,3 +93,21 @@
 .product-ficha-link:hover {
   background-color: #424242;
 }
+
+/* 📱 AJUSTE PARA MÓVILES */
+@media (max-width: 768px) {
+  .product-detail-layout {
+    /* Cambiamos la dirección a columna en pantallas pequeñas */
+    flex-direction: column;
+  }
+
+  .product-detail-container {
+    /* Reducimos un poco el padding en móviles */
+    padding: 1rem;
+  }
+
+  .product-info h1 {
+    /* Ajustamos el tamaño de la fuente para que no sea tan grande */
+    font-size: 2rem;
+  }
+}
