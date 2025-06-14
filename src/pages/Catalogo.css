@@ -13,21 +13,73 @@
   align-items: flex-start;
 }
 
-/*
-  El contenedor de la lista de productos.
-  Le quitamos la responsabilidad de ser una grilla, ya que de eso se encarga el componente ProductList.
-  Añadimos min-width: 0 para que el flexbox se comporte correctamente.
-*/
 .product-list-container {
   flex: 1;
   min-width: 0;
 }
 
+/* --- Estilos para el botón de categorías y el texto de categoría seleccionada --- */
+
+/*
+  ESTILO CORREGIDO Y UNIFICADO:
+  Este estilo ahora se aplica en TODAS las pantallas (móvil y escritorio).
+  Ya no se oculta en la vista de escritorio.
+*/
+.toggle-categories {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--rojo-principal);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.toggle-categories:hover {
+  background-color: var(--rojo-hover);
+  transform: translateY(-2px);
+}
+
+.toggle-categories svg {
+  font-size: 1rem;
+}
+
+.categoria-seleccionada {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--blanco-puro);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background-color: var(--negro-card);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* --- Ajustes Generales para Móviles --- */
+@media (max-width: 768px) {
+  .catalogo-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .category-sidebar {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* --- Estilos para el botón "Cargar Más" --- */
 .load-more-container {
   display: flex;
   justify-content: center;
   padding: 2rem 0;
-  grid-column: 1 / -1; /* Asegura que ocupe todo el ancho de la grilla */
+  grid-column: 1 / -1;
 }
 
 .load-more-btn {
@@ -50,63 +102,3 @@
   background-color: #555;
   cursor: not-allowed;
 }
-
-.toggle-categories {
-  display: none;
-}
-
-.categoria-seleccionada {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  color: var(--blanco-puro);
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  background-color: var(--negro-card);
-  border-radius: 8px;
-  display: inline-block;
-}
-
-/* En móvil, mostramos y estilizamos el botón */
-@media (max-width: 768px) {
-  .toggle-categories {
-    display: inline-flex; /* Usamos flex para alinear ícono y texto */
-    align-items: center;
-    gap: 0.5rem; /* Espacio entre ícono y texto */
-    background-color: var(--rojo-principal);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-  }
-
-  .toggle-categories:hover {
-    background-color: var(--rojo-hover);
-    transform: translateY(-2px);
-  }
-
-  .toggle-categories svg {
-    font-size: 1rem;
-  }
-}
-/*
-  Ajustes para Móviles
-*/
-@media (max-width: 768px) {
-  .catalogo-layout {
-    /* En móvil, la barra lateral y los productos se apilan verticalmente */
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .category-sidebar {
-    /* La barra lateral ocupa todo el ancho cuando está visible en móvil */
-    width: 100%;
-    min-width: unset;
-  }
-}
-
