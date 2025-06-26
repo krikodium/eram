@@ -1,16 +1,24 @@
+/* Contenedor principal alineado al ancho del sitio */
+.category-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .category-scroll-container {
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding: 3rem 0;
+  padding: 2rem 0; /* Solo vertical */
 }
 
+/* Carrusel horizontal */
 .category-grid-scroll {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
   gap: 1.5rem;
-  padding: 0 3rem;
+  padding: 0; /* IMPORTANTE: no usar padding horizontal */
   scrollbar-width: none;
 }
 
@@ -18,6 +26,7 @@
   display: none;
 }
 
+/* Tarjeta de cada categoría */
 .category-card {
   flex: 0 0 auto;
   background-color: var(--negro-card);
@@ -47,7 +56,7 @@
   font-weight: 500;
 }
 
-/* --- Flechas laterales --- */
+/* Flechas laterales */
 .scroll-arrow {
   position: absolute;
   top: 50%;
@@ -79,32 +88,9 @@
   right: 0.5rem;
 }
 
+/* Ocultar flechas en mobile */
 @media (max-width: 768px) {
   .scroll-arrow {
     display: none;
   }
-}
-/* Contenedor para limitar el ancho al del sitio */
-.category-wrapper {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.category-scroll-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  /* QUITAR cualquier padding horizontal ACÁ */
-  padding: 2rem 0;
-}
-
-.category-grid-scroll {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 1.5rem;
-  /* NO debe tener padding horizontal aquí */
-  padding: 0;
-  scrollbar-width: none;
 }
