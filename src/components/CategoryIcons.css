@@ -84,3 +84,9 @@
     display: none;
   }
 }
+/* Contenedor para limitar el ancho al del sitio */
+.category-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

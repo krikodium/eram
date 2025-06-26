@@ -18,13 +18,7 @@
   min-width: 0;
 }
 
-/* --- Estilos para el botón de categorías y el texto de categoría seleccionada --- */
-
-/*
-  ESTILO CORREGIDO Y UNIFICADO:
-  Este estilo ahora se aplica en TODAS las pantallas (móvil y escritorio).
-  Ya no se oculta en la vista de escritorio.
-*/
+/* --- Botón para mostrar/ocultar categorías (SIEMPRE visible) --- */
 .toggle-categories {
   display: inline-flex;
   align-items: center;
@@ -50,6 +44,7 @@
   font-size: 1rem;
 }
 
+/* --- Texto de categoría seleccionada --- */
 .categoria-seleccionada {
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -103,7 +98,7 @@
   cursor: not-allowed;
 }
 
-
+/* --- Sección de productos destacados --- */
 .destacados-section {
   margin-bottom: 2rem;
 }
@@ -112,4 +107,19 @@
   margin-bottom: 1rem;
   font-size: 1.4rem;
   color: #f4f4f4;
+}
+
+/* --- Sección de categorías destacadas --- */
+.categorias-destacadas {
+  margin-bottom: 3rem;
+}
+
+.bloque-categoria {
+  margin-bottom: 2rem;
+}
+
+.bloque-categoria h3 {
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: 1.2rem;
 }

@@ -41,28 +41,35 @@ function CategoryIcons() {
   };
 
   return (
-    <div className="category-scroll-container">
-      <button className="scroll-arrow left" onClick={() => scroll('left')}>
-        <FaArrowLeft />
-      </button>
+    <section className="category-icons-section">
+      <div className="category-wrapper">
+        <h2 className="section-title">Nuestras Categorías</h2>
+        <p className="section-subtitle">Explorá nuestras líneas de protección profesional</p>
 
-      <div className="category-grid-scroll" ref={scrollRef}>
-        {categories.map((cat, index) => (
-          <Link
-            to={`/catalogo?categoria_id=${cat.id}`}
-            className="category-card"
-            key={index}
-          >
-            <div className="category-icon">{cat.icon}</div>
-            <span className="category-name">{cat.name}</span>
-          </Link>
-        ))}
+        <div className="category-scroll-container">
+          <button className="scroll-arrow left" onClick={() => scroll('left')}>
+            <FaArrowLeft />
+          </button>
+
+          <div className="category-grid-scroll" ref={scrollRef}>
+            {categories.map((cat, index) => (
+              <Link
+                to={`/catalogo?categoria_id=${cat.id}`}
+                className="category-card"
+                key={index}
+              >
+                <div className="category-icon">{cat.icon}</div>
+                <span className="category-name">{cat.name}</span>
+              </Link>
+            ))}
+          </div>
+
+          <button className="scroll-arrow right" onClick={() => scroll('right')}>
+            <FaArrowRight />
+          </button>
+        </div>
       </div>
-
-      <button className="scroll-arrow right" onClick={() => scroll('right')}>
-        <FaArrowRight />
-      </button>
-    </div>
+    </section>
   );
 }
 

@@ -11,6 +11,10 @@
   padding: 0 1rem;
 }
 
+.findus-content {
+  margin-bottom: 2.5rem;
+}
+
 .findus-title {
   font-size: 2rem;
   margin-bottom: 1.2rem;
@@ -43,6 +47,10 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fade-up 0.8s ease forwards;
+  animation-delay: 0.3s;
 }
 
 .map-container iframe {
@@ -50,4 +58,18 @@
   height: 350px;
   border: none;
   display: block;
+}
+
+/* Animaciones */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
