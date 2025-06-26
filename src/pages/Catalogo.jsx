@@ -10,6 +10,7 @@ const PRODUCTOS_POR_PAGINA = 18;
 
 function Catalogo() {
   const [products, setProducts] = useState([]);
+  const [destacados, setDestacados] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
   const [page, setPage] = useState(1);
@@ -20,6 +21,8 @@ function Catalogo() {
   const [searchParams] = useSearchParams();
   const categoryId = searchParams.get('categoria_id');
 
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
   useEffect(() => {
     setProducts([]);
     setPage(1);
@@ -27,17 +30,15 @@ function Catalogo() {
     setLoading(true);
 
     const fetchInitialProducts = async () => {
-      const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/productos`;
-      
       try {
-        const response = await axios.get(apiUrl, {
+        const response = await axios.get(`${apiUrl}/api/productos`, {
           params: {
             categoria: categoryId,
             limit: PRODUCTOS_POR_PAGINA,
             page: 1,
           },
         });
-        
+
         setProducts(response.data);
         if (response.data.length < PRODUCTOS_POR_PAGINA) {
           setHasMore(false);
@@ -53,20 +54,30 @@ function Catalogo() {
     fetchInitialProducts();
   }, [categoryId]);
 
+  useEffect(() => {
+    if (!categoryId) {
+      axios.get(`${apiUrl}/api/productos/inicio`)
+        .then(res => setDestacados(res.data))
+        .catch(err => console.error("Error al cargar productos destacados:", err));
+    } else {
+      setDestacados([]); // Ocultamos los destacados si hay filtro
+    }
+  }, [categoryId]);
+
   const handleLoadMore = async () => {
     if (loadingMore || !hasMore) return;
     setLoadingMore(true);
     const nextPage = page + 1;
-    const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/productos`;
-    
+
     try {
-      const response = await axios.get(apiUrl, {
+      const response = await axios.get(`${apiUrl}/api/productos`, {
         params: {
           categoria: categoryId,
           limit: PRODUCTOS_POR_PAGINA,
           page: nextPage,
         },
       });
+
       if (response.data.length > 0) {
         setProducts(prevProducts => [...prevProducts, ...response.data]);
         setPage(nextPage);
@@ -81,9 +92,7 @@ function Catalogo() {
     }
   };
 
-  // Función para manejar el cierre del menú al seleccionar categoría
   const handleCategorySelect = () => {
-    // Solo cerramos el menú en pantallas pequeñas (móvil)
     if (window.innerWidth <= 768) {
       setShowCategories(false);
     }
@@ -112,15 +121,23 @@ function Catalogo() {
       )}
 
       <div className={`catalogo-layout ${showCategories ? 'menu-abierto' : 'menu-cerrado'}`}>
-        {/* Aquí pasamos la nueva función como prop */}
         {showCategories && (
-          <CategorySidebar 
-            setNombreSeleccionado={setNombreSeleccionado} 
+          <CategorySidebar
+            setNombreSeleccionado={setNombreSeleccionado}
             onCategorySelect={handleCategorySelect}
           />
         )}
 
         <main className="product-list-container">
+          {/* Productos destacados */}
+          {!categoryId && destacados.length > 0 && (
+            <section className="destacados-section">
+              <h2>Productos destacados</h2>
+              <ProductList productos={destacados} columnas={3} />
+            </section>
+          )}
+
+          {/* Lista principal de productos */}
           {loading ? (
             <p>Cargando productos...</p>
           ) : (
