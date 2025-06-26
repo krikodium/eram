@@ -90,3 +90,21 @@
   margin: 0 auto;
   padding: 0 1rem;
 }
+
+.category-scroll-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  /* QUITAR cualquier padding horizontal ACÁ */
+  padding: 2rem 0;
+}
+
+.category-grid-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1.5rem;
+  /* NO debe tener padding horizontal aquí */
+  padding: 0;
+  scrollbar-width: none;
+}
