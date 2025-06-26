@@ -11,6 +11,7 @@ const PRODUCTOS_POR_PAGINA = 18;
 function Catalogo() {
   const [products, setProducts] = useState([]);
   const [destacados, setDestacados] = useState([]);
+  const [categoriasDestacadas, setCategoriasDestacadas] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
   const [page, setPage] = useState(1);
@@ -60,9 +61,15 @@ function Catalogo() {
         .then(res => setDestacados(res.data))
         .catch(err => console.error("Error al cargar productos destacados:", err));
     } else {
-      setDestacados([]); // Ocultamos los destacados si hay filtro
+      setDestacados([]);
     }
   }, [categoryId]);
+
+  useEffect(() => {
+    axios.get(`${apiUrl}/api/categorias/destacadas`)
+      .then(res => setCategoriasDestacadas(res.data))
+      .catch(err => console.error("Error al cargar categorías destacadas:", err));
+  }, []);
 
   const handleLoadMore = async () => {
     if (loadingMore || !hasMore) return;
@@ -129,7 +136,21 @@ function Catalogo() {
         )}
 
         <main className="product-list-container">
-          {/* Productos destacados */}
+
+          {/* Sección de categorías destacadas */}
+          {!categoryId && categoriasDestacadas.length > 0 && (
+            <section className="categorias-destacadas">
+              <h2>Categorías destacadas</h2>
+              {categoriasDestacadas.map(({ categoria, productos }) => (
+                <div key={categoria.id} className="bloque-categoria">
+                  <h3>{categoria.nombre}</h3>
+                  <ProductList productos={productos} columnas={3} />
+                </div>
+              ))}
+            </section>
+          )}
+
+          {/* Sección de productos destacados */}
           {!categoryId && destacados.length > 0 && (
             <section className="destacados-section">
               <h2>Productos destacados</h2>
