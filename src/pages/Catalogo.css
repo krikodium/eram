@@ -95,3 +95,25 @@
     justify-content: center;
   }
 }
+
+/* ========================================= */
+/* ===== ESTILOS DE DEPURACIÓN FORZADA ===== */
+/* ========================================= */
+/* Estos estilos son para diagnosticar por qué no se ve el botón. */
+
+.catalogo-container .catalogo-header .toggle-categories {
+  display: block !important;
+  position: fixed !important;
+  top: 150px;
+  left: 25px;
+  width: 250px;
+  height: 80px;
+  background-color: yellow !important;
+  color: black !important;
+  border: 5px dashed red !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  z-index: 999999 !important;
+  text-align: center;
+  padding-top: 20px;
+}
