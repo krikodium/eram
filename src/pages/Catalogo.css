@@ -1,16 +1,51 @@
 /* src/pages/Catalogo.css */
-
 .catalogo-container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
 
-/* --- Diseño de Escritorio (Desktop First) --- */
+.catalogo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-/* Por defecto, el botón de filtros está oculto en escritorio */
+.catalogo-header h1 {
+  margin: 0;
+}
+
 .toggle-categories {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--rojo-principal);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.toggle-categories:hover {
+  background-color: var(--rojo-hover);
+  transform: translateY(-2px);
+}
+
+.categoria-seleccionada {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--blanco-puro);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background-color: var(--negro-card);
+  border-radius: 8px;
+  display: inline-block;
 }
 
 .catalogo-layout {
@@ -20,67 +55,16 @@
   align-items: flex-start;
 }
 
-/* Dejamos el contenedor de la lista de productos flexible */
 .product-list-container {
   flex: 1;
   min-width: 0;
 }
 
-/* --- Ajustes para Móviles (max-width: 768px) --- */
-@media (max-width: 768px) {
-  /* Hacemos visible el botón de filtros en móvil */
-  .toggle-categories {
-    display: inline-flex; /* o 'flex' */
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background-color: var(--rojo-principal);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-    width: 100%;
-  }
-
-  .toggle-categories:hover {
-    background-color: var(--rojo-hover);
-    transform: translateY(-2px);
-  }
-  
-  .catalogo-layout {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  /* En móvil, la barra lateral está oculta por defecto */
-  .catalogo-layout .category-sidebar {
-    display: none;
-  }
-
-  /* Cuando el layout tenga la clase 'mobile-menu-open', la mostramos */
-  .catalogo-layout.mobile-menu-open .category-sidebar {
-    display: block;
-    width: 100%;
-  }
-}
-
-
-/* --- Estilos compartidos (sin cambios) --- */
-
-.categoria-seleccionada {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  color: var(--blanco-puro);
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  background-color: var(--negro-card);
-  border-radius: 8px;
-  display: inline-block;
+.loading-text, .no-products-text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--gris-texto);
+  padding: 4rem 0;
 }
 
 .categorias-destacadas {
@@ -93,8 +77,21 @@
 }
 
 .bloque-categoria h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 500;
+  border-left: 4px solid var(--rojo-principal);
+  padding-left: 1rem;
+}
+
+/* Ajustes para móvil */
+@media (max-width: 768px) {
+  .catalogo-layout {
+    flex-direction: column;
+  }
+  .toggle-categories {
+    width: 100%;
+    justify-content: center;
+  }
 }

@@ -1,5 +1,5 @@
 // src/pages/Catalogo.jsx
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import CategorySidebar from '../components/CategorySidebar';
@@ -11,7 +11,7 @@ const Catalogo = () => {
   const [subcategoriasConProductos, setSubcategoriasConProductos] = useState([]);
   const [destacados, setDestacados] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showCategories, setShowCategories] = useState(false); // Este estado controla la visibilidad del sidebar
   const [nombreSeleccionado, setNombreSeleccionado] = useState('');
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
@@ -19,8 +19,6 @@ const Catalogo = () => {
 
   useEffect(() => {
     setLoading(true);
-    setMobileMenuOpen(false); // Cierra el menú móvil al cambiar de categoría
-
     const fetchData = async () => {
       try {
         if (categoriaId) {
@@ -34,8 +32,6 @@ const Catalogo = () => {
         }
       } catch (err) {
         console.error("Error al cargar productos:", err);
-        setDestacados([]);
-        setSubcategoriasConProductos([]);
       } finally {
         setLoading(false);
       }
@@ -54,18 +50,23 @@ const Catalogo = () => {
         setNombreSeleccionado(response.data?.nombre || '');
       } catch (error) {
         console.error("Error al obtener el nombre de la categoría:", error);
-        setNombreSeleccionado('');
       }
     };
     fetchCategoriaNombre();
   }, [categoriaId, api]);
-  
+
+  // Esta función se la pasaremos al sidebar para que se cierre al hacer clic en un link
+  const handleSidebarLinkClick = () => {
+    setShowCategories(false);
+  };
+
   return (
     <div className="catalogo-container">
       <div className="catalogo-header">
         <h1>Catálogo de Productos</h1>
-        <button className="toggle-categories" onClick={() => setMobileMenuOpen(prev => !prev)}>
-          {mobileMenuOpen ? <><FaTimes /> Ocultar Filtros</> : <><FaFilter /> Mostrar Filtros</>}
+        {/* Este botón ahora SIEMPRE estará visible */}
+        <button className="toggle-categories" onClick={() => setShowCategories(prev => !prev)}>
+          {showCategories ? <><FaTimes /> Ocultar Filtros</> : <><FaFilter /> Mostrar Filtros</>}
         </button>
       </div>
 
@@ -73,8 +74,9 @@ const Catalogo = () => {
         Mostrando: <strong>{loading ? 'Cargando...' : nombreSeleccionado}</strong>
       </div>
 
-      <div className={`catalogo-layout ${mobileMenuOpen ? 'mobile-menu-is-open' : ''}`}>
-        <CategorySidebar onLinkClick={() => setMobileMenuOpen(false)} />
+      <div className="catalogo-layout">
+        {/* El sidebar ahora se renderiza o no dependiendo del estado 'showCategories' */}
+        {showCategories && <CategorySidebar onLinkClick={handleSidebarLinkClick} />}
 
         <main className="product-list-container">
           {loading ? (
@@ -91,7 +93,7 @@ const Catalogo = () => {
                     bloque.productos.length > 0 ? (
                       <div className="bloque-categoria" key={bloque.categoria_id}>
                         <h3>{bloque.categoria_nombre}</h3>
-                        <ProductList productos={bloque.productos} columnas={3} />
+                        <ProductList productos={bloque.productos} columnas={showCategories ? 2 : 3} />
                       </div>
                     ) : null
                   )}
@@ -104,7 +106,7 @@ const Catalogo = () => {
                     sub.productos.length > 0 ? (
                       <div className="bloque-categoria" key={sub.subcategoria_id}>
                         <h3>{sub.subcategoria_nombre}</h3>
-                        <ProductList productos={sub.productos} columnas={3} />
+                        <ProductList productos={sub.productos} columnas={showCategories ? 2 : 3} />
                       </div>
                     ) : null
                   )}
