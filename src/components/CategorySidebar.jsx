@@ -1,73 +1,28 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CategorySidebar.css';
 
-function CategorySidebar({ setNombreSeleccionado, onCategorySelect }) {
-  const [categories, setCategories] = useState([]);
-  const [popupData, setPopupData] = useState({ visible: false, categoryId: null, products: [] });
-  const [slideIndex, setSlideIndex] = useState(0);
-  const [searchParams] = useSearchParams();
-  const categoriaSeleccionada = searchParams.get('categoria_id');
-
-  const slideIntervalRef = useRef(null);
-  const hoverTimeoutRef = useRef(null);
-  
-  const api = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const CategorySidebar = ({ onCategoriaClick }) => {
+  const [categorias, setCategorias] = useState([]);
+  const [seleccionada, setSeleccionada] = useState(null);
 
   useEffect(() => {
-    axios.get(`${api}/api/categorias`)
-      .then(response => {
-        setCategories(response.data);
-      })
-      .catch(error => {
-        console.error("Error al obtener las categorías:", error);
-      });
-  }, [api]);
+    const fetchCategorias = async () => {
+      try {
+        const response = await axios.get('/api/categorias');
+        const padres = response.data.filter(c => c.categoria_padre_id === null);
+        setCategorias(padres);
+      } catch (err) {
+        console.error("Error al cargar categorías:", err);
+      }
+    };
 
-  useEffect(() => {
-    if (categoriaSeleccionada && categories.length > 0) {
-      const encontrada = categories.find(c => String(c.id) === categoriaSeleccionada);
-      if (encontrada) setNombreSeleccionado(encontrada.nombre);
-    } else if (setNombreSeleccionado) {
-      setNombreSeleccionado('Todos');
-    }
-  }, [categoriaSeleccionada, categories, setNombreSeleccionado]);
+    fetchCategorias();
+  }, []);
 
-  const startSlideshow = (products) => {
-    setSlideIndex(0);
-    clearInterval(slideIntervalRef.current);
-    if (products.length > 1) {
-      slideIntervalRef.current = setInterval(() => {
-        setSlideIndex(prev => (prev + 1) % products.length);
-      }, 1500);
-    }
-  };
-
-  const stopSlideshow = () => {
-    clearInterval(slideIntervalRef.current);
-  };
-
-  const handleMouseEnter = (categoryId) => {
-    clearTimeout(hoverTimeoutRef.current);
-    hoverTimeoutRef.current = setTimeout(() => {
-      axios.get(`${api}/api/productos?categoria=${categoryId}&limit=5`)
-        .then(response => {
-          const productos = response.data;
-          setPopupData({ visible: true, categoryId, products: productos });
-          if (productos.length > 0) startSlideshow(productos);
-        })
-        .catch(err => {
-          console.error("Error al obtener productos:", err);
-          setPopupData({ visible: false, categoryId: null, products: [] });
-        });
-    }, 300);
-  };
-
-  const handleMouseLeave = () => {
-    clearTimeout(hoverTimeoutRef.current);
-    stopSlideshow();
-    setPopupData({ visible: false, categoryId: null, products: [] });
+  const handleSeleccion = (categoriaId) => {
+    setSeleccionada(categoriaId);
+    onCategoriaClick(categoriaId);
   };
 
   return (
@@ -75,48 +30,26 @@ function CategorySidebar({ setNombreSeleccionado, onCategorySelect }) {
       <h3>Categorías</h3>
       <ul>
         <li>
-          <Link to="/catalogo" className={!categoriaSeleccionada ? 'active' : ''} onClick={onCategorySelect}>
-            Ver Todos
-          </Link>
-        </li>
-        {categories.map(cat => (
-          <li
-            key={cat.id}
-            onMouseEnter={() => handleMouseEnter(cat.id)}
-            onMouseLeave={handleMouseLeave}
+          <button
+            className={!seleccionada ? 'active' : ''}
+            onClick={() => handleSeleccion(null)}
           >
-            <Link
-              to={`/catalogo?categoria_id=${cat.id}`}
-              className={`${String(cat.id) === categoriaSeleccionada ? 'active' : ''}`}
-              onClick={onCategorySelect}
+            Ver Todos
+          </button>
+        </li>
+        {categorias.map((cat) => (
+          <li key={cat.id}>
+            <button
+              className={seleccionada === cat.id ? 'active' : ''}
+              onClick={() => handleSeleccion(cat.id)}
             >
               {cat.nombre}
-            </Link>
-
-            {popupData.visible && popupData.categoryId === cat.id && popupData.products.length > 0 && (
-              <div className="category-popup">
-                <h4>{cat.nombre}</h4>
-                <div className="popup-slideshow">
-                  {popupData.products.map((product, index) => (
-                    <div
-                      className={`slide ${index === slideIndex ? 'active' : ''}`}
-                      key={product.id}
-                    >
-                      {product.imagen_url ? (
-                        <img src={product.imagen_url} alt={product.nombre} />
-                      ) : (
-                        <span>Sin imagen</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            </button>
           </li>
         ))}
       </ul>
     </aside>
   );
-}
+};
 
 export default CategorySidebar;

@@ -1,3 +1,4 @@
+// src/pages/Catalogo.jsx
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -6,103 +7,69 @@ import ProductList from '../components/ProductList';
 import './Catalogo.css';
 import { FaFilter, FaTimes } from 'react-icons/fa';
 
-const PRODUCTOS_POR_PAGINA = 18;
-
-function Catalogo() {
-  const [products, setProducts] = useState([]);
+const Catalogo = () => {
+  const [subcategoriasConProductos, setSubcategoriasConProductos] = useState([]);
   const [destacados, setDestacados] = useState([]);
-  const [categoriasDestacadas, setCategoriasDestacadas] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [loadingMore, setLoadingMore] = useState(false);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [showCategories, setShowCategories] = useState(false);
   const [nombreSeleccionado, setNombreSeleccionado] = useState(null);
-
   const [searchParams] = useSearchParams();
-  const categoryId = searchParams.get('categoria_id');
-
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+  const categoriaId = searchParams.get('categoria_id');
+  const api = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
   useEffect(() => {
-    setProducts([]);
-    setPage(1);
-    setHasMore(true);
     setLoading(true);
 
-    const fetchInitialProducts = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/api/productos`, {
-          params: {
-            categoria: categoryId,
-            limit: PRODUCTOS_POR_PAGINA,
-            page: 1,
-          },
-        });
-
-        setProducts(response.data);
-        if (response.data.length < PRODUCTOS_POR_PAGINA) {
-          setHasMore(false);
+        if (categoriaId) {
+          const res = await axios.get(`${api}/api/productos/por-subcategorias`, {
+            params: { categoria_id: categoriaId }
+          });
+          setSubcategoriasConProductos(res.data);
+          setDestacados([]);
+        } else {
+          const res = await axios.get(`${api}/api/productos/destacados`);
+          setDestacados(res.data);
+          setSubcategoriasConProductos([]);
         }
-      } catch (error) {
-        console.error("Error al obtener los productos:", error);
-        setProducts([]);
+      } catch (err) {
+        console.error("Error al cargar productos:", err);
+        setSubcategoriasConProductos([]);
+        setDestacados([]);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchInitialProducts();
-  }, [categoryId]);
-
-  useEffect(() => {
-    if (!categoryId) {
-      axios.get(`${apiUrl}/api/productos/inicio`)
-        .then(res => setDestacados(res.data))
-        .catch(err => console.error("Error al cargar productos destacados:", err));
-    } else {
-      setDestacados([]);
+    fetchData();
+  }, [categoriaId]);
+  // Obtener el nombre real de la categoría padre seleccionada
+useEffect(() => {
+  const fetchCategoriaNombre = async () => {
+    if (!categoriaId) {
+      setNombreSeleccionado(null);
+      return;
     }
-  }, [categoryId]);
-
-  useEffect(() => {
-    axios.get(`${apiUrl}/api/categorias/destacadas`)
-      .then(res => setCategoriasDestacadas(res.data))
-      .catch(err => console.error("Error al cargar categorías destacadas:", err));
-  }, []);
-
-  const handleLoadMore = async () => {
-    if (loadingMore || !hasMore) return;
-    setLoadingMore(true);
-    const nextPage = page + 1;
 
     try {
-      const response = await axios.get(`${apiUrl}/api/productos`, {
-        params: {
-          categoria: categoryId,
-          limit: PRODUCTOS_POR_PAGINA,
-          page: nextPage,
-        },
-      });
-
-      if (response.data.length > 0) {
-        setProducts(prevProducts => [...prevProducts, ...response.data]);
-        setPage(nextPage);
-      }
-      if (response.data.length < PRODUCTOS_POR_PAGINA) {
-        setHasMore(false);
+      const response = await axios.get(`${api}/api/categorias/${categoriaId}`);
+      if (response.data && response.data.nombre) {
+        setNombreSeleccionado(response.data.nombre);
+      } else {
+        setNombreSeleccionado(null);
       }
     } catch (error) {
-      console.error("Error al cargar más productos:", error);
-    } finally {
-      setLoadingMore(false);
+      console.error("Error al obtener el nombre de la categoría:", error);
+      setNombreSeleccionado(null);
     }
   };
 
+  fetchCategoriaNombre();
+}, [categoriaId]);
+
   const handleCategorySelect = () => {
-    if (window.innerWidth <= 768) {
-      setShowCategories(false);
-    }
+    if (window.innerWidth <= 768) setShowCategories(false);
   };
 
   return (
@@ -110,18 +77,10 @@ function Catalogo() {
       <h1>Catálogo de Productos</h1>
 
       <button className="toggle-categories" onClick={() => setShowCategories(prev => !prev)}>
-        {showCategories ? (
-          <>
-            <FaTimes /> Ocultar Filtros
-          </>
-        ) : (
-          <>
-            <FaFilter /> Mostrar Filtros
-          </>
-        )}
+        {showCategories ? <><FaTimes /> Ocultar Filtros</> : <><FaFilter /> Mostrar Filtros</>}
       </button>
 
-      {categoryId && (
+      {categoriaId && (
         <div className="categoria-seleccionada">
           Categoría seleccionada: <strong>{nombreSeleccionado}</strong>
         </div>
@@ -136,49 +95,39 @@ function Catalogo() {
         )}
 
         <main className="product-list-container">
-
-          {/* Sección de categorías destacadas */}
-          {!categoryId && categoriasDestacadas.length > 0 && (
-            <section className="categorias-destacadas">
-              <h2>Categorías destacadas</h2>
-              {categoriasDestacadas.map(({ categoria, productos }) => (
-                <div key={categoria.id} className="bloque-categoria">
-                  <h3>{categoria.nombre}</h3>
-                  <ProductList productos={productos} columnas={3} />
-                </div>
-              ))}
-            </section>
-          )}
-
-          {/* Sección de productos destacados */}
-          {!categoryId && destacados.length > 0 && (
-            <section className="destacados-section">
-              <h2>Productos destacados</h2>
-              <ProductList productos={destacados} columnas={3} />
-            </section>
-          )}
-
-          {/* Lista principal de productos */}
           {loading ? (
             <p>Cargando productos...</p>
           ) : (
-            <ProductList productos={products} columnas={showCategories ? 2 : 3} />
-          )}
+            <>
+              {/* Muestra productos destacados si no hay categoría seleccionada */}
+              {destacados.length > 0 && (
+                <section className="categorias-destacadas">
+                  {destacados.map(bloque => (
+                    <div className="bloque-categoria" key={bloque.categoria_id}>
+                      <h3>{bloque.categoria_nombre}</h3>
+                      <ProductList productos={bloque.productos} columnas={showCategories ? 2 : 3} />
+                    </div>
+                  ))}
+                </section>
+              )}
 
-          <div className="load-more-container">
-            {hasMore && !loading && (
-              <button onClick={handleLoadMore} disabled={loadingMore} className="load-more-btn">
-                {loadingMore ? 'Cargando...' : 'Cargar Más'}
-              </button>
-            )}
-            {!hasMore && products.length > 0 && (
-              <p>No hay más productos para mostrar.</p>
-            )}
-          </div>
+              {/* Muestra productos por subcategoría si hay una categoría padre seleccionada */}
+              {subcategoriasConProductos.length > 0 && (
+                <section className="categorias-destacadas">
+                  {subcategoriasConProductos.map(sub => (
+                    <div className="bloque-categoria" key={sub.subcategoria_id}>
+                      <h3>{sub.subcategoria_nombre}</h3>
+                      <ProductList productos={sub.productos} columnas={showCategories ? 2 : 3} />
+                    </div>
+                  ))}
+                </section>
+              )}
+            </>
+          )}
         </main>
       </div>
     </div>
   );
-}
+};
 
 export default Catalogo;

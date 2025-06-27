@@ -1,5 +1,3 @@
-/* src/pages/Catalogo.css */
-
 .catalogo-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -67,6 +65,11 @@
     width: 100%;
     min-width: unset;
   }
+
+  .toggle-categories {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* --- Estilos para el botón "Cargar Más" --- */
@@ -107,19 +110,22 @@
   margin-bottom: 1rem;
   font-size: 1.4rem;
   color: #f4f4f4;
+  font-weight: 600;
 }
 
 /* --- Sección de categorías destacadas --- */
 .categorias-destacadas {
   margin-bottom: 3rem;
+  padding-top: 1rem;
 }
 
 .bloque-categoria {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .bloque-categoria h3 {
   margin-bottom: 1rem;
   color: #ffffff;
   font-size: 1.2rem;
+  font-weight: 500;
 }

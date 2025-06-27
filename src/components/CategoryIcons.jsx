@@ -1,76 +1,61 @@
-import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import {
-  FaPumpSoap, FaShoePrints, FaDeaf, FaEye, FaTshirt,
-  FaHardHat, FaShower, FaTools, FaHandsWash, FaLightbulb,
-  FaLock, FaUserShield, FaHeadSideMask, FaArrowLeft, FaArrowRight
-} from 'react-icons/fa';
-import { GiGloves } from 'react-icons/gi';
+import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 import './CategoryIcons.css';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-const categories = [
-  { icon: <FaPumpSoap />, name: 'Absorbentes y Desengrasantes', id: 11 },
-  { icon: <FaShoePrints />, name: 'Calzado de Seguridad', id: 9 },
-  { icon: <FaLightbulb />, name: 'Detectores de Gases', id: 17 },
-  { icon: <FaShower />, name: 'Duchas y Lavaojos de Emergencia', id: 16 },
-  { icon: <FaTools />, name: 'Equipos Autónomos', id: 15 },
-  { icon: <FaHandsWash />, name: 'Ergonómicos', id: 14 },
-  { icon: <GiGloves />, name: 'Guantes de Seguridad', id: 1 },
-  { icon: <FaTshirt />, name: 'Indumentaria', id: 7 },
-  { icon: <FaPumpSoap />, name: 'Manipulación de Hidrocarburos', id: 8 },
-  { icon: <FaHandsWash />, name: 'Pañós de Limpieza', id: 13 },
-  { icon: <FaDeaf />, name: 'Protección Auditiva', id: 5 },
-  { icon: <FaHardHat />, name: 'Protección Craneana', id: 12 },
-  { icon: <FaUserShield />, name: 'Protección Facial', id: 4 },
-  { icon: <FaEye />, name: 'Protección Ocular', id: 6 },
-  { icon: <FaHeadSideMask />, name: 'Protección Respiratoria', id: 3 },
-  { icon: <FaLightbulb />, name: 'Señalización y Linternas', id: 10 },
-  { icon: <FaLock />, name: 'Sistemas de Bloqueo', id: 2 },
-];
+const CategoryIcons = () => {
+  const [categorias, setCategorias] = useState([]);
+  const scrollRef = useRef(null);
 
-function CategoryIcons() {
-  const scrollRef = useRef();
+  useEffect(() => {
+    const fetchCategorias = async () => {
+      try {
+        const response = await axios.get('/api/categorias');
+        const padres = response.data.filter(cat => cat.categoria_padre_id === null);
+        setCategorias(padres);
+      } catch (error) {
+        console.error("Error al obtener categorías:", error);
+      }
+    };
 
-  const scroll = (direction) => {
+    fetchCategorias();
+  }, []);
+
+  const scrollLeft = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -300 : 300,
-        behavior: 'smooth',
-      });
+      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
     }
   };
 
   return (
-    <section className="category-icons-section">
+    <section className="category-scroll-container">
       <div className="category-wrapper">
         <h2 className="section-title">Nuestras Categorías</h2>
-        <p className="section-subtitle">Explorá nuestras líneas de protección profesional</p>
-
-        <div className="category-scroll-container">
-          <button className="scroll-arrow left" onClick={() => scroll('left')}>
-            <FaArrowLeft />
-          </button>
-
-          <div className="category-grid-scroll" ref={scrollRef}>
-            {categories.map((cat, index) => (
-              <Link
-                to={`/catalogo?categoria_id=${cat.id}`}
-                className="category-card"
-                key={index}
-              >
-                <div className="category-icon">{cat.icon}</div>
-                <span className="category-name">{cat.name}</span>
-              </Link>
-            ))}
-          </div>
-
-          <button className="scroll-arrow right" onClick={() => scroll('right')}>
-            <FaArrowRight />
-          </button>
+        <div className="category-grid-scroll" ref={scrollRef}>
+          {categorias.map((cat) => (
+            <Link to={`/catalogo?categoria_id=${cat.id}`} key={cat.id} className="category-card">
+              <div className="category-icon">📦</div>
+              <div className="category-name">{cat.nombre}</div>
+            </Link>
+          ))}
         </div>
+
+        <button className="scroll-arrow left" onClick={scrollLeft}>
+          <FaChevronLeft />
+        </button>
+        <button className="scroll-arrow right" onClick={scrollRight}>
+          <FaChevronRight />
+        </button>
       </div>
     </section>
   );
-}
+};
 
 export default CategoryIcons;
