@@ -1,4 +1,4 @@
-// src/pages/Catalogo.jsx
+// src/pages/Catalogo.jsx (CORREGIDO)
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -17,32 +17,21 @@ const Catalogo = () => {
 
   useEffect(() => {
     setLoading(true);
+    const endpoint = categoriaId ? `${api}/api/productos/por-subcategorias` : `${api}/api/productos/destacados`;
+    const params = categoriaId ? { params: { categoria_id: categoriaId } } : {};
 
-    const fetchData = async () => {
-      try {
-        const endpoint = categoriaId
-          ? `${api}/api/productos/por-subcategorias`
-          : `${api}/api/productos/destacados`;
-        
-        const params = categoriaId ? { categoria_id: categoriaId } : {};
-        
-        const response = await axios.get(endpoint, { params });
+    axios.get(endpoint, params)
+      .then(response => {
         setProductosPorBloque(response.data);
-      } catch (err) {
+      })
+      .catch(err => {
         console.error("Error al cargar productos:", err);
         setProductosPorBloque([]);
-      } finally {
+      })
+      .finally(() => {
         setLoading(false);
-      }
-    };
-
-    fetchData();
+      });
   }, [categoriaId, api]);
-
-  // Función para cerrar el sidebar (especialmente útil en móvil)
-  const handleCloseSidebar = () => {
-    setShowSidebar(false);
-  };
 
   return (
     <div className="catalogo-container">
@@ -50,18 +39,16 @@ const Catalogo = () => {
         <h1>Catálogo de Productos</h1>
         <button className="toggle-categories-button" onClick={() => setShowSidebar(!showSidebar)}>
           {showSidebar ? <FaTimes /> : <FaFilter />}
-          {showSidebar ? 'Ocultar Filtros' : 'Mostrar Filtros'}
+          {showSidebar ? ' Ocultar Filtros' : ' Mostrar Filtros'}
         </button>
       </header>
 
       <div className="catalogo-body">
-        {/* El sidebar se renderiza condicionalmente */}
         {showSidebar && (
           <aside className="sidebar-container">
-            <CategorySidebar onLinkClick={handleCloseSidebar} />
+            <CategorySidebar onLinkClick={() => setShowSidebar(false)} />
           </aside>
         )}
-        
         <main className="product-grid-container">
           {loading ? (
             <p className="status-text">Cargando productos...</p>
@@ -74,7 +61,7 @@ const Catalogo = () => {
                 </section>
               ))
             ) : (
-              <p className="status-text">No se encontraron productos.</p>
+              <p className="status-text">No se encontraron productos en esta categoría.</p>
             )
           )}
         </main>

@@ -1,29 +1,22 @@
 /* src/pages/Catalogo.css - ENFOQUE MOBILE-FIRST */
-
 .catalogo-container {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 1.5rem; /* Menos padding para móvil */
+  padding: 1.5rem;
 }
-
-/* --- ESTILOS PARA MÓVIL (Por defecto) --- */
-
 .catalogo-header {
   display: flex;
-  flex-direction: column; /* Apila el título y el botón */
+  flex-direction: column;
   align-items: center;
-  text-align: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
-
 .toggle-categories-button {
-  /* El botón es visible y ocupa todo el ancho en móvil */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  width: 100%; /* Ancho completo */
+  width: 100%;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
@@ -32,62 +25,22 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  order: 2; /* Pone el botón debajo del título */
+  order: 2;
 }
-
 .catalogo-body {
-  /* El layout principal es vertical en móvil */
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
-
-.sidebar-container {
-  width: 100%;
-}
-
-.product-grid-container {
-  width: 100%;
-}
-
-.status-text {
-  padding: 3rem 0;
-  text-align: center;
-  font-size: 1.1rem;
-  color: var(--gris-texto);
-}
-
-.product-category-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-
-/* --- ESTILOS PARA ESCRITORIO --- */
-/* Estas reglas se aplican solo a pantallas de 992px o más grandes */
+.sidebar-container { width: 100%; }
+.product-grid-container { width: 100%; }
+.status-text { padding: 3rem 0; text-align: center; }
+.product-category-section h2 { font-size: 1.5rem; margin-bottom: 1rem; }
 
 @media (min-width: 992px) {
-  .catalogo-container {
-    padding: 2rem; /* Restaura el padding para desktop */
-  }
-
-  .catalogo-header {
-    flex-direction: row; /* Pone el título y el botón en la misma línea */
-    justify-content: space-between;
-  }
-
-  .toggle-categories-button {
-    width: auto; /* El botón toma el ancho de su contenido */
-    order: 0; /* Restaura el orden normal */
-  }
-
-  .catalogo-body {
-    flex-direction: row; /* Layout de dos columnas */
-    gap: 2.5rem;
-  }
-
-  .sidebar-container {
-    width: 280px;
-    flex-shrink: 0; /* Evita que el sidebar se achique */
-  }
+  .catalogo-container { padding: 2rem; }
+  .catalogo-header { flex-direction: row; justify-content: space-between; }
+  .toggle-categories-button { width: auto; order: 0; }
+  .catalogo-body { flex-direction: row; gap: 2.5rem; }
+  .sidebar-container { width: 280px; flex-shrink: 0; }
 }
