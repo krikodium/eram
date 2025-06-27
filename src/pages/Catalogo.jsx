@@ -1,5 +1,4 @@
 // src/pages/Catalogo.jsx
-
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -11,15 +10,13 @@ import { FaFilter, FaTimes } from 'react-icons/fa';
 const Catalogo = () => {
   const [productosPorBloque, setProductosPorBloque] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showSidebar, setShowSidebar] = useState(false); // Estado para controlar el sidebar
+  const [showSidebar, setShowSidebar] = useState(false);
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
   const api = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
   useEffect(() => {
     setLoading(true);
-    // Cierra el sidebar al cambiar de categoría para una mejor experiencia en móvil
-    setShowSidebar(false);
 
     const fetchData = async () => {
       try {
@@ -42,25 +39,29 @@ const Catalogo = () => {
     fetchData();
   }, [categoriaId, api]);
 
+  // Función para cerrar el sidebar (especialmente útil en móvil)
+  const handleCloseSidebar = () => {
+    setShowSidebar(false);
+  };
+
   return (
     <div className="catalogo-container">
-      <div className="catalogo-header">
+      <header className="catalogo-header">
         <h1>Catálogo de Productos</h1>
         <button className="toggle-categories-button" onClick={() => setShowSidebar(!showSidebar)}>
           {showSidebar ? <FaTimes /> : <FaFilter />}
           {showSidebar ? 'Ocultar Filtros' : 'Mostrar Filtros'}
         </button>
-      </div>
+      </header>
 
       <div className="catalogo-body">
-        {/* El sidebar se renderiza condicionalmente y se posiciona a la izquierda */}
+        {/* El sidebar se renderiza condicionalmente */}
         {showSidebar && (
-          <div className="sidebar-container">
-            <CategorySidebar onLinkClick={() => setShowSidebar(false)} />
-          </div>
+          <aside className="sidebar-container">
+            <CategorySidebar onLinkClick={handleCloseSidebar} />
+          </aside>
         )}
         
-        {/* El contenedor principal de productos se ajustará automáticamente */}
         <main className="product-grid-container">
           {loading ? (
             <p className="status-text">Cargando productos...</p>
