@@ -1,50 +1,51 @@
+// src/components/CategorySidebar.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link, useLocation } from 'react-router-dom';
 import './CategorySidebar.css';
 
-const CategorySidebar = ({ onCategoriaClick }) => {
+const CategorySidebar = ({ onLinkClick }) => {
   const [categorias, setCategorias] = useState([]);
-  const [seleccionada, setSeleccionada] = useState(null);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const activeCategoryId = searchParams.get('categoria_id');
+  const api = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await axios.get('/api/categorias');
+        const response = await axios.get(`${api}/api/categorias`);
         const padres = response.data.filter(c => c.categoria_padre_id === null);
         setCategorias(padres);
       } catch (err) {
         console.error("Error al cargar categorías:", err);
       }
     };
-
     fetchCategorias();
-  }, []);
-
-  const handleSeleccion = (categoriaId) => {
-    setSeleccionada(categoriaId);
-    onCategoriaClick(categoriaId);
-  };
+  }, [api]);
 
   return (
     <aside className="category-sidebar">
       <h3>Categorías</h3>
       <ul>
         <li>
-          <button
-            className={!seleccionada ? 'active' : ''}
-            onClick={() => handleSeleccion(null)}
+          <Link
+            to="/catalogo"
+            className={!activeCategoryId ? 'active' : ''}
+            onClick={onLinkClick}
           >
             Ver Todos
-          </button>
+          </Link>
         </li>
         {categorias.map((cat) => (
           <li key={cat.id}>
-            <button
-              className={seleccionada === cat.id ? 'active' : ''}
-              onClick={() => handleSeleccion(cat.id)}
+            <Link
+              to={`/catalogo?categoria_id=${cat.id}`}
+              className={activeCategoryId === String(cat.id) ? 'active' : ''}
+              onClick={onLinkClick}
             >
               {cat.nombre}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>

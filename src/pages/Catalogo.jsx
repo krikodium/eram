@@ -1,5 +1,4 @@
 // src/pages/Catalogo.jsx
-
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -12,22 +11,20 @@ const Catalogo = () => {
   const [subcategoriasConProductos, setSubcategoriasConProductos] = useState([]);
   const [destacados, setDestacados] = useState([]);
   const [loading, setLoading] = useState(true);
-  // El estado 'showCategories' ahora controlará la visibilidad solo en móviles.
-  const [showCategories, setShowCategories] = useState(false);
-  const [nombreSeleccionado, setNombreSeleccionado] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [nombreSeleccionado, setNombreSeleccionado] = useState('');
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
   const api = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
   useEffect(() => {
-    // Tu lógica para cargar datos sigue igual...
     setLoading(true);
+    setMobileMenuOpen(false); // Cierra el menú móvil al cambiar de categoría
+
     const fetchData = async () => {
       try {
         if (categoriaId) {
-          const res = await axios.get(`${api}/api/productos/por-subcategorias`, {
-            params: { categoria_id: categoriaId }
-          });
+          const res = await axios.get(`${api}/api/productos/por-subcategorias`, { params: { categoria_id: categoriaId } });
           setSubcategoriasConProductos(res.data);
           setDestacados([]);
         } else {
@@ -37,89 +34,80 @@ const Catalogo = () => {
         }
       } catch (err) {
         console.error("Error al cargar productos:", err);
-        setSubcategoriasConProductos([]);
         setDestacados([]);
+        setSubcategoriasConProductos([]);
       } finally {
         setLoading(false);
       }
     };
     fetchData();
-  }, [categoriaId]);
+  }, [categoriaId, api]);
 
   useEffect(() => {
-    // Tu lógica para obtener el nombre de la categoría sigue igual...
     const fetchCategoriaNombre = async () => {
       if (!categoriaId) {
-        setNombreSeleccionado(null);
+        setNombreSeleccionado('Productos Destacados');
         return;
       }
       try {
         const response = await axios.get(`${api}/api/categorias/${categoriaId}`);
-        setNombreSeleccionado(response.data?.nombre || null);
+        setNombreSeleccionado(response.data?.nombre || '');
       } catch (error) {
         console.error("Error al obtener el nombre de la categoría:", error);
-        setNombreSeleccionado(null);
+        setNombreSeleccionado('');
       }
     };
     fetchCategoriaNombre();
   }, [categoriaId, api]);
-
-  // Esta función ahora cerrará el menú en móvil al seleccionar una categoría.
-  const handleCategorySelect = () => {
-    if (window.innerWidth <= 768) {
-      setShowCategories(false);
-    }
-  };
-
+  
   return (
     <div className="catalogo-container">
-      <h1>Catálogo de Productos</h1>
+      <div className="catalogo-header">
+        <h1>Catálogo de Productos</h1>
+        <button className="toggle-categories" onClick={() => setMobileMenuOpen(prev => !prev)}>
+          {mobileMenuOpen ? <><FaTimes /> Ocultar Filtros</> : <><FaFilter /> Mostrar Filtros</>}
+        </button>
+      </div>
 
-      {/* Este botón ahora será visible solo en móvil gracias a CSS */}
-      <button className="toggle-categories" onClick={() => setShowCategories(prev => !prev)}>
-        {showCategories ? <><FaTimes /> Ocultar Filtros</> : <><FaFilter /> Mostrar Filtros</>}
-      </button>
+      <div className="categoria-seleccionada">
+        Mostrando: <strong>{loading ? 'Cargando...' : nombreSeleccionado}</strong>
+      </div>
 
-      {categoriaId && (
-        <div className="categoria-seleccionada">
-          Categoría seleccionada: <strong>{nombreSeleccionado}</strong>
-        </div>
-      )}
-
-      {/* Añadimos una clase 'show' cuando el menú deba ser visible en móvil */}
-      <div className={`catalogo-layout ${showCategories ? 'mobile-menu-open' : ''}`}>
-        
-        {/* La barra lateral ahora SIEMPRE se renderiza. CSS se encargará de mostrarla u ocultarla. */}
-        <CategorySidebar
-          setNombreSeleccionado={setNombreSeleccionado}
-          onCategorySelect={handleCategorySelect}
-        />
+      <div className={`catalogo-layout ${mobileMenuOpen ? 'mobile-menu-is-open' : ''}`}>
+        <CategorySidebar onLinkClick={() => setMobileMenuOpen(false)} />
 
         <main className="product-list-container">
           {loading ? (
-            <p>Cargando productos...</p>
+            <p className="loading-text">Cargando productos...</p>
           ) : (
             <>
+              {(destacados.length === 0 && subcategoriasConProductos.length === 0) && (
+                <p className="no-products-text">No se encontraron productos en esta categoría.</p>
+              )}
+
               {destacados.length > 0 && (
                 <section className="categorias-destacadas">
-                  {destacados.map(bloque => (
-                    <div className="bloque-categoria" key={bloque.categoria_id}>
-                      <h3>{bloque.categoria_nombre}</h3>
-                      {/* Pasamos una columna menos para que haya espacio para el sidebar en desktop */}
-                      <ProductList productos={bloque.productos} columnas={showCategories ? 2 : 3} />
-                    </div>
-                  ))}
+                  {destacados.map(bloque =>
+                    bloque.productos.length > 0 ? (
+                      <div className="bloque-categoria" key={bloque.categoria_id}>
+                        <h3>{bloque.categoria_nombre}</h3>
+                        <ProductList productos={bloque.productos} columnas={3} />
+                      </div>
+                    ) : null
+                  )}
                 </section>
               )}
 
               {subcategoriasConProductos.length > 0 && (
                 <section className="categorias-destacadas">
-                  {subcategoriasConProductos.map(sub => (
-                    <div className="bloque-categoria" key={sub.subcategoria_id}>
-                      <h3>{sub.subcategoria_nombre}</h3>
-                      <ProductList productos={sub.productos} columnas={showCategories ? 2 : 3} />
-                    </div>
-                  ))}
+                  {subcategoriasConProductos.map(sub =>
+                    sub.productos.length > 0 ? (
+                      <div className="bloque-categoria" key={sub.subcategoria_id}>
+                        <h3>{sub.subcategoria_nombre}</h3>
+                        <ProductList productos={sub.productos} columnas={3} />
+                      </div>
+                    ) : null
+                  )}
                 </section>
               )}
             </>
