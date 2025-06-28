@@ -1,46 +1,129 @@
-/* src/pages/Catalogo.css - ENFOQUE MOBILE-FIRST */
 .catalogo-container {
-  max-width: 1600px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 2rem 1rem;
 }
-.catalogo-header {
+
+.catalogo-layout {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
 }
-.toggle-categories-button {
-  display: flex;
+
+/* Asegura que el sidebar se muestre en desktop */
+.category-sidebar {
+  display: block;
+  width: 250px;
+}
+
+.product-list-container {
+  flex: 1;
+  min-width: 0;
+}
+
+/* --- Botón para mostrar/ocultar categorías (SIEMPRE visible) --- */
+.toggle-categories {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  width: 100%;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
+  gap: 0.5rem;
   background-color: var(--rojo-principal);
+  color: white;
   border: none;
   border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  order: 2;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
-.catalogo-body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.sidebar-container { width: 100%; }
-.product-grid-container { width: 100%; }
-.status-text { padding: 3rem 0; text-align: center; }
-.product-category-section h2 { font-size: 1.5rem; margin-bottom: 1rem; }
 
-@media (min-width: 992px) {
-  .catalogo-container { padding: 2rem; }
-  .catalogo-header { flex-direction: row; justify-content: space-between; }
-  .toggle-categories-button { width: auto; order: 0; }
-  .catalogo-body { flex-direction: row; gap: 2.5rem; }
-  .sidebar-container { width: 280px; flex-shrink: 0; }
+.toggle-categories:hover {
+  background-color: var(--rojo-hover);
+  transform: translateY(-2px);
+}
+
+.toggle-categories svg {
+  font-size: 1rem;
+}
+
+/* --- Texto de categoría seleccionada --- */
+.categoria-seleccionada {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--blanco-puro);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background-color: var(--negro-card);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* --- Ajustes Generales para Móviles --- */
+@media (max-width: 768px) {
+  .catalogo-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .category-sidebar {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* --- Estilos para el botón "Cargar Más" --- */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  grid-column: 1 / -1;
+}
+
+.load-more-btn {
+  background-color: var(--rojo-principal);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.load-more-btn:hover {
+  background-color: var(--rojo-hover);
+}
+
+.load-more-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+/* --- Sección de productos destacados --- */
+.destacados-section {
+  margin-bottom: 2rem;
+}
+
+.destacados-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #f4f4f4;
+}
+
+/* --- Sección de categorías destacadas --- */
+.categorias-destacadas {
+  margin-bottom: 3rem;
+}
+
+.bloque-categoria {
+  margin-bottom: 2rem;
+}
+
+.bloque-categoria h3 {
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: 1.2rem;
 }
