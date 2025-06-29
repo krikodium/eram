@@ -1,4 +1,4 @@
-// src/pages/Catalogo.jsx (ESTRATEGIA FINAL Y CORREGIDA)
+// src/pages/Catalogo.jsx (CON DEBUG)
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -8,10 +8,8 @@ import './Catalogo.css';
 import { FaFilter, FaTimes } from 'react-icons/fa';
 
 const Catalogo = () => {
-  // Estados separados para cada tipo de dato, para evitar conflictos
   const [allProducts, setAllProducts] = useState([]);
   const [categorizedProducts, setCategorizedProducts] = useState([]);
-  
   const [loading, setLoading] = useState(true);
   const [showSidebar, setShowSidebar] = useState(false);
   const [searchParams] = useSearchParams();
@@ -21,45 +19,28 @@ const Catalogo = () => {
 
   useEffect(() => {
     setLoading(true);
-    // Limpiar estados anteriores para evitar mostrar datos viejos
     setAllProducts([]);
     setCategorizedProducts([]);
 
     if (categoriaId) {
-      // --- Lógica para productos FILTRADOS por categoría ---
       axios.get(`${api}/api/productos/por-subcategorias`, { params: { categoria_id: categoriaId } })
         .then(response => {
+          // --- AÑADIR ESTA LÍNEA PARA DEBUG ---
+          console.log('Respuesta de la API (/por-subcategorias):', response.data);
           setCategorizedProducts(response.data || []);
-          // Actualizar el título (mejora opcional)
-          if (response.data && response.data.length > 0) {
-            setPageTitle(`Categoría`); // Puedes mejorarlo para mostrar el nombre real
-          } else {
-            setPageTitle('Categoría Vacía');
-          }
         })
-        .catch(err => {
-          console.error("Error al cargar productos por categoría:", err);
-          setCategorizedProducts([]);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+        .catch(err => console.error("Error al cargar productos por categoría:", err))
+        .finally(() => setLoading(false));
     } else {
-      // --- Lógica para TODOS los productos (vista general) ---
       setPageTitle('Catálogo Completo');
-      // Pedimos una cantidad grande para la vista general
       axios.get(`${api}/api/productos`, { params: { page: 1, limit: 100 } })
         .then(response => {
-          // La API devuelve un objeto { productos: [...] }, guardamos solo el array
+          // --- AÑADIR ESTA LÍNEA PARA DEBUG ---
+          console.log('Respuesta de la API (/productos):', response.data);
           setAllProducts(response.data.productos || []);
         })
-        .catch(err => {
-          console.error("Error al cargar todos los productos:", err);
-          setAllProducts([]);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+        .catch(err => console.error("Error al cargar todos los productos:", err))
+        .finally(() => setLoading(false));
     }
   }, [categoriaId, api]);
 
