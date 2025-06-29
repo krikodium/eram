@@ -1,5 +1,5 @@
-// src/pages/Catalogo.jsx (CORREGIDO)
-import React, { useState, useEffect } from 'react';
+// src/pages/Catalogo.jsx (CORREGIDO para que el botón siempre sea necesario)
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import CategorySidebar from '../components/CategorySidebar';
@@ -10,13 +10,15 @@ import { FaFilter, FaTimes } from 'react-icons/fa';
 const Catalogo = () => {
   const [productosPorBloque, setProductosPorBloque] = useState([]);
   const [loading, setLoading] = useState(true);
+  // El estado para mostrar el sidebar ahora SIEMPRE empieza en 'false'
   const [showSidebar, setShowSidebar] = useState(false);
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
-  const api = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+  const api = useMemo(() => import.meta.env.VITE_API_URL || 'http://localhost:3001', []);
 
   useEffect(() => {
     setLoading(true);
+    // La lógica para obtener productos no cambia
     const endpoint = categoriaId ? `${api}/api/productos/por-subcategorias` : `${api}/api/productos/destacados`;
     const params = categoriaId ? { params: { categoria_id: categoriaId } } : {};
 
@@ -33,10 +35,16 @@ const Catalogo = () => {
       });
   }, [categoriaId, api]);
 
+  // Función para cerrar el sidebar al hacer clic en un enlace
+  const handleSidebarLinkClick = () => {
+    setShowSidebar(false);
+  };
+
   return (
     <div className="catalogo-container">
       <header className="catalogo-header">
         <h1>Catálogo de Productos</h1>
+        {/* El botón para mostrar/ocultar filtros ahora es SIEMPRE visible */}
         <button className="toggle-categories-button" onClick={() => setShowSidebar(!showSidebar)}>
           {showSidebar ? <FaTimes /> : <FaFilter />}
           {showSidebar ? ' Ocultar Filtros' : ' Mostrar Filtros'}
@@ -44,9 +52,10 @@ const Catalogo = () => {
       </header>
 
       <div className="catalogo-body">
+        {/* El sidebar solo se muestra si showSidebar es true */}
         {showSidebar && (
           <aside className="sidebar-container">
-            <CategorySidebar onLinkClick={() => setShowSidebar(false)} />
+            <CategorySidebar onLinkClick={handleSidebarLinkClick} />
           </aside>
         )}
         <main className="product-grid-container">
