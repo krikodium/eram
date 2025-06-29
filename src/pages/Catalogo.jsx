@@ -1,4 +1,4 @@
-// src/pages/Catalogo.jsx (CORREGIDO para que el botón siempre sea necesario)
+// src/pages/Catalogo.jsx (CORRECCIÓN FINAL)
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -10,21 +10,51 @@ import { FaFilter, FaTimes } from 'react-icons/fa';
 const Catalogo = () => {
   const [productosPorBloque, setProductosPorBloque] = useState([]);
   const [loading, setLoading] = useState(true);
-  // El estado para mostrar el sidebar ahora SIEMPRE empieza en 'false'
   const [showSidebar, setShowSidebar] = useState(false);
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
   const api = useMemo(() => import.meta.env.VITE_API_URL || 'http://localhost:3001', []);
+  // Nuevo estado para el nombre de la categoría principal
+  const [mainCategoryName, setMainCategoryName] = useState('Catálogo de Productos');
 
   useEffect(() => {
     setLoading(true);
-    // La lógica para obtener productos no cambia
-    const endpoint = categoriaId ? `${api}/api/productos/por-subcategorias` : `${api}/api/productos/destacados`;
-    const params = categoriaId ? { params: { categoria_id: categoriaId } } : {};
 
-    axios.get(endpoint, params)
+    let endpoint = `${api}/api/productos`;
+    let params = {};
+    
+    // Si hay un ID de categoría, usamos el endpoint específico
+    if (categoriaId) {
+      endpoint = `${api}/api/productos/por-subcategorias`;
+      params = { categoria_id: categoriaId };
+    }
+    
+    axios.get(endpoint, { params })
       .then(response => {
-        setProductosPorBloque(response.data);
+        // --- AQUÍ ESTÁ LA LÓGICA CORREGIDA ---
+        const data = response.data;
+        
+        if (categoriaId) {
+          // Si filtramos por categoría, la API ya devuelve un array de bloques
+          setProductosPorBloque(data);
+          // Opcional: Podríamos obtener el nombre de la categoría padre aquí para el título
+          if (data.length > 0) {
+             // Esta parte es una mejora, puedes ajustarla si necesitas el nombre exacto
+             setMainCategoryName(`Categoría: ${data[0].subcategoria_nombre || ''}`);
+          }
+
+        } else {
+          // Si NO filtramos (vista general), recibimos el objeto { productos: [...] }
+          // Lo transformamos en un array con UN solo bloque, que es lo que el .map() espera.
+          setProductosPorBloque([
+            {
+              categoria_id: 'todos',
+              categoria_nombre: 'Todos los Productos',
+              productos: data.productos || [] // Aseguramos que sea un array
+            }
+          ]);
+          setMainCategoryName('Catálogo Completo');
+        }
       })
       .catch(err => {
         console.error("Error al cargar productos:", err);
@@ -35,7 +65,6 @@ const Catalogo = () => {
       });
   }, [categoriaId, api]);
 
-  // Función para cerrar el sidebar al hacer clic en un enlace
   const handleSidebarLinkClick = () => {
     setShowSidebar(false);
   };
@@ -43,8 +72,7 @@ const Catalogo = () => {
   return (
     <div className="catalogo-container">
       <header className="catalogo-header">
-        <h1>Catálogo de Productos</h1>
-        {/* El botón para mostrar/ocultar filtros ahora es SIEMPRE visible */}
+        <h1>{mainCategoryName}</h1>
         <button className="toggle-categories-button" onClick={() => setShowSidebar(!showSidebar)}>
           {showSidebar ? <FaTimes /> : <FaFilter />}
           {showSidebar ? ' Ocultar Filtros' : ' Mostrar Filtros'}
@@ -52,7 +80,6 @@ const Catalogo = () => {
       </header>
 
       <div className="catalogo-body">
-        {/* El sidebar solo se muestra si showSidebar es true */}
         {showSidebar && (
           <aside className="sidebar-container">
             <CategorySidebar onLinkClick={handleSidebarLinkClick} />
@@ -62,7 +89,7 @@ const Catalogo = () => {
           {loading ? (
             <p className="status-text">Cargando productos...</p>
           ) : (
-            productosPorBloque.length > 0 ? (
+            productosPorBloque.length > 0 && productosPorBloque[0].productos.length > 0 ? (
               productosPorBloque.map(bloque => (
                 <section key={bloque.categoria_id || bloque.subcategoria_id} className="product-category-section">
                   <h2>{bloque.categoria_nombre || bloque.subcategoria_nombre}</h2>
@@ -70,7 +97,7 @@ const Catalogo = () => {
                 </section>
               ))
             ) : (
-              <p className="status-text">No se encontraron productos en esta categoría.</p>
+              <p className="status-text">No se encontraron productos.</p>
             )
           )}
         </main>
