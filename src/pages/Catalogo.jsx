@@ -1,4 +1,4 @@
-// src/pages/Catalogo.jsx (LÓGICA SIMPLIFICADA)
+// src/pages/Catalogo.jsx
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -8,7 +8,7 @@ import './Catalogo.css';
 import { FaFilter, FaTimes } from 'react-icons/fa';
 
 const Catalogo = () => {
-  const [items, setItems] = useState([]); // Un único estado para los items a mostrar
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isCategorizedView, setIsCategorizedView] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -22,7 +22,7 @@ const Catalogo = () => {
     const endpoint = categoriaId 
       ? `${api}/api/productos/por-subcategorias` 
       : `${api}/api/productos`;
-      
+
     const params = categoriaId 
       ? { categoria_id: categoriaId }
       : { page: 1, limit: 100 };
@@ -30,21 +30,20 @@ const Catalogo = () => {
     axios.get(endpoint, { params })
       .then(response => {
         if (categoriaId) {
-          // Si es vista por categoría, la API devuelve un array de bloques
-          setItems(response.data || []);
+          const bloques = Array.isArray(response.data) ? response.data : [];
+          setItems(bloques);
           setIsCategorizedView(true);
           setPageTitle('Categoría');
         } else {
-          // Si es vista general, la API devuelve { productos: [...] }
-          // Nos aseguramos de pasar SIEMPRE un array
-          setItems(response.data.productos || []);
+          const productos = Array.isArray(response.data?.productos) ? response.data.productos : [];
+          setItems(productos);
           setIsCategorizedView(false);
           setPageTitle('Catálogo Completo');
         }
       })
       .catch(err => {
         console.error("Error al obtener datos:", err);
-        setItems([]); // En caso de error, aseguramos que sea un array vacío
+        setItems([]);
       })
       .finally(() => {
         setLoading(false);
@@ -55,19 +54,19 @@ const Catalogo = () => {
     if (loading) return <p className="status-text">Cargando productos...</p>;
     if (!items || items.length === 0) return <p className="status-text">No se encontraron productos.</p>;
 
-    // Si es la vista por categorías, mapeamos los bloques
     if (isCategorizedView) {
-      return items.map(bloque => (
-        bloque.productos && bloque.productos.length > 0 && (
-          <section key={bloque.subcategoria_id} className="product-category-section">
-            <h2>{bloque.subcategoria_nombre}</h2>
-            <ProductList productos={bloque.productos} />
-          </section>
-        )
-      ));
+      return Array.isArray(items)
+        ? items.map(bloque => (
+            bloque.productos && bloque.productos.length > 0 && (
+              <section key={bloque.subcategoria_id} className="product-category-section">
+                <h2>{bloque.subcategoria_nombre}</h2>
+                <ProductList productos={bloque.productos} />
+              </section>
+            )
+          ))
+        : <p className="status-text">Error al cargar las categorías.</p>;
     }
 
-    // Si es la vista general, pasamos la lista de productos directamente
     return (
       <section className="product-category-section">
         <ProductList productos={items} />
