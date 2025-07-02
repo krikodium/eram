@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './AboutUs.css';
 
-// 1. Creamos una estructura de datos para la galería.
-// Así es más fácil de mantener y agregar nuevos ítems en el futuro.
 const galleryItems = [
   {
     image: '/industria.jpg',
@@ -22,9 +20,20 @@ const galleryItems = [
 ];
 
 function AboutUs() {
+  const [enableAnimation, setEnableAnimation] = useState(false);
+
+  useEffect(() => {
+    // Activar animaciones solo en desktop
+    if (typeof window !== 'undefined') {
+      const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+      if (isDesktop) {
+        setEnableAnimation(true);
+      }
+    }
+  }, []);
+
   return (
-    <section className="aboutus-section">
-      {/* 2. Texto introductorio, ahora centrado y destacado */}
+    <section className={`aboutus-section ${enableAnimation ? 'animate-fade-up' : ''}`}>
       <div className="aboutus-intro-text">
         <h2 className="aboutus-title">Quiénes Somos</h2>
         <p className="aboutus-description">
@@ -32,7 +41,6 @@ function AboutUs() {
         </p>
       </div>
 
-      {/* 3. Nueva galería de tarjetas responsiva */}
       <div className="aboutus-gallery-grid">
         {galleryItems.map((item, index) => (
           <div className="gallery-card" key={index}>

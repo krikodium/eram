@@ -74,3 +74,18 @@
   color: var(--gris-texto);
   line-height: 1.6;
 }
+
+/*Animaciones desktop*/
+
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+@keyframes fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
