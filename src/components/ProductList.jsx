@@ -1,22 +1,17 @@
-// src/components/ProductList.jsx (VERSIÓN BLINDADA Y DEFINITIVA)
+// src/components/ProductList.jsx
 import React from 'react';
 import ProductCard from './ProductCard';
 import './ProductList.css';
 
 function ProductList({ productos, columnas = 3 }) {
-  // --- VERIFICACIÓN DE SEGURIDAD ---
-  // Esta es la comprobación clave. Si 'productos' NO es un array,
-  // mostramos un error claro en la consola y no intentamos renderizar la lista.
   if (!Array.isArray(productos)) {
     console.error(
       'ERROR CRÍTICO EN ProductList: La prop "productos" no es un array. Valor recibido:', 
       productos
     );
-    // Devolvemos null para que el componente no renderice nada y evite el crash.
-    return null;
+    return <p className="status-text">Error al cargar productos.</p>;
   }
 
-  // Si la lista está vacía, no mostramos nada.
   if (productos.length === 0) {
     return null;
   }

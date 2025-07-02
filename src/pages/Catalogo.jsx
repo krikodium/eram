@@ -30,12 +30,16 @@ const Catalogo = () => {
     axios.get(endpoint, { params })
       .then(response => {
         if (categoriaId) {
-          const bloques = Array.isArray(response.data) ? response.data : [];
+          const bloques = Array.isArray(response.data)
+            ? response.data.filter(b => Array.isArray(b.productos))
+            : [];
           setItems(bloques);
           setIsCategorizedView(true);
           setPageTitle('Categoría');
         } else {
-          const productos = Array.isArray(response.data?.productos) ? response.data.productos : [];
+          const productos = Array.isArray(response.data?.productos)
+            ? response.data.productos
+            : [];
           setItems(productos);
           setIsCategorizedView(false);
           setPageTitle('Catálogo Completo');
