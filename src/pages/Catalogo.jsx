@@ -82,13 +82,17 @@ const Catalogo = () => {
     <div className="catalogo-container">
       <header className="catalogo-header">
         <h1>{pageTitle}</h1>
-        <button className="toggle-categories-button" onClick={() => setShowSidebar(!showSidebar)}>
+        <button className="toggle-categories" onClick={() => setShowSidebar(!showSidebar)}>
           {showSidebar ? <FaTimes /> : <FaFilter />}
           {showSidebar ? ' Ocultar Filtros' : ' Mostrar Filtros'}
         </button>
       </header>
       <div className="catalogo-body">
-        {showSidebar && <CategorySidebar onLinkClick={() => setShowSidebar(false)} />}
+        {showSidebar && (
+          <aside className="category-sidebar">
+            <CategorySidebar onLinkClick={() => setShowSidebar(false)} />
+          </aside>
+        )}
         <main className="product-grid-container">
           {renderContent()}
         </main>

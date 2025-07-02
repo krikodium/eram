@@ -4,30 +4,28 @@
   padding: 2rem 1rem;
 }
 
-.catalogo-layout {
+.catalogo-body {
   display: flex;
   flex-direction: row;
   gap: 2rem;
   align-items: flex-start;
 }
 
-/* Asegura que el sidebar se muestre en desktop */
 .category-sidebar {
   display: block;
   width: 250px;
 }
 
-.product-list-container {
+.product-grid-container {
   flex: 1;
   min-width: 0;
 }
 
-/* --- Botón para mostrar/ocultar categorías (SIEMPRE visible) --- */
 .toggle-categories {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--rojo-principal);
+  background-color: #cc0000;
   color: white;
   border: none;
   border-radius: 8px;
@@ -40,7 +38,7 @@
 }
 
 .toggle-categories:hover {
-  background-color: var(--rojo-hover);
+  background-color: #a60000;
   transform: translateY(-2px);
 }
 
@@ -48,21 +46,19 @@
   font-size: 1rem;
 }
 
-/* --- Texto de categoría seleccionada --- */
 .categoria-seleccionada {
   font-size: 1rem;
   margin-bottom: 1rem;
-  color: var(--blanco-puro);
+  color: white;
   font-weight: 500;
   padding: 0.5rem 1rem;
-  background-color: var(--negro-card);
+  background-color: #1c1c1c;
   border-radius: 8px;
   display: inline-block;
 }
 
-/* --- Ajustes Generales para Móviles --- */
 @media (max-width: 768px) {
-  .catalogo-layout {
+  .catalogo-body {
     flex-direction: column;
     gap: 1.5rem;
   }
@@ -73,7 +69,6 @@
   }
 }
 
-/* --- Estilos para el botón "Cargar Más" --- */
 .load-more-container {
   display: flex;
   justify-content: center;
@@ -82,7 +77,7 @@
 }
 
 .load-more-btn {
-  background-color: var(--rojo-principal);
+  background-color: #cc0000;
   color: white;
   border: none;
   padding: 0.8rem 2rem;
@@ -94,7 +89,7 @@
 }
 
 .load-more-btn:hover {
-  background-color: var(--rojo-hover);
+  background-color: #a60000;
 }
 
 .load-more-btn:disabled {
@@ -102,7 +97,6 @@
   cursor: not-allowed;
 }
 
-/* --- Sección de productos destacados --- */
 .destacados-section {
   margin-bottom: 2rem;
 }
@@ -113,7 +107,6 @@
   color: #f4f4f4;
 }
 
-/* --- Sección de categorías destacadas --- */
 .categorias-destacadas {
   margin-bottom: 3rem;
 }

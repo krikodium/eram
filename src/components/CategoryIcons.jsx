@@ -12,8 +12,8 @@ const CategoryIcons = () => {
     const fetchCategorias = async () => {
       try {
         const response = await axios.get('/api/categorias');
-        const padres = response.data.filter(cat => cat.categoria_padre_id === null);
-        setCategorias(padres);
+        // MOSTRAR TODAS LAS CATEGORÍAS (sin filtrar por padre)
+        setCategorias(response.data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
       }
@@ -37,7 +37,6 @@ const CategoryIcons = () => {
   return (
     <section className="category-scroll-container">
       <div className="category-wrapper">
-        <h2 className="section-title">Nuestras Categorías</h2>
         <div className="category-grid-scroll" ref={scrollRef}>
           {categorias.map((cat) => (
             <Link to={`/catalogo?categoria_id=${cat.id}`} key={cat.id} className="category-card">
