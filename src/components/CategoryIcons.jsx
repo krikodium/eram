@@ -7,23 +7,24 @@ import { Link } from 'react-router-dom';
 const CategoryIcons = () => {
   const [categorias, setCategorias] = useState([]);
   const scrollRef = useRef(null);
+  const api = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await axios.get('/api/categorias');
-        console.log("CATEGORÍAS RECIBIDAS:", response.data); // 👈 debug log
+        const response = await axios.get(`${api}/api/categorias`);
+        console.log("CATEGORÍAS RECIBIDAS:", response.data);
 
         const data = Array.isArray(response.data) ? response.data : [];
         setCategorias(data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
-        setCategorias([]); // protección extra en caso de error
+        setCategorias([]);
       }
     };
 
     fetchCategorias();
-  }, []);
+  }, [api]);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
