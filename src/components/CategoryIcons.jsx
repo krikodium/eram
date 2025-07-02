@@ -33,6 +33,7 @@ const CategoryIcons = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
     }
+    console.log("CATEGORÍAS RECIBIDAS:", categorias);
   };
 
   return (
