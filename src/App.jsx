@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import QuienesSomos from './pages/QuienesSomos';
+import Ferias from './pages/Ferias';
 
 function App() {
   return (
@@ -20,8 +21,7 @@ function App() {
         {/* La ruta '/producto/:id' es dinámica. El ':' le indica que 'id' es una variable */}
         <Route path="/producto/:id" element={<ProductDetail />} />
         <Route path="/quienes-somos" element={<QuienesSomos />} />
-        
-        
+        <Route path="/ferias" element={<Ferias />} />
 
       </Routes>
     </BrowserRouter>
