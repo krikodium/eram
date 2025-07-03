@@ -1,8 +1,8 @@
 import React from 'react';
 import './Ferias.css';
-import feria1 from '../assets/feria1.jpg';
-import feria2 from '../assets/feria2.jpg';
-import feria3 from '../assets/feria3.jpg';
+import feria1 from '../../public/feria1.jpg';
+import feria2 from '../../public/feria2.jpg';
+import feria3 from '../../public/feria3.jpg';
 
 const ferias = [
   {
