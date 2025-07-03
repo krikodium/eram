@@ -44,7 +44,7 @@ function AboutUs() {
       <div className="aboutus-gallery-grid">
         {galleryItems.map((item, index) => (
           <div className="gallery-card" key={index}>
-            <img src={item.image} alt={item.title} className="gallery-card-img" />
+              <img src={item.image} alt={item.title} className="gallery-card-img" loading="lazy"/>
             <div className="gallery-card-content">
               <h3 className="gallery-card-title">{item.title}</h3>
               <p className="gallery-card-description">{item.description}</p>
