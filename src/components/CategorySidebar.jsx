@@ -1,4 +1,3 @@
-// src/components/CategorySidebar.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
@@ -26,12 +25,12 @@ const CategorySidebar = ({ onLinkClick }) => {
 
   return (
     <aside className="category-sidebar">
-      <h3>Categorías</h3>
-      <ul>
+      <h3 className="category-title">Categorías</h3>
+      <ul className="category-list">
         <li>
           <Link
             to="/catalogo"
-            className={!activeCategoryId ? 'active' : ''}
+            className={`category-link ${!activeCategoryId ? 'active' : ''}`}
             onClick={onLinkClick}
           >
             Ver Todos
@@ -41,7 +40,7 @@ const CategorySidebar = ({ onLinkClick }) => {
           <li key={cat.id}>
             <Link
               to={`/catalogo?categoria_id=${cat.id}`}
-              className={activeCategoryId === String(cat.id) ? 'active' : ''}
+              className={`category-link ${activeCategoryId === String(cat.id) ? 'active' : ''}`}
               onClick={onLinkClick}
             >
               {cat.nombre}
