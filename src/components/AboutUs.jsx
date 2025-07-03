@@ -33,7 +33,7 @@ function AboutUs() {
   }, []);
 
   return (
-    <section className={`aboutus-section ${enableAnimation ? 'animate-fade-up' : ''}`}>
+    <section className="aboutus-section" data-aos="fade-up">
       <div className="aboutus-intro-text">
         <h2 className="aboutus-title">Quiénes Somos</h2>
         <p className="aboutus-description">
