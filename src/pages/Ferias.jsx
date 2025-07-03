@@ -1,3 +1,4 @@
+// src/pages/Ferias.jsx
 import React from 'react';
 import './Ferias.css';
 import feria1 from '../../public/feria1.jpg';
@@ -37,13 +38,13 @@ const Ferias = () => {
       <div className="ferias-header" data-aos="fade-up">
         <h1>Nuestras Ferias</h1>
         <p>
-          A lo largo del año participamos en diversas exposiciones nacionales e internacionales,
-          mostrando nuestras líneas de productos y conectando con clientes de todo el país.
+          Participamos activamente en ferias de todo el país, compartiendo nuestras innovaciones
+          en seguridad industrial y fortaleciendo la conexión con profesionales y distribuidores.
         </p>
       </div>
 
       <div className="ferias-grid">
-        {ferias.map(feria => (
+        {ferias.map((feria) => (
           <div className="feria-card" key={feria.id} data-aos="fade-up">
             <img src={feria.imagen} alt={feria.nombre} className="feria-img" />
             <div className="feria-info">
