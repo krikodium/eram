@@ -111,3 +111,24 @@
     font-size: 2rem;
   }
 }
+
+.product-img-real {
+  width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 1rem;
+}
+
+/* Animación con AOS */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
