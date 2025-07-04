@@ -19,17 +19,13 @@ const Catalogo = () => {
 
   useEffect(() => {
     setLoading(true);
-    const endpoint = categoriaId 
-      ? `${api}/api/productos/por-subcategorias` 
-      : `${api}/api/productos`;
 
-    const params = categoriaId 
-      ? { categoria_id: categoriaId }
-      : { page: 1, limit: 100 };
-
-    axios.get(endpoint, { params })
-      .then(response => {
+    const fetchData = async () => {
+      try {
         if (categoriaId) {
+          const response = await axios.get(`${api}/api/productos/por-subcategorias`, {
+            params: { categoria_id: categoriaId }
+          });
           const bloques = Array.isArray(response.data)
             ? response.data.filter(b => Array.isArray(b.productos))
             : [];
@@ -37,21 +33,23 @@ const Catalogo = () => {
           setIsCategorizedView(true);
           setPageTitle('Categoría');
         } else {
-          const productos = Array.isArray(response.data?.productos)
-            ? response.data.productos
+          const response = await axios.get(`${api}/api/productos/destacados`);
+          const bloques = Array.isArray(response.data)
+            ? response.data.filter(b => Array.isArray(b.productos))
             : [];
-          setItems(productos);
-          setIsCategorizedView(false);
-          setPageTitle('Catálogo Completo');
+          setItems(bloques);
+          setIsCategorizedView(true);
+          setPageTitle('Productos Destacados');
         }
-      })
-      .catch(err => {
+      } catch (err) {
         console.error("Error al obtener datos:", err);
         setItems([]);
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchData();
   }, [categoriaId, api]);
 
   const renderContent = () => {
@@ -62,8 +60,8 @@ const Catalogo = () => {
       return Array.isArray(items)
         ? items.map(bloque => (
             bloque.productos && bloque.productos.length > 0 && (
-              <section key={bloque.subcategoria_id} className="product-category-section">
-                <h2>{bloque.subcategoria_nombre}</h2>
+              <section key={bloque.subcategoria_id || bloque.categoria_id} className="product-category-section">
+                <h2>{bloque.subcategoria_nombre || bloque.categoria_nombre}</h2>
                 <ProductList productos={bloque.productos} />
               </section>
             )
