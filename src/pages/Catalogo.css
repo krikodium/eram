@@ -1,5 +1,3 @@
-/* src/pages/Catalogo.css */
-
 .catalogo-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -13,28 +11,30 @@
   margin-bottom: 1.5rem;
 }
 
-/* 🎨 CAMBIO: De Flex a Grid para el layout principal */
+/* 👇🏼 CSS GRID APLICADO AQUÍ 👇🏼 */
 .catalogo-body {
-  display: flex; /* Por defecto (cuando el sidebar está oculto) */
+  display: flex; /* Por defecto (cuando el sidebar está oculto o en vistas no-grid) */
+  flex-direction: row;
   gap: 2rem;
   align-items: flex-start;
 }
 
+/* Cuando el sidebar está visible en escritorio, usamos grid */
 .catalogo-body.sidebar-visible {
   display: grid;
-  grid-template-columns: 250px 1fr; /* Columna fija para el sidebar, el resto para productos */
+  grid-template-columns: 250px 1fr; /* Columna fija para sidebar, flexible para productos */
   gap: 2rem;
   align-items: flex-start;
 }
 
 .category-sidebar {
+  display: block;
   width: 250px;
-  /* La altura se ajustará al contenido */
 }
 
 .product-grid-container {
-  flex: 1; /* Necesario para cuando el sidebar está oculto */
-  min-width: 0;
+  flex: 1; /* Para que ocupe el espacio restante en flex */
+  min-width: 0; /* Previene desbordamiento en contenedores flex/grid */
 }
 
 .toggle-categories {
@@ -46,6 +46,7 @@
   border: none;
   border-radius: 8px;
   padding: 0.75rem 1.25rem;
+  /* margin-bottom se quita para alinear con el header */
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
@@ -61,7 +62,18 @@
   font-size: 1rem;
 }
 
-/* 📱 CAMBIO: Ajustes para el comportamiento responsivo */
+.categoria-seleccionada {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* 👇🏼 MEDIA QUERY ACTUALIZADO 👇🏼 */
 @media (max-width: 768px) {
   .catalogo-header {
     flex-direction: column;
@@ -69,8 +81,9 @@
     gap: 1rem;
   }
 
+  /* En móvil, forzamos siempre flex-direction: column */
   .catalogo-body,
-  .catalogo-body.sidebar-visible { /* Aseguramos que en móvil siempre sea flex-column */
+  .catalogo-body.sidebar-visible {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -78,6 +91,7 @@
 
   .category-sidebar {
     width: 100%;
+    min-width: unset;
   }
 }
 
@@ -85,7 +99,8 @@
   display: flex;
   justify-content: center;
   padding: 2rem 0;
-  grid-column: 1 / -1; /* Asegura que ocupe todo el ancho en layout de grid */
+  /* Esto asegura que el contenedor ocupe todo el ancho de la columna de productos */
+  grid-column: 1 / -1;
 }
 
 .load-more-btn {
@@ -103,4 +118,42 @@
 .load-more-btn:hover {
   background-color: #a60000;
 }
-/* Estilos restantes... */
+
+.load-more-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+/* Estilo para mensajes de estado (Cargando, No hay productos, etc.) */
+.status-text {
+  text-align: center;
+  width: 100%;
+  padding: 2rem 0;
+  color: #aaa;
+}
+
+
+/* === ESTILOS ORIGINALES PRESERVADOS === */
+.destacados-section {
+  margin-bottom: 2rem;
+}
+
+.destacados-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #f4f4f4;
+}
+
+.categorias-destacadas {
+  margin-bottom: 3rem;
+}
+
+.bloque-categoria {
+  margin-bottom: 2rem;
+}
+
+.bloque-categoria h3 {
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+}

@@ -52,7 +52,7 @@ const Catalogo = () => {
     setPage(1);
     setHasMore(true);
     
-    // Para pantallas de escritorio, el sidebar es visible por defecto
+    // Para pantallas de escritorio, el sidebar es visible por defecto al cargar
     if (window.innerWidth > 768) {
         setShowSidebar(true);
     }
@@ -79,11 +79,11 @@ const Catalogo = () => {
           {showSidebar ? ' Ocultar Filtros' : ' Mostrar Filtros'}
         </button>
       </header>
-      {/* 👇🏼 CAMBIO AQUÍ: Se añade la clase condicional */}
       <div className={`catalogo-body ${showSidebar ? 'sidebar-visible' : ''}`}>
         {showSidebar && (
           <aside className="category-sidebar">
             <CategorySidebar onLinkClick={() => {
+              // En móvil, oculta el sidebar al hacer clic en una categoría
               if (window.innerWidth <= 768) {
                 setShowSidebar(false);
               }
