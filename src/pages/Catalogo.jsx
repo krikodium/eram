@@ -9,7 +9,7 @@ import { FaFilter, FaTimes } from 'react-icons/fa';
 const Catalogo = () => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(window.innerWidth > 768); // Visible por defecto en desktop
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
   const api = useMemo(() => import.meta.env.VITE_API_URL || 'http://localhost:3001', []);
@@ -48,15 +48,20 @@ const Catalogo = () => {
   }, [api]);
 
   useEffect(() => {
+    const handleResize = () => {
+        if (window.innerWidth > 768) {
+            setShowSidebar(true);
+        }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
     setProductos([]);
     setPage(1);
     setHasMore(true);
     
-    // Para pantallas de escritorio, el sidebar es visible por defecto al cargar
-    if (window.innerWidth > 768) {
-        setShowSidebar(true);
-    }
-
     if (categoriaId) {
       fetchProducts(1, 20, false, categoriaId);
     } else {
@@ -80,21 +85,20 @@ const Catalogo = () => {
         </button>
       </header>
       <div className={`catalogo-body ${showSidebar ? 'sidebar-visible' : ''}`}>
-        {showSidebar && (
-          <aside className="category-sidebar">
-            <CategorySidebar onLinkClick={() => {
-              // En móvil, oculta el sidebar al hacer clic en una categoría
-              if (window.innerWidth <= 768) {
-                setShowSidebar(false);
-              }
-            }} />
-          </aside>
-        )}
+        <aside className="category-sidebar-wrapper">
+            {showSidebar && (
+                <CategorySidebar onLinkClick={() => {
+                  if (window.innerWidth <= 768) {
+                    setShowSidebar(false);
+                  }
+                }} />
+            )}
+        </aside>
         <main className="product-grid-container">
           {productos.length > 0 ? <ProductList productos={productos} /> : !loading && <p className="status-text">No se encontraron productos.</p>}
 
           <div className="load-more-container">
-            {loading && page > 1 && <p>Cargando más productos...</p>}
+            {loading && page > 1 && <p className="status-text">Cargando más productos...</p>}
             {!loading && hasMore && (
               <button onClick={handleLoadMore} className="load-more-btn">
                 Cargar más
