@@ -18,12 +18,16 @@ const Catalogo = () => {
   const [hasMore, setHasMore] = useState(true);
   const [pageTitle, setPageTitle] = useState('Todos los Productos');
 
-  const [hoveredCategory, setHoveredCategory] = useState(null);
-  const [previewProducts, setPreviewProducts] = useState([]);
-  const [isPreviewLoading, setIsPreviewLoading] = useState(false);
-  const [previewPosition, setPreviewPosition] = useState({ top: 0, left: 0 });
+  // Estado unificado para la previsualización
+  const [preview, setPreview] = useState({
+    category: null,
+    products: [],
+    isLoading: false,
+    position: { top: 0, left: 0 },
+  });
+  
   const hoverTimerRef = useRef(null);
-  const sidebarRef = useRef(null); // Ref para el contenedor del sidebar
+  const sidebarRef = useRef(null);
 
   const fetchProducts = useCallback(async (pageNum, limit, append = false, catId = null) => {
     setLoading(true);
@@ -72,35 +76,43 @@ const Catalogo = () => {
   const handleCategoryMouseEnter = (category, event) => {
     if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
     
-    hoverTimerRef.current = setTimeout(async () => {
-      setIsPreviewLoading(true);
-      setHoveredCategory(category);
+    // Capturamos las coordenadas al momento del hover
+    const linkRect = event.currentTarget.getBoundingClientRect();
+    const sidebarRect = sidebarRef.current.getBoundingClientRect();
+    const calculatedPosition = {
+      // Centramos verticalmente el popup con el link
+      top: linkRect.top + (linkRect.height / 2),
+      left: sidebarRect.right + 15 // 15px a la derecha del sidebar
+    };
 
-      const linkRect = event.currentTarget.getBoundingClientRect();
-      const sidebarRect = sidebarRef.current.getBoundingClientRect();
-      
-      setPreviewPosition({
-        top: linkRect.top, // A la misma altura que el link
-        left: sidebarRect.right + 5 // 5px a la derecha del sidebar
-      });
+    hoverTimerRef.current = setTimeout(async () => {
+      setPreview(prev => ({
+        ...prev,
+        category: category,
+        isLoading: true,
+        position: calculatedPosition,
+      }));
       
       try {
         const response = await axios.get(`${api}/api/productos/por-categoria`, {
           params: { categoria_id: category.id, limit: 5, page: 1 }
         });
-        setPreviewProducts(response.data.productos || []);
+        setPreview(prev => ({
+          ...prev,
+          products: response.data.productos || [],
+          isLoading: false,
+        }));
       } catch (error) {
         console.error("Error fetching preview products:", error);
-        setPreviewProducts([]);
-      } finally {
-        setIsPreviewLoading(false);
+        setPreview(prev => ({ ...prev, products: [], isLoading: false }));
       }
-    }, 1800); // 1.8 segundos de retraso
+    }, 1800);
   };
 
   const handleCategoryMouseLeave = () => {
     if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
-    setHoveredCategory(null);
+    // Ocultamos el pop-up al salir del área
+    setPreview(prev => ({ ...prev, category: null }));
   };
 
   const handleLoadMore = () => {
@@ -109,7 +121,7 @@ const Catalogo = () => {
   };
 
   return (
-    <div className="catalogo-container" onMouseLeave={handleCategoryMouseLeave}>
+    <div className="catalogo-container">
       <header className="catalogo-header">
         <h1>{pageTitle}</h1>
         <button className="toggle-categories" onClick={() => setShowSidebar(!showSidebar)}>
@@ -118,14 +130,14 @@ const Catalogo = () => {
         </button>
       </header>
       <div className={`catalogo-body ${showSidebar ? 'sidebar-visible' : ''}`}>
-        <aside className="category-sidebar-wrapper" ref={sidebarRef}>
+        <aside className="category-sidebar-wrapper" ref={sidebarRef} onMouseLeave={handleCategoryMouseLeave}>
           {showSidebar && (
             <CategorySidebar
               onLinkClick={() => {
                 if (window.innerWidth <= 768) setShowSidebar(false);
               }}
               onCategoryMouseEnter={handleCategoryMouseEnter}
-              onCategoryMouseLeave={handleCategoryMouseLeave}
+              // Ya no necesitamos onCategoryMouseLeave en cada link
             />
           )}
         </aside>
@@ -150,12 +162,12 @@ const Catalogo = () => {
         </main>
       </div>
 
-      {hoveredCategory && (
+      {preview.category && (
         <CategoryPreview
-          category={hoveredCategory}
-          products={previewProducts}
-          isLoading={isPreviewLoading}
-          position={previewPosition}
+          category={preview.category}
+          products={preview.products}
+          isLoading={preview.isLoading}
+          position={preview.position}
         />
       )}
     </div>
