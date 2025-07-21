@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import CategorySidebar from '../components/CategorySidebar';
 import ProductList from '../components/ProductList';
-import CategoryPreview from '../components/CategoryPreview/CategoryPreview'; // Importar nuevo componente
+import CategoryPreview from '../components/CategoryPreview'; // Importar nuevo componente
 import './Catalogo.css';
 import { FaFilter, FaTimes } from 'react-icons/fa';
 
