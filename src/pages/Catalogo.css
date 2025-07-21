@@ -4,42 +4,34 @@
   padding: 2rem 1rem;
 }
 
+/* 👇🏼 CORRECCIÓN AQUÍ 👇🏼 */
 .catalogo-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* Se eliminó 'display: flex' para que los elementos se apilen verticalmente */
   margin-bottom: 1.5rem;
 }
+.catalogo-header h1 {
+  margin-bottom: 1rem; /* Espacio entre el título y el botón de abajo */
+}
+/* ----- FIN DE LA CORRECCIÓN ----- */
 
-/*
-  SOLUCIÓN CON CSS GRID:
-  - Usamos `display: grid` para crear columnas definidas.
-  - La primera columna (`250px`) es para el sidebar.
-  - La segunda (`1fr`) es para la lista de productos y ocupa el resto del espacio.
-  - Esto evita la superposición y permite que `position: sticky` (si lo usas en el sidebar) funcione correctamente dentro de su columna.
-*/
 .catalogo-body {
   display: grid;
-  grid-template-columns: 1fr; /* Por defecto, una sola columna para los productos */
+  grid-template-columns: 1fr;
   gap: 2rem;
   align-items: flex-start;
 }
 
 .catalogo-body.sidebar-visible {
-  grid-template-columns: 250px 1fr; /* Dos columnas cuando el sidebar está visible */
+  grid-template-columns: 250px 1fr;
 }
 
-/* Contenedor del sidebar:
-  - Ocupa la primera columna del grid.
-  - Permite que el componente CategorySidebar adentro (que podrías tener con position: sticky) se comporte correctamente.
-*/
 .category-sidebar-wrapper {
   width: 250px;
-  position: relative; /* Contexto para elementos posicionados adentro */
+  position: relative;
 }
 
 .product-grid-container {
-  min-width: 0; /* Previene desbordamiento de contenido en contenedores flex/grid */
+  min-width: 0;
 }
 
 .toggle-categories {
@@ -77,30 +69,24 @@
   display: inline-block;
 }
 
-/*
-  MEDIA QUERY PARA RESPONSIVE:
-  - En pantallas pequeñas (< 768px), volvemos a un layout simple de una sola columna.
-*/
 @media (max-width: 768px) {
   .catalogo-header {
+    display: flex; /* En móvil sí es útil para alinear */
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
 
-  /* En móvil, se usa flex-direction: column para apilar los elementos verticalmente */
   .catalogo-body {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
   
-  /* El wrapper del sidebar ocupa todo el ancho en móvil */
   .category-sidebar-wrapper {
     width: 100%;
   }
 
-  /* Ocultamos el wrapper si la clase `sidebar-visible` no está, para asegurar consistencia */
   .catalogo-body:not(.sidebar-visible) .category-sidebar-wrapper {
     display: none;
   }
@@ -140,7 +126,6 @@
   color: #aaa;
 }
 
-/* --- ESTILOS ORIGINALES PRESERVADOS --- */
 .destacados-section {
   margin-bottom: 2rem;
 }

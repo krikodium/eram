@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
 import './CategorySidebar.css';
 
-const CategorySidebar = ({ onLinkClick }) => {
+// 👇🏼 Recibir los nuevos props onCategoryMouseEnter y onCategoryMouseLeave
+const CategorySidebar = ({ onLinkClick, onCategoryMouseEnter, onCategoryMouseLeave }) => {
   const [categorias, setCategorias] = useState([]);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -24,7 +25,8 @@ const CategorySidebar = ({ onLinkClick }) => {
   }, [api]);
 
   return (
-    <aside className="category-sidebar">
+    // 👇🏼 Añadir onMouseLeave al contenedor principal del sidebar
+    <aside className="category-sidebar" onMouseLeave={onCategoryMouseLeave}>
       <h3 className="category-title">Categorías</h3>
       <ul className="category-list">
         <li>
@@ -32,6 +34,7 @@ const CategorySidebar = ({ onLinkClick }) => {
             to="/catalogo"
             className={`category-link ${!activeCategoryId ? 'active' : ''}`}
             onClick={onLinkClick}
+            // El link "Ver Todos" no tendrá previsualización
           >
             Ver Todos
           </Link>
@@ -42,6 +45,8 @@ const CategorySidebar = ({ onLinkClick }) => {
               to={`/catalogo?categoria_id=${cat.id}`}
               className={`category-link ${activeCategoryId === String(cat.id) ? 'active' : ''}`}
               onClick={onLinkClick}
+              // 👇🏼 Añadir los eventos de mouse para la previsualización
+              onMouseEnter={(e) => onCategoryMouseEnter(cat, e)}
             >
               {cat.nombre}
             </Link>
