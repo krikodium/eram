@@ -69,11 +69,10 @@ const CategoryIcons = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 4 } },
-      { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      { breakpoint: 1200, settings: { slidesToShow: 4 } },
+      { breakpoint: 992, settings: { slidesToShow: 3 } },
       { breakpoint: 768, settings: { slidesToShow: 2 } },
-      // ✅ Ajuste para móviles: mostrar 2 tarjetas para un mejor uso del espacio
-      { breakpoint: 520, settings: { slidesToShow: 2, arrows: false } }
+      { breakpoint: 576, settings: { slidesToShow: 2, arrows: false } }
     ]
   };
 
@@ -83,17 +82,15 @@ const CategoryIcons = () => {
         <h2 className="section-title">Nuestras Categorías</h2>
         <p className="section-subtitle">Explorá nuestras líneas de protección profesional</p>
       </div>
-      <div className="slider-container">
+      <div className="slider-wrapper">
         <Slider {...settings}>
           {categorias.map((cat) => (
             <div key={cat.id} className="category-slide">
               <Link to={`/catalogo?categoria_id=${cat.id}`} className="category-card">
-                <div className="card-inner">
-                  <div className="category-icon-wrapper">
-                    {iconMap[cat.nombre] || DefaultIcon}
-                  </div>
-                  <span className="category-name">{cat.nombre}</span>
+                <div className="category-icon-wrapper">
+                  {iconMap[cat.nombre] || DefaultIcon}
                 </div>
+                <span className="category-name">{cat.nombre}</span>
               </Link>
             </div>
           ))}
