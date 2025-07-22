@@ -72,7 +72,8 @@ const CategoryIcons = () => {
       { breakpoint: 1280, settings: { slidesToShow: 4 } },
       { breakpoint: 1024, settings: { slidesToShow: 3 } },
       { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 480, settings: { slidesToShow: 1, centerMode: true, centerPadding: '40px' } }
+      // ✅ Ajuste para móviles: mostrar 2 tarjetas para un mejor uso del espacio
+      { breakpoint: 520, settings: { slidesToShow: 2, arrows: false } }
     ]
   };
 
@@ -87,7 +88,6 @@ const CategoryIcons = () => {
           {categorias.map((cat) => (
             <div key={cat.id} className="category-slide">
               <Link to={`/catalogo?categoria_id=${cat.id}`} className="category-card">
-                {/* ✅ Contenedor interno para el efecto hover sin cortes */}
                 <div className="card-inner">
                   <div className="category-icon-wrapper">
                     {iconMap[cat.nombre] || DefaultIcon}

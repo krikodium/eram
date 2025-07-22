@@ -30,22 +30,19 @@
 .slider-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 50px; /* Espacio para que las flechas no se superpongan */
+  padding: 0 60px; /* Espacio lateral para que las flechas no se superpongan */
   position: relative;
 }
 
-/* Espaciado entre slides */
 .category-slide {
-  padding: 15px; /* ✅ Espacio exterior para que el scale del hover no se corte */
+  padding: 15px;
 }
 
-/* Tarjeta exterior (solo para espaciado y link) */
 .category-card {
   display: block;
   text-decoration: none;
 }
 
-/* ✅ Tarjeta interior (aquí va el diseño y el efecto) */
 .card-inner {
   display: flex;
   flex-direction: column;
@@ -60,7 +57,6 @@
   box-sizing: border-box;
 }
 
-/* Efecto hover aplicado al contenedor interno */
 .category-card:hover .card-inner {
   transform: scale(1.08);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
@@ -82,7 +78,7 @@
   line-height: 1.3;
 }
 
-/* ✅ Flechas rediseñadas */
+/* ✅ Flechas separadas de las tarjetas */
 .custom-arrow {
   position: absolute;
   top: 50%;
@@ -109,21 +105,40 @@
 }
 
 .prev-arrow {
-  left: 0px;
+  left: 0; /* Posicionada en el borde del padding */
 }
 
 .next-arrow {
-  right: 0px;
+  right: 0; /* Posicionada en el borde del padding */
 }
 
-/* Ocultar flechas por defecto en pantallas más pequeñas */
-.slick-prev, .slick-next {
-    display: none !important;
-}
+/* ✅ Ajustes de Responsive para Móvil */
+@media (max-width: 768px) {
+  .slider-container {
+    padding: 0 15px; /* Menos padding en móvil */
+  }
 
-/* Mostrar flechas solo en pantallas grandes */
-@media (min-width: 1024px) {
-    .slick-prev, .slick-next {
-        display: block !important;
-    }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .category-slide {
+    padding: 0 10px; /* Menos espacio entre tarjetas */
+  }
+
+  .card-inner {
+    height: 160px; /* Tarjetas un poco más pequeñas */
+  }
+  
+  .category-icon-wrapper {
+    font-size: 2.5rem;
+  }
+
+  .category-name {
+    font-size: 0.8rem;
+  }
 }
