@@ -42,6 +42,7 @@ function HeroCarousel() {
         loop={true}
         pagination={{ clickable: true }}
         className="hero-swiper"
+        slidesPerView={1} // ✅ Asegura que solo se muestre una slide
       >
         {banners.map((item) => (
           <SwiperSlide key={item.id} className="hero-slide-container">
@@ -56,8 +57,7 @@ function HeroCarousel() {
                     <h1 className="hero-title">{item.title}</h1>
                   </div>
                 </div>
-                
-                {/* Lógica para mostrar la barra o el botón */}
+
                 {item.id === 'industria' ? (
                   <div className="hero-bottom-bar">
                     <span className="hero-bar-text">{item.cta}</span>
