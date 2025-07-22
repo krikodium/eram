@@ -25,11 +25,9 @@ const iconMap = {
   "Carpa Para piso": <FaTent />,
   "Carteleria": <FaClipboardCheck />
 };
-
 const DefaultIcon = <FaToolbox />;
 
-function NextArrow(props) {
-  const { onClick } = props;
+function NextArrow({ onClick }) {
   return (
     <div className="custom-arrow next-arrow" onClick={onClick}>
       <FaChevronRight />
@@ -37,8 +35,7 @@ function NextArrow(props) {
   );
 }
 
-function PrevArrow(props) {
-  const { onClick } = props;
+function PrevArrow({ onClick }) {
   return (
     <div className="custom-arrow prev-arrow" onClick={onClick}>
       <FaChevronLeft />
@@ -72,32 +69,10 @@ const CategoryIcons = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 4,
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          centerMode: true,
-          centerPadding: '40px',
-        }
-      }
+      { breakpoint: 1280, settings: { slidesToShow: 4 } },
+      { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 480, settings: { slidesToShow: 1, centerMode: true, centerPadding: '40px' } }
     ]
   };
 
@@ -112,10 +87,13 @@ const CategoryIcons = () => {
           {categorias.map((cat) => (
             <div key={cat.id} className="category-slide">
               <Link to={`/catalogo?categoria_id=${cat.id}`} className="category-card">
-                <div className="category-icon-wrapper">
-                  {iconMap[cat.nombre] || DefaultIcon}
+                {/* ✅ Contenedor interno para el efecto hover sin cortes */}
+                <div className="card-inner">
+                  <div className="category-icon-wrapper">
+                    {iconMap[cat.nombre] || DefaultIcon}
+                  </div>
+                  <span className="category-name">{cat.nombre}</span>
                 </div>
-                <span className="category-name">{cat.nombre}</span>
               </Link>
             </div>
           ))}
