@@ -1,96 +1,134 @@
-/* Contenedor principal alineado al ancho del sitio */
-.category-wrapper {
+/* src/components/CategoryIcons.css */
+.category-slider-section {
+  background-color: #000000; /* Fondo negro puro */
+  padding: 4rem 0; /* Mayor margen vertical */
+  width: 100%;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif; /* Tipografía moderna */
+  font-size: 2rem;
+  font-weight: 700; /* Bold */
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: #cccccc; /* Gris claro */
+  margin-top: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.slider-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
-.category-scroll-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  padding: 2rem 0; /* Solo vertical */
+/* Estilo para cada slide para centrar la tarjeta */
+.category-slide {
+  padding: 0 15px; /* Separación entre tarjetas */
 }
 
-/* Carrusel horizontal */
-.category-grid-scroll {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 1.5rem;
-  padding: 0; /* IMPORTANTE: no usar padding horizontal */
-  scrollbar-width: none;
-}
-
-.category-grid-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-/* Tarjeta de cada categoría */
+/* Tarjeta de categoría cuadrada */
 .category-card {
-  flex: 0 0 auto;
-  background-color: var(--negro-card);
-  border-radius: 12px;
-  padding: 1.5rem;
-  width: 180px;
-  text-align: center;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-color: #1a1a1a; /* Gris oscuro */
+  border-radius: 15px;
   text-decoration: none;
-  transition: transform 0.3s ease;
+  margin: 0 auto; /* Centra la tarjeta en su slide */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .category-card:hover {
-  transform: translateY(-6px);
-  background-color: var(--rojo-principal);
+  transform: scale(1.05); /* Leve ampliación */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7); /* Sombra más fuerte */
 }
 
-.category-icon {
-  font-size: 2rem;
-  margin-bottom: 0.8rem;
-  color: white;
+.category-icon-wrapper {
+  font-size: 3.5rem; /* Tamaño del ícono */
+  color: #e0e0e0; /* Gris claro para el ícono */
+  margin-bottom: 1rem;
 }
 
 .category-name {
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600; /* Bold */
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.3;
+  padding: 0 10px;
 }
 
-/* Flechas laterales */
-.scroll-arrow {
+/* Estilos para las flechas personalizadas */
+.custom-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  height: 80px;
-  width: 28px;
-  border: none;
-  background: rgba(255, 255, 255, 0.08);
+  width: 40px;
+  height: 40px;
+  background-color: #1a1a1a;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.custom-arrow:hover {
+  background-color: #333333; /* Gris más claro al hacer hover */
+}
+
+.prev-arrow {
+  left: -10px;
+}
+
+.next-arrow {
+  right: -10px;
+}
+
+/* Ajustes para el carrusel de slick */
+.slick-slider {
+  position: relative;
+}
+
+.slick-list {
+  overflow: visible; /* Puede ayudar con las sombras */
+}
+
+.slick-track {
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  cursor: pointer;
-  z-index: 1;
-  transition: background-color 0.2s ease;
 }
 
-.scroll-arrow:hover {
-  background: var(--rojo-principal);
-}
-
-.scroll-arrow.left {
-  left: 0.5rem;
-}
-
-.scroll-arrow.right {
-  right: 0.5rem;
-}
-
-/* Ocultar flechas en mobile */
 @media (max-width: 768px) {
-  .scroll-arrow {
-    display: none;
+  .category-card {
+    width: 150px;
+    height: 150px;
+  }
+  .category-icon-wrapper {
+    font-size: 2.5rem;
+  }
+  .category-name {
+    font-size: 0.8rem;
   }
 }

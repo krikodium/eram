@@ -1,61 +1,112 @@
-import React, { useEffect, useRef, useState } from 'react';
+// src/components/CategoryIcons.jsx
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import './CategoryIcons.css';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { FaFireExtinguisher, FaHardHat, FaFirstAid, FaStretcher, FaCampground, FaRegClipboard } from 'react-icons/fa';
+
+// Mapeo de íconos por nombre de categoría (ajustar si los nombres cambian)
+const iconMap = {
+  "Baldes de Incendio": <FaFireExtinguisher />,
+  "Botas Industriales": <FaHardHat />, // Usamos un casco como ícono genérico de seguridad
+  "Botiquines Primeros Auxilios": <FaFirstAid />,
+  "Camillas - Inmovilizador - Férulas": <FaStretcher />,
+  "Carpa Para piso": <FaCampground />,
+  "Carteleria": <FaRegClipboard />
+  // Añadir más mapeos si es necesario
+};
+
+const DefaultIcon = <FaHardHat />; // Ícono por defecto
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div className={`${className} custom-arrow next-arrow`} onClick={onClick}>
+      ›
+    </div>
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div className={`${className} custom-arrow prev-arrow`} onClick={onClick}>
+      ‹
+    </div>
+  );
+}
 
 const CategoryIcons = () => {
   const [categorias, setCategorias] = useState([]);
-  const scrollRef = useRef(null);
   const api = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
         const response = await axios.get(`${api}/api/categorias`);
-        console.log("CATEGORÍAS RECIBIDAS:", response.data);
-
         const data = Array.isArray(response.data) ? response.data : [];
         setCategorias(data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
-        setCategorias([]);
       }
     };
-
     fetchCategorias();
   }, [api]);
 
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-    }
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          centerMode: true,
+          centerPadding: '40px',
+        }
+      }
+    ]
   };
 
   return (
-    <section className="category-scroll-container">
-      <div className="category-wrapper">
-        <div className="category-grid-scroll" ref={scrollRef}>
-          {Array.isArray(categorias) && categorias.map((cat) => (
-            <Link to={`/catalogo?categoria_id=${cat.id}`} key={cat.id} className="category-card">
-              <div className="category-icon">📦</div>
-              <div className="category-name">{cat.nombre}</div>
-            </Link>
+    <section className="category-slider-section">
+      <div className="section-header">
+        <h2 className="section-title">Nuestras Categorías</h2>
+        <p className="section-subtitle">Explorá nuestras líneas de protección profesional</p>
+      </div>
+      <div className="slider-container">
+        <Slider {...settings}>
+          {categorias.map((cat) => (
+            <div key={cat.id} className="category-slide">
+              <Link to={`/catalogo?categoria_id=${cat.id}`} className="category-card">
+                <div className="category-icon-wrapper">
+                  {iconMap[cat.nombre] || DefaultIcon}
+                </div>
+                <span className="category-name">{cat.nombre}</span>
+              </Link>
+            </div>
           ))}
-        </div>
-
-        <button className="scroll-arrow left" onClick={scrollLeft}>
-          <FaChevronLeft />
-        </button>
-        <button className="scroll-arrow right" onClick={scrollRight}>
-          <FaChevronRight />
-        </button>
+        </Slider>
       </div>
     </section>
   );
