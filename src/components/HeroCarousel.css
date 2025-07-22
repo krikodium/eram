@@ -5,7 +5,7 @@
   height: 100vh;
   min-height: 600px;
   position: relative;
-  overflow: hidden;
+  background-color: var(--negro-fondo); /* Fondo de respaldo */
 }
 
 .hero-swiper {
@@ -15,6 +15,7 @@
 
 .hero-slide-container {
   height: 100%;
+  overflow: hidden; /* Previene cualquier posible desborde */
 }
 
 .hero-slide {
@@ -32,23 +33,19 @@
   background-size: cover;
   background-position: center;
   z-index: 1;
-  transition: background-image 0.5s ease-in-out;
+  /* El efecto de fade se encarga de la transición suave */
   filter: saturate(90%) blur(0.8px);
-  transform: scale(1.02);
+  transform: scale(1.05); /* Aumentamos slightly para que el blur no afecte los bordes */
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
   color: var(--blanco-puro);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   z-index: 2;
-  /* ✅ Corrige el corte del blur */
   padding-top: 80px;
   box-sizing: border-box;
 }
@@ -60,6 +57,7 @@
   align-items: center;
   width: 100%;
   padding: 1rem;
+  text-align: center;
 }
 
 .hero-text-container {
@@ -69,7 +67,7 @@
 .hero-slogan {
   font-size: 1.2rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   margin: 0;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -88,6 +86,7 @@
 .hero-cta-container {
   width: 100%;
   padding-bottom: 50px;
+  text-align: center;
 }
 
 .hero-btn {
@@ -107,6 +106,10 @@
   transform: translateY(-2px);
 }
 
+.hero-swiper .swiper-pagination {
+  bottom: 20px !important; /* Asegura que la paginación esté visible */
+}
+
 .hero-swiper .swiper-pagination-bullet {
   background: rgba(255, 255, 255, 0.5);
   width: 10px;
@@ -118,36 +121,32 @@
   background: var(--rojo-principal);
 }
 
-/*
-  ✅ REDISEÑO PARA MÓVIL (PANTALLAS DE HASTA 768px)
-*/
+
+/* ✅ REDISEÑO PARA MÓVIL (PANTALLAS DE HASTA 768px) */
 @media (max-width: 768px) {
   .hero-carousel-section {
-    /* Achicamos la altura del banner en móvil */
-    height: 70vh;
-    min-height: 500px;
+    height: 75vh; /* Altura más corta para móvil */
+    min-height: 550px;
   }
 
   .hero-overlay {
-    padding-top: 60px; /* Reducimos el padding para el navbar más pequeño */
+    padding-top: 60px;
   }
 
   .hero-title {
-    /* Ajustamos el tamaño del título */
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* Título más adaptado */
   }
 
   .hero-slogan {
-    /* Ajustamos el tamaño del slogan */
     font-size: 0.9rem;
   }
 
   .hero-cta-container {
-    padding-bottom: 30px; /* Menos espacio inferior */
+    padding-bottom: 40px;
   }
 
   .hero-btn {
-    padding: 0.7rem 1.5rem; /* Botón ligeramente más pequeño */
+    padding: 0.7rem 1.5rem;
     font-size: 0.9rem;
   }
 }

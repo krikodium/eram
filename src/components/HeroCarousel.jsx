@@ -1,9 +1,11 @@
 // src/components/HeroCarousel.jsx
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
+// ✅ Se añaden EffectFade y su CSS
+import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-fade'; // ✅ Se importa el CSS para el efecto fade
 import './HeroCarousel.css';
 
 function HeroCarousel() {
@@ -37,7 +39,10 @@ function HeroCarousel() {
   return (
     <section className="hero-carousel-section">
       <Swiper
-        modules={[Autoplay, Pagination]}
+        // ✅ Se configuran los módulos y el nuevo efecto
+        modules={[Autoplay, Pagination, EffectFade]}
+        effect="fade"
+        fadeEffect={{ crossFade: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         loop={true}
         pagination={{ clickable: true }}
@@ -60,7 +65,6 @@ function HeroCarousel() {
                   </div>
                 </div>
 
-                {/* ✅ Botón unificado para todos los slides */}
                 <div className="hero-cta-container">
                   <a className="hero-btn" href={item.link}>{item.cta}</a>
                 </div>
