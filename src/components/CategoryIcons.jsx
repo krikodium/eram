@@ -6,17 +6,22 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CategoryIcons.css';
 import { Link } from 'react-router-dom';
-// ✅ Se importan TODOS los íconos desde la librería fa6 para consistencia
-import { FaFireExtinguisher, FaHardHat, FaFirstAid, FaStretcher, FaCampground, FaRegClipboard } from "react-icons/fa6";
+import {
+  FaFireExtinguisher,
+  FaHardHat,
+  FaFirstAid,
+  FaAmbulance,
+  FaCampground,
+  FaClipboardList
+} from "react-icons/fa6";
 
-// Mapeo de íconos por nombre de categoría
 const iconMap = {
   "Baldes de Incendio": <FaFireExtinguisher />,
   "Botas Industriales": <FaHardHat />,
   "Botiquines Primeros Auxilios": <FaFirstAid />,
-  "Camillas - Inmovilizador - Férulas": <FaStretcher />,
+  "Camillas - Inmovilizador - Férulas": <FaAmbulance />,
   "Carpa Para piso": <FaCampground />,
-  "Carteleria": <FaRegClipboard />
+  "Carteleria": <FaClipboardList />
 };
 
 const DefaultIcon = <FaHardHat />;
