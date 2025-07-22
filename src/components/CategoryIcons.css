@@ -1,7 +1,8 @@
 /* src/components/CategoryIcons.css */
 .category-slider-section {
-  background-color: #000000; /* Fondo negro puro */
-  padding: 4rem 0; /* Mayor margen vertical */
+  /* ✅ Fondo del color original del sitio */
+  background-color: var(--negro-fondo);
+  padding: 4rem 0;
   width: 100%;
 }
 
@@ -11,9 +12,9 @@
 }
 
 .section-title {
-  font-family: 'Poppins', sans-serif; /* Tipografía moderna */
+  font-family: 'Poppins', sans-serif;
   font-size: 2rem;
-  font-weight: 700; /* Bold */
+  font-weight: 700;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -21,23 +22,23 @@
 
 .section-subtitle {
   font-size: 1rem;
-  color: #cccccc; /* Gris claro */
+  color: #cccccc;
   margin-top: 0.5rem;
   font-family: 'Poppins', sans-serif;
 }
 
+/* ✅ Contenedor que limita el ancho y centra el slider */
 .slider-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 40px; /* Espacio lateral para que las flechas no se peguen */
+  position: relative; /* Contexto para las flechas */
 }
 
-/* Estilo para cada slide para centrar la tarjeta */
 .category-slide {
-  padding: 0 15px; /* Separación entre tarjetas */
+  padding: 0 15px;
 }
 
-/* Tarjeta de categoría cuadrada */
 .category-card {
   display: flex;
   flex-direction: column;
@@ -45,29 +46,29 @@
   align-items: center;
   width: 200px;
   height: 200px;
-  background-color: #1a1a1a; /* Gris oscuro */
+  background-color: #1a1a1a;
   border-radius: 15px;
   text-decoration: none;
-  margin: 0 auto; /* Centra la tarjeta en su slide */
+  margin: 0 auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .category-card:hover {
-  transform: scale(1.05); /* Leve ampliación */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7); /* Sombra más fuerte */
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
 }
 
 .category-icon-wrapper {
-  font-size: 3.5rem; /* Tamaño del ícono */
-  color: #e0e0e0; /* Gris claro para el ícono */
+  font-size: 3.5rem;
+  color: #e0e0e0;
   margin-bottom: 1rem;
 }
 
 .category-name {
   font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
-  font-weight: 600; /* Bold */
+  font-weight: 600;
   color: #ffffff;
   text-align: center;
   text-transform: uppercase;
@@ -75,45 +76,40 @@
   padding: 0 10px;
 }
 
-/* Estilos para las flechas personalizadas */
+/* ✅ FLECHAS MINIMALISTAS Y MEJORADAS */
 .custom-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  background-color: #1a1a1a;
+  width: 45px;
+  height: 45px;
+  background-color: rgba(30, 30, 30, 0.8); /* Fondo semitransparente */
+  border: 1px solid #444;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   z-index: 10;
 }
 
 .custom-arrow:hover {
-  background-color: #333333; /* Gris más claro al hacer hover */
+  background-color: var(--rojo-principal);
+  border-color: var(--rojo-principal);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .prev-arrow {
-  left: -10px;
+  left: -15px;
 }
 
 .next-arrow {
-  right: -10px;
+  right: -15px;
 }
-
-/* Ajustes para el carrusel de slick */
-.slick-slider {
-  position: relative;
-}
-
-.slick-list {
-  overflow: visible; /* Puede ayudar con las sombras */
-}
+/* ------------------------------- */
 
 .slick-track {
   display: flex;
@@ -130,5 +126,8 @@
   }
   .category-name {
     font-size: 0.8rem;
+  }
+  .custom-arrow {
+    display: none !important; /* Oculta las flechas en móvil */
   }
 }

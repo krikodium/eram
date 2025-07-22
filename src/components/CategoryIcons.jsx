@@ -12,7 +12,9 @@ import {
   FaBriefcaseMedical,
   FaTent,
   FaClipboardCheck,
-  FaShieldHalved
+  FaShieldHalved,
+  FaChevronLeft,
+  FaChevronRight
 } from "react-icons/fa6";
 
 const iconMap = {
@@ -27,19 +29,19 @@ const iconMap = {
 const DefaultIcon = <FaToolbox />;
 
 function NextArrow(props) {
-  const { className, onClick } = props;
+  const { onClick } = props;
   return (
-    <div className={`${className} custom-arrow next-arrow`} onClick={onClick}>
-      ›
+    <div className="custom-arrow next-arrow" onClick={onClick}>
+      <FaChevronRight />
     </div>
   );
 }
 
 function PrevArrow(props) {
-  const { className, onClick } = props;
+  const { onClick } = props;
   return (
-    <div className={`${className} custom-arrow prev-arrow`} onClick={onClick}>
-      ‹
+    <div className="custom-arrow prev-arrow" onClick={onClick}>
+      <FaChevronLeft />
     </div>
   );
 }
@@ -70,6 +72,12 @@ const CategoryIcons = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 4,
+        }
+      },
       {
         breakpoint: 1024,
         settings: {
