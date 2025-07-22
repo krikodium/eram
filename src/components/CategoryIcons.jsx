@@ -6,26 +6,23 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CategoryIcons.css';
 import { Link } from 'react-router-dom';
-// ✅ Se importa FaStretcher desde la librería correcta (fa6)
-import { FaStretcher } from "react-icons/fa6";
-// Se quitó FaStretcher de esta línea
-import { FaFireExtinguisher, FaHardHat, FaFirstAid, FaCampground, FaRegClipboard } from 'react-icons/fa';
+// ✅ Se importan TODOS los íconos desde la librería fa6 para consistencia
+import { FaFireExtinguisher, FaHardHat, FaFirstAid, FaStretcher, FaCampground, FaRegClipboard } from "react-icons/fa6";
 
-// Mapeo de íconos por nombre de categoría (ajustar si los nombres cambian)
+// Mapeo de íconos por nombre de categoría
 const iconMap = {
   "Baldes de Incendio": <FaFireExtinguisher />,
   "Botas Industriales": <FaHardHat />,
   "Botiquines Primeros Auxilios": <FaFirstAid />,
-  "Camillas - Inmovilizador - Férulas": <FaStretcher />, // Ahora funciona
+  "Camillas - Inmovilizador - Férulas": <FaStretcher />,
   "Carpa Para piso": <FaCampground />,
   "Carteleria": <FaRegClipboard />
-  // Añadir más mapeos si es necesario
 };
 
-const DefaultIcon = <FaHardHat />; // Ícono por defecto
+const DefaultIcon = <FaHardHat />;
 
 function NextArrow(props) {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
   return (
     <div className={`${className} custom-arrow next-arrow`} onClick={onClick}>
       ›
@@ -34,7 +31,7 @@ function NextArrow(props) {
 }
 
 function PrevArrow(props) {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
   return (
     <div className={`${className} custom-arrow prev-arrow`} onClick={onClick}>
       ‹
