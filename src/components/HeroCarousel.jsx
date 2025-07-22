@@ -42,14 +42,16 @@ function HeroCarousel() {
         loop={true}
         pagination={{ clickable: true }}
         className="hero-swiper"
-        slidesPerView={1} // ✅ Asegura que solo se muestre una slide
+        slidesPerView={1}
+        spaceBetween={0} // ✅ Elimina el espacio entre slides
       >
         {banners.map((item) => (
           <SwiperSlide key={item.id} className="hero-slide-container">
-            <div
-              className="hero-slide"
-              style={{ backgroundImage: `url(${item.img})` }}
-            >
+            <div className="hero-slide">
+              <div
+                className="hero-background"
+                style={{ backgroundImage: `url(${item.img})` }}
+              ></div>
               <div className="hero-overlay">
                 <div className="hero-content">
                   <div className="hero-text-container">
