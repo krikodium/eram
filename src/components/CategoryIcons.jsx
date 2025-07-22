@@ -10,10 +10,10 @@ import {
   FaFireExtinguisher,
   FaHardHat,
   FaFirstAid,
-  FaAmbulance,
   FaCampground,
   FaClipboardList
 } from "react-icons/fa6";
+import { FaAmbulance } from "react-icons/fa";
 
 const iconMap = {
   "Baldes de Incendio": <FaFireExtinguisher />,
