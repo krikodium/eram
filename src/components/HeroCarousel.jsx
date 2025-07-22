@@ -43,7 +43,7 @@ function HeroCarousel() {
         pagination={{ clickable: true }}
         className="hero-swiper"
         slidesPerView={1}
-        spaceBetween={0} // ✅ Elimina el espacio entre slides
+        spaceBetween={0}
       >
         {banners.map((item) => (
           <SwiperSlide key={item.id} className="hero-slide-container">
@@ -60,15 +60,10 @@ function HeroCarousel() {
                   </div>
                 </div>
 
-                {item.id === 'industria' ? (
-                  <div className="hero-bottom-bar">
-                    <span className="hero-bar-text">{item.cta}</span>
-                  </div>
-                ) : (
-                  <div className="hero-cta-container">
-                    <a className="hero-btn" href={item.link}>{item.cta}</a>
-                  </div>
-                )}
+                {/* ✅ Botón unificado para todos los slides */}
+                <div className="hero-cta-container">
+                  <a className="hero-btn" href={item.link}>{item.cta}</a>
+                </div>
 
               </div>
             </div>
