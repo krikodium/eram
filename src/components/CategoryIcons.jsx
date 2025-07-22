@@ -7,24 +7,24 @@ import 'slick-carousel/slick/slick-theme.css';
 import './CategoryIcons.css';
 import { Link } from 'react-router-dom';
 import {
-  FaFireExtinguisher,
-  FaHardHat,
-  FaFirstAid,
-  FaCampground,
-  FaClipboardList
+  FaToolbox,
+  FaHelmetSafety,
+  FaBriefcaseMedical,
+  FaTent,
+  FaClipboardCheck,
+  FaShieldHalved
 } from "react-icons/fa6";
-import { FaAmbulance } from "react-icons/fa";
 
 const iconMap = {
-  "Baldes de Incendio": <FaFireExtinguisher />,
-  "Botas Industriales": <FaHardHat />,
-  "Botiquines Primeros Auxilios": <FaFirstAid />,
-  "Camillas - Inmovilizador - Férulas": <FaAmbulance />,
-  "Carpa Para piso": <FaCampground />,
-  "Carteleria": <FaClipboardList />
+  "Baldes de Incendio": <FaShieldHalved />,
+  "Botas Industriales": <FaHelmetSafety />,
+  "Botiquines Primeros Auxilios": <FaBriefcaseMedical />,
+  "Camillas - Inmovilizador - Férulas": <FaToolbox />,
+  "Carpa Para piso": <FaTent />,
+  "Carteleria": <FaClipboardCheck />
 };
 
-const DefaultIcon = <FaHardHat />;
+const DefaultIcon = <FaToolbox />;
 
 function NextArrow(props) {
   const { className, onClick } = props;
