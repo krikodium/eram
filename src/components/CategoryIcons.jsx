@@ -6,14 +6,17 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CategoryIcons.css';
 import { Link } from 'react-router-dom';
-import { FaFireExtinguisher, FaHardHat, FaFirstAid, FaStretcher, FaCampground, FaRegClipboard } from 'react-icons/fa';
+// ✅ Se importa FaStretcher desde la librería correcta (fa6)
+import { FaStretcher } from "react-icons/fa6";
+// Se quitó FaStretcher de esta línea
+import { FaFireExtinguisher, FaHardHat, FaFirstAid, FaCampground, FaRegClipboard } from 'react-icons/fa';
 
 // Mapeo de íconos por nombre de categoría (ajustar si los nombres cambian)
 const iconMap = {
   "Baldes de Incendio": <FaFireExtinguisher />,
-  "Botas Industriales": <FaHardHat />, // Usamos un casco como ícono genérico de seguridad
+  "Botas Industriales": <FaHardHat />,
   "Botiquines Primeros Auxilios": <FaFirstAid />,
-  "Camillas - Inmovilizador - Férulas": <FaStretcher />,
+  "Camillas - Inmovilizador - Férulas": <FaStretcher />, // Ahora funciona
   "Carpa Para piso": <FaCampground />,
   "Carteleria": <FaRegClipboard />
   // Añadir más mapeos si es necesario
