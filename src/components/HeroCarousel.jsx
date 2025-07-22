@@ -1,63 +1,21 @@
-// ✅ src/components/HeroCarousel.jsx
+// src/components/HeroCarousel.jsx
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules'; // ❌ Quitamos Navigation
-import 'swiper/css';
-import 'swiper/css/pagination';
-// ❌ Eliminamos: import 'swiper/css/navigation';
-import './HeroCarousel.css';
+import './HeroCarousel.css'; // El CSS se mantiene con el mismo nombre
 
 function HeroCarousel() {
-  const banners = [
-    {
-      title: "GUANTES DE PROTECCIÓN",
-      subtitle: "Ampliamos nuestra línea de",
-      img: "/proteccion-respiratoria.jpg",
-      cta: "VER MÁS +",
-      link: "/catalogo?categoria_id=1"
-    },
-    {
-      title: "CAPACITACIÓN EN ALTURA",
-      subtitle: "Formación por bomberos especialistas",
-      img: "/banner-altura.jpg",
-      cta: "VER MÁS +",
-      link: "/formacion"
-    },
-    {
-      title: "INDUSTRIA NACIONAL",
-      subtitle: "Desde 1974 apostando a la",
-      img: "/banner-industria.jpg",
-      cta: "NACIONALES",
-      link: "/catalogo"
-    }
-  ];
-
   return (
-    <section className="hero-carousel-section">
-      <Swiper
-        modules={[Autoplay, Pagination]} // ✅ Quitamos Navigation
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
-        loop={true}
-        pagination={{ clickable: true }}
-        // ❌ Quitamos navigation={true}
-        className="hero-swiper"
-      >
-        {banners.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className="hero-slide"
-              style={{ backgroundImage: `url(${item.img})` }}
-            >
-              <div className="hero-overlay">
-                <p className="hero-sub">{item.subtitle}</p>
-                <h1 className="hero-title">{item.title}</h1>
-                <a className="hero-btn" href={item.link}>{item.cta}</a>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </section>
+    <header className="hero-section">
+      <div className="hero-background"></div>
+      <div className="hero-content">
+        <div className="hero-text-container">
+          <p className="hero-slogan">Desde 1974 apostando a la</p>
+          <h1 className="hero-title">INDUSTRIA NACIONAL</h1>
+        </div>
+      </div>
+      <div className="hero-bottom-bar">
+        <span className="hero-bar-text">NACIONALES</span>
+      </div>
+    </header>
   );
 }
 

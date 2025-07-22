@@ -1,6 +1,6 @@
-// ✅ src/components/Navbar.jsx (menú hamburguesa rediseñado y responsivo)
+// src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
@@ -17,7 +17,7 @@ function Navbar() {
     };
   }, []);
 
-  const toggleMenu = () => setMenuOpen(prev => !prev);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -27,25 +27,20 @@ function Navbar() {
           ERAM
         </Link>
 
-        {/* Botón hamburguesa */}
         <div className={`hamburger-menu ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
-          {menuOpen ? (
-            <span className="close-icon">×</span>
-          ) : (
-            <>
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-            </>
-          )}
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
         </div>
 
         <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
-          <Link to="/" className="nav-link" onClick={closeMenu}>Home</Link>
-          <Link to="/quienes-somos" className="nav-link" onClick={closeMenu}>Quiénes Somos</Link>
-          <Link to="/ferias" className="nav-link" onClick={closeMenu}>Ferias</Link>
-          <Link to="/catalogo" className="nav-link" onClick={closeMenu}>Catálogo</Link>
-          <Link to="/contacto" className="nav-link btn btn-primary" onClick={closeMenu}>Contacto</Link>
+          <NavLink to="/" className="nav-link" onClick={closeMenu}>Home</NavLink>
+          <NavLink to="/quienes-somos" className="nav-link" onClick={closeMenu}>Quiénes Somos</NavLink>
+          <NavLink to="/ferias" className="nav-link" onClick={closeMenu}>Ferias</NavLink>
+          <NavLink to="/catalogo" className="nav-link" onClick={closeMenu}>Catálogo</NavLink>
+          <NavLink to="/contacto" className="nav-link contact-button" onClick={closeMenu}>
+            Contacto
+          </NavLink>
         </div>
       </div>
     </nav>
