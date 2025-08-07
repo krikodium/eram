@@ -66,17 +66,39 @@ const Catalogo = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Handle rubro filtering
+  useEffect(() => {
+    if (rubroId) {
+      const rubro = getRubroById(parseInt(rubroId));
+      if (rubro) {
+        setPageTitle(`${rubro.nombre} - Productos`);
+        // For now, we'll still call the existing API since we're keeping existing functionality
+        fetchProducts(1, 20, false, null);
+      }
+    }
+  }, [rubroId, fetchProducts]);
+
   useEffect(() => {
     setProductos([]);
     setPage(1);
     setHasMore(true);
-    if (categoriaId) {
+    
+    if (rubroId && !categoriaId) {
+      // Just selected a rubro, load all products (simulation for Phase 1)
+      const rubro = getRubroById(parseInt(rubroId));
+      if (rubro) {
+        setPageTitle(`${rubro.nombre} - Productos`);
+        fetchProducts(1, 20, false, null);
+      }
+    } else if (categoriaId) {
+      // Category selected, fetch by category
       fetchProducts(1, 20, false, categoriaId);
     } else {
+      // No filters, show all
       setPageTitle('Todos los Productos');
       fetchProducts(1, 20, false, null);
     }
-  }, [categoriaId, fetchProducts]);
+  }, [categoriaId, rubroId, fetchProducts]);
 
   const handleCategoryMouseEnter = (category, event) => {
     if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
