@@ -1,183 +1,224 @@
-/* src/styles/themes.css - Dual Theme System */
+/* src/styles/themes.css - Enhanced Dual Theme System with Sophisticated Colors */
 
 /* =============================================================================
-   THEME VARIABLES - Dark and Light themes for ERAM
-   Dark Theme: Blacks and Reds (Default)
-   Light Theme: Whites and Reds
+   THEME VARIABLES - Enhanced Dark and Light themes for ERAM
+   Dark Theme: Blacks and Reds (Default) 
+   Light Theme: Sophisticated Whites, Grays and Accent Colors
 ============================================================================= */
 
 /* Base variables that don't change between themes */
 :root {
-  /* Brand Colors - Consistent across themes */
+  /* Brand Colors - Enhanced */
   --brand-red: #D32F2F;
   --brand-red-hover: #b71c1c;
   --brand-red-light: #ef5350;
+  --brand-red-dark: #8B0000;
   
-  /* Shadows and Effects */
+  /* Accent Colors for Light Theme */
+  --accent-blue: #1976D2;
+  --accent-blue-light: #42A5F5;
+  --accent-orange: #FF6B35;
+  --accent-orange-light: #FF8A65;
+  --accent-green: #2E7D32;
+  --accent-green-light: #66BB6A;
+  --accent-purple: #7B1FA2;
+  --accent-purple-light: #AB47BC;
+  
+  /* Shadows and Effects - Enhanced */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.25);
   --shadow-xl: 0 12px 30px rgba(0, 0, 0, 0.35);
+  --shadow-2xl: 0 24px 48px rgba(0, 0, 0, 0.45);
   
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.4s ease;
+  /* Transitions - Enhanced */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   
-  /* Border radius */
+  /* Border radius - Enhanced */
+  --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 20px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
 }
 
 /* =============================================================================
-   DARK THEME (Default) - Blacks and Reds
+   DARK THEME (Default) - Enhanced Professional Dark
 ============================================================================= */
 [data-theme="dark"] {
-  /* Background Colors */
-  --bg-primary: #121212;
-  --bg-secondary: #1e1e1e;
-  --bg-tertiary: #2a2a2a;
-  --bg-elevated: #333333;
+  /* Background Colors - Enhanced */
+  --bg-primary: #0A0A0B;
+  --bg-secondary: #1A1A1B;
+  --bg-tertiary: #2D2D30;
+  --bg-elevated: #3C3C41;
+  --bg-surface: #252527;
+  --bg-card: #1E1E1F;
+  --bg-hover: #2A2A2C;
   
-  /* Text Colors */
-  --text-primary: #ffffff;
-  --text-secondary: #f5f5f5;
-  --text-muted: #cccccc;
-  --text-disabled: #888888;
+  /* Text Colors - Enhanced */
+  --text-primary: #FFFFFF;
+  --text-secondary: #E8E8E8;
+  --text-tertiary: #B8B8B8;
+  --text-muted: #888888;
+  --text-disabled: #5A5A5A;
+  --text-inverse: #121212;
   
-  /* Interactive Colors */
+  /* Interactive Colors - Enhanced */
   --interactive-primary: var(--brand-red);
   --interactive-primary-hover: var(--brand-red-hover);
-  --interactive-secondary: #4a4a4a;
-  --interactive-secondary-hover: #5a5a5a;
+  --interactive-primary-active: var(--brand-red-dark);
+  --interactive-secondary: #404040;
+  --interactive-secondary-hover: #525252;
+  --interactive-accent: var(--accent-blue);
+  --interactive-accent-hover: #1565C0;
   
-  /* Border Colors */
+  /* Border Colors - Enhanced */
   --border-primary: #404040;
-  --border-secondary: #2a2a2a;
+  --border-secondary: #2A2A2A;
+  --border-tertiary: #1A1A1A;
   --border-focus: var(--brand-red);
+  --border-accent: var(--accent-blue);
   
-  /* State Colors */
-  --success: #4caf50;
-  --warning: #ff9800;
-  --error: #f44336;
-  --info: #2196f3;
+  /* State Colors - Enhanced */
+  --success: #4CAF50;
+  --success-light: #81C784;
+  --warning: #FF9800;
+  --warning-light: #FFB74D;
+  --error: #F44336;
+  --error-light: #EF5350;
+  --info: #2196F3;
+  --info-light: #64B5F6;
   
   /* Overlay */
-  --overlay: rgba(0, 0, 0, 0.7);
+  --overlay: rgba(0, 0, 0, 0.8);
+  --overlay-light: rgba(0, 0, 0, 0.4);
   
-  /* Custom shadows for dark theme */
-  --shadow-colored: 0 4px 12px rgba(211, 47, 47, 0.3);
-  --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-  --card-shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.55);
+  /* Enhanced shadows for dark theme */
+  --shadow-colored: 0 4px 20px rgba(211, 47, 47, 0.4);
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --button-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
 }
 
 /* =============================================================================
-   LIGHT THEME - Whites and Reds
+   LIGHT THEME - Sophisticated Professional Light with Accent Colors
 ============================================================================= */
 [data-theme="light"] {
-  /* Background Colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #f1f3f4;
-  --bg-elevated: #ffffff;
+  /* Background Colors - Sophisticated Light */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-tertiary: #F1F5F9;
+  --bg-elevated: #FFFFFF;
+  --bg-surface: #FEFEFE;
+  --bg-card: #FFFFFF;
+  --bg-hover: #F8FAFC;
   
-  /* Text Colors */
-  --text-primary: #212121;
-  --text-secondary: #424242;
-  --text-muted: #757575;
-  --text-disabled: #bdbdbd;
+  /* Text Colors - Enhanced Contrast */
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-tertiary: #64748B;
+  --text-muted: #94A3B8;
+  --text-disabled: #CBD5E1;
+  --text-inverse: #FFFFFF;
   
-  /* Interactive Colors */
+  /* Interactive Colors - Sophisticated Palette */
   --interactive-primary: var(--brand-red);
   --interactive-primary-hover: var(--brand-red-hover);
-  --interactive-secondary: #e0e0e0;
-  --interactive-secondary-hover: #d5d5d5;
+  --interactive-primary-active: var(--brand-red-dark);
+  --interactive-secondary: #E2E8F0;
+  --interactive-secondary-hover: #CBD5E1;
+  --interactive-accent: var(--accent-blue);
+  --interactive-accent-hover: #1565C0;
   
-  /* Border Colors */
-  --border-primary: #e0e0e0;
-  --border-secondary: #f0f0f0;
+  /* Accent Variations for Light Theme */
+  --accent-primary: var(--accent-blue);
+  --accent-secondary: var(--accent-orange);
+  --accent-tertiary: var(--accent-green);
+  --accent-quaternary: var(--accent-purple);
+  
+  /* Border Colors - Refined */
+  --border-primary: #E2E8F0;
+  --border-secondary: #F1F5F9;
+  --border-tertiary: #F8FAFC;
   --border-focus: var(--brand-red);
+  --border-accent: var(--accent-blue);
   
-  /* State Colors */
-  --success: #388e3c;
-  --warning: #f57c00;
-  --error: #d32f2f;
-  --info: #1976d2;
+  /* State Colors - Professional Light */
+  --success: #059669;
+  --success-light: #34D399;
+  --warning: #D97706;
+  --warning-light: #FBBF24;
+  --error: #DC2626;
+  --error-light: #F87171;
+  --info: #0284C7;
+  --info-light: #38BDF8;
   
   /* Overlay */
-  --overlay: rgba(255, 255, 255, 0.9);
+  --overlay: rgba(255, 255, 255, 0.95);
+  --overlay-light: rgba(255, 255, 255, 0.7);
   
-  /* Custom shadows for light theme */
-  --shadow-colored: 0 4px 12px rgba(211, 47, 47, 0.2);
-  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
+  /* Enhanced shadows for light theme */
+  --shadow-colored: 0 4px 20px rgba(211, 47, 47, 0.15);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  --button-shadow: 0 2px 8px rgba(211, 47, 47, 0.2);
 }
 
 /* =============================================================================
-   THEME TRANSITION ANIMATIONS
+   ENHANCED THEME TRANSITIONS AND ANIMATIONS
 ============================================================================= */
 * {
   transition: 
     background-color var(--transition-normal),
     color var(--transition-normal),
     border-color var(--transition-normal),
-    box-shadow var(--transition-normal);
+    box-shadow var(--transition-normal),
+    transform var(--transition-fast);
 }
 
-/* Don't animate transforms and opacity to avoid lag */
-*,
-*::before,
-*::after {
-  transition-property: background-color, color, border-color, box-shadow, fill, stroke;
-}
-
-/* =============================================================================
-   UTILITY CLASSES
-============================================================================= */
+/* Enhanced utility classes */
 .theme-surface-1 { background-color: var(--bg-primary); }
 .theme-surface-2 { background-color: var(--bg-secondary); }
 .theme-surface-3 { background-color: var(--bg-tertiary); }
 .theme-surface-elevated { background-color: var(--bg-elevated); }
+.theme-surface-card { background-color: var(--bg-card); }
 
 .theme-text-primary { color: var(--text-primary); }
 .theme-text-secondary { color: var(--text-secondary); }
+.theme-text-tertiary { color: var(--text-tertiary); }
 .theme-text-muted { color: var(--text-muted); }
 
 .theme-border { border-color: var(--border-primary); }
 .theme-border-secondary { border-color: var(--border-secondary); }
 
-/* =============================================================================
-   COMPONENT-SPECIFIC THEME ADJUSTMENTS
-============================================================================= */
+/* Accent color utilities */
+.accent-blue { color: var(--accent-primary); }
+.accent-orange { color: var(--accent-secondary); }
+.accent-green { color: var(--accent-tertiary); }
+.accent-purple { color: var(--accent-quaternary); }
 
-/* Scrollbar theming */
-::-webkit-scrollbar {
-  width: 8px;
+/* Enhanced component-specific adjustments */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { 
+  background: var(--interactive-secondary); 
+  border-radius: var(--radius-full);
 }
+::-webkit-scrollbar-thumb:hover { background: var(--interactive-secondary-hover); }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--interactive-secondary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--interactive-secondary-hover);
-}
-
-/* Selection theming */
 ::selection {
-  background-color: var(--brand-red);
-  color: white;
+  background-color: var(--interactive-primary);
+  color: var(--text-inverse);
 }
 
-/* Focus outline theming */
 :focus-visible {
   outline: 2px solid var(--border-focus);
   outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
