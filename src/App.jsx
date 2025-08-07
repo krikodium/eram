@@ -7,6 +7,7 @@ import { QuoteProvider } from './contexts/QuoteContext';
 
 // Eager load critical components
 import Navbar from './components/Navbar';
+import Footer from './shared/components/Footer';
 import LoadingSpinner from './shared/components/LoadingSpinner';
 import ErrorBoundary from './shared/components/ErrorBoundary';
 
