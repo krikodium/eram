@@ -1,0 +1,268 @@
+/* src/features/rubros/components/RubrosFilter.css */
+.rubros-filter {
+  background-color: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-secondary);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+/* Header */
+.rubros-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-secondary);
+  cursor: pointer;
+  transition: background-color var(--transition-normal);
+}
+
+.rubros-header:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.rubros-header h3 {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rubros-header h3 svg {
+  color: var(--interactive-primary);
+  font-size: 1.1rem;
+}
+
+.expand-toggle {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
+}
+
+.expand-toggle:hover {
+  background-color: var(--interactive-secondary);
+  color: var(--text-primary);
+}
+
+/* Content */
+.rubros-content {
+  padding: 0.5rem 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.rubros-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Rubro Item */
+.rubro-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.rubro-item:hover {
+  background-color: var(--bg-secondary);
+  border-left-color: var(--interactive-primary);
+}
+
+.rubro-item.active {
+  background-color: var(--bg-tertiary);
+  border-left-color: var(--interactive-primary);
+}
+
+.rubro-item.active::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--interactive-primary);
+  border-radius: 50%;
+}
+
+/* Rubro Icon */
+.rubro-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: transform var(--transition-normal);
+}
+
+.rubro-item:hover .rubro-icon {
+  transform: scale(1.05);
+}
+
+.rubro-icon.all-rubros {
+  background: linear-gradient(135deg, var(--interactive-primary), var(--interactive-primary-hover));
+}
+
+.rubro-icon i {
+  font-size: 1rem;
+}
+
+/* Rubro Info */
+.rubro-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rubro-info h4 {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+}
+
+.rubro-info p {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.categories-count {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Active Indicator */
+.active-indicator {
+  color: var(--interactive-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: auto;
+}
+
+/* Error State */
+.rubros-error {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.rubros-error p {
+  color: var(--error);
+  margin-bottom: 1rem;
+}
+
+.retry-btn {
+  background-color: var(--interactive-primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color var(--transition-normal);
+}
+
+.retry-btn:hover {
+  background-color: var(--interactive-primary-hover);
+}
+
+/* Scrollbar Styling */
+.rubros-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.rubros-content::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.rubros-content::-webkit-scrollbar-thumb {
+  background: var(--interactive-secondary);
+  border-radius: 2px;
+}
+
+.rubros-content::-webkit-scrollbar-thumb:hover {
+  background: var(--interactive-secondary-hover);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .rubros-header {
+    padding: 0.875rem 1rem;
+  }
+  
+  .rubros-header h3 {
+    font-size: 0.9rem;
+  }
+  
+  .rubro-item {
+    padding: 0.625rem 1rem;
+    gap: 0.75rem;
+  }
+  
+  .rubro-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  
+  .rubro-info h4 {
+    font-size: 0.85rem;
+  }
+  
+  .rubro-info p {
+    font-size: 0.75rem;
+  }
+  
+  .categories-count {
+    font-size: 0.7rem;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .rubro-item {
+    border-left-width: 4px;
+  }
+  
+  .rubro-item.active {
+    border-left-width: 5px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .rubro-item,
+  .rubro-icon,
+  .expand-toggle {
+    transition: none;
+  }
+}
