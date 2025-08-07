@@ -165,16 +165,16 @@ const Catalogo = () => {
           {showSidebar ? ' Ocultar Filtros' : ' Mostrar Filtros'}
         </button>
       </header>
+      
+      {/* Horizontal Rubros Filter - Above Main Content */}
+      <div className="rubros-filter-horizontal-wrapper">
+        <RubrosFilter onRubroSelect={handleRubroSelect} />
+      </div>
+      
       <div className={`catalogo-body ${showSidebar ? 'sidebar-visible' : ''}`}>
         <aside className="category-sidebar-wrapper" ref={sidebarRef} onMouseLeave={handleCategoryMouseLeave}>
           {showSidebar && (
             <>
-              {/* Rubros Filter - New Feature */}
-              <RubrosFilter 
-                onRubroSelect={handleRubroSelect}
-                className="sidebar-rubros"
-              />
-              
               {/* Existing Category Sidebar */}
               <CategorySidebar
                 onLinkClick={() => {
