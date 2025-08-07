@@ -4,8 +4,11 @@ import axios from 'axios';
 import CategorySidebar from '../components/CategorySidebar';
 import ProductList from '../components/ProductList';
 import CategoryPreview from '../components/CategoryPreview';
+import RubrosFilter from '../features/rubros/components/RubrosFilter';
+import { rubrosService } from '../services/api';
+import { getRubroById } from '../mocks/rubros';
 import './Catalogo.css';
-import { FaFilter, FaTimes } from 'react-icons/fa';
+import { FaFilter, FaTimes, FaIndustry } from 'react-icons/fa';
 
 const Catalogo = () => {
   const [productos, setProductos] = useState([]);
@@ -13,10 +16,12 @@ const Catalogo = () => {
   const [showSidebar, setShowSidebar] = useState(window.innerWidth > 768);
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
+  const rubroId = searchParams.get('rubro_id');
   const api = useMemo(() => import.meta.env.VITE_API_URL || 'http://localhost:3001', []);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [pageTitle, setPageTitle] = useState('Todos los Productos');
+  const [filteredCategories, setFilteredCategories] = useState([]);
 
   // Estado unificado para la previsualización
   const [preview, setPreview] = useState({
