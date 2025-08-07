@@ -1,16 +1,13 @@
-// src/components/HeroCarousel.jsx - Redesigned Ultra Professional Hero Carousel
+// src/components/HeroCarousel.jsx - Clean Auto-Advancing Hero Carousel
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, EffectFade, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 import { 
   FaShieldAlt, 
   FaIndustry, 
   FaHardHat, 
   FaCertificate,
-  FaChevronLeft,
-  FaChevronRight,
-  FaPlay,
   FaArrowRight,
   FaAward,
   FaUsers,
@@ -19,7 +16,6 @@ import {
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
 import './HeroCarousel.css';
 
 function HeroCarousel() {
@@ -58,7 +54,7 @@ function HeroCarousel() {
       icon: <FaShieldAlt />,
       metrics: [
         { value: "500+", label: "PRODUCTOS DISPONIBLES", icon: <FaIndustry /> },
-        { value: "24H", label: "ENVÍOS RÁPIDOS", icon: <FaPlay /> },
+        { value: "24H", label: "ENVÍOS RÁPIDOS", icon: <FaShieldAlt /> },
         { value: "ISO", label: "CERTIFICACIONES", icon: <FaCertificate /> }
       ]
     },
@@ -71,7 +67,7 @@ function HeroCarousel() {
       description: "Sistemas integrales para trabajo en altura con tecnología de vanguardia. Arneses, líneas de vida y sistemas de anclaje que cumplen con las normativas más exigentes.",
       image: "/banner-altura.jpg",
       primaryCTA: "SISTEMAS ALTURA",
-      secondaryCTA: "CAPACITACIÓN",
+      secondaryCTA: "CAPACITACIÓN", 
       primaryLink: "/catalogo",
       secondaryLink: "/capacitacion",
       icon: <FaHardHat />,
@@ -86,13 +82,13 @@ function HeroCarousel() {
   return (
     <section className="hero-carousel-section">
       <Swiper
-        modules={[Autoplay, Pagination, EffectFade, Navigation]}
+        modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"
         fadeEffect={{ crossFade: true }}
         autoplay={{ 
-          delay: 7000, 
+          delay: 8000, 
           disableOnInteraction: false,
-          pauseOnMouseEnter: true 
+          pauseOnMouseEnter: false 
         }}
         loop={true}
         pagination={{ 
@@ -101,13 +97,10 @@ function HeroCarousel() {
           bulletClass: 'hero-pagination-bullet',
           bulletActiveClass: 'hero-pagination-bullet-active'
         }}
-        navigation={{
-          nextEl: '.hero-nav-next',
-          prevEl: '.hero-nav-prev',
-        }}
         className="hero-swiper"
         slidesPerView={1}
-        speed={1200}
+        speed={1500}
+        allowTouchMove={false}
       >
         {heroSlides.map((slide, slideIndex) => (
           <SwiperSlide key={slide.id} className="hero-slide">
@@ -185,26 +178,7 @@ function HeroCarousel() {
             </div>
           </SwiperSlide>
         ))}
-
-        {/* Custom Navigation */}
-        <div className="hero-navigation">
-          <button className="hero-nav-btn hero-nav-prev">
-            <FaChevronLeft />
-          </button>
-          <button className="hero-nav-btn hero-nav-next">
-            <FaChevronRight />
-          </button>
-        </div>
       </Swiper>
-
-      {/* Scroll Indicator */}
-      <div className="hero-scroll-indicator">
-        <div className="scroll-line"></div>
-        <span className="scroll-text">EXPLORAR</span>
-        <div className="scroll-arrow">
-          <FaChevronLeft className="scroll-icon" />
-        </div>
-      </div>
     </section>
   );
 }
