@@ -1,128 +1,504 @@
-/* src/components/CategoryIcons.css */
-
+/* src/components/CategoryIcons.css - Ultra Professional Category Carousel */
 .category-slider-section {
-  background-color: var(--negro-fondo);
-  padding: 5rem 0;
-  width: 100%;
-  position: relative; /* Contexto para las flechas */
+  padding: 4rem 0 3rem;
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+  border-top: 1px solid var(--border-secondary);
+  border-bottom: 1px solid var(--border-secondary);
+  position: relative;
+  overflow: hidden;
 }
 
+.category-slider-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--interactive-primary),
+    var(--accent-primary),
+    var(--interactive-primary),
+    transparent
+  );
+}
+
+/* Section Header - Ultra Professional */
 .section-header {
   text-align: center;
   margin-bottom: 3rem;
+  padding: 0 2rem;
 }
 
 .section-title {
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--interactive-primary), var(--accent-primary));
+  border-radius: var(--radius-full);
 }
 
 .section-subtitle {
-  font-size: 1.1rem;
-  color: #b0b0b0;
-  margin-top: 0.5rem;
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.025em;
 }
 
+/* Slider Container - Enhanced */
 .slider-wrapper {
-  max-width: 1200px; /* Ancho máximo del contenido */
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
 }
 
-/* ✅ SOLUCIÓN AL CORTE DEL HOVER */
+/* Individual Category Cards - Premium Design */
 .category-slide {
-  /* El slide tiene padding para dar espacio al 'scale' de la tarjeta */
-  padding: 10px; 
+  padding: 0 0.75rem;
 }
 
 .category-card {
-  display: flex !important; /* Importante para sobreescribir slick */
+  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 190px;
-  background-color: #1a1a1a;
-  border-radius: 12px;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--border-secondary);
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  transition: all var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--card-shadow);
 }
 
 .category-card:hover {
-  /* El 'scale' ahora tiene espacio para expandirse gracias al padding del .category-slide */
-  transform: scale(1.07);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--card-color, var(--interactive-primary));
+  box-shadow: 
+    var(--card-shadow-hover),
+    0 0 30px var(--card-bg-color, rgba(211, 47, 47, 0.2));
+  background: var(--card-bg-color, rgba(211, 47, 47, 0.05));
 }
 
+/* Icon Wrapper - Ultra Professional with Glow Effects */
 .category-icon-wrapper {
-  font-size: 3.2rem;
-  color: #ffffff;
-  margin-bottom: 1rem;
+  position: relative;
+  margin-bottom: 1.5rem;
+  z-index: 2;
 }
 
+.icon-background {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, 
+    var(--card-color, var(--interactive-primary)), 
+    var(--card-color, var(--interactive-primary-hover))
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  transition: all var(--transition-bounce);
+  box-shadow: 
+    0 8px 25px var(--card-bg-color, rgba(211, 47, 47, 0.3)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.category-card:hover .icon-background {
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: 
+    0 12px 40px var(--card-bg-color, rgba(211, 47, 47, 0.4)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.category-card:hover .icon-background::before {
+  transform: translateX(100%);
+}
+
+/* Icon Glow Effect */
+.icon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, 
+    var(--card-bg-color, rgba(211, 47, 47, 0.2)) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: 1;
+}
+
+.category-card:hover .icon-glow {
+  opacity: 1;
+}
+
+/* Category Name - Enhanced Typography */
 .category-name {
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
-  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-size: 1rem;
   font-weight: 600;
-  color: #e0e0e0;
   text-align: center;
-  text-transform: uppercase;
   line-height: 1.4;
-  padding: 0 10px;
+  transition: all var(--transition-normal);
+  position: relative;
+  z-index: 2;
+  letter-spacing: 0.025em;
 }
 
-/* ✅ FLECHAS REUBICADAS Y REDISEÑADAS */
+.category-card:hover .category-name {
+  color: var(--card-color, var(--interactive-primary));
+  transform: translateY(-2px);
+}
+
+/* Hover Effect Overlay */
+.category-hover-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    transparent,
+    var(--card-bg-color, rgba(211, 47, 47, 0.05)),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: 1;
+}
+
+.category-card:hover .category-hover-effect {
+  opacity: 1;
+}
+
+/* Custom Navigation Arrows - Premium Design */
 .custom-arrow {
   position: absolute;
-  top: 55%; /* Alineadas con el centro de las tarjetas */
+  top: 50%;
   transform: translateY(-50%);
-  width: 45px;
-  height: 45px;
-  background-color: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 50%;
-  display: flex !important; /* Sobreescribir slick */
-  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  display: flex;
   align-items: center;
-  color: white;
-  font-size: 1rem;
+  justify-content: center;
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.2s ease;
-  z-index: 20;
+  transition: all var(--transition-bounce);
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-lg);
 }
 
 .custom-arrow:hover {
-  background-color: var(--rojo-principal);
-  border-color: var(--rojo-principal);
+  background: var(--interactive-primary);
+  border-color: var(--interactive-primary);
+  color: white;
   transform: translateY(-50%) scale(1.1);
-}
-
-.prev-arrow {
-  left: calc(50% - 620px); /* Cálculo para posicionar fuera del contenido */
+  box-shadow: var(--shadow-colored);
 }
 
 .next-arrow {
-  right: calc(50% - 620px); /* Cálculo para posicionar fuera del contenido */
+  right: -25px;
 }
 
-/* Ocultar flechas por defecto hasta que haya suficiente espacio */
-.custom-arrow {
-  display: none !important;
+.prev-arrow {
+  left: -25px;
 }
-@media (min-width: 1320px) {
-  .custom-arrow {
-    display: flex !important;
+
+/* Slider Dots - Enhanced */
+.slick-dots {
+  bottom: -3rem !important;
+  text-align: center;
+}
+
+.slick-dots li {
+  margin: 0 0.25rem;
+}
+
+.slick-dots li button:before {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.5;
+  transition: all var(--transition-normal);
+}
+
+.slick-dots li.slick-active button:before,
+.slick-dots li:hover button:before {
+  color: var(--interactive-primary);
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Section Footer - Call to Action */
+.section-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-secondary);
+}
+
+.view-all-categories {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--interactive-primary);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--interactive-primary);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-bounce);
+  background: transparent;
+}
+
+.view-all-categories:hover {
+  background: var(--interactive-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-colored);
+}
+
+.view-all-categories svg {
+  transition: transform var(--transition-normal);
+}
+
+.view-all-categories:hover svg {
+  transform: translateX(4px);
+}
+
+/* Loading Skeleton */
+.loading-categories {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.category-skeleton {
+  width: 200px;
+  height: 180px;
+  background: linear-gradient(90deg, 
+    var(--bg-secondary) 25%, 
+    var(--bg-tertiary) 50%, 
+    var(--bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--radius-xl);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Responsive Design - Ultra Professional */
+@media (max-width: 1400px) {
+  .slider-wrapper {
+    padding: 0 4rem;
+  }
+  
+  .next-arrow { right: 0; }
+  .prev-arrow { left: 0; }
+}
+
+@media (max-width: 1200px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .category-card {
+    min-height: 160px;
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .icon-background {
+    width: 70px;
+    height: 70px;
+    font-size: 1.75rem;
   }
 }
 
-/* ✅ AJUSTES FINALES DE RESPONSIVE */
+@media (max-width: 992px) {
+  .category-slider-section {
+    padding: 3rem 0 2rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .slider-wrapper {
+    padding: 0 2rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .category-slider-section {
+    padding: 2.5rem 0;
+  }
+  
+  .section-header {
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  .slider-wrapper {
+    padding: 0 1rem;
+  }
+  
   .category-card {
-    height: 170px;
+    min-height: 140px;
+    padding: 1.25rem 0.5rem;
+  }
+  
+  .icon-background {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  .category-name {
+    font-size: 0.9rem;
+  }
+  
+  .loading-categories {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .category-skeleton {
+    width: 150px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .category-card {
+    min-height: 120px;
+    padding: 1rem 0.5rem;
+  }
+  
+  .icon-background {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+  
+  .category-name {
+    font-size: 0.85rem;
+  }
+  
+  .view-all-categories {
+    font-size: 1rem;
+    padding: 0.625rem 1.25rem;
+  }
+}
+
+/* Dark theme specific enhancements */
+[data-theme="dark"] .category-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .icon-background {
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Light theme specific enhancements */
+[data-theme="light"] .category-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .category-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.1),
+    0 0 30px var(--card-bg-color, rgba(211, 47, 47, 0.1));
+}
+
+/* Accessibility and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .category-card,
+  .icon-background,
+  .custom-arrow,
+  .view-all-categories {
+    transition: none;
+    animation: none;
+  }
+  
+  .category-card:hover {
+    transform: none;
+  }
+  
+  .category-skeleton {
+    animation: none;
   }
 }
