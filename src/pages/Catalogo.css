@@ -1,101 +1,289 @@
+/* Catalogo.css - Enhanced with Perfect Alignment and Symmetry */
+
+/* =============================================================================
+   MAIN CONTAINER - Centered and Aligned
+============================================================================= */
 .catalogo-container {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem;
+  background: var(--bg-primary);
+  min-height: calc(100vh - 80px);
 }
 
-/* 👇🏼 CORRECCIÓN AQUÍ 👇🏼 */
+/* =============================================================================
+   HEADER SECTION - Perfect Center Alignment
+============================================================================= */
 .catalogo-header {
-  /* Se eliminó 'display: flex' para que los elementos se apilen verticalmente */
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
 }
+
 .catalogo-header h1 {
-  margin-bottom: 1rem; /* Espacio entre el título y el botón de abajo */
-}
-/* ----- FIN DE LA CORRECCIÓN ----- */
-
-.catalogo-body {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.catalogo-body.sidebar-visible {
-  grid-template-columns: 250px 1fr;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.category-sidebar-wrapper {
-  width: 250px;
-  position: relative;
+.catalogo-header h1::before,
+.catalogo-header h1::after {
+  content: '';
+  width: 60px;
+  height: 2px;
+  background: var(--interactive-primary);
+  opacity: 0.6;
 }
 
-.product-grid-container {
-  min-width: 0;
-}
-
+/* =============================================================================
+   TOGGLE BUTTON - Professional Styling
+============================================================================= */
 .toggle-categories {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background-color: #cc0000;
+  justify-content: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, var(--interactive-primary), #b71c1c);
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-lg);
+  padding: 1rem 2rem;
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--button-shadow);
+  min-width: 200px;
 }
 
 .toggle-categories:hover {
-  background-color: #a60000;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, #b71c1c, var(--interactive-primary));
+}
+
+.toggle-categories:active {
+  transform: translateY(-1px);
 }
 
 .toggle-categories svg {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  transition: transform var(--transition-normal);
 }
 
+.toggle-categories:hover svg {
+  transform: scale(1.1);
+}
+
+/* =============================================================================
+   BODY LAYOUT - Perfect Grid System
+============================================================================= */
+.catalogo-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+  justify-items: center;
+  width: 100%;
+}
+
+.catalogo-body.sidebar-visible {
+  grid-template-columns: 300px 1fr;
+  justify-items: stretch;
+}
+
+/* =============================================================================
+   SIDEBAR WRAPPER - Enhanced Positioning
+============================================================================= */
+.category-sidebar-wrapper {
+  width: 100%;
+  max-width: 300px;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-secondary);
+}
+
+/* =============================================================================
+   PRODUCT GRID CONTAINER - Centered Layout
+============================================================================= */
+.product-grid-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =============================================================================
+   CATEGORY SELECTED INDICATOR - Professional Badge
+============================================================================= */
 .categoria-seleccionada {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   font-size: 1rem;
-  margin-bottom: 1rem;
-  color: white;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  background-color: #1c1c1c;
-  border-radius: 8px;
-  display: inline-block;
+  font-weight: 600;
+  color: var(--text-inverse);
+  background: linear-gradient(135deg, var(--interactive-primary), #FF6B35);
+  border-radius: var(--radius-full);
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--button-shadow);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-@media (max-width: 768px) {
-  .catalogo-header {
-    display: flex; /* En móvil sí es útil para alinear */
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
+/* =============================================================================
+   LOAD MORE CONTAINER - Perfect Center
+============================================================================= */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
+  width: 100%;
+}
 
-  .catalogo-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+/* =============================================================================
+   RUBROS FILTER INTEGRATION - Seamless Design
+============================================================================= */
+.rubros-filter-wrapper {
+  width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN - Mobile Perfect Alignment
+============================================================================= */
+@media (max-width: 1200px) {
+  .catalogo-container {
+    max-width: 1200px;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .catalogo-body.sidebar-visible {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
   
   .category-sidebar-wrapper {
-    width: 100%;
+    position: relative;
+    top: 0;
+    max-width: 100%;
+    order: -1;
   }
+}
 
+@media (max-width: 768px) {
+  .catalogo-container {
+    padding: 1rem;
+  }
+  
+  .catalogo-header {
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+  }
+  
+  .catalogo-header h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .catalogo-header h1::before,
+  .catalogo-header h1::after {
+    width: 40px;
+  }
+  
+  .toggle-categories {
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem 1.5rem;
+  }
+  
+  .catalogo-body {
+    gap: 2rem;
+  }
+  
+  .category-sidebar-wrapper {
+    padding: 1rem;
+  }
+  
   .catalogo-body:not(.sidebar-visible) .category-sidebar-wrapper {
     display: none;
   }
 }
 
-.load-more-container {
-  display: flex;
-  justify-content: center;
-  padding: 2rem 0;
+@media (max-width: 480px) {
+  .catalogo-container {
+    padding: 0.75rem;
+  }
+  
+  .catalogo-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .toggle-categories {
+    font-size: 0.875rem;
+    padding: 0.875rem 1.25rem;
+  }
+  
+  .categoria-seleccionada {
+    font-size: 0.875rem;
+    padding: 0.6rem 1.25rem;
+  }
+}
+
+/* =============================================================================
+   ENHANCED VISUAL ELEMENTS
+============================================================================= */
+.catalogo-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+}
+
+/* Industrial Pattern Overlay */
+.catalogo-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(211, 47, 47, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(25, 118, 210, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .load-more-btn {
