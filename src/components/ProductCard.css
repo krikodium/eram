@@ -235,7 +235,34 @@
   transform: scaleX(1);
 }
 
-/* Mobile optimizations */
+/* Provider badge styling */
+.provider-badge {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-hover, #1565C0));
+  color: var(--text-inverse);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+  animation: providerBadgePulse 2s infinite;
+}
+
+@keyframes providerBadgePulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.5);
+  }
+}
+
+/* Enhanced mobile optimizations */
 @media (max-width: 768px) {
   .card-actions {
     position: static;
@@ -261,6 +288,11 @@
   
   .card-price {
     font-size: 1.3rem;
+  }
+  
+  .provider-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
   }
 }
 
