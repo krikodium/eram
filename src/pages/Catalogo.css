@@ -1,6 +1,15 @@
 /* Catalogo.css - Enhanced with Perfect Alignment and Symmetry */
 
 /* =============================================================================
+   HORIZONTAL RUBROS FILTER WRAPPER
+============================================================================= */
+.rubros-filter-horizontal-wrapper {
+  width: 100%;
+  margin-bottom: 2rem;
+  background: var(--bg-primary);
+}
+
+/* =============================================================================
    MAIN CONTAINER - Centered and Aligned
 ============================================================================= */
 .catalogo-container {
