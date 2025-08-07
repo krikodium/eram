@@ -1,16 +1,16 @@
-// src/features/rubros/components/RubrosFilter.jsx
+// src/features/rubros/components/RubrosFilter.jsx - Horizontal Top-Bar Selector
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { rubrosService } from '../../../services/api';
 import LoadingSpinner from '../../../shared/components/LoadingSpinner';
-import { FaIndustry, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaIndustry, FaFilter, FaTimes, FaChevronDown } from 'react-icons/fa';
 import './RubrosFilter.css';
 
 const RubrosFilter = ({ onRubroSelect, className = '' }) => {
   const [rubros, setRubros] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   
   const activeRubroId = searchParams.get('rubro_id');
@@ -58,28 +58,32 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
     onRubroSelect && onRubroSelect(null);
   };
 
+  const toggleFilters = () => {
+    setIsFiltersOpen(!isFiltersOpen);
+  };
+
   if (loading) {
     return (
-      <div className={`rubros-filter ${className}`}>
-        <div className="rubros-header">
-          <h3>Rubros</h3>
+      <div className={`rubros-filter horizontal ${className}`}>
+        <div className="rubros-header-horizontal">
+          <div className="filters-toggle disabled">
+            <FaFilter />
+            <span>Cargando filtros...</span>
+            <LoadingSpinner size="small" />
+          </div>
         </div>
-        <LoadingSpinner size="small" message="Cargando rubros..." />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className={`rubros-filter ${className}`}>
-        <div className="rubros-header">
-          <h3>Rubros</h3>
-        </div>
-        <div className="rubros-error">
-          <p>{error}</p>
-          <button onClick={loadRubros} className="retry-btn">
-            Reintentar
-          </button>
+      <div className={`rubros-filter horizontal ${className}`}>
+        <div className="rubros-header-horizontal">
+          <div className="filters-toggle error" onClick={loadRubros}>
+            <FaIndustry />
+            <span>Error - Reintentar</span>
+          </div>
         </div>
       </div>
     );
