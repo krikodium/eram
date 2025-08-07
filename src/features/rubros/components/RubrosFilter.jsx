@@ -90,62 +90,60 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
   }
 
   return (
-    <div className={`rubros-filter ${className}`}>
-      <div className="rubros-header" onClick={() => setIsExpanded(!isExpanded)}>
-        <h3>
-          <FaIndustry />
-          Rubros / Líneas de Productos
-        </h3>
-        <button className="expand-toggle">
-          {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+    <div className={`rubros-filter horizontal ${className}`}>
+      {/* Filters Toggle Button */}
+      <div className="rubros-header-horizontal">
+        <button 
+          className="filters-toggle"
+          onClick={toggleFilters}
+          aria-expanded={isFiltersOpen}
+        >
+          <FaFilter />
+          <span>Filtros</span>
+          <FaChevronDown className={`toggle-icon ${isFiltersOpen ? 'rotated' : ''}`} />
         </button>
+        
+        {activeRubroId && (
+          <div className="active-filter-indicator">
+            <span>Filtrando por rubro</span>
+            <button onClick={handleViewAll} className="clear-filter">
+              <FaTimes />
+              Limpiar
+            </button>
+          </div>
+        )}
       </div>
 
-      {isExpanded && (
-        <div className="rubros-content">
-          <div className="rubros-list">
-            {/* View All Option */}
+      {/* Horizontal Rubros Bar */}
+      <div className={`rubros-horizontal-container ${isFiltersOpen ? 'expanded' : ''}`}>
+        <div className="rubros-scroll-area">
+          <div className="rubros-tabs">
+            {/* View All Tab */}
             <button
+              className={`rubro-tab ${!activeRubroId ? 'active' : ''}`}
               onClick={handleViewAll}
-              className={`rubro-item ${!activeRubroId ? 'active' : ''}`}
             >
-              <div className="rubro-icon all-rubros">
-                <FaIndustry />
-              </div>
-              <div className="rubro-info">
-                <h4>Ver Todos los Rubros</h4>
-                <p>Mostrar todos los productos</p>
-              </div>
+              <FaIndustry />
+              <span>Todos los Productos</span>
             </button>
 
-            {/* Individual Rubros */}
+            {/* Individual Rubro Tabs */}
             {rubros.map((rubro) => (
               <button
                 key={rubro.id}
+                className={`rubro-tab ${activeRubroId === String(rubro.id) ? 'active' : ''}`}
                 onClick={() => handleRubroClick(rubro)}
-                className={`rubro-item ${activeRubroId === String(rubro.id) ? 'active' : ''}`}
               >
-                <div 
-                  className="rubro-icon" 
-                  style={{ backgroundColor: rubro.color }}
-                >
-                  <i className={`fas fa-${rubro.icon}`} />
+                <FaIndustry />
+                <div className="rubro-tab-content">
+                  <span className="rubro-name">{rubro.nombre}</span>
+                  <span className="rubro-count">({rubro.cantidad_productos || 0})</span>
                 </div>
-                <div className="rubro-info">
-                  <h4>{rubro.nombre}</h4>
-                  <p>{rubro.descripcion}</p>
-                  <span className="categories-count">
-                    {rubro.categorias.length} categorías
-                  </span>
-                </div>
-                {activeRubroId === String(rubro.id) && (
-                  <div className="active-indicator">✓</div>
-                )}
               </button>
             ))}
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
