@@ -19,8 +19,23 @@ export const ThemeProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    // Apply theme to document root
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    // Apply theme class to document root
+    const root = document.documentElement;
+    
+    // Remove existing theme classes
+    root.classList.remove('light-theme', 'dark-theme');
+    
+    // Add current theme class
+    if (isDark) {
+      root.classList.add('dark-theme');
+    } else {
+      root.classList.add('light-theme');
+    }
+    
+    // Also set data attribute for compatibility
+    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    
+    // Save to localStorage
     localStorage.setItem('eram-theme', isDark ? 'dark' : 'light');
   }, [isDark]);
 
