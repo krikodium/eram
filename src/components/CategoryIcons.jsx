@@ -1,4 +1,4 @@
-// src/components/CategoryIcons.jsx
+// src/components/CategoryIcons.jsx - Ultra Professional Category Carousel
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Slider from 'react-slick';
@@ -7,25 +7,40 @@ import 'slick-carousel/slick/slick-theme.css';
 import './CategoryIcons.css';
 import { Link } from 'react-router-dom';
 import {
-  FaToolbox,
-  FaHelmetSafety,
+  FaShieldAlt,
+  FaHardHat,
   FaBriefcaseMedical,
-  FaTent,
-  FaClipboardCheck,
-  FaShieldHalved,
+  FaTools,
+  FaExclamationTriangle,
+  FaEye,
+  FaHeartbeat,
+  FaFire,
+  FaIndustry,
+  FaTruck,
+  FaHandshake,
+  FaCertificate,
   FaChevronLeft,
   FaChevronRight
-} from "react-icons/fa6";
+} from "react-icons/fa";
 
-const iconMap = {
-  "Baldes de Incendio": <FaShieldHalved />,
-  "Botas Industriales": <FaHelmetSafety />,
-  "Botiquines Primeros Auxilios": <FaBriefcaseMedical />,
-  "Camillas - Inmovilizador - Férulas": <FaToolbox />,
-  "Carpa Para piso": <FaTent />,
-  "Carteleria": <FaClipboardCheck />
+const enhancedIconMap = {
+  "Baldes de Incendio": { icon: <FaFire />, color: "#FF6B35", bgColor: "rgba(255, 107, 53, 0.1)" },
+  "Botas Industriales": { icon: <FaIndustry />, color: "#2E7D32", bgColor: "rgba(46, 125, 50, 0.1)" },
+  "Botiquines Primeros Auxilios": { icon: <FaBriefcaseMedical />, color: "#D32F2F", bgColor: "rgba(211, 47, 47, 0.1)" },
+  "Camillas - Inmovilizador - Férulas": { icon: <FaHeartbeat />, color: "#1976D2", bgColor: "rgba(25, 118, 210, 0.1)" },
+  "Carpa Para piso": { icon: <FaShieldAlt />, color: "#7B1FA2", bgColor: "rgba(123, 31, 162, 0.1)" },
+  "Carteleria": { icon: <FaExclamationTriangle />, color: "#FF9800", bgColor: "rgba(255, 152, 0, 0.1)" },
+  "Cascos": { icon: <FaHardHat />, color: "#F57C00", bgColor: "rgba(245, 124, 0, 0.1)" },
+  "Equipos": { icon: <FaTools />, color: "#00796B", bgColor: "rgba(0, 121, 107, 0.1)" },
+  "Protección Visual": { icon: <FaEye />, color: "#3F51B5", bgColor: "rgba(63, 81, 181, 0.1)" },
+  "Certificaciones": { icon: <FaCertificate />, color: "#E91E63", bgColor: "rgba(233, 30, 99, 0.1)" }
 };
-const DefaultIcon = <FaToolbox />;
+
+const DefaultIcon = { 
+  icon: <FaShieldAlt />, 
+  color: "#D32F2F", 
+  bgColor: "rgba(211, 47, 47, 0.1)" 
+};
 
 function NextArrow({ onClick }) {
   return (
@@ -45,56 +60,133 @@ function PrevArrow({ onClick }) {
 
 const CategoryIcons = () => {
   const [categorias, setCategorias] = useState([]);
+  const [loading, setLoading] = useState(true);
   const api = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(`${api}/api/categorias`);
         const data = Array.isArray(response.data) ? response.data : [];
         setCategorias(data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchCategorias();
   }, [api]);
 
   const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
+    dots: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 6,
+    slidesToScroll: 2,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 1200, settings: { slidesToShow: 4 } },
-      { breakpoint: 992, settings: { slidesToShow: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 576, settings: { slidesToShow: 2, arrows: false } }
+      { 
+        breakpoint: 1400, 
+        settings: { 
+          slidesToShow: 5,
+          slidesToScroll: 2
+        } 
+      },
+      { 
+        breakpoint: 1200, 
+        settings: { 
+          slidesToShow: 4,
+          slidesToScroll: 2
+        } 
+      },
+      { 
+        breakpoint: 992, 
+        settings: { 
+          slidesToShow: 3,
+          slidesToScroll: 1
+        } 
+      },
+      { 
+        breakpoint: 768, 
+        settings: { 
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false
+        } 
+      },
+      { 
+        breakpoint: 576, 
+        settings: { 
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false
+        } 
+      }
     ]
   };
+
+  if (loading) {
+    return (
+      <section className="category-slider-section">
+        <div className="section-header">
+          <h2 className="section-title">Nuestras Categorías</h2>
+          <div className="loading-categories">
+            {[...Array(6)].map((_, index) => (
+              <div key={index} className="category-skeleton" />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="category-slider-section">
       <div className="section-header">
         <h2 className="section-title">Nuestras Categorías</h2>
-        <p className="section-subtitle">Explorá nuestras líneas de protección profesional</p>
+        <p className="section-subtitle">Explorá nuestras líneas de protección industrial profesional</p>
       </div>
+      
       <div className="slider-wrapper">
         <Slider {...settings}>
-          {categorias.map((cat) => (
-            <div key={cat.id} className="category-slide">
-              <Link to={`/catalogo?categoria_id=${cat.id}`} className="category-card">
-                <div className="category-icon-wrapper">
-                  {iconMap[cat.nombre] || DefaultIcon}
-                </div>
-                <span className="category-name">{cat.nombre}</span>
-              </Link>
-            </div>
-          ))}
+          {categorias.map((cat) => {
+            const iconData = enhancedIconMap[cat.nombre] || DefaultIcon;
+            return (
+              <div key={cat.id} className="category-slide">
+                <Link 
+                  to={`/catalogo?categoria_id=${cat.id}`} 
+                  className="category-card"
+                  style={{
+                    '--card-color': iconData.color,
+                    '--card-bg-color': iconData.bgColor
+                  }}
+                >
+                  <div className="category-icon-wrapper">
+                    <div className="icon-background">
+                      {iconData.icon}
+                    </div>
+                    <div className="icon-glow"></div>
+                  </div>
+                  <span className="category-name">{cat.nombre}</span>
+                  <div className="category-hover-effect"></div>
+                </Link>
+              </div>
+            );
+          })}
         </Slider>
+      </div>
+      
+      <div className="section-footer">
+        <Link to="/catalogo" className="view-all-categories">
+          Ver Todas las Categorías
+          <FaChevronRight />
+        </Link>
       </div>
     </section>
   );
