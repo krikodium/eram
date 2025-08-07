@@ -287,5 +287,3 @@ function FindUs() {
 }
 
 export default FindUs;
-
-export default FindUs;
