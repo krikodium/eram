@@ -1,4 +1,4 @@
-// src/components/CategoryIcons.jsx - Ultra Professional Category Carousel
+// src/components/CategoryIcons.jsx - Enhanced Professional Category Carousel
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Slider from 'react-slick';
@@ -44,7 +44,7 @@ const DefaultIcon = {
 
 function NextArrow({ onClick }) {
   return (
-    <div className="custom-arrow next-arrow" onClick={onClick}>
+    <div className="category-arrow category-arrow-next" onClick={onClick}>
       <FaChevronRight />
     </div>
   );
@@ -52,7 +52,7 @@ function NextArrow({ onClick }) {
 
 function PrevArrow({ onClick }) {
   return (
-    <div className="custom-arrow prev-arrow" onClick={onClick}>
+    <div className="category-arrow category-arrow-prev" onClick={onClick}>
       <FaChevronLeft />
     </div>
   );
@@ -78,6 +78,143 @@ const CategoryIcons = () => {
     };
     fetchCategorias();
   }, [api]);
+
+  const sliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 968,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          centerMode: true,
+          centerPadding: '20%',
+        }
+      }
+    ]
+  };
+
+  if (loading) {
+    return (
+      <section className="category-icons-section">
+        <div className="category-container">
+          <div className="category-header">
+            <h2 className="category-title">
+              Nuestras
+              <span className="title-highlight">Categorías</span>
+            </h2>
+          </div>
+          <div className="category-loading">
+            <div className="loading-spinner"></div>
+            <p>Cargando categorías...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="category-icons-section">
+      <div className="category-container">
+        <div className="category-header">
+          <h2 className="category-title">
+            Nuestras
+            <span className="title-highlight">Categorías</span>
+          </h2>
+          <p className="category-description">
+            Explora nuestra amplia gama de productos de seguridad industrial
+          </p>
+        </div>
+
+        <div className="category-slider-wrapper">
+          <Slider {...sliderSettings} className="category-slider">
+            {categorias.map((categoria) => {
+              const iconConfig = enhancedIconMap[categoria.nombre] || DefaultIcon;
+              
+              return (
+                <div key={categoria.id} className="category-slide">
+                  <Link
+                    to={`/catalogo?categoria_id=${categoria.id}`}
+                    className="category-card"
+                    style={{
+                      '--category-color': iconConfig.color,
+                      '--category-bg': iconConfig.bgColor
+                    }}
+                  >
+                    <div className="category-card-inner">
+                      <div className="category-icon-wrapper">
+                        <div className="category-icon">
+                          {iconConfig.icon}
+                        </div>
+                        <div className="category-icon-glow"></div>
+                      </div>
+                      
+                      <div className="category-content">
+                        <h3 className="category-name">{categoria.nombre}</h3>
+                        <div className="category-count">
+                          <span>{categoria.cantidad_productos || 0}</span>
+                          <span>productos</span>
+                        </div>
+                      </div>
+                      
+                      <div className="category-hover-overlay">
+                        <div className="category-cta">
+                          <span>Ver Productos</span>
+                          <FaChevronRight />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          </Slider>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CategoryIcons;
 
   const settings = {
     dots: true,
