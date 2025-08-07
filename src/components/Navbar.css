@@ -1,15 +1,20 @@
-/* src/components/Navbar.css */
+/* src/components/Navbar.css - Updated with theme system and new elements */
 .navbar {
-  background-color: var(--negro-fondo);
+  background-color: var(--bg-primary);
   padding: 1rem 0;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  margin-bottom: 10%;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-lg);
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.navbar.scrolled {
+  background-color: var(--bg-elevated);
+  box-shadow: var(--shadow-xl);
 }
 
 .navbar-container {
@@ -24,44 +29,161 @@
 .navbar-logo {
   font-size: 1.4rem;
   font-weight: 800;
-  color: var(--rojo-principal);
+  color: var(--interactive-primary);
   text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+.navbar-logo:hover {
+  color: var(--interactive-primary-hover);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .nav-link {
-  color: var(--blanco-puro);
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: color var(--transition-normal);
   padding: 0.5rem 0;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .nav-link:hover {
-  color: var(--rojo-principal);
+  color: var(--interactive-primary);
 }
 
-.contact-button {
-  background-color: var(--rojo-principal);
-  color: var(--blanco-puro);
-  padding: 0.6rem 1.2rem;
-  border-radius: 20px;
+.nav-link.active {
+  color: var(--interactive-primary);
+}
+
+/* Quote Cart Link */
+.quote-link {
+  position: relative;
+}
+
+.quote-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--interactive-primary);
+  color: white;
+  font-size: 0.75rem;
   font-weight: 600;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.quote-text {
+  display: none;
+}
+
+/* Auth Section */
+.auth-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-greeting {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid var(--border-primary);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logout-btn:hover {
+  background-color: var(--interactive-primary);
+  color: white;
+  border-color: var(--interactive-primary);
+}
+
+.auth-button {
+  background-color: var(--interactive-primary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-xl);
+  font-weight: 600;
+  transition: all var(--transition-normal);
   text-align: center;
   text-decoration: none;
 }
 
-.contact-button:hover {
-  background-color: #b71c1c;
-  color: var(--blanco-puro);
-  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+.auth-button:hover {
+  background-color: var(--interactive-primary-hover);
+  color: white;
+  box-shadow: var(--shadow-colored);
+}
+
+/* Theme Toggle Wrapper */
+.theme-toggle-wrapper {
+  margin-left: 1rem;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger-menu .bar {
+  height: 3px;
+  width: 25px;
+  background-color: var(--text-primary);
+  margin: 4px 0;
+  transition: var(--transition-slow);
+}
+
+.hamburger-menu.open .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
 }
 
 @media (max-width: 768px) {
