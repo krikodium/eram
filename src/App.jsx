@@ -1,4 +1,4 @@
-// src/App.jsx - Updated with Theme System and Lazy Loading
+// src/App.jsx - Updated with Professional Footer
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
