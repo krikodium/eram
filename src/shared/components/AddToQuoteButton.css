@@ -1,125 +1,148 @@
-/* src/shared/components/AddToQuoteButton.css */
+/* src/shared/components/AddToQuoteButton.css - Ultra-Professional Design */
 .add-to-quote-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   font-weight: 600;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all var(--transition-bounce);
   text-decoration: none;
   white-space: nowrap;
   position: relative;
   overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  letter-spacing: 0.025em;
+  backdrop-filter: blur(10px);
+  border: 2px solid transparent;
 }
 
-/* Sizes */
+/* Enhanced sizes */
 .add-to-quote-btn.small {
-  font-size: 0.75rem;
-  padding: 0.4rem 0.8rem;
-  gap: 0.3rem;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  gap: 0.4rem;
+  border-radius: var(--radius-md);
 }
 
 .add-to-quote-btn.medium {
-  font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  gap: 0.4rem;
-}
-
-.add-to-quote-btn.large {
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding: 0.75rem 1.5rem;
   gap: 0.5rem;
 }
 
-/* Default state */
+.add-to-quote-btn.large {
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  gap: 0.6rem;
+}
+
+/* Enhanced default state with gradient */
 .add-to-quote-btn {
-  background-color: var(--interactive-primary);
-  color: white;
-  border: 2px solid var(--interactive-primary);
+  background: linear-gradient(135deg, var(--interactive-primary) 0%, var(--interactive-primary-hover) 100%);
+  color: var(--text-inverse);
+  box-shadow: var(--button-shadow), 0 0 0 0 var(--interactive-primary);
+  border-color: var(--interactive-primary);
 }
 
 .add-to-quote-btn:hover {
-  background-color: var(--interactive-primary-hover);
+  background: linear-gradient(135deg, var(--interactive-primary-hover) 0%, var(--interactive-primary-active) 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 8px 25px rgba(211, 47, 47, 0.4),
+    0 0 0 4px rgba(211, 47, 47, 0.1);
   border-color: var(--interactive-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-colored);
 }
 
-/* In quote state */
+.add-to-quote-btn:active {
+  transform: translateY(0) scale(0.98);
+  transition: all var(--transition-fast);
+}
+
+/* Enhanced in-quote state with success gradient */
 .add-to-quote-btn.in-quote {
-  background-color: var(--success);
+  background: linear-gradient(135deg, var(--success) 0%, var(--success-light) 100%);
   border-color: var(--success);
-  color: white;
+  color: var(--text-inverse);
 }
 
 .add-to-quote-btn.in-quote:hover {
-  background-color: #388e3c;
-  border-color: #388e3c;
+  background: linear-gradient(135deg, #388E3C 0%, #4CAF50 100%);
+  box-shadow: 
+    0 8px 25px rgba(76, 175, 80, 0.4),
+    0 0 0 4px rgba(76, 175, 80, 0.1);
+  border-color: #388E3C;
 }
 
-/* Added state (temporary success animation) */
+/* Enhanced added state with animated success */
 .add-to-quote-btn.added {
-  background-color: var(--success);
+  background: linear-gradient(135deg, var(--success) 0%, var(--success-light) 100%);
   border-color: var(--success);
   transform: scale(1.05);
-  animation: addedPulse 0.6s ease-out;
+  animation: addedSuccess 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .add-to-quote-btn:disabled {
   cursor: not-allowed;
-  opacity: 0.7;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+  background: var(--interactive-secondary);
+  border-color: var(--border-secondary);
 }
 
-/* Icon animations */
+/* Enhanced icon animations with micro-interactions */
 .btn-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--transition-fast);
+  transition: all var(--transition-bounce);
+  position: relative;
 }
 
 .add-to-quote-btn:hover .btn-icon {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(5deg);
+}
+
+.add-to-quote-btn.in-quote:hover .btn-icon {
+  transform: scale(1.1) rotate(-5deg);
 }
 
 .add-to-quote-btn.added .btn-icon {
-  animation: checkmark 0.6s ease-out;
+  animation: iconSuccess 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Text */
+/* Enhanced text with smooth transitions */
 .btn-text {
   font-weight: inherit;
+  position: relative;
+  transition: all var(--transition-normal);
 }
 
-/* Animations */
-@keyframes addedPulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
+.add-to-quote-btn:hover .btn-text {
+  letter-spacing: 0.05em;
 }
 
-@keyframes checkmark {
-  0% {
-    transform: scale(0) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.2) rotate(180deg);
-  }
-  100% {
-    transform: scale(1) rotate(360deg);
-  }
+/* Premium animations */
+@keyframes addedSuccess {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1) rotate(2deg); }
+  50% { transform: scale(1.15) rotate(-1deg); }
+  75% { transform: scale(1.08) rotate(1deg); }
+  100% { transform: scale(1.05); }
 }
 
-/* Ripple effect on click */
+@keyframes iconSuccess {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.3) rotate(10deg); }
+  50% { transform: scale(1.5) rotate(-5deg); }
+  75% { transform: scale(1.2) rotate(3deg); }
+  100% { transform: scale(1.15) rotate(0deg); }
+}
+
+/* Sophisticated ripple effect */
 .add-to-quote-btn::before {
   content: '';
   position: absolute;
@@ -128,9 +151,10 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
   transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
+  transition: width 0.6s ease, height 0.6s ease;
+  pointer-events: none;
 }
 
 .add-to-quote-btn:active::before {
@@ -138,38 +162,108 @@
   height: 300px;
 }
 
-/* Mobile optimizations */
+/* Shimmer effect on hover */
+.add-to-quote-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+  pointer-events: none;
+}
+
+.add-to-quote-btn:hover::after {
+  transform: translateX(100%);
+}
+
+/* Loading state enhancement */
+.add-to-quote-btn.loading {
+  pointer-events: none;
+  position: relative;
+}
+
+.add-to-quote-btn.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Mobile optimizations with touch feedback */
 @media (max-width: 768px) {
   .add-to-quote-btn.medium {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.85rem;
   }
   
   .add-to-quote-btn.large {
-    padding: 0.75rem 1.25rem;
-    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .add-to-quote-btn:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
   }
 }
 
-/* High contrast mode */
+/* Enhanced focus states for accessibility */
+.add-to-quote-btn:focus-visible {
+  outline: none;
+  box-shadow: 
+    var(--button-shadow),
+    0 0 0 4px rgba(211, 47, 47, 0.3);
+}
+
+/* High contrast mode support */
 @media (prefers-contrast: high) {
   .add-to-quote-btn {
     border-width: 3px;
+    font-weight: 700;
+  }
+  
+  .add-to-quote-btn:hover {
+    border-width: 4px;
   }
 }
 
-/* Reduced motion */
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .add-to-quote-btn,
-  .btn-icon {
+  .btn-icon,
+  .btn-text {
     transition: none;
-  }
-  
-  .add-to-quote-btn.added {
     animation: none;
   }
   
-  .add-to-quote-btn::before {
+  .add-to-quote-btn:hover {
+    transform: none;
+  }
+  
+  .add-to-quote-btn::before,
+  .add-to-quote-btn::after {
     display: none;
   }
 }
