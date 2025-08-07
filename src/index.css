@@ -3,7 +3,10 @@
 /* =============================================================================
    CSS VARIABLES - Enhanced Theme System
 ============================================================================= */
-:root {
+
+/* Dark Theme Variables (Default) */
+:root,
+:root.dark-theme {
   /* Enhanced Color Palette - Dark Theme */
   --color-primary: #D32F2F;
   --color-secondary: #1976D2;
