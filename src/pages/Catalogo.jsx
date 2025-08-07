@@ -142,6 +142,12 @@ const Catalogo = () => {
     setPreview(prev => ({ ...prev, category: null }));
   };
 
+  const handleRubroSelect = (rubro) => {
+    // This is handled by URL params through RubrosFilter component
+    // The useEffect will detect the change and update accordingly
+    console.log('Rubro selected:', rubro);
+  };
+
   const handleLoadMore = () => {
     const nextPage = page + 1;
     fetchProducts(nextPage, 15, true, categoriaId);
@@ -150,7 +156,10 @@ const Catalogo = () => {
   return (
     <div className="catalogo-container">
       <header className="catalogo-header">
-        <h1>{pageTitle}</h1>
+        <h1>
+          {rubroId && <FaIndustry style={{ marginRight: '0.5rem' }} />}
+          {pageTitle}
+        </h1>
         <button className="toggle-categories" onClick={() => setShowSidebar(!showSidebar)}>
           {showSidebar ? <FaTimes /> : <FaFilter />}
           {showSidebar ? ' Ocultar Filtros' : ' Mostrar Filtros'}
@@ -159,13 +168,22 @@ const Catalogo = () => {
       <div className={`catalogo-body ${showSidebar ? 'sidebar-visible' : ''}`}>
         <aside className="category-sidebar-wrapper" ref={sidebarRef} onMouseLeave={handleCategoryMouseLeave}>
           {showSidebar && (
-            <CategorySidebar
-              onLinkClick={() => {
-                if (window.innerWidth <= 768) setShowSidebar(false);
-              }}
-              onCategoryMouseEnter={handleCategoryMouseEnter}
-              // Ya no necesitamos onCategoryMouseLeave en cada link
-            />
+            <>
+              {/* Rubros Filter - New Feature */}
+              <RubrosFilter 
+                onRubroSelect={handleRubroSelect}
+                className="sidebar-rubros"
+              />
+              
+              {/* Existing Category Sidebar */}
+              <CategorySidebar
+                onLinkClick={() => {
+                  if (window.innerWidth <= 768) setShowSidebar(false);
+                }}
+                onCategoryMouseEnter={handleCategoryMouseEnter}
+                // Ya no necesitamos onCategoryMouseLeave en cada link
+              />
+            </>
           )}
         </aside>
         <main className="product-grid-container">
