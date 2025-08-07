@@ -1,4 +1,4 @@
-// src/components/HeroCarousel.jsx - Ultra Professional Hero Carousel
+// src/components/HeroCarousel.jsx - Redesigned Ultra Professional Hero Carousel
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectFade, Navigation } from 'swiper/modules';
@@ -10,7 +10,11 @@ import {
   FaCertificate,
   FaChevronLeft,
   FaChevronRight,
-  FaPlay
+  FaPlay,
+  FaArrowRight,
+  FaAward,
+  FaUsers,
+  FaFlag
 } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -21,57 +25,60 @@ import './HeroCarousel.css';
 function HeroCarousel() {
   const heroSlides = [
     {
-      id: 'industria-nacional',
-      title: "LÍDERES EN SEGURIDAD INDUSTRIAL",
-      subtitle: "Desde 1974 Protegiendo la",
-      highlight: "INDUSTRIA NACIONAL",
-      description: "Más de 50 años de experiencia garantizando la seguridad de trabajadores argentinos con productos de máxima calidad y tecnología de vanguardia.",
+      id: 'liderazgo-industrial',
+      badge: "Empresa Nacional desde 1974",
+      mainTitle: "LÍDERES EN",
+      highlight: "SEGURIDAD INDUSTRIAL",
+      subtitle: "ARGENTINA",
+      description: "Más de 50 años protegiendo trabajadores argentinos con equipos de máxima calidad y tecnología de vanguardia. Somos la elección de las principales industrias del país.",
       image: "/banner-industria.jpg",
-      primaryCTA: "Explorar Catálogo",
-      secondaryCTA: "Nuestra Historia",
+      primaryCTA: "EXPLORAR CATÁLOGO",
+      secondaryCTA: "CONOCER MÁS",
       primaryLink: "/catalogo",
       secondaryLink: "/quienes-somos",
-      icon: <FaIndustry />,
-      stats: [
-        { number: "50+", label: "Años de Experiencia" },
-        { number: "10K+", label: "Clientes Activos" },
-        { number: "100%", label: "Productos Certificados" }
+      icon: <FaFlag />,
+      metrics: [
+        { value: "50+", label: "AÑOS DE EXPERIENCIA", icon: <FaCertificate /> },
+        { value: "10K+", label: "CLIENTES ACTIVOS", icon: <FaUsers /> },
+        { value: "100%", label: "PRODUCTOS CERTIFICADOS", icon: <FaAward /> }
       ]
     },
     {
       id: 'proteccion-integral',
-      title: "PROTECCIÓN INTEGRAL",
-      subtitle: "Equipamiento Profesional para",
-      highlight: "MÁXIMA SEGURIDAD",
-      description: "Ofrecemos la línea más completa de equipos de protección personal certificados por organismos internacionales para todas las industrias.",
+      badge: "Equipamiento Profesional",
+      mainTitle: "PROTECCIÓN",
+      highlight: "INTEGRAL",
+      subtitle: "MÁXIMA SEGURIDAD",
+      description: "Línea completa de equipos de protección personal certificados por organismos internacionales. Soluciones integrales para todas las industrias y ambientes de trabajo.",
       image: "/proteccion-respiratoria.jpg",
-      primaryCTA: "Ver Productos",
-      secondaryCTA: "Asesoramiento",
-      primaryLink: "/catalogo?rubro_id=1",
+      primaryCTA: "VER PRODUCTOS",
+      secondaryCTA: "ASESORAMIENTO",
+      primaryLink: "/catalogo",
       secondaryLink: "/contacto",
       icon: <FaShieldAlt />,
-      stats: [
-        { number: "500+", label: "Productos Disponibles" },
-        { number: "24h", label: "Envíos Rápidos" },
-        { number: "ISO", label: "Certificaciones" }
+      metrics: [
+        { value: "500+", label: "PRODUCTOS DISPONIBLES", icon: <FaIndustry /> },
+        { value: "24H", label: "ENVÍOS RÁPIDOS", icon: <FaPlay /> },
+        { value: "ISO", label: "CERTIFICACIONES", icon: <FaCertificate /> }
       ]
     },
     {
       id: 'trabajo-altura',
-      title: "TRABAJO EN ALTURA",
-      subtitle: "Especialistas en Sistemas de",
-      highlight: "PROTECCIÓN VERTICAL",
-      description: "Equipos y sistemas integrales para trabajo en altura con la última tecnología en arneses, líneas de vida y sistemas de anclaje.",
+      badge: "Especialistas en Altura",
+      mainTitle: "TRABAJO EN",
+      highlight: "ALTURA",
+      subtitle: "PROTECCIÓN VERTICAL",
+      description: "Sistemas integrales para trabajo en altura con tecnología de vanguardia. Arneses, líneas de vida y sistemas de anclaje que cumplen con las normativas más exigentes.",
       image: "/banner-altura.jpg",
-      primaryCTA: "Sistemas de Altura",
-      secondaryCTA: "Capacitación",
-      primaryLink: "/catalogo?rubro_id=2",
+      primaryCTA: "SISTEMAS ALTURA",
+      secondaryCTA: "CAPACITACIÓN",
+      primaryLink: "/catalogo",
       secondaryLink: "/capacitacion",
       icon: <FaHardHat />,
-      stats: [
-        { number: "15m", label: "Altura Máxima" },
-        { number: "CE", label: "Certificación Europea" },
-        { number: "24/7", label: "Soporte Técnico" }
+      metrics: [
+        { value: "15M", label: "ALTURA MÁXIMA", icon: <FaHardHat /> },
+        { value: "CE", label: "CERTIFICACIÓN EUROPEA", icon: <FaAward /> },
+        { value: "24/7", label: "SOPORTE TÉCNICO", icon: <FaUsers /> }
       ]
     }
   ];
@@ -83,78 +90,95 @@ function HeroCarousel() {
         effect="fade"
         fadeEffect={{ crossFade: true }}
         autoplay={{ 
-          delay: 6000, 
+          delay: 7000, 
           disableOnInteraction: false,
           pauseOnMouseEnter: true 
         }}
         loop={true}
         pagination={{ 
           clickable: true,
-          dynamicBullets: true
+          dynamicBullets: false,
+          bulletClass: 'hero-pagination-bullet',
+          bulletActiveClass: 'hero-pagination-bullet-active'
         }}
         navigation={{
-          nextEl: '.hero-button-next',
-          prevEl: '.hero-button-prev',
+          nextEl: '.hero-nav-next',
+          prevEl: '.hero-nav-prev',
         }}
         className="hero-swiper"
         slidesPerView={1}
-        speed={1000}
+        speed={1200}
       >
-        {heroSlides.map((slide) => (
+        {heroSlides.map((slide, slideIndex) => (
           <SwiperSlide key={slide.id} className="hero-slide">
             <div className="hero-slide-container">
-              {/* Background Image with Overlay */}
+              
+              {/* Background System */}
               <div className="hero-background">
                 <img 
                   src={slide.image} 
-                  alt={slide.title}
+                  alt={slide.mainTitle}
                   className="hero-bg-image"
+                  loading={slideIndex === 0 ? "eager" : "lazy"}
                 />
                 <div className="hero-overlay"></div>
-                <div className="hero-pattern"></div>
+                <div className="hero-gradient"></div>
               </div>
 
-              {/* Content Container */}
+              {/* Main Content */}
               <div className="hero-content">
-                <div className="hero-content-wrapper">
+                <div className="hero-container">
                   
-                  {/* Hero Badge */}
-                  <div className="hero-badge">
-                    <div className="hero-badge-icon">
-                      {slide.icon}
-                    </div>
-                    <span>Desde 1974</span>
-                  </div>
-
-                  {/* Main Content */}
-                  <div className="hero-text-content">
-                    <h2 className="hero-subtitle">{slide.subtitle}</h2>
-                    <h1 className="hero-title">
-                      {slide.title}
-                      <span className="hero-highlight">{slide.highlight}</span>
-                    </h1>
-                    <p className="hero-description">{slide.description}</p>
-                  </div>
-
-                  {/* Call to Action Buttons */}
-                  <div className="hero-actions">
-                    <Link to={slide.primaryLink} className="hero-btn hero-btn-primary">
-                      <FaPlay />
-                      {slide.primaryCTA}
-                    </Link>
-                    <Link to={slide.secondaryLink} className="hero-btn hero-btn-secondary">
-                      {slide.secondaryCTA}
-                    </Link>
-                  </div>
-
-                  {/* Statistics */}
-                  <div className="hero-stats">
-                    {slide.stats.map((stat, index) => (
-                      <div key={index} className="hero-stat-item">
-                        <div className="hero-stat-number">{stat.number}</div>
-                        <div className="hero-stat-label">{stat.label}</div>
+                  {/* Left Content */}
+                  <div className="hero-left-content">
+                    
+                    {/* Badge */}
+                    <div className="hero-badge">
+                      <div className="badge-icon">
+                        {slide.icon}
                       </div>
-                    ))}
+                      <span className="badge-text">{slide.badge}</span>
+                    </div>
+
+                    {/* Main Typography */}
+                    <div className="hero-typography">
+                      <h1 className="hero-main-title">
+                        <span className="title-line-1">{slide.mainTitle}</span>
+                        <span className="title-highlight">{slide.highlight}</span>
+                      </h1>
+                      <h2 className="hero-subtitle">{slide.subtitle}</h2>
+                    </div>
+
+                    {/* Description */}
+                    <p className="hero-description">{slide.description}</p>
+
+                    {/* Call to Actions */}
+                    <div className="hero-actions">
+                      <Link to={slide.primaryLink} className="hero-btn primary">
+                        <span>{slide.primaryCTA}</span>
+                        <FaArrowRight className="btn-icon" />
+                      </Link>
+                      <Link to={slide.secondaryLink} className="hero-btn secondary">
+                        <span>{slide.secondaryCTA}</span>
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Right Metrics */}
+                  <div className="hero-right-content">
+                    <div className="hero-metrics">
+                      {slide.metrics.map((metric, index) => (
+                        <div key={index} className="metric-card" style={{ '--delay': `${index * 0.2}s` }}>
+                          <div className="metric-icon">
+                            {metric.icon}
+                          </div>
+                          <div className="metric-content">
+                            <div className="metric-value">{metric.value}</div>
+                            <div className="metric-label">{metric.label}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -162,19 +186,24 @@ function HeroCarousel() {
           </SwiperSlide>
         ))}
 
-        {/* Custom Navigation Buttons */}
-        <div className="hero-button-prev hero-nav-btn">
-          <FaChevronLeft />
-        </div>
-        <div className="hero-button-next hero-nav-btn">
-          <FaChevronRight />
+        {/* Custom Navigation */}
+        <div className="hero-navigation">
+          <button className="hero-nav-btn hero-nav-prev">
+            <FaChevronLeft />
+          </button>
+          <button className="hero-nav-btn hero-nav-next">
+            <FaChevronRight />
+          </button>
         </div>
       </Swiper>
 
       {/* Scroll Indicator */}
       <div className="hero-scroll-indicator">
-        <div className="scroll-arrow"></div>
-        <span>Explorar</span>
+        <div className="scroll-line"></div>
+        <span className="scroll-text">EXPLORAR</span>
+        <div className="scroll-arrow">
+          <FaChevronLeft className="scroll-icon" />
+        </div>
       </div>
     </section>
   );
