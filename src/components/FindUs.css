@@ -1,75 +1,698 @@
+/* src/components/FindUs.css - Ultra Professional Find Us Section */
 .findus-section {
-  background-color: var(--negro-fondo);
-  color: var(--blanco-texto);
-  padding: 4rem 1.5rem;
-  text-align: center;
+  padding: 6rem 0;
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+  position: relative;
+  overflow: hidden;
+}
+
+.findus-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(211, 47, 47, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(25, 118, 210, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .findus-container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
-.findus-content {
-  margin-bottom: 2.5rem;
+/* Header Section */
+.findus-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(211, 47, 47, 0.1);
+  color: var(--interactive-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(211, 47, 47, 0.2);
 }
 
 .findus-title {
-  font-size: 2rem;
-  margin-bottom: 1.2rem;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.title-highlight {
+  display: block;
+  background: linear-gradient(135deg, var(--interactive-primary), #FF6B35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 0.5rem;
+}
+
+.findus-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Contact Cards */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--bg-elevated);
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--border-secondary);
+  transition: all var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--contact-color);
+  transition: width var(--transition-normal);
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--contact-color);
+  box-shadow: 
+    var(--card-shadow-hover),
+    0 0 30px rgba(var(--contact-color), 0.2);
+}
+
+.contact-card:hover::before {
+  width: 100%;
+  opacity: 0.05;
+}
+
+.contact-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--contact-color);
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  color: var(--blanco-puro);
-  flex-wrap: wrap;
+  color: white;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all var(--transition-bounce);
 }
 
-.findus-icon {
-  color: var(--rojo-principal);
-  font-size: 1.6rem;
+.contact-card:hover .contact-icon {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
 }
 
-.findus-description {
-  color: var(--gris-texto);
-  font-size: 1rem;
-  margin-bottom: 2.2rem;
-  line-height: 1.6;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 0.5rem;
+.contact-info h4 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
 }
 
-.map-container {
-  width: 100%;
-  border-radius: 12px;
+.contact-primary {
+  color: var(--contact-color);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.contact-secondary {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.contact-action {
+  display: inline-flex;
+  align-items: center;
+  color: var(--contact-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--contact-color);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.contact-action:hover {
+  background: var(--contact-color);
+  color: white;
+}
+
+/* Location Section */
+.location-section {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  transform: translateY(20px);
-  opacity: 0;
-  animation: fade-up 0.8s ease forwards;
-  animation-delay: 0.3s;
+  border: 1px solid var(--border-secondary);
+  box-shadow: var(--card-shadow);
+  margin-bottom: 4rem;
 }
 
-.map-container iframe {
-  width: 100%;
-  height: 350px;
+/* Tab Navigation */
+.location-tabs {
+  display: flex;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.tab-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  background: transparent;
   border: none;
-  display: block;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  position: relative;
 }
 
-/* Animaciones */
-.animate-fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fade-up 0.7s ease-out forwards;
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--interactive-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
 }
 
-@keyframes fade-up {
+.tab-button.active {
+  color: var(--interactive-primary);
+  background: var(--bg-elevated);
+}
+
+.tab-button.active::after {
+  transform: scaleX(1);
+}
+
+.tab-button:hover {
+  color: var(--interactive-primary);
+  background: var(--bg-hover);
+}
+
+/* Tab Content */
+.tab-content {
+  padding: 3rem;
+}
+
+.tab-panel {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Ubicación Panel */
+.ubicacion-panel .map-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.map-wrapper {
+  position: relative;
+  height: 400px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-tertiary);
+}
+
+.map-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  z-index: 10;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-secondary);
+  border-top: 4px solid var(--interactive-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.map-wrapper iframe.loaded {
+  opacity: 1;
+}
+
+.map-info {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-secondary);
+}
+
+.map-info h4 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.map-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.map-info li {
+  padding: 0.75rem 0;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-tertiary);
+}
+
+.map-info li:last-child {
+  border-bottom: none;
+}
+
+.directions-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--interactive-primary);
+  color: white;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-bounce);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.directions-btn:hover {
+  background: var(--interactive-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-colored);
+  color: white;
+}
+
+/* Instalaciones Panel */
+.facility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.facility-image {
+  position: relative;
+  aspect-ratio: 16/10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.facility-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.facility-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.facility-overlay h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.facility-info h4 {
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.facility-info p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.facility-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.facility-feature {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-secondary);
+}
+
+.feature-icon {
+  color: var(--interactive-primary);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.feature-text {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Horarios Panel */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.schedule-card {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-secondary);
+}
+
+.schedule-card h4 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-secondary);
+}
+
+.schedule-item.closed {
+  opacity: 0.6;
+}
+
+.day {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.time {
+  color: var(--interactive-primary);
+  font-weight: 700;
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.services-list li {
+  padding: 0.75rem 0;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-tertiary);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.services-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--interactive-primary);
+  font-weight: bold;
+}
+
+.services-list li:last-child {
+  border-bottom: none;
+}
+
+/* Call to Action */
+.findus-cta {
+  background: linear-gradient(135deg, var(--interactive-primary), #FF6B35);
+  color: white;
+  padding: 3rem;
+  border-radius: var(--radius-xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.findus-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><rect width="60" height="60" fill="none"/><circle cx="30" cy="30" r="3" fill="rgba(255,255,255,0.1)"/></svg>');
+  opacity: 0.3;
+}
+
+.findus-cta h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.findus-cta p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-lg);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition-bounce);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.cta-btn.primary {
+  background: white;
+  color: var(--interactive-primary);
+  border: 2px solid white;
+}
+
+.cta-btn.primary:hover {
+  background: transparent;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.cta-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .ubicacion-panel .map-container,
+  .facility-grid,
+  .schedule-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .tab-content {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .findus-section {
+    padding: 4rem 0;
+  }
+  
+  .findus-container {
+    padding: 0 1rem;
+  }
+  
+  .findus-title {
+    font-size: 2.5rem;
+  }
+  
+  .contact-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .contact-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .location-tabs {
+    flex-direction: column;
+  }
+  
+  .tab-button {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .tab-content {
+    padding: 1.5rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .findus-title {
+    font-size: 2rem;
+  }
+  
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  .map-wrapper {
+    height: 300px;
+  }
+  
+  .findus-cta h3 {
+    font-size: 1.6rem;
   }
 }
