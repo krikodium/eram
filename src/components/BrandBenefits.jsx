@@ -1,4 +1,4 @@
-// src/components/BrandBenefits.jsx
+// src/components/BrandBenefits.jsx - Enhanced Feature Cards
 import { FaShippingFast, FaCertificate, FaBoxes, FaHeadset } from 'react-icons/fa';
 import './BrandBenefits.css';
 
@@ -6,36 +6,79 @@ const benefits = [
   {
     icon: <FaShippingFast />,
     title: 'Envíos en 24hs',
-    description: 'Logística ágil y envíos a todo el país.',
+    description: 'Logística ágil y envíos a todo el país con seguimiento completo.',
+    color: '#FF6B35',
+    bgColor: 'rgba(255, 107, 53, 0.1)'
   },
   {
     icon: <FaCertificate />,
     title: 'Certificaciones IRAM',
-    description: 'Productos que cumplen normas de seguridad industrial.',
+    description: 'Productos que cumplen normas de seguridad industrial internacionales.',
+    color: '#2E7D32',
+    bgColor: 'rgba(46, 125, 50, 0.1)'
   },
   {
     icon: <FaBoxes />,
     title: 'Stock Permanente',
-    description: 'Disponibilidad continua de productos esenciales.',
+    description: 'Disponibilidad continua de productos esenciales para tu industria.',
+    color: '#1976D2',
+    bgColor: 'rgba(25, 118, 210, 0.1)'
   },
   {
     icon: <FaHeadset />,
     title: 'Asesoramiento Técnico',
-    description: 'Especialistas que te acompañan en tu compra.',
+    description: 'Especialistas que te acompañan en cada etapa de tu compra.',
+    color: '#7B1FA2',
+    bgColor: 'rgba(123, 31, 162, 0.1)'
   },
 ];
 
 function BrandBenefits() {
   return (
-    <section className="brand-benefits">
+    <section className="brand-benefits-section">
       <div className="benefits-container">
-        {benefits.map((benefit, index) => (
-          <div className="benefit-card" key={index}>
-            <div className="benefit-icon">{benefit.icon}</div>
-            <h4>{benefit.title}</h4>
-            <p>{benefit.description}</p>
-          </div>
-        ))}
+        <div className="benefits-header">
+          <h2 className="benefits-title">
+            ¿Por qué elegir
+            <span className="title-highlight">ERAM?</span>
+          </h2>
+          <p className="benefits-description">
+            Más de 50 años de experiencia nos respaldan como líderes en seguridad industrial
+          </p>
+        </div>
+
+        <div className="benefits-grid">
+          {benefits.map((benefit, index) => (
+            <div 
+              className="benefit-card" 
+              key={index}
+              style={{
+                '--benefit-color': benefit.color,
+                '--benefit-bg': benefit.bgColor
+              }}
+            >
+              <div className="benefit-card-inner">
+                <div className="benefit-gradient-overlay"></div>
+                
+                <div className="benefit-icon-wrapper">
+                  <div className="benefit-icon">
+                    {benefit.icon}
+                  </div>
+                  <div className="benefit-icon-glow"></div>
+                </div>
+                
+                <div className="benefit-content">
+                  <h4 className="benefit-title">{benefit.title}</h4>
+                  <p className="benefit-description">{benefit.description}</p>
+                </div>
+
+                <div className="benefit-hover-indicator">
+                  <div className="hover-line"></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
