@@ -1,128 +1,570 @@
-/* src/index.css - Updated with Theme System */
-@import './styles/themes.css';
+/* src/index.css - Enhanced Global Styles with Perfect Alignment */
+
+/* =============================================================================
+   CSS VARIABLES - Enhanced Theme System
+============================================================================= */
+:root {
+  /* Enhanced Color Palette - Dark Theme */
+  --color-primary: #D32F2F;
+  --color-secondary: #1976D2;
+  --color-accent: #FF6B35;
+  --color-success: #2E7D32;
+  --color-warning: #F57C00;
+  --color-error: #C62828;
+  
+  /* Background Colors */
+  --bg-primary: #0A0A0B;
+  --bg-secondary: #1A1A1B;
+  --bg-tertiary: #2D2D30;
+  --bg-card: #1E1E20;
+  --bg-elevated: rgba(30, 30, 32, 0.95);
+  
+  /* Text Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #E0E0E0;
+  --text-tertiary: #B3B3B3;
+  --text-muted: #808080;
+  --text-disabled: #4A4A4A;
+  --text-inverse: #FFFFFF;
+  
+  /* Interactive Colors */
+  --interactive-primary: #D32F2F;
+  --interactive-primary-hover: #B71C1C;
+  --interactive-secondary: #1976D2;
+  --interactive-tertiary: #FF6B35;
+  
+  /* Border Colors */
+  --border-primary: rgba(255, 255, 255, 0.12);
+  --border-secondary: rgba(255, 255, 255, 0.08);
+  --border-tertiary: rgba(255, 255, 255, 0.04);
+  
+  /* Shadow System */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.12);
+  
+  /* Card Shadows */
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.10);
+  --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
+  --button-shadow: 0 4px 14px rgba(211, 47, 47, 0.25), 0 2px 6px rgba(0, 0, 0, 0.12);
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.25s ease-out;
+  --transition-slow: 0.4s ease-out;
+  --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 4rem;
+}
+
+/* Light Theme Variables */
+:root.light-theme {
+  /* Enhanced Light Theme Colors */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #F1F3F4;
+  --bg-card: #FFFFFF;
+  --bg-elevated: rgba(255, 255, 255, 0.95);
+  
+  --text-primary: #212121;
+  --text-secondary: #424242;
+  --text-tertiary: #616161;
+  --text-muted: #9E9E9E;
+  --text-disabled: #BDBDBD;
+  --text-inverse: #FFFFFF;
+  
+  --border-primary: rgba(0, 0, 0, 0.12);
+  --border-secondary: rgba(0, 0, 0, 0.08);
+  --border-tertiary: rgba(0, 0, 0, 0.04);
+  
+  /* Enhanced Light Theme Shadows */
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.10);
+}
 
 /* =============================================================================
    GLOBAL RESET AND BASE STYLES
 ============================================================================= */
-*,
-*::before,
-*::after {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-/* =============================================================================
-   BASE BODY STYLES - Now theme-aware
-============================================================================= */
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  background-color: var(--bg-primary);
-  color: var(--text-secondary);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* =============================================================================
-   LAYOUT UTILITIES - Updated with theme variables
-============================================================================= */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.page-container {
-  padding-top: 80px; /* Space for fixed navbar */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  overflow-x: hidden;
   min-height: 100vh;
 }
 
 /* =============================================================================
-   LEGACY VARIABLE MAPPINGS
-   These map old variables to new theme-aware ones for backward compatibility
-   Gradually remove these as we refactor components
+   TYPOGRAPHY SYSTEM - Professional and Readable
 ============================================================================= */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.025em;
+}
 
-/* Legacy color mapping - will be gradually removed */
-:root {
-  /* Legacy red colors - mapped to theme-aware variables */
-  --rojo-principal: var(--interactive-primary);
-  --rojo-hover: var(--interactive-primary-hover);
+h1 {
+  font-size: var(--font-size-5xl);
+  font-weight: 800;
+}
 
-  /* Legacy background colors */
-  --negro-fondo: var(--bg-primary);
-  --negro-card: var(--bg-secondary);
-  --negro-texto: var(--text-primary);
+h2 {
+  font-size: var(--font-size-4xl);
+}
 
-  /* Legacy text colors */
-  --blanco-puro: var(--text-primary);
-  --blanco-texto: var(--text-secondary);
+h3 {
+  font-size: var(--font-size-3xl);
+}
 
-  /* Legacy gray colors */
-  --gris-fondo: var(--bg-primary);
-  --gris-texto: var(--text-muted);
+h4 {
+  font-size: var(--font-size-2xl);
+}
 
-  /* Legacy shadow */
-  --sombra-suave: var(--shadow-md);
+h5 {
+  font-size: var(--font-size-xl);
+}
+
+h6 {
+  font-size: var(--font-size-lg);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--interactive-primary);
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+a:hover {
+  color: var(--interactive-primary-hover);
 }
 
 /* =============================================================================
-   THEME TRANSITION WRAPPER
-   Ensures smooth transitions when switching themes
+   LAYOUT UTILITIES - Perfect Centering and Alignment
 ============================================================================= */
-.theme-transition-wrapper {
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 var(--spacing-lg);
+}
+
+.section {
+  padding: var(--spacing-3xl) 0;
+}
+
+.section-sm {
+  padding: var(--spacing-2xl) 0;
+}
+
+.section-lg {
+  padding: var(--spacing-3xl) 0;
+}
+
+/* Flexbox Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Grid Utilities */
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.gap-1 {
+  gap: var(--spacing-sm);
+}
+
+.gap-2 {
+  gap: var(--spacing-md);
+}
+
+.gap-3 {
+  gap: var(--spacing-lg);
+}
+
+.gap-4 {
+  gap: var(--spacing-xl);
+}
+
+/* =============================================================================
+   BUTTON SYSTEM - Professional and Consistent
+============================================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+  min-height: 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--interactive-primary), var(--interactive-primary-hover));
+  color: var(--text-inverse);
+  box-shadow: var(--button-shadow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 2px solid var(--border-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--interactive-primary);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--interactive-primary);
+  border: 2px solid var(--interactive-primary);
+}
+
+.btn-outline:hover {
+  background: var(--interactive-primary);
+  color: var(--text-inverse);
+}
+
+/* =============================================================================
+   CARD SYSTEM - Professional Cards with Consistent Styling
+============================================================================= */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-secondary);
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+}
+
+.card-header {
+  padding: var(--spacing-lg) var(--spacing-lg) 0;
+}
+
+.card-body {
+  padding: var(--spacing-lg);
+}
+
+.card-footer {
+  padding: 0 var(--spacing-lg) var(--spacing-lg);
+}
+
+/* =============================================================================
+   FORM ELEMENTS - Professional Input Styling
+============================================================================= */
+input, textarea, select {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
   transition: all var(--transition-normal);
 }
 
-/* =============================================================================
-   RESPONSIVE DESIGN HELPERS
-============================================================================= */
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
-  
-  .page-container {
-    padding-top: 70px; /* Slightly smaller on mobile */
-  }
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--interactive-primary);
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
 }
 
 /* =============================================================================
-   ACCESSIBILITY IMPROVEMENTS
+   SCROLLBAR STYLING - Professional Look
 ============================================================================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
 
-/* Reduced motion for users who prefer it */
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--interactive-primary);
+}
+
+/* =============================================================================
+   ACCESSIBILITY AND PERFORMANCE
+============================================================================= */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--interactive-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   :root {
-    --border-primary: currentColor;
-    --border-secondary: currentColor;
+    --border-primary: rgba(255, 255, 255, 0.3);
+    --border-secondary: rgba(255, 255, 255, 0.2);
+  }
+  
+  :root.light-theme {
+    --border-primary: rgba(0, 0, 0, 0.3);
+    --border-secondary: rgba(0, 0, 0, 0.2);
   }
 }
 
 /* =============================================================================
-   PRINT STYLES
+   RESPONSIVE DESIGN SYSTEM
 ============================================================================= */
-@media print {
-  .page-container {
-    padding-top: 0;
+@media (max-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1000px;
+    padding: 0 var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
   }
   
-  .no-print {
-    display: none !important;
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .section {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  /* Mobile-specific grid adjustments */
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================================================
+   UTILITY CLASSES - Spacing and Layout
+============================================================================= */
+.m-0 { margin: 0; }
+.m-1 { margin: var(--spacing-sm); }
+.m-2 { margin: var(--spacing-md); }
+.m-3 { margin: var(--spacing-lg); }
+.m-4 { margin: var(--spacing-xl); }
+
+.p-0 { padding: 0; }
+.p-1 { padding: var(--spacing-sm); }
+.p-2 { padding: var(--spacing-md); }
+.p-3 { padding: var(--spacing-lg); }
+.p-4 { padding: var(--spacing-xl); }
+
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+
+/* =============================================================================
+   LOADING AND ANIMATION UTILITIES
+============================================================================= */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
