@@ -1,4 +1,4 @@
-// src/pages/Home.jsx
+// src/pages/Home.jsx - Enhanced Professional Home Page
 import React from 'react';
 import HeroCarousel from '../components/HeroCarousel';
 import CategoryIcons from '../components/CategoryIcons';
@@ -10,33 +10,30 @@ import './Home.css';
 function Home() {
   return (
     <main className="home-container">
-      {/* Carrusel principal full width */}
+      {/* Hero Carousel - Full Width Professional */}
       <HeroCarousel />
 
-      {/* ✅ La sección ahora es más limpia, solo llama al componente */}
+      {/* Enhanced Category Icons Section */}
       <CategoryIcons />
 
-      {/* Sección Quiénes Somos */}
-      <section className="about-us">
-        <AboutUs />
-      </section>
-
-      {/* Beneficios de Marca */}
+      {/* Enhanced Brand Benefits - Ultra Professional */}
       <section className="brand-benefits">
         <BrandBenefits />
       </section>
 
-      {/* Ubicación en Google Maps */}
+      {/* About Us Section */}
+      <section className="about-us">
+        <AboutUs />
+      </section>
+
+      {/* Location Section */}
       <section className="findus">
         <FindUs />
       </section>
-
-      {/* Footer */}
-      <footer className="main-footer">
-        <p>© 2025 ERAM Seguridad Industrial. Todos los derechos reservados.</p>
-      </footer>
     </main>
   );
 }
+
+export default Home;
 
 export default Home;
