@@ -262,7 +262,7 @@
   }
 }
 
-/* Enhanced mobile optimizations */
+/* Enhanced mobile optimizations - Always show quote buttons */
 @media (max-width: 768px) {
   .card-actions {
     position: static;
@@ -270,10 +270,11 @@
     transform: none;
     margin-top: 1rem;
     pointer-events: all;
+    z-index: 20;
   }
   
   .card {
-    min-height: 320px;
+    min-height: 360px;
     padding: 1.25rem;
   }
   
@@ -293,6 +294,18 @@
   .provider-badge {
     font-size: 0.7rem;
     padding: 0.2rem 0.6rem;
+  }
+}
+
+/* Always visible buttons for touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .card-actions {
+    position: static;
+    opacity: 1;
+    transform: none;
+    margin-top: 1rem;
+    pointer-events: all;
+    z-index: 20;
   }
 }
 
