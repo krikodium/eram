@@ -1,5 +1,16 @@
+/* src/pages/Home.css - Enhanced Professional Home Page Layout */
+
+/* =============================================================================
+   HOME CONTAINER - Clean Layout Structure
+============================================================================= */
+.home-container {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Legacy Hero Section Styles - Preserved for compatibility */
 .hero-section {
-  background-color: var(--gris-fondo);
+  background-color: var(--bg-secondary);
   padding: 4rem 2rem;
 }
 
@@ -18,7 +29,7 @@
 
 .hero-subtitle {
   text-transform: uppercase;
-  color: var(--blanco-puro);
+  color: var(--text-primary);
   letter-spacing: 1px;
   font-size: 1rem;
   margin-bottom: 0.5rem;
@@ -26,24 +37,29 @@
 
 .hero-title {
   font-size: 3.2rem;
-  color: var(--blanco-puro);
+  color: var(--text-primary);
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1.5rem;
 }
 
 .hero-button {
-  background-color: var(--rojo-principal);
-  color: var(--blanco-puro);
+  background-color: var(--interactive-primary);
+  color: var(--text-inverse);
   text-decoration: none;
   font-weight: 600;
   padding: 0.7rem 1.4rem;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .hero-button:hover {
-  background-color: #b71c1c;
+  background-color: var(--interactive-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--button-shadow);
 }
 
 .hero-image {
@@ -53,30 +69,146 @@
 
 .hero-image img {
   max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
 }
 
+/* Section Titles */
 .section-title {
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--blanco-puro);
+  color: var(--text-primary);
   margin-top: 4rem;
 }
 
 .section-subtitle {
   text-align: center;
-  color: var(--blanco-puro);
+  color: var(--text-secondary);
   font-size: 1rem;
   margin-bottom: 2rem;
 }
 
+/* Main Footer - Legacy styles preserved */
 .main-footer {
   margin-top: 4rem;
-  background-color: #111;
-  color: white;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
   text-align: center;
   padding: 2rem 1rem;
   font-size: 0.9rem;
+}
+
+/* =============================================================================
+   SECTION SPACING - Consistent Layout
+============================================================================= */
+.home-container > section {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-benefits,
+.about-us,
+.findus {
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN - Mobile-First Approach
+============================================================================= */
+@media (max-width: 1200px) {
+  .hero-grid {
+    max-width: 1000px;
+    gap: 3rem;
+    padding: 0 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .hero-section {
+    padding: 3rem 1rem;
+  }
+  
+  .hero-grid {
+    gap: 2rem;
+  }
+  
+  .hero-title {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+  
+  .hero-grid {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .hero-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .hero-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .main-footer {
+    padding: 1.5rem 0.75rem;
+    margin-top: 2rem;
+  }
+}
+
+/* =============================================================================
+   PERFORMANCE AND ACCESSIBILITY
+============================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .hero-button {
+    transition: none;
+  }
+}
+
+/* Touch-friendly interactions for mobile */
+@media (max-width: 768px) {
+  .hero-button {
+    min-height: 48px; /* Touch target size */
+  }
 }
