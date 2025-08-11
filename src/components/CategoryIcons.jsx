@@ -200,27 +200,25 @@ const LoadingState = () => (
 const CategoryIcons = () => {
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(true);
-  const api = import.meta.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${api}/api/categorias`);
-        const data = Array.isArray(response.data) ? response.data : [];
-        setCategorias(data);
+        // Use mock data instead of API call
+        setTimeout(() => {
+          setCategorias(mockCategorias);
+          setLoading(false);
+        }, 500); // Simulate loading delay
       } catch (error) {
         console.error("Error al obtener categorías:", error);
         setCategorias([]); // Set empty array on error
-      } finally {
         setLoading(false);
       }
     };
 
-    if (api) {
-      fetchCategorias();
-    }
-  }, [api]);
+    fetchCategorias();
+  }, []);
 
   if (loading) {
     return <LoadingState />;
