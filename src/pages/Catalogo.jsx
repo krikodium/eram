@@ -17,7 +17,7 @@ const Catalogo = () => {
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
   const rubroId = searchParams.get('rubro_id');
-  const api = useMemo(() => import.meta.env.VITE_API_URL || 'http://localhost:3001', []);
+  const api = useMemo(() => import.meta.env.REACT_APP_BACKEND_URL || 'http://localhost:8001', []);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [pageTitle, setPageTitle] = useState('Todos los Productos');
