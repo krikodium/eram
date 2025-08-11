@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios';
 import CategorySidebar from '../components/CategorySidebar';
 import ProductList from '../components/ProductList';
 import CategoryPreview from '../components/CategoryPreview';
 import RubrosFilter from '../features/rubros/components/RubrosFilter';
 import { rubrosService } from '../services/api';
 import { getRubroById } from '../mocks/rubros';
+import { getAllProductos, getProductosByCategoria, mockCategorias } from '../mocks/productos';
 import './Catalogo.css';
 import { FaFilter, FaTimes, FaIndustry } from 'react-icons/fa';
 
