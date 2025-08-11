@@ -15,6 +15,11 @@
   --color-warning: #F57C00;
   --color-error: #C62828;
   
+  /* Success Color Variants */
+  --success: #4CAF50;
+  --success-light: #81C784;
+  --success-dark: #388E3C;
+  
   /* Background Colors */
   --bg-primary: #0A0A0B;
   --bg-primary-rgb: 10, 10, 11;
