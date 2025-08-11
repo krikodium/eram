@@ -122,6 +122,7 @@
   /* Keep interactive colors consistent */
   --interactive-primary: #D32F2F;
   --interactive-primary-hover: #B71C1C;
+  --interactive-primary-active: #9A0A0A;
   --interactive-secondary: #1976D2;
   --interactive-tertiary: #FF6B35;
 }
