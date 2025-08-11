@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
+import { mockCategorias } from '../mocks/productos';
 import './CategorySidebar.css';
 
 // 👇🏼 Recibir los nuevos props onCategoryMouseEnter y onCategoryMouseLeave
