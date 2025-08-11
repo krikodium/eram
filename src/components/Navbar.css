@@ -349,6 +349,19 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 9997;
   backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* =============================================================================
+   BODY PADDING ADJUSTMENT - Prevent Header Overlap
+============================================================================= */
+body {
+  padding-top: 70px; /* Adjust based on header height */
 }
 
 /* =============================================================================
@@ -408,6 +421,10 @@
   .nav-links.mobile-menu {
     top: 65px;
   }
+  
+  body {
+    padding-top: 65px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -434,22 +451,7 @@
     padding: 1rem 1.5rem;
     font-size: 0.85rem;
   }
-}
-
-/* =============================================================================
-   BODY PADDING ADJUSTMENT - Prevent Header Overlap
-============================================================================= */
-body {
-  padding-top: 70px; /* Adjust based on header height */
-}
-
-@media (max-width: 768px) {
-  body {
-    padding-top: 65px;
-  }
-}
-
-@media (max-width: 480px) {
+  
   body {
     padding-top: 60px;
   }
@@ -464,8 +466,10 @@ body {
   .login-btn,
   .quote-link,
   .nav-hamburger,
-  .nav-links.mobile-menu {
+  .nav-links.mobile-menu,
+  .mobile-menu-backdrop {
     transition: none;
+    animation: none;
   }
   
   .quote-badge {
@@ -490,169 +494,5 @@ body {
   
   .nav-link::before {
     height: 3px;
-  }
-}
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.quote-text {
-  display: none;
-}
-
-/* Auth Section */
-.auth-section {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.user-greeting {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logout-btn {
-  background: transparent;
-  border: 1px solid var(--border-primary);
-  color: var(--text-secondary);
-  padding: 0.4rem 0.8rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all var(--transition-normal);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logout-btn:hover {
-  background-color: var(--interactive-primary);
-  color: white;
-  border-color: var(--interactive-primary);
-}
-
-.auth-button {
-  background-color: var(--interactive-primary);
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius-xl);
-  font-weight: 600;
-  transition: all var(--transition-normal);
-  text-align: center;
-  text-decoration: none;
-}
-
-.auth-button:hover {
-  background-color: var(--interactive-primary-hover);
-  color: white;
-  box-shadow: var(--shadow-colored);
-}
-
-/* Theme Toggle Wrapper */
-.theme-toggle-wrapper {
-  margin-left: 1rem;
-}
-
-/* Hamburger Menu */
-.hamburger-menu {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.hamburger-menu .bar {
-  height: 3px;
-  width: 25px;
-  background-color: var(--text-primary);
-  margin: 4px 0;
-  transition: var(--transition-slow);
-}
-
-.hamburger-menu.open .bar:nth-child(1) {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.hamburger-menu.open .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-menu.open .bar:nth-child(3) {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .navbar-container {
-    padding: 0 20px;
-  }
-  
-  .hamburger-menu {
-    display: flex;
-  }
-  
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--bg-elevated);
-    padding: 2rem 1rem;
-    gap: 1.5rem;
-    box-shadow: var(--shadow-xl);
-    border-top: 1px solid var(--border-secondary);
-  }
-  
-  .nav-links.active {
-    display: flex;
-  }
-  
-  .quote-text {
-    display: inline;
-  }
-  
-  .auth-section {
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-  }
-  
-  .logout-btn {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .auth-button {
-    width: 80%;
-  }
-  
-  .theme-toggle-wrapper {
-    margin-left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
   }
 }
