@@ -61,7 +61,7 @@ function PrevArrow({ onClick }) {
 const CategoryIcons = () => {
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(true);
-  const api = import.meta.env.VITE_API_URL;
+  const api = import.meta.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     const fetchCategorias = async () => {
