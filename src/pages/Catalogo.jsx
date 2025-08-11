@@ -36,15 +36,16 @@ const Catalogo = () => {
 
   const fetchProducts = useCallback(async (pageNum, limit, append = false, catId = null) => {
     setLoading(true);
-    let endpoint = `${api}/api/productos`;
-    let params = { page: pageNum, limit };
-    if (catId) {
-      endpoint = `${api}/api/productos/por-categoria`;
-      params.categoria_id = catId;
-    }
     try {
-      const response = await axios.get(endpoint, { params });
-      const { productos: nuevosProductos, totalPages, categoriaNombre } = response.data;
+      // Use mock data instead of API calls
+      let result;
+      if (catId) {
+        result = getProductosByCategoria(catId, pageNum, limit);
+      } else {
+        result = getAllProductos(pageNum, limit);
+      }
+      
+      const { productos: nuevosProductos, totalPages, categoriaNombre } = result;
       setProductos(prev => append ? [...prev, ...nuevosProductos] : nuevosProductos);
       setHasMore(pageNum < totalPages);
       setPage(pageNum);
@@ -55,7 +56,7 @@ const Catalogo = () => {
     } finally {
       setLoading(false);
     }
-  }, [api]);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
