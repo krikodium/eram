@@ -177,7 +177,7 @@ function Navbar() {
         {/* Mobile Actions */}
         <div className="mobile-actions">
           <Link 
-            to="/quote" 
+            to="/cotizacion" 
             className="nav-link quote-mobile"
             onClick={() => setIsMobileMenuOpen(false)}
           >
