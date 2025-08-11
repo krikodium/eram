@@ -1,4 +1,4 @@
-// src/components/CategoryIcons.jsx - Enhanced Professional Category Carousel
+// src/components/CategoryIcons.jsx - Clean Professional Category Carousel
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Slider from 'react-slick';
@@ -16,48 +16,187 @@ import {
   FaHeartbeat,
   FaFire,
   FaIndustry,
-  FaTruck,
-  FaHandshake,
   FaCertificate,
   FaChevronLeft,
   FaChevronRight
 } from "react-icons/fa";
 
-const enhancedIconMap = {
-  "Baldes de Incendio": { icon: <FaFire />, color: "#FF6B35", bgColor: "rgba(255, 107, 53, 0.1)" },
-  "Botas Industriales": { icon: <FaIndustry />, color: "#2E7D32", bgColor: "rgba(46, 125, 50, 0.1)" },
-  "Botiquines Primeros Auxilios": { icon: <FaBriefcaseMedical />, color: "#D32F2F", bgColor: "rgba(211, 47, 47, 0.1)" },
-  "Camillas - Inmovilizador - Férulas": { icon: <FaHeartbeat />, color: "#1976D2", bgColor: "rgba(25, 118, 210, 0.1)" },
-  "Carpa Para piso": { icon: <FaShieldAlt />, color: "#7B1FA2", bgColor: "rgba(123, 31, 162, 0.1)" },
-  "Carteleria": { icon: <FaExclamationTriangle />, color: "#FF9800", bgColor: "rgba(255, 152, 0, 0.1)" },
-  "Cascos": { icon: <FaHardHat />, color: "#F57C00", bgColor: "rgba(245, 124, 0, 0.1)" },
-  "Equipos": { icon: <FaTools />, color: "#00796B", bgColor: "rgba(0, 121, 107, 0.1)" },
-  "Protección Visual": { icon: <FaEye />, color: "#3F51B5", bgColor: "rgba(63, 81, 181, 0.1)" },
-  "Certificaciones": { icon: <FaCertificate />, color: "#E91E63", bgColor: "rgba(233, 30, 99, 0.1)" }
+// Enhanced Icon Configuration - More organized structure
+const CATEGORY_ICONS = {
+  "Baldes de Incendio": { 
+    icon: <FaFire />, 
+    color: "#FF6B35", 
+    bgColor: "rgba(255, 107, 53, 0.1)" 
+  },
+  "Botas Industriales": { 
+    icon: <FaIndustry />, 
+    color: "#2E7D32", 
+    bgColor: "rgba(46, 125, 50, 0.1)" 
+  },
+  "Botiquines Primeros Auxilios": { 
+    icon: <FaBriefcaseMedical />, 
+    color: "#D32F2F", 
+    bgColor: "rgba(211, 47, 47, 0.1)" 
+  },
+  "Camillas - Inmovilizador - Férulas": { 
+    icon: <FaHeartbeat />, 
+    color: "#1976D2", 
+    bgColor: "rgba(25, 118, 210, 0.1)" 
+  },
+  "Carpa Para piso": { 
+    icon: <FaShieldAlt />, 
+    color: "#7B1FA2", 
+    bgColor: "rgba(123, 31, 162, 0.1)" 
+  },
+  "Carteleria": { 
+    icon: <FaExclamationTriangle />, 
+    color: "#FF9800", 
+    bgColor: "rgba(255, 152, 0, 0.1)" 
+  },
+  "Cascos": { 
+    icon: <FaHardHat />, 
+    color: "#F57C00", 
+    bgColor: "rgba(245, 124, 0, 0.1)" 
+  },
+  "Equipos": { 
+    icon: <FaTools />, 
+    color: "#00796B", 
+    bgColor: "rgba(0, 121, 107, 0.1)" 
+  },
+  "Protección Visual": { 
+    icon: <FaEye />, 
+    color: "#3F51B5", 
+    bgColor: "rgba(63, 81, 181, 0.1)" 
+  },
+  "Certificaciones": { 
+    icon: <FaCertificate />, 
+    color: "#E91E63", 
+    bgColor: "rgba(233, 30, 99, 0.1)" 
+  }
 };
 
-const DefaultIcon = { 
+const DEFAULT_ICON = { 
   icon: <FaShieldAlt />, 
   color: "#D32F2F", 
   bgColor: "rgba(211, 47, 47, 0.1)" 
 };
 
-function NextArrow({ onClick }) {
+// Custom Arrow Components - Simplified
+const CustomArrow = ({ direction, onClick }) => (
+  <div 
+    className={`category-arrow category-arrow-${direction}`} 
+    onClick={onClick}
+    aria-label={`${direction === 'prev' ? 'Previous' : 'Next'} categories`}
+  >
+    {direction === 'prev' ? <FaChevronLeft /> : <FaChevronRight />}
+  </div>
+);
+
+// Slider Configuration - Cleaner structure
+const getSliderSettings = () => ({
+  dots: false,
+  infinite: true,
+  speed: 600,
+  slidesToShow: 6,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  pauseOnHover: true,
+  nextArrow: <CustomArrow direction="next" />,
+  prevArrow: <CustomArrow direction="prev" />,
+  responsive: [
+    {
+      breakpoint: 1400,
+      settings: { slidesToShow: 5 }
+    },
+    {
+      breakpoint: 1200,
+      settings: { slidesToShow: 4 }
+    },
+    {
+      breakpoint: 968,
+      settings: { slidesToShow: 3 }
+    },
+    {
+      breakpoint: 768,
+      settings: { 
+        slidesToShow: 2,
+        arrows: false 
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: { 
+        slidesToShow: 1,
+        arrows: false,
+        centerMode: true,
+        centerPadding: '20%'
+      }
+    }
+  ]
+});
+
+// Category Card Component - More modular
+const CategoryCard = ({ categoria }) => {
+  const iconConfig = CATEGORY_ICONS[categoria.nombre] || DEFAULT_ICON;
+  
   return (
-    <div className="category-arrow category-arrow-next" onClick={onClick}>
-      <FaChevronRight />
+    <div className="category-slide">
+      <Link
+        to={`/catalogo?categoria_id=${categoria.id}`}
+        className="category-card"
+        style={{
+          '--category-color': iconConfig.color,
+          '--category-bg': iconConfig.bgColor
+        }}
+      >
+        <div className="category-card-inner">
+          <div className="category-icon-wrapper">
+            <div className="category-icon">
+              {iconConfig.icon}
+            </div>
+            <div className="category-icon-glow"></div>
+          </div>
+          
+          <div className="category-content">
+            <h3 className="category-name">{categoria.nombre}</h3>
+            <div className="category-count">
+              <span>{categoria.cantidad_productos || 0}</span>
+              <span>productos</span>
+            </div>
+          </div>
+          
+          <div className="category-hover-overlay">
+            <div className="category-cta">
+              <span>Ver Productos</span>
+              <FaChevronRight />
+            </div>
+          </div>
+        </div>
+      </Link>
     </div>
   );
-}
+};
 
-function PrevArrow({ onClick }) {
-  return (
-    <div className="category-arrow category-arrow-prev" onClick={onClick}>
-      <FaChevronLeft />
+// Loading Component
+const LoadingState = () => (
+  <section className="category-icons-section">
+    <div className="category-container">
+      <div className="category-header">
+        <h2 className="category-title">
+          Nuestras
+          <span className="title-highlight">Categorías</span>
+        </h2>
+      </div>
+      <div className="category-loading">
+        <div className="loading-spinner"></div>
+        <p>Cargando categorías...</p>
+      </div>
     </div>
-  );
-}
+  </section>
+);
 
+// Main Component - Cleaner structure
 const CategoryIcons = () => {
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -72,68 +211,22 @@ const CategoryIcons = () => {
         setCategorias(data);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
+        setCategorias([]); // Set empty array on error
       } finally {
         setLoading(false);
       }
     };
-    fetchCategorias();
+
+    if (api) {
+      fetchCategorias();
+    }
   }, [api]);
 
-  const sliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1400,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 968,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows: false,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          centerMode: true,
-          centerPadding: '20%',
-        }
-      }
-    ]
-  };
-
   if (loading) {
+    return <LoadingState />;
+  }
+
+  if (categorias.length === 0) {
     return (
       <section className="category-icons-section">
         <div className="category-container">
@@ -144,8 +237,7 @@ const CategoryIcons = () => {
             </h2>
           </div>
           <div className="category-loading">
-            <div className="loading-spinner"></div>
-            <p>Cargando categorías...</p>
+            <p>No hay categorías disponibles en este momento.</p>
           </div>
         </div>
       </section>
@@ -166,47 +258,13 @@ const CategoryIcons = () => {
         </div>
 
         <div className="category-slider-wrapper">
-          <Slider {...sliderSettings} className="category-slider">
-            {categorias.map((categoria) => {
-              const iconConfig = enhancedIconMap[categoria.nombre] || DefaultIcon;
-              
-              return (
-                <div key={categoria.id} className="category-slide">
-                  <Link
-                    to={`/catalogo?categoria_id=${categoria.id}`}
-                    className="category-card"
-                    style={{
-                      '--category-color': iconConfig.color,
-                      '--category-bg': iconConfig.bgColor
-                    }}
-                  >
-                    <div className="category-card-inner">
-                      <div className="category-icon-wrapper">
-                        <div className="category-icon">
-                          {iconConfig.icon}
-                        </div>
-                        <div className="category-icon-glow"></div>
-                      </div>
-                      
-                      <div className="category-content">
-                        <h3 className="category-name">{categoria.nombre}</h3>
-                        <div className="category-count">
-                          <span>{categoria.cantidad_productos || 0}</span>
-                          <span>productos</span>
-                        </div>
-                      </div>
-                      
-                      <div className="category-hover-overlay">
-                        <div className="category-cta">
-                          <span>Ver Productos</span>
-                          <FaChevronRight />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              );
-            })}
+          <Slider {...getSliderSettings()} className="category-slider">
+            {categorias.map((categoria) => (
+              <CategoryCard 
+                key={categoria.id} 
+                categoria={categoria} 
+              />
+            ))}
           </Slider>
         </div>
       </div>
