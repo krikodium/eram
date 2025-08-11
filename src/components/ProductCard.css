@@ -183,13 +183,13 @@
   display: inline-block;
 }
 
-/* Enhanced card actions */
+/* Enhanced card actions - Always visible on mobile, better z-index */
 .card-actions {
   position: absolute;
   bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
+  z-index: 20;
   opacity: 0;
   transition: all var(--transition-bounce);
   pointer-events: none;
