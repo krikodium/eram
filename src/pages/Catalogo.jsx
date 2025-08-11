@@ -122,12 +122,10 @@ const Catalogo = () => {
       }));
       
       try {
-        const response = await axios.get(`${api}/api/productos/por-categoria`, {
-          params: { categoria_id: category.id, limit: 5, page: 1 }
-        });
+        const previewResult = getProductosByCategoria(category.id, 1, 5);
         setPreview(prev => ({
           ...prev,
-          products: response.data.productos || [],
+          products: previewResult.productos || [],
           isLoading: false,
         }));
       } catch (error) {
