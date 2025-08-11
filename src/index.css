@@ -92,6 +92,7 @@
 :root.light-theme {
   /* Enhanced Light Theme Colors */
   --bg-primary: #FFFFFF;
+  --bg-primary-rgb: 255, 255, 255;
   --bg-secondary: #F8F9FA;
   --bg-tertiary: #F1F3F4;
   --bg-card: #FFFFFF;
