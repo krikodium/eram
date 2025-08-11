@@ -105,7 +105,7 @@ function Navbar() {
           {/* Right Side Actions */}
           <div className="navbar-actions">
             {/* Quote Cart */}
-            <Link to="/quote" className="quote-link">
+            <Link to="/cotizacion" className="quote-link">
               🛒
               {items.length > 0 && (
                 <span className="quote-badge">{items.length}</span>
