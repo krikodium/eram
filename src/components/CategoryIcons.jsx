@@ -1,11 +1,11 @@
 // src/components/CategoryIcons.jsx - Clean Professional Category Carousel
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CategoryIcons.css';
 import { Link } from 'react-router-dom';
+import { mockCategorias } from '../mocks/productos';
 import {
   FaShieldAlt,
   FaHardHat,
