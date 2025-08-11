@@ -3,26 +3,23 @@ import { Link, useLocation } from 'react-router-dom';
 import { mockCategorias } from '../mocks/productos';
 import './CategorySidebar.css';
 
-// 👇🏼 Recibir los nuevos props onCategoryMouseEnter y onCategoryMouseLeave
 const CategorySidebar = ({ onLinkClick, onCategoryMouseEnter, onCategoryMouseLeave }) => {
   const [categorias, setCategorias] = useState([]);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const activeCategoryId = searchParams.get('categoria_id');
-  const api = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await axios.get(`${api}/api/categorias`);
-        const padres = response.data.filter(c => c.categoria_padre_id === null);
-        setCategorias(padres);
+        // Use mock data instead of API call
+        setCategorias(mockCategorias);
       } catch (err) {
         console.error("Error al cargar categorías:", err);
       }
     };
     fetchCategorias();
-  }, [api]);
+  }, []);
 
   return (
     // 👇🏼 Añadir onMouseLeave al contenedor principal del sidebar
