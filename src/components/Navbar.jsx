@@ -1,89 +1,208 @@
-// src/components/Navbar.jsx
+// src/components/Navbar.jsx - Enhanced with Fixed Z-Index and Better Mobile Menu
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useQuote } from '../contexts/QuoteContext';
 import ThemeToggle from '../shared/components/ThemeToggle';
-import { FaShoppingCart, FaUser, FaSignOutAlt } from 'react-icons/fa';
 import './Navbar.css';
 
 function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { isAuthenticated, user, logout } = useAuth();
-  const { getTotalItems } = useQuote();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const { items } = useQuote();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 50);
     };
+
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
 
-  const totalQuoteItems = getTotalItems();
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMobileMenuOpen && !event.target.closest('.navbar-container')) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isMobileMenuOpen]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const handleLogout = () => {
     logout();
-    closeMenu();
+    setIsMobileMenuOpen(false);
+  };
+
+  const isActive = (path) => {
+    return location.pathname === path;
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo" onClick={closeMenu}>
-          ERAM
-        </Link>
+    <>
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="navbar-container">
+          {/* Logo */}
+          <Link to="/" className="navbar-logo" onClick={() => setIsMobileMenuOpen(false)}>
+            ERAM
+          </Link>
 
-        <div className={`hamburger-menu ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
-        </div>
+          {/* Desktop Navigation Links */}
+          <div className="nav-links">
+            <Link 
+              to="/" 
+              className={`nav-link ${isActive('/') ? 'active' : ''}`}
+            >
+              Inicio
+            </Link>
+            <Link 
+              to="/catalogo" 
+              className={`nav-link ${isActive('/catalogo') ? 'active' : ''}`}
+            >
+              Catálogo
+            </Link>
+            <Link 
+              to="/quienes-somos" 
+              className={`nav-link ${isActive('/quienes-somos') ? 'active' : ''}`}
+            >
+              Quiénes Somos
+            </Link>
+            <Link 
+              to="/ferias" 
+              className={`nav-link ${isActive('/ferias') ? 'active' : ''}`}
+            >
+              Ferias
+            </Link>
+          </div>
 
-        <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
-          <NavLink to="/" className="nav-link" onClick={closeMenu}>Home</NavLink>
-          <NavLink to="/quienes-somos" className="nav-link" onClick={closeMenu}>Quiénes Somos</NavLink>
-          <NavLink to="/ferias" className="nav-link" onClick={closeMenu}>Ferias</NavLink>
-          <NavLink to="/catalogo" className="nav-link" onClick={closeMenu}>Catálogo</NavLink>
-          
-          {/* Quote Cart Icon */}
-          <NavLink to="/cotizacion" className="nav-link quote-link" onClick={closeMenu}>
-            <FaShoppingCart />
-            {totalQuoteItems > 0 && (
-              <span className="quote-badge">{totalQuoteItems}</span>
-            )}
-            <span className="quote-text">Cotización</span>
-          </NavLink>
-          
-          {/* Auth Section */}
-          {isAuthenticated ? (
-            <div className="auth-section">
-              <span className="user-greeting">
-                <FaUser /> {user?.name}
-              </span>
-              <button className="logout-btn" onClick={handleLogout}>
-                <FaSignOutAlt /> Salir
-              </button>
+          {/* Right Side Actions */}
+          <div className="navbar-actions">
+            {/* Quote Cart */}
+            <Link to="/quote" className="quote-link">
+              🛒
+              {items.length > 0 && (
+                <span className="quote-badge">{items.length}</span>
+              )}
+            </Link>
+
+            {/* Theme Toggle */}
+            <div className="theme-toggle-wrapper">
+              <ThemeToggle />
             </div>
-          ) : (
-            <NavLink to="/login" className="nav-link auth-button" onClick={closeMenu}>
-              Área Proveedores
-            </NavLink>
-          )}
-          
-          {/* Theme Toggle */}
-          <div className="theme-toggle-wrapper">
-            <ThemeToggle />
+
+            {/* Login/Logout */}
+            {user ? (
+              <button onClick={handleLogout} className="login-btn">
+                Cerrar Sesión
+              </button>
+            ) : (
+              <Link to="/login" className="login-btn">
+                Proveedor
+              </Link>
+            )}
+
+            {/* Mobile Menu Toggle */}
+            <button
+              className={`mobile-nav-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              <span className="nav-hamburger"></span>
+              <span className="nav-hamburger"></span>
+              <span className="nav-hamburger"></span>
+            </button>
           </div>
         </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`nav-links mobile-menu ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+        <Link 
+          to="/" 
+          className={`nav-link ${isActive('/') ? 'active' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Inicio
+        </Link>
+        <Link 
+          to="/catalogo" 
+          className={`nav-link ${isActive('/catalogo') ? 'active' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Catálogo
+        </Link>
+        <Link 
+          to="/quienes-somos" 
+          className={`nav-link ${isActive('/quienes-somos') ? 'active' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Quiénes Somos
+        </Link>
+        <Link 
+          to="/ferias" 
+          className={`nav-link ${isActive('/ferias') ? 'active' : ''}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Ferias
+        </Link>
+
+        {/* Mobile Actions */}
+        <div className="mobile-actions">
+          <Link 
+            to="/quote" 
+            className="nav-link quote-mobile"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Cotización ({items.length})
+          </Link>
+          
+          {user ? (
+            <button onClick={handleLogout} className="nav-link logout-mobile">
+              Cerrar Sesión
+            </button>
+          ) : (
+            <Link 
+              to="/login" 
+              className="nav-link login-mobile"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Área Proveedor
+            </Link>
+          )}
+        </div>
       </div>
-    </nav>
+
+      {/* Mobile Menu Backdrop */}
+      {isMobileMenuOpen && <div className="mobile-menu-backdrop" onClick={() => setIsMobileMenuOpen(false)} />}
+    </>
   );
 }
 
