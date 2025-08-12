@@ -137,19 +137,24 @@
   padding: 6rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
+  background: var(--bg-secondary);
 }
 
 .participations-showcase {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
+  grid-template-columns: 400px 1fr;
+  gap: 4rem;
   margin-top: 3rem;
+  min-height: 600px;
 }
 
 .event-selector {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
 }
 
 .event-card {
@@ -160,6 +165,7 @@
   transition: all var(--transition-normal);
   border: 2px solid transparent;
   box-shadow: var(--card-shadow);
+  min-height: 160px;
 }
 
 .event-card:hover {
@@ -172,6 +178,7 @@
   border-color: var(--interactive-primary);
   background: var(--bg-card);
   box-shadow: var(--shadow-colored);
+  transform: scale(1.02);
 }
 
 .event-image {
