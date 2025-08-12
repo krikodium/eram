@@ -157,6 +157,8 @@ const fairBenefits = [
 
 function Ferias() {
   const [selectedFair, setSelectedFair] = useState(0);
+  const [selectedPastEvent, setSelectedPastEvent] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -177,20 +179,38 @@ function Ferias() {
     return () => observer.disconnect();
   }, []);
 
+  // Auto rotate images for past events
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (pastParticipations[selectedPastEvent]?.images?.length > 1) {
+        setCurrentImageIndex(prev => 
+          (prev + 1) % pastParticipations[selectedPastEvent].images.length
+        );
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [selectedPastEvent]);
+
+  // Reset image index when changing past event
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [selectedPastEvent]);
+
   return (
     <div className={`ferias-section ${isVisible ? 'visible' : ''}`}>
       
       {/* Hero Section */}
       <section className="ferias-hero-section">
         <div className="ferias-hero-background">
-          <img src="/feria.jpg" alt="ERAM en Ferias" className="hero-bg-image" />
+          <img src="/expoferretera02-23.jpg" alt="ERAM en Ferias" className="hero-bg-image" />
           <div className="hero-overlay"></div>
         </div>
         
         <div className="ferias-hero-content">
           <div className="section-badge">
             <FaGlobe className="badge-icon" />
-            <span>Presencia Internacional</span>
+            <span>Presencia Nacional e Internacional</span>
           </div>
           
           <h1 className="ferias-hero-title">
@@ -199,24 +219,148 @@ function Ferias() {
           </h1>
           
           <p className="ferias-hero-subtitle">
-            Participamos activamente en las ferias más importantes del país, 
-            compartiendo nuestras innovaciones en seguridad industrial y 
-            fortaleciendo la conexión con profesionales del sector.
+            Desde 2017 participamos activamente en las ferias más importantes de Argentina y América Latina, 
+            compartiendo nuestras innovaciones en seguridad industrial y fortaleciendo vínculos comerciales.
           </p>
 
           <div className="hero-stats">
             <div className="stat-item">
-              <div className="stat-number">50+</div>
-              <div className="stat-label">Ferias Anuales</div>
+              <div className="stat-number">8+</div>
+              <div className="stat-label">Años de Experiencia</div>
             </div>
             <div className="stat-item">
-              <div className="stat-number">100K+</div>
-              <div className="stat-label">Visitantes</div>
+              <div className="stat-number">15+</div>
+              <div className="stat-label">Ferias Participadas</div>
             </div>
             <div className="stat-item">
-              <div className="stat-number">15</div>
-              <div className="stat-label">Premios Recibidos</div>
+              <div className="stat-number">5K+</div>
+              <div className="stat-label">Contactos Generados</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Past Participations Section */}
+      <section className="past-participations-section">
+        <div className="section-header">
+          <div className="section-badge">
+            <FaImages />
+            <span>Nuestra Trayectoria</span>
+          </div>
+          
+          <h2 className="section-title">
+            Nuestras
+            <span className="title-highlight">Participaciones</span>
+          </h2>
+          
+          <p className="section-description">
+            Revivé nuestras participaciones más destacadas en las ferias más importantes del sector
+          </p>
+        </div>
+
+        <div className="participations-showcase">
+          {/* Event Selection */}
+          <div className="event-selector">
+            {pastParticipations.map((event, index) => (
+              <div 
+                key={event.id}
+                className={`event-card ${selectedPastEvent === index ? 'active' : ''}`}
+                onClick={() => setSelectedPastEvent(index)}
+              >
+                <div className="event-image">
+                  <img src={event.images[0]} alt={event.name} />
+                  <div className={`status-badge ${event.status}`}>
+                    {event.status === 'exitosa' ? 'Exitosa' : 
+                     event.status === 'internacional' ? 'Internacional' : 'Fundacional'}
+                  </div>
+                </div>
+                
+                <div className="event-info">
+                  <h4>{event.name}</h4>
+                  <div className="event-meta">
+                    <span><FaCalendarAlt /> {event.year}</span>
+                    <span><FaMapMarkerAlt /> {event.location}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Selected Event Details */}
+          <div className="event-details">
+            {pastParticipations[selectedPastEvent] && (
+              <div className="detail-card">
+                <div className="detail-header">
+                  <div className="detail-image-gallery">
+                    <div className="main-image">
+                      <img 
+                        src={pastParticipations[selectedPastEvent].images[currentImageIndex]} 
+                        alt={`${pastParticipations[selectedPastEvent].name} - Imagen ${currentImageIndex + 1}`}
+                      />
+                      <div className="image-counter">
+                        {currentImageIndex + 1} / {pastParticipations[selectedPastEvent].images.length}
+                      </div>
+                    </div>
+                    
+                    {pastParticipations[selectedPastEvent].images.length > 1 && (
+                      <div className="image-thumbnails">
+                        {pastParticipations[selectedPastEvent].images.map((image, index) => (
+                          <div 
+                            key={index}
+                            className={`thumbnail ${currentImageIndex === index ? 'active' : ''}`}
+                            onClick={() => setCurrentImageIndex(index)}
+                          >
+                            <img src={image} alt={`Thumbnail ${index + 1}`} />
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="detail-info">
+                    <div className="category-badge">
+                      <FaIndustry />
+                      {pastParticipations[selectedPastEvent].category}
+                    </div>
+                    
+                    <h3>{pastParticipations[selectedPastEvent].name}</h3>
+                    
+                    <div className="detail-meta">
+                      <div className="meta-item">
+                        <FaCalendarAlt />
+                        <span>{pastParticipations[selectedPastEvent].year}</span>
+                      </div>
+                      <div className="meta-item">
+                        <FaMapMarkerAlt />
+                        <span>{pastParticipations[selectedPastEvent].location}</span>
+                      </div>
+                      <div className="meta-item">
+                        <FaUsers />
+                        <span>{pastParticipations[selectedPastEvent].attendees} visitantes</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="detail-content">
+                  <p className="detail-description">
+                    {pastParticipations[selectedPastEvent].description}
+                  </p>
+
+                  <div className="event-highlights">
+                    <h4>Logros destacados:</h4>
+                    <div className="highlights-grid">
+                      {pastParticipations[selectedPastEvent].highlights.map((highlight, index) => (
+                        <div key={index} className="highlight-item">
+                          <FaChevronRight />
+                          <span>{highlight}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
