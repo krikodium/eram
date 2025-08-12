@@ -594,5 +594,3 @@ function Ferias() {
 }
 
 export default Ferias;
-
-export default Ferias;
