@@ -379,8 +379,7 @@ function Ferias() {
           </h2>
           
           <p className="section-description">
-            Encontranos en los eventos más importantes de la industria. 
-            Vení a conocer nuestras últimas innovaciones.
+            Encontranos en los próximos eventos. Vení a conocer nuestras últimas innovaciones.
           </p>
         </div>
 
@@ -397,8 +396,7 @@ function Ferias() {
                   <img src={fair.image} alt={fair.name} />
                   <div className={`status-badge ${fair.status}`}>
                     <FaStar />
-                    {fair.status === 'featured' ? 'Destacada' : 
-                     fair.status === 'upcoming' ? 'Próxima' : 'Confirmada'}
+                    {fair.status === 'featured' ? 'Destacada' : 'Próxima'}
                   </div>
                 </div>
                 
@@ -524,55 +522,10 @@ function Ferias() {
         </div>
       </section>
 
-      {/* Past Highlights */}
-      <section className="past-highlights-section">
-        <div className="section-header">
-          <div className="section-badge">
-            <FaTrophy />
-            <span>Logros Destacados</span>
-          </div>
-          
-          <h2 className="section-title">
-            Nuestros
-            <span className="title-highlight">Éxitos</span>
-          </h2>
-          
-          <p className="section-description">
-            Los reconocimientos y logros que hemos obtenido en las ferias más importantes
-          </p>
-        </div>
-
-        <div className="highlights-timeline">
-          {pastHighlights.map((highlight, index) => (
-            <div key={index} className="highlight-item">
-              <div className="highlight-year">
-                <div className="year-circle">
-                  <FaAward />
-                </div>
-                <span>{highlight.year}</span>
-              </div>
-              
-              <div className="highlight-content">
-                <h4>{highlight.event}</h4>
-                <div className="achievement-badge">
-                  <FaTrophy />
-                  {highlight.achievement}
-                </div>
-                <p>{highlight.description}</p>
-                <div className="attendance-info">
-                  <FaUsers />
-                  <span>{highlight.attendees} asistentes</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Call to Action */}
       <section className="ferias-cta-section">
         <div className="cta-background">
-          <img src="/feria.jpg" alt="Visitanos en Ferias" className="cta-bg-image" />
+          <img src="/expoferretera03-23.jpg" alt="Visitanos en Ferias" className="cta-bg-image" />
           <div className="cta-overlay"></div>
         </div>
         
