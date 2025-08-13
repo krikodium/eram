@@ -1,5 +1,5 @@
 // src/pages/Ferias.jsx - Enhanced Trade Shows Page with Real Fair Data
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   FaCalendarAlt, 
@@ -25,8 +25,8 @@ import {
 } from 'react-icons/fa';
 import './Ferias.css';
 
-// Real trade fair participation data based on actual images
-const pastFairs = [
+// Memoized data to prevent recreation on re-renders
+const PAST_FAIRS = [
   {
     id: 1,
     name: "Expoferretera Buenos Aires 2023",
@@ -106,8 +106,8 @@ const pastFairs = [
   }
 ];
 
-// Upcoming fairs with updated imagery - using only available images from ferias folder
-const upcomingFairs = [
+// Memoized upcoming fairs data
+const UPCOMING_FAIRS = [
   {
     id: 1,
     name: "Expoferretera Buenos Aires 2025",
@@ -148,7 +148,7 @@ const upcomingFairs = [
   }
 ];
 
-const fairBenefits = [
+const FAIR_BENEFITS = [
   {
     icon: <FaEye />,
     title: "Innovaciones Exclusivas",
@@ -176,8 +176,17 @@ function Ferias() {
   const [selectedPastEvent, setSelectedPastEvent] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const componentMountedRef = useRef(false);
+
+  // Memoize data to prevent unnecessary re-renders
+  const pastFairs = useMemo(() => PAST_FAIRS, []);
+  const upcomingFairs = useMemo(() => UPCOMING_FAIRS, []);
+  const fairBenefits = useMemo(() => FAIR_BENEFITS, []);
 
   useEffect(() => {
+    if (componentMountedRef.current) return; // Prevent double execution in StrictMode
+    componentMountedRef.current = true;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -192,7 +201,10 @@ function Ferias() {
       observer.observe(section);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      componentMountedRef.current = false;
+    };
   }, []);
 
   // Auto rotate images for past events
@@ -206,7 +218,7 @@ function Ferias() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [selectedPastEvent]);
+  }, [selectedPastEvent, pastFairs]);
 
   // Reset image index when changing past event
   useEffect(() => {
@@ -280,7 +292,7 @@ function Ferias() {
           <div className="event-selector">
             {pastFairs.map((event, index) => (
               <div 
-                key={event.id}
+                key={`past-event-${event.id}`}
                 className={`event-card ${selectedPastEvent === index ? 'active' : ''}`}
                 onClick={() => setSelectedPastEvent(index)}
               >
@@ -307,7 +319,7 @@ function Ferias() {
           {/* Selected Event Details */}
           <div className="event-details">
             {pastFairs[selectedPastEvent] && (
-              <div className="detail-card">
+              <div className="detail-card" key={`event-detail-${pastFairs[selectedPastEvent].id}`}>
                 <div className="detail-header">
                   <div className="detail-image-gallery">
                     <div className="main-image">
@@ -326,7 +338,7 @@ function Ferias() {
                       <div className="image-thumbnails">
                         {pastFairs[selectedPastEvent].images.map((image, index) => (
                           <div 
-                            key={index}
+                            key={`thumbnail-${index}`}
                             className={`thumbnail ${currentImageIndex === index ? 'active' : ''}`}
                             onClick={() => setCurrentImageIndex(index)}
                           >
@@ -375,7 +387,7 @@ function Ferias() {
                     <h4>Logros destacados:</h4>
                     <div className="highlights-grid">
                       {pastFairs[selectedPastEvent].highlights.map((highlight, index) => (
-                        <div key={index} className="highlight-item">
+                        <div key={`highlight-${index}`} className="highlight-item">
                           <FaChevronRight />
                           <span>{highlight}</span>
                         </div>
@@ -389,8 +401,8 @@ function Ferias() {
         </div>
       </section>
 
-      {/* Upcoming Fairs Section */}
-      <section className="upcoming-fairs-section">
+      {/* Upcoming Fairs Section - Single Instance with Unique Key */}
+      <section className="upcoming-fairs-section" key="upcoming-section-unique">
         <div className="section-header">
           <div className="section-badge">
             <FaCalendarAlt />
@@ -413,7 +425,7 @@ function Ferias() {
           <div className="fair-selector">
             {upcomingFairs.map((fair, index) => (
               <div 
-                key={fair.id}
+                key={`upcoming-fair-${fair.id}`}
                 className={`selector-card ${selectedFair === index ? 'active' : ''}`}
                 onClick={() => setSelectedFair(index)}
               >
@@ -439,7 +451,7 @@ function Ferias() {
           {/* Selected Fair Details */}
           <div className="fair-details">
             {upcomingFairs[selectedFair] && (
-              <div className="detail-card">
+              <div className="detail-card" key={`upcoming-detail-${upcomingFairs[selectedFair].id}`}>
                 <div className="detail-header">
                   <div className="detail-image">
                     <img 
@@ -483,7 +495,7 @@ function Ferias() {
                     <h4>Qué encontrarás en nuestro stand:</h4>
                     <div className="highlights-grid">
                       {upcomingFairs[selectedFair].features.map((feature, index) => (
-                        <div key={index} className="highlight-item">
+                        <div key={`feature-${index}`} className="highlight-item">
                           <FaChevronRight />
                           <span>{feature}</span>
                         </div>
@@ -539,7 +551,7 @@ function Ferias() {
 
         <div className="benefits-grid">
           {fairBenefits.map((benefit, index) => (
-            <div key={index} className="benefit-card">
+            <div key={`benefit-${index}`} className="benefit-card">
               <div className="benefit-icon">
                 {benefit.icon}
               </div>
