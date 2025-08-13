@@ -1,5 +1,5 @@
 // src/pages/Ferias.jsx - Enhanced Trade Shows Page with Real Fair Data
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   FaCalendarAlt, 
