@@ -37,11 +37,11 @@ const pastFairs = [
     status: "exitosa",
     description: "Nuestra participación más exitosa en la exposición de ferretería industrial más importante de Argentina. Presentamos nuestra línea completa de productos de seguridad industrial con un stand completamente renovado.",
     images: [
-      "/expoferretera02-23.jpg",
-      "/expoferretera03-23.jpg", 
-      "/expoferretera04-23.jpg",
-      "/expoferretera05-23.jpg",
-      "/expoferretera23.jpg"
+      "/ferias/expo-ferretera-buenos-aires-2023-1.jpg",
+      "/ferias/expo-ferretera-buenos-aires-2023-2.jpg", 
+      "/ferias/expo-ferretera-buenos-aires-2023-3.jpg",
+      "/ferias/expo-ferretera-buenos-aires-2023-4.jpg",
+      "/ferias/expo-ferretera-buenos-aires-2023-5.jpg"
     ],
     highlights: [
       "Stand completamente renovado con diseño moderno e interactivo",
@@ -65,8 +65,8 @@ const pastFairs = [
     status: "internacional",
     description: "Nuestra exitosa incursión en el mercado brasileño, participando en la feria más importante de seguridad y protección de América Latina. Un hito en nuestra expansión internacional.",
     images: [
-      "/feriasaopablo.jpg",
-      "/feriasaopablo-02.jpg"
+      "/ferias/feira-sao-paulo-2022-1.jpg",
+      "/ferias/feira-sao-paulo-2022-2.jpg"
     ],
     highlights: [
       "Primera participación internacional exitosa en el mercado brasileño",
@@ -90,7 +90,7 @@ const pastFairs = [
     status: "fundacional",
     description: "Una de nuestras primeras participaciones importantes que marcó el crecimiento de ERAM en el sector ferretero argentino. Estableció las bases para nuestro liderazgo actual en el mercado.",
     images: [
-      "/expoferretera-17.jpg"
+      "/ferias/expo-ferretera-buenos-aires-2017-1.jpg"
     ],
     highlights: [
       "Consolidación definitiva de la marca ERAM en el mercado nacional",
@@ -106,7 +106,7 @@ const pastFairs = [
   }
 ];
 
-// Upcoming fairs with updated imagery
+// Upcoming fairs with updated imagery - using only available images from ferias folder
 const upcomingFairs = [
   {
     id: 1,
@@ -114,7 +114,7 @@ const upcomingFairs = [
     date: "15 - 18 Mayo 2025",
     location: "La Rural, Buenos Aires",
     description: "Regresamos a la feria más importante de ferretería industrial de Argentina con nuestras últimas innovaciones en seguridad industrial y tecnología de protección personal.",
-    image: "/expoferretera02-23.jpg",
+    image: "/ferias/expo-ferretera-buenos-aires-2023-1.jpg",
     status: "featured",
     booth: "Pabellón 3 - Stand 145-148",
     category: "Ferretería Industrial",
@@ -133,7 +133,7 @@ const upcomingFairs = [
     date: "10 - 13 Junio 2025", 
     location: "Expo Center Norte, São Paulo",
     description: "Continuamos fortaleciendo nuestra presencia internacional regresando a Brasil con productos certificados y nuevas soluciones tecnológicas para el mercado latinoamericano.",
-    image: "/feriasaopablo.jpg",
+    image: "/ferias/feira-sao-paulo-2022-1.jpg",
     status: "upcoming",
     booth: "Pavilhão A - Stand 87-89",
     category: "Seguridad Internacional",
@@ -219,7 +219,7 @@ function Ferias() {
       {/* Hero Section */}
       <section className="ferias-hero-section">
         <div className="ferias-hero-background">
-          <img src="/expoferretera02-23.jpg" alt="ERAM en Ferias Internacionales" className="hero-bg-image" />
+          <img src="/ferias/expo-ferretera-buenos-aires-2023-1.jpg" alt="ERAM en Ferias Internacionales" className="hero-bg-image" />
           <div className="hero-overlay"></div>
         </div>
         
@@ -553,7 +553,7 @@ function Ferias() {
       {/* Call to Action */}
       <section className="ferias-cta-section">
         <div className="cta-background">
-          <img src="/expoferretera03-23.jpg" alt="Visitanos en Ferias" className="cta-bg-image" />
+          <img src="/ferias/expo-ferretera-buenos-aires-2023-2.jpg" alt="Visitanos en Ferias" className="cta-bg-image" />
           <div className="cta-overlay"></div>
         </div>
         
