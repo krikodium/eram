@@ -1,4 +1,4 @@
-// src/pages/Ferias.jsx - Enhanced Trade Shows Page with Real Fair Data
+// src/pages/Ferias.jsx - Enhanced Trade Shows Page with Improved Layout
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -176,6 +176,7 @@ function Ferias() {
   const [selectedPastEvent, setSelectedPastEvent] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
   const componentMountedRef = useRef(false);
 
   // Memoize data to prevent unnecessary re-renders
@@ -184,7 +185,7 @@ function Ferias() {
   const fairBenefits = useMemo(() => FAIR_BENEFITS, []);
 
   useEffect(() => {
-    if (componentMountedRef.current) return; // Prevent double execution in StrictMode
+    if (componentMountedRef.current) return;
     componentMountedRef.current = true;
 
     const observer = new IntersectionObserver(
@@ -215,7 +216,7 @@ function Ferias() {
           (prev + 1) % pastFairs[selectedPastEvent].images.length
         );
       }
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [selectedPastEvent, pastFairs]);
@@ -224,6 +225,23 @@ function Ferias() {
   useEffect(() => {
     setCurrentImageIndex(0);
   }, [selectedPastEvent]);
+
+  // Handle past event selection with smooth transition
+  const handlePastEventChange = (index) => {
+    if (index !== selectedPastEvent) {
+      setImageLoading(true);
+      setSelectedPastEvent(index);
+      setCurrentImageIndex(0);
+      setTimeout(() => setImageLoading(false), 300);
+    }
+  };
+
+  // Handle upcoming fair selection with smooth transition
+  const handleUpcomingFairChange = (index) => {
+    if (index !== selectedFair) {
+      setSelectedFair(index);
+    }
+  };
 
   return (
     <div className={`ferias-section ${isVisible ? 'visible' : ''}`}>
@@ -254,7 +272,7 @@ function Ferias() {
           <div className="hero-stats">
             <div className="stat-item">
               <div className="stat-number">8+</div>
-              <div className="stat-label">Años de Experiencia</div>
+              <div className="stat-label">Años Experiencia</div>
             </div>
             <div className="stat-item">
               <div className="stat-number">20+</div>
@@ -287,45 +305,58 @@ function Ferias() {
           </p>
         </div>
 
-        <div className="participations-showcase">
-          {/* Event Selection */}
-          <div className="event-selector">
+        <div className="participations-container">
+          {/* Event Selection Cards */}
+          <div className="events-selector">
             {pastFairs.map((event, index) => (
               <div 
                 key={`past-event-${event.id}`}
                 className={`event-card ${selectedPastEvent === index ? 'active' : ''}`}
-                onClick={() => setSelectedPastEvent(index)}
+                onClick={() => handlePastEventChange(index)}
               >
-                <div className="event-image">
-                  <img src={event.images[0]} alt={event.name} />
+                <div className="event-card-image">
+                  <img src={event.images[0]} alt={event.name} loading="lazy" />
                   <div className={`status-badge ${event.status}`}>
                     {event.status === 'exitosa' ? 'EXITOSA' : 
                      event.status === 'internacional' ? 'INTERNACIONAL' : 'FUNDACIONAL'}
                   </div>
                 </div>
                 
-                <div className="event-info">
-                  <h4>{event.name}</h4>
+                <div className="event-card-content">
+                  <h4 className="event-title">{event.name}</h4>
                   <div className="event-meta">
-                    <span><FaCalendarAlt /> {event.year}</span>
-                    <span><FaMapMarkerAlt /> {event.location}</span>
-                    <span><FaFlag /> {event.country}</span>
+                    <div className="meta-item">
+                      <FaCalendarAlt />
+                      <span>{event.year}</span>
+                    </div>
+                    <div className="meta-item">
+                      <FaMapMarkerAlt />
+                      <span>{event.location}</span>
+                    </div>
+                    <div className="meta-item">
+                      <FaFlag />
+                      <span>{event.country}</span>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Selected Event Details */}
-          <div className="event-details">
+          {/* Event Details Panel */}
+          <div className="event-details-panel">
             {pastFairs[selectedPastEvent] && (
-              <div className="detail-card" key={`event-detail-${pastFairs[selectedPastEvent].id}`}>
+              <div className={`detail-card ${imageLoading ? 'loading' : ''}`} key={`event-detail-${pastFairs[selectedPastEvent].id}`}>
+                
+                {/* Detail Header with Image Gallery */}
                 <div className="detail-header">
-                  <div className="detail-image-gallery">
-                    <div className="main-image">
+                  <div className="image-gallery-section">
+                    <div className="main-image-container">
                       <img 
                         src={pastFairs[selectedPastEvent].images[currentImageIndex]} 
                         alt={`${pastFairs[selectedPastEvent].name} - Imagen ${currentImageIndex + 1}`}
+                        className="main-image"
+                        loading="lazy"
                       />
                       {pastFairs[selectedPastEvent].images.length > 1 && (
                         <div className="image-counter">
@@ -337,59 +368,60 @@ function Ferias() {
                     {pastFairs[selectedPastEvent].images.length > 1 && (
                       <div className="image-thumbnails">
                         {pastFairs[selectedPastEvent].images.map((image, index) => (
-                          <div 
+                          <button 
                             key={`thumbnail-${index}`}
-                            className={`thumbnail ${currentImageIndex === index ? 'active' : ''}`}
+                            className={`thumbnail-btn ${currentImageIndex === index ? 'active' : ''}`}
                             onClick={() => setCurrentImageIndex(index)}
                           >
-                            <img src={image} alt={`Vista ${index + 1}`} />
-                          </div>
+                            <img src={image} alt={`Vista ${index + 1}`} loading="lazy" />
+                          </button>
                         ))}
                       </div>
                     )}
                   </div>
                   
-                  <div className="detail-info">
+                  <div className="event-info-section">
                     <div className="category-badge">
                       <FaIndustry />
-                      {pastFairs[selectedPastEvent].category}
+                      <span>{pastFairs[selectedPastEvent].category}</span>
                     </div>
                     
-                    <h3>{pastFairs[selectedPastEvent].name}</h3>
+                    <h3 className="event-name">{pastFairs[selectedPastEvent].name}</h3>
                     
-                    <div className="detail-meta">
-                      <div className="meta-item">
-                        <FaCalendarAlt />
+                    <div className="event-metadata">
+                      <div className="metadata-item">
+                        <FaCalendarAlt className="metadata-icon" />
                         <span>{pastFairs[selectedPastEvent].year}</span>
                       </div>
-                      <div className="meta-item">
-                        <FaMapMarkerAlt />
+                      <div className="metadata-item">
+                        <FaMapMarkerAlt className="metadata-icon" />
                         <span>{pastFairs[selectedPastEvent].location}</span>
                       </div>
-                      <div className="meta-item">
-                        <FaUsers />
+                      <div className="metadata-item">
+                        <FaUsers className="metadata-icon" />
                         <span>{pastFairs[selectedPastEvent].attendees} visitantes</span>
                       </div>
-                      <div className="meta-item">
-                        <FaBuilding />
+                      <div className="metadata-item">
+                        <FaBuilding className="metadata-icon" />
                         <span>Stand: {pastFairs[selectedPastEvent].standSize}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
+                {/* Detail Content */}
                 <div className="detail-content">
-                  <p className="detail-description">
+                  <p className="event-description">
                     {pastFairs[selectedPastEvent].description}
                   </p>
 
-                  <div className="event-highlights">
-                    <h4>Logros destacados:</h4>
-                    <div className="highlights-grid">
+                  <div className="achievements-section">
+                    <h4 className="achievements-title">Logros destacados:</h4>
+                    <div className="achievements-grid">
                       {pastFairs[selectedPastEvent].highlights.map((highlight, index) => (
-                        <div key={`highlight-${index}`} className="highlight-item">
-                          <FaChevronRight />
-                          <span>{highlight}</span>
+                        <div key={`highlight-${index}`} className="achievement-item">
+                          <FaChevronRight className="achievement-icon" />
+                          <span className="achievement-text">{highlight}</span>
                         </div>
                       ))}
                     </div>
@@ -401,7 +433,7 @@ function Ferias() {
         </div>
       </section>
 
-      {/* Upcoming Fairs Section - Single Instance with Unique Key */}
+      {/* Upcoming Fairs Section */}
       <section className="upcoming-fairs-section" key="upcoming-section-unique">
         <div className="section-header">
           <div className="section-badge">
@@ -420,28 +452,34 @@ function Ferias() {
           </p>
         </div>
 
-        <div className="fairs-showcase">
+        <div className="upcoming-container">
           {/* Fair Selection Cards */}
-          <div className="fair-selector">
+          <div className="upcoming-selector">
             {upcomingFairs.map((fair, index) => (
               <div 
                 key={`upcoming-fair-${fair.id}`}
-                className={`selector-card ${selectedFair === index ? 'active' : ''}`}
-                onClick={() => setSelectedFair(index)}
+                className={`upcoming-card ${selectedFair === index ? 'active' : ''}`}
+                onClick={() => handleUpcomingFairChange(index)}
               >
-                <div className="selector-image">
-                  <img src={fair.image} alt={fair.name} />
+                <div className="upcoming-card-image">
+                  <img src={fair.image} alt={fair.name} loading="lazy" />
                   <div className={`status-badge ${fair.status}`}>
                     <FaStar />
-                    {fair.status === 'featured' ? 'DESTACADA' : 'PRÓXIMA'}
+                    <span>{fair.status === 'featured' ? 'DESTACADA' : 'PRÓXIMA'}</span>
                   </div>
                 </div>
                 
-                <div className="selector-info">
-                  <h4>{fair.name}</h4>
-                  <div className="selector-meta">
-                    <span><FaCalendarAlt /> {fair.date}</span>
-                    <span><FaMapMarkerAlt /> {fair.location}</span>
+                <div className="upcoming-card-content">
+                  <h4 className="upcoming-title">{fair.name}</h4>
+                  <div className="upcoming-meta">
+                    <div className="meta-item">
+                      <FaCalendarAlt />
+                      <span>{fair.date}</span>
+                    </div>
+                    <div className="meta-item">
+                      <FaMapMarkerAlt />
+                      <span>{fair.location}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -449,85 +487,86 @@ function Ferias() {
           </div>
 
           {/* Selected Fair Details */}
-          <div className="fair-details">
+          <div className="upcoming-details-panel">
             {upcomingFairs[selectedFair] && (
-              <div className="detail-card" key={`upcoming-detail-${upcomingFairs[selectedFair].id}`}>
-                <div className="detail-header">
-                  <div className="detail-image">
+              <div className="upcoming-detail-card" key={`upcoming-detail-${upcomingFairs[selectedFair].id}`}>
+                <div className="upcoming-header">
+                  <div className="upcoming-image">
                     <img 
                       src={upcomingFairs[selectedFair].image} 
                       alt={upcomingFairs[selectedFair].name} 
+                      loading="lazy"
                     />
-                    <div className="detail-overlay"></div>
+                    <div className="upcoming-overlay"></div>
                   </div>
                   
-                  <div className="detail-info">
+                  <div className="upcoming-info">
                     <div className="category-badge">
                       <FaIndustry />
-                      {upcomingFairs[selectedFair].category}
+                      <span>{upcomingFairs[selectedFair].category}</span>
                     </div>
                     
-                    <h3>{upcomingFairs[selectedFair].name}</h3>
+                    <h3 className="upcoming-name">{upcomingFairs[selectedFair].name}</h3>
                     
-                    <div className="detail-meta">
-                      <div className="meta-item">
-                        <FaCalendarAlt />
+                    <div className="upcoming-metadata">
+                      <div className="metadata-item">
+                        <FaCalendarAlt className="metadata-icon" />
                         <span>{upcomingFairs[selectedFair].date}</span>
                       </div>
-                      <div className="meta-item">
-                        <FaMapMarkerAlt />
+                      <div className="metadata-item">
+                        <FaMapMarkerAlt className="metadata-icon" />
                         <span>{upcomingFairs[selectedFair].location}</span>
                       </div>
-                      <div className="meta-item">
-                        <FaBuilding />
+                      <div className="metadata-item">
+                        <FaBuilding className="metadata-icon" />
                         <span>{upcomingFairs[selectedFair].booth}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="detail-content">
-                  <p className="detail-description">
+                <div className="upcoming-content">
+                  <p className="upcoming-description">
                     {upcomingFairs[selectedFair].description}
                   </p>
 
-                  <div className="fair-highlights">
-                    <h4>Qué encontrarás en nuestro stand:</h4>
-                    <div className="highlights-grid">
+                  <div className="features-section">
+                    <h4 className="features-title">Qué encontrarás en nuestro stand:</h4>
+                    <div className="features-grid">
                       {upcomingFairs[selectedFair].features.map((feature, index) => (
-                        <div key={`feature-${index}`} className="highlight-item">
-                          <FaChevronRight />
-                          <span>{feature}</span>
+                        <div key={`feature-${index}`} className="feature-item">
+                          <FaChevronRight className="feature-icon" />
+                          <span className="feature-text">{feature}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="fair-stats">
-                    <div className="fair-stat">
-                      <FaUsers />
-                      <div>
+                  <div className="stats-section">
+                    <div className="stat-card">
+                      <FaUsers className="stat-icon" />
+                      <div className="stat-content">
                         <div className="stat-number">{upcomingFairs[selectedFair].attendees}</div>
                         <div className="stat-label">Visitantes Esperados</div>
                       </div>
                     </div>
-                    <div className="fair-stat">
-                      <FaIndustry />
-                      <div>
+                    <div className="stat-card">
+                      <FaIndustry className="stat-icon" />
+                      <div className="stat-content">
                         <div className="stat-number">{upcomingFairs[selectedFair].exhibitors}</div>
                         <div className="stat-label">Expositores</div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="detail-actions">
-                    <a href="mailto:ferias@eram.com.ar" className="detail-btn primary">
+                  <div className="action-buttons">
+                    <a href="mailto:ferias@eram.com.ar" className="action-btn primary">
                       <FaEnvelope />
-                      Solicitar Reunión
+                      <span>Solicitar Reunión</span>
                     </a>
-                    <a href="https://wa.me/5491123456789" className="detail-btn secondary">
+                    <a href="https://wa.me/5491123456789" className="action-btn secondary">
                       <FaPhone />
-                      Más Información
+                      <span>Más Información</span>
                     </a>
                   </div>
                 </div>
@@ -588,15 +627,15 @@ function Ferias() {
           <div className="cta-actions">
             <Link to="/catalogo" className="cta-btn primary">
               <FaEye />
-              Ver Productos
+              <span>Ver Productos</span>
             </Link>
             <a href="mailto:ferias@eram.com.ar" className="cta-btn secondary">
               <FaEnvelope />
-              Agendar Reunión
+              <span>Agendar Reunión</span>
             </a>
             <a href="https://wa.me/5491123456789" className="cta-btn tertiary">
               <FaPhone />
-              Consultar Stand
+              <span>Consultar Stand</span>
             </a>
           </div>
         </div>
