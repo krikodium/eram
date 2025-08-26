@@ -79,12 +79,11 @@
   border-color: #388E3C;
 }
 
-/* Enhanced added state with animated success - FIXED POSITIONING */
+/* Enhanced added state with animated success - COMPLETELY FIXED POSITIONING */
 .add-to-quote-btn.added {
   background: linear-gradient(135deg, var(--success) 0%, var(--success-light) 100%);
   border-color: var(--success);
-  /* Fixed positioning issue - use scale only, no translate */
-  transform: scale(1.05);
+  /* NO transform here - only use non-layout affecting properties */
   animation: addedSuccess 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -129,22 +128,27 @@
   letter-spacing: 0.05em;
 }
 
-/* Premium animations - FIXED POSITIONING */
+/* Premium animations - COMPLETELY FIXED POSITIONING */
 @keyframes addedSuccess {
   0% { 
-    transform: scale(1); 
+    /* No transform - keep original position */
+    opacity: 1;
   }
   25% { 
-    transform: scale(1.1); 
+    /* No transform - keep original position */
+    opacity: 0.9;
   }
   50% { 
-    transform: scale(1.15); 
+    /* No transform - keep original position */
+    opacity: 0.8;
   }
   75% { 
-    transform: scale(1.08); 
+    /* No transform - keep original position */
+    opacity: 0.9;
   }
   100% { 
-    transform: scale(1.05); 
+    /* No transform - keep original position */
+    opacity: 1;
   }
 }
 
@@ -267,17 +271,58 @@
   
   /* Fixed positioning for added state on mobile */
   .add-to-quote-btn.added {
-    transform: scale(1.05);
+    /* NO transform - keep original position */
     animation: addedSuccessMobile 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   
   /* Mobile-specific animation without positioning issues */
   @keyframes addedSuccessMobile {
-    0% { transform: scale(1); }
-    25% { transform: scale(1.1); }
-    50% { transform: scale(1.15); }
-    75% { transform: scale(1.08); }
-    100% { transform: scale(1.05); }
+    0% { 
+      /* No transform - keep original position */
+      opacity: 1;
+    }
+    25% { 
+      /* No transform - keep original position */
+      opacity: 0.9;
+    }
+    50% { 
+      /* No transform - keep original position */
+      opacity: 0.8;
+    }
+    75% { 
+      /* No transform - keep original position */
+      opacity: 0.9;
+    }
+    100% { 
+      /* No transform - keep original position */
+      opacity: 1;
+    }
+  }
+  
+  /* Additional mobile stability fixes */
+  .add-to-quote-btn {
+    /* Force stable positioning */
+    position: relative !important;
+    transform: none !important;
+    /* Prevent any layout shifts */
+    margin: 0 !important;
+    padding: inherit !important;
+    /* Force stable dimensions */
+    min-width: fit-content;
+    max-width: none;
+    box-sizing: border-box;
+  }
+  
+  /* Disable all transforms on mobile */
+  .add-to-quote-btn:hover,
+  .add-to-quote-btn:active,
+  .add-to-quote-btn.added {
+    transform: none !important;
+  }
+  
+  /* Only allow scale on active for touch feedback */
+  .add-to-quote-btn:active {
+    transform: scale(0.95) !important;
   }
 }
 

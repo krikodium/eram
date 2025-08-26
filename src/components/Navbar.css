@@ -216,14 +216,23 @@
 .mobile-nav-toggle {
   display: none;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: var(--radius-md);
   transition: all var(--transition-normal);
   z-index: 10002;
+  /* Ensure proper centering and visibility */
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  box-sizing: border-box;
+  /* Additional centering fixes */
+  position: relative;
+  overflow: visible;
 }
 
 .mobile-nav-toggle:hover {
@@ -231,16 +240,19 @@
 }
 
 .nav-hamburger {
-  width: 24px;
+  width: 20px;
   height: 2px;
   background: var(--text-primary);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform-origin: center;
   border-radius: 2px;
+  /* Ensure proper positioning */
+  display: block;
+  margin: 0;
 }
 
 .mobile-nav-toggle.active .nav-hamburger:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(4px, 4px);
 }
 
 .mobile-nav-toggle.active .nav-hamburger:nth-child(2) {
@@ -249,7 +261,7 @@
 }
 
 .mobile-nav-toggle.active .nav-hamburger:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
+  transform: rotate(-45deg) translate(6px, -5px);
 }
 
 /* =============================================================================
@@ -399,6 +411,8 @@ body {
   
   .mobile-nav-toggle {
     display: flex;
+    /* Ensure proper spacing in mobile */
+    margin-left: 0.5rem;
   }
   
   .nav-links:not(.mobile-menu) {
@@ -407,6 +421,8 @@ body {
   
   .navbar-actions {
     gap: 0.5rem;
+    /* Ensure proper alignment */
+    align-items: center;
   }
   
   .login-btn {
@@ -440,6 +456,18 @@ body {
   .login-btn {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
+  }
+  
+  .mobile-nav-toggle {
+    /* Adjust for very small screens */
+    padding: 0.6rem;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .nav-hamburger {
+    width: 18px;
+    height: 2px;
   }
   
   .nav-links.mobile-menu {
