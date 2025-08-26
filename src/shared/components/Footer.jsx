@@ -74,8 +74,8 @@ const Footer = () => {
               <div className="contact-item">
                 <FaPhone />
                 <div>
-                  <strong>Teléfono</strong>
-                  <p>+54 11 4567-8900</p>
+                  <strong>Teléfonos</strong>
+                  <p>4753-7846 / 4754-8879</p>
                 </div>
               </div>
               
@@ -83,7 +83,7 @@ const Footer = () => {
                 <FaWhatsapp />
                 <div>
                   <strong>WhatsApp Ventas</strong>
-                  <p>+54 9 11 2345-6789</p>
+                  <p>+54 9 11 3374-9000</p>
                 </div>
               </div>
               
@@ -91,7 +91,7 @@ const Footer = () => {
                 <FaEnvelope />
                 <div>
                   <strong>Email</strong>
-                  <p>ventas@eram.com.ar<br />info@eram.com.ar</p>
+                  <p>ventas@eram.com.ar<br />Único mail de contacto</p>
                 </div>
               </div>
               
@@ -99,7 +99,7 @@ const Footer = () => {
                 <FaClock />
                 <div>
                   <strong>Horario de Atención</strong>
-                  <p>Lun - Vie: 8:00 - 18:00<br />Sáb: 9:00 - 13:00</p>
+                  <p>Lun - Vie: 9:00 - 17:00</p>
                 </div>
               </div>
             </div>

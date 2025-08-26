@@ -18,35 +18,35 @@ const contactInfo = [
   {
     icon: <FaMapMarkerAlt />,
     title: "Dirección",
-    primary: "Av. Industria 1234",
-    secondary: "San Martín, Buenos Aires",
+    primary: "Av. San Martín 7421",
+    secondary: "CABA, Buenos Aires",
     action: "Ver en Google Maps",
-    actionLink: "https://www.google.com/maps?q=Av.+Industria+1234+San+Martin+Buenos+Aires",
+    actionLink: "https://www.google.com/maps?q=Av.+San+Martin+7421+CABA+Buenos+Aires",
     color: "#D32F2F"
   },
   {
     icon: <FaPhone />,
-    title: "Teléfono",
-    primary: "+54 11 4567-8900",
-    secondary: "Lun a Vie: 8:00 - 18:00",
+    title: "Teléfonos",
+    primary: "4753-7846 / 4754-8879",
+    secondary: "Lun a Vie: 9:00 - 17:00",
     action: "Llamar Ahora",
-    actionLink: "tel:+541145678900",
+    actionLink: "tel:+541147537846",
     color: "#1976D2"
   },
   {
     icon: <FaWhatsapp />,
     title: "WhatsApp",
-    primary: "+54 9 11 2345-6789",
+    primary: "+54 9 11 3374-9000",
     secondary: "Consultas inmediatas",
     action: "Chatear",
-    actionLink: "https://wa.me/5491123456789",
+    actionLink: "https://wa.me/5491133749000",
     color: "#25D366"
   },
   {
     icon: <FaEnvelope />,
     title: "Email",
     primary: "ventas@eram.com.ar",
-    secondary: "info@eram.com.ar",
+    secondary: "Único mail de contacto",
     action: "Enviar Email",
     actionLink: "mailto:ventas@eram.com.ar",
     color: "#FF6B35"
@@ -164,7 +164,7 @@ function FindUs() {
                         </div>
                       )}
                       <iframe
-                        title="Ubicación ERAM - San Martín, Buenos Aires"
+                        title="Ubicación ERAM - CABA, Buenos Aires"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13127.223152964826!2d-58.5463279!3d-34.5668501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb8301059d3cf%3A0x2cb12c5411cfa34a!2sERAM!5e0!3m2!1ses-419!2sar!4v1718200000000!5m2!1ses-419!2sar"
                         allowFullScreen
                         loading="lazy"
@@ -177,13 +177,13 @@ function FindUs() {
                     <div className="map-info">
                       <h4>¿Cómo llegar?</h4>
                       <ul>
-                        <li><strong>En Auto:</strong> Acceso directo desde Panamericana</li>
+                        <li><strong>En Auto:</strong> Av. San Martín 7421, CABA</li>
                         <li><strong>En Tren:</strong> Estación San Martín (Línea Mitre)</li>
                         <li><strong>En Colectivo:</strong> Líneas 21, 57, 175</li>
                       </ul>
                       
-                      <a 
-                        href="https://www.google.com/maps/dir//Av.+Industria+1234+San+Martin+Buenos+Aires"
+                                              <a 
+                        href="https://www.google.com/maps/dir//Av.+San+Martin+7421+CABA+Buenos+Aires"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="directions-btn"
@@ -237,14 +237,10 @@ function FindUs() {
                       <div className="schedule-list">
                         <div className="schedule-item">
                           <span className="day">Lunes a Viernes</span>
-                          <span className="time">8:00 - 18:00</span>
-                        </div>
-                        <div className="schedule-item">
-                          <span className="day">Sábados</span>
-                          <span className="time">9:00 - 13:00</span>
+                          <span className="time">9:00 - 17:00</span>
                         </div>
                         <div className="schedule-item closed">
-                          <span className="day">Domingos</span>
+                          <span className="day">Sábados y Domingos</span>
                           <span className="time">Cerrado</span>
                         </div>
                       </div>
@@ -271,7 +267,7 @@ function FindUs() {
           <h3>¿Listo para visitarnos?</h3>
           <p>Nuestro equipo de expertos está esperándote</p>
           <div className="cta-buttons">
-            <a href="https://wa.me/5491123456789" className="cta-btn primary">
+            <a href="https://wa.me/5491133749000" className="cta-btn primary">
               <FaWhatsapp />
               Consultar Ahora
             </a>
