@@ -1,127 +1,188 @@
-/* src/features/rubros/components/RubrosFilter.css - Horizontal Top-Bar Selector */
+/* src/features/rubros/components/RubrosFilter.css - Professional Horizontal Filter Design */
 
 /* =============================================================================
-   HORIZONTAL RUBROS FILTER - TOP BAR DESIGN
+   HORIZONTAL RUBROS FILTER - PROFESSIONAL TOP BAR DESIGN
 ============================================================================= */
 .rubros-filter.horizontal {
   width: 100%;
   background: var(--bg-card);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   box-shadow: var(--card-shadow);
   border: 1px solid var(--border-secondary);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.rubros-filter.horizontal:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--border-primary);
 }
 
 /* =============================================================================
-   FILTERS TOGGLE HEADER
+   FILTERS TOGGLE HEADER - ENHANCED DESIGN
 ============================================================================= */
 .rubros-header-horizontal {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
-  background: var(--bg-secondary);
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
   border-bottom: 1px solid var(--border-secondary);
+  position: relative;
 }
 
+.rubros-header-horizontal::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-primary), transparent);
+}
+
+/* Enhanced Filters Toggle Button */
 .filters-toggle {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.875rem;
   background: linear-gradient(135deg, var(--interactive-primary), #b71c1c);
   color: white;
   border: none;
   border-radius: var(--radius-lg);
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  font-size: 0.95rem;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all var(--transition-bounce);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: var(--button-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.filters-toggle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.filters-toggle:hover::before {
+  left: 100%;
 }
 
 .filters-toggle:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
   background: linear-gradient(135deg, #b71c1c, var(--interactive-primary));
+}
+
+.filters-toggle:active {
+  transform: translateY(-1px);
+  transition: all var(--transition-fast);
 }
 
 .filters-toggle.disabled {
   background: var(--bg-tertiary);
   color: var(--text-muted);
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .filters-toggle.error {
   background: linear-gradient(135deg, #C62828, #D32F2F);
 }
 
+/* Enhanced Toggle Icon */
 .toggle-icon {
-  transition: transform var(--transition-normal);
-  font-size: 0.8rem;
+  transition: transform var(--transition-bounce);
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 1;
 }
 
 .toggle-icon.rotated {
   transform: rotate(180deg);
 }
 
-/* Active Filter Indicator */
+/* Enhanced Active Filter Indicator */
 .active-filter-indicator {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 1rem;
-  background: rgba(var(--interactive-primary), 0.1);
-  border-radius: var(--radius-md);
-  font-size: 0.9rem;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, rgba(var(--interactive-primary), 0.1), rgba(var(--interactive-primary), 0.05));
+  border-radius: var(--radius-lg);
+  font-size: 0.95rem;
   color: var(--text-primary);
+  border: 1px solid rgba(var(--interactive-primary), 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .clear-filter {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  background: var(--interactive-primary);
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--interactive-primary), #b71c1c);
   color: white;
   border: none;
-  border-radius: var(--radius-sm);
-  padding: 0.25rem 0.5rem;
-  font-size: 0.8rem;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all var(--transition-bounce);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .clear-filter:hover {
-  background: #b71c1c;
+  background: linear-gradient(135deg, #b71c1c, var(--interactive-primary));
   transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
 }
 
 /* =============================================================================
-   HORIZONTAL RUBROS CONTAINER - COLLAPSIBLE
+   HORIZONTAL RUBROS CONTAINER - ENHANCED COLLAPSIBLE
 ============================================================================= */
 .rubros-horizontal-container {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   background: var(--bg-primary);
+  position: relative;
 }
 
 .rubros-horizontal-container.expanded {
-  max-height: 200px; /* Adjust based on content */
+  max-height: 220px;
+}
+
+.rubros-horizontal-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-secondary), transparent);
 }
 
 .rubros-scroll-area {
-  padding: 1.5rem;
+  padding: 2rem;
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-/* Custom scrollbar for horizontal scroll */
+/* Enhanced Custom Scrollbar */
 .rubros-scroll-area::-webkit-scrollbar {
-  height: 6px;
+  height: 8px;
 }
 
 .rubros-scroll-area::-webkit-scrollbar-track {
@@ -130,126 +191,185 @@
 }
 
 .rubros-scroll-area::-webkit-scrollbar-thumb {
-  background: var(--interactive-primary);
+  background: linear-gradient(135deg, var(--interactive-primary), #b71c1c);
   border-radius: var(--radius-full);
+  border: 2px solid var(--bg-secondary);
 }
 
 .rubros-scroll-area::-webkit-scrollbar-thumb:hover {
-  background: #b71c1c;
+  background: linear-gradient(135deg, #b71c1c, var(--interactive-primary));
 }
 
 /* =============================================================================
-   RUBROS TABS - HORIZONTAL TAB DESIGN
+   RUBROS TABS - PROFESSIONAL TAB DESIGN
 ============================================================================= */
 .rubros-tabs {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   align-items: center;
   min-width: max-content;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
 }
 
+/* Enhanced Rubro Tab */
 .rubro-tab {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.5rem;
+  gap: 1rem;
+  padding: 1.25rem 1.75rem;
   background: var(--bg-card);
   border: 2px solid var(--border-secondary);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all var(--transition-bounce);
   text-decoration: none;
   color: var(--text-secondary);
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 1rem;
   white-space: nowrap;
   min-width: max-content;
   box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.rubro-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(var(--interactive-primary), 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.rubro-tab:hover::before {
+  left: 100%;
 }
 
 .rubro-tab:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--card-shadow-hover);
   border-color: var(--interactive-primary);
   background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.rubro-tab:active {
+  transform: translateY(-2px);
+  transition: all var(--transition-fast);
 }
 
 .rubro-tab.active {
   background: linear-gradient(135deg, var(--interactive-primary), #b71c1c);
   color: white;
   border-color: var(--interactive-primary);
-  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+  transform: translateY(-2px);
 }
 
 .rubro-tab.active:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(211, 47, 47, 0.5);
 }
 
-/* Tab Icon */
+.rubro-tab.active::before {
+  display: none;
+}
+
+/* Enhanced Tab Icon */
 .rubro-tab svg {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: all var(--transition-normal);
+}
+
+.rubro-tab:hover svg {
+  transform: scale(1.1);
 }
 
 .rubro-tab.active svg {
   color: white;
+  transform: scale(1.1);
 }
 
-/* Tab Content */
+/* Enhanced Tab Content */
 .rubro-tab-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  line-height: 1.2;
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
 }
 
 .rubro-name {
-  font-weight: 600;
-  margin-bottom: 0.25rem;
+  font-weight: 700;
+  margin-bottom: 0.375rem;
+  font-size: 1.05rem;
 }
 
 .rubro-count {
-  font-size: 0.8rem;
-  opacity: 0.8;
-  font-weight: 400;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(10px);
 }
 
 .rubro-tab.active .rubro-count {
-  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* =============================================================================
-   LOADING AND ERROR STATES
+   LOADING AND ERROR STATES - ENHANCED
 ============================================================================= */
 .filters-toggle .loading-spinner {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-width: 2px;
 }
 
 /* =============================================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - IMPROVED
 ============================================================================= */
 @media (max-width: 1200px) {
   .rubros-horizontal-container.expanded {
-    max-height: 180px;
+    max-height: 200px;
   }
   
   .rubros-scroll-area {
-    padding: 1.25rem;
+    padding: 1.75rem;
   }
   
   .rubro-tab {
-    padding: 0.875rem 1.25rem;
-    font-size: 0.9rem;
+    padding: 1.125rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .rubros-header-horizontal {
+    padding: 1.25rem 1.75rem;
+  }
+  
+  .filters-toggle {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 768px) {
+  .rubros-filter.horizontal {
+    margin-bottom: 2rem;
+  }
+  
   .rubros-header-horizontal {
-    padding: 1rem;
+    padding: 1.25rem 1.5rem;
     flex-direction: column;
     gap: 1rem;
     align-items: stretch;
@@ -257,28 +377,30 @@
   
   .active-filter-indicator {
     justify-content: space-between;
+    padding: 0.625rem 1rem;
   }
   
   .filters-toggle {
     width: 100%;
     justify-content: center;
+    padding: 1rem 1.5rem;
   }
   
   .rubros-horizontal-container.expanded {
-    max-height: 160px;
+    max-height: 180px;
   }
   
   .rubros-scroll-area {
-    padding: 1rem;
+    padding: 1.5rem;
   }
   
   .rubros-tabs {
-    gap: 0.75rem;
+    gap: 1rem;
   }
   
   .rubro-tab {
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
     min-width: auto;
     flex-shrink: 0;
   }
@@ -287,62 +409,71 @@
     align-items: center;
     text-align: center;
   }
+  
+  .rubro-name {
+    font-size: 1rem;
+  }
+  
+  .rubro-count {
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 480px) {
   .rubros-header-horizontal {
-    padding: 0.75rem;
+    padding: 1rem 1.25rem;
   }
   
   .filters-toggle {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
   }
   
   .rubros-horizontal-container.expanded {
-    max-height: 140px;
+    max-height: 160px;
   }
   
   .rubros-scroll-area {
-    padding: 0.75rem;
+    padding: 1.25rem;
   }
   
   .rubro-tab {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.8rem;
-    gap: 0.5rem;
+    padding: 0.875rem 1rem;
+    font-size: 0.85rem;
+    gap: 0.75rem;
   }
   
   .rubro-tab svg {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .rubro-name {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
   }
   
   .rubro-count {
     font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
   }
   
   .clear-filter {
-    padding: 0.2rem 0.4rem;
-    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8rem;
   }
   
   .active-filter-indicator {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.85rem;
   }
 }
 
 /* =============================================================================
-   ANIMATIONS AND TRANSITIONS
+   ENHANCED ANIMATIONS AND TRANSITIONS
 ============================================================================= */
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-15px);
   }
   to {
     opacity: 1;
@@ -351,7 +482,7 @@
 }
 
 .rubros-horizontal-container.expanded {
-  animation: slideDown 0.4s ease-out;
+  animation: slideDown 0.5s ease-out;
 }
 
 /* =============================================================================
@@ -368,9 +499,14 @@
   .rubros-horizontal-container.expanded {
     animation: none;
   }
+  
+  .rubro-tab::before,
+  .filters-toggle::before {
+    display: none;
+  }
 }
 
-/* Focus styles for keyboard navigation */
+/* Enhanced Focus Styles */
 .filters-toggle:focus-visible,
 .rubro-tab:focus-visible,
 .clear-filter:focus-visible {
@@ -378,7 +514,7 @@
   outline-offset: 2px;
 }
 
-/* High contrast mode support */
+/* High Contrast Mode Support */
 @media (prefers-contrast: high) {
   .rubro-tab {
     border-width: 3px;
@@ -386,5 +522,9 @@
   
   .rubros-horizontal-container {
     border-top: 2px solid var(--border-primary);
+  }
+  
+  .filters-toggle {
+    border: 2px solid var(--interactive-primary);
   }
 }
