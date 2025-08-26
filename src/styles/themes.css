@@ -107,24 +107,24 @@
 }
 
 /* =============================================================================
-   LIGHT THEME - Sophisticated Professional Light with Accent Colors
+   LIGHT THEME - Enhanced Professional Light with Better Contrast
 ============================================================================= */
 [data-theme="light"] {
-  /* Background Colors - Sophisticated Light */
+  /* Background Colors - Sophisticated Light with Better Contrast */
   --bg-primary: #FFFFFF;
   --bg-secondary: #F8FAFC;
   --bg-tertiary: #F1F5F9;
   --bg-elevated: #FFFFFF;
   --bg-surface: #FEFEFE;
   --bg-card: #FFFFFF;
-  --bg-hover: #F8FAFC;
+  --bg-hover: #F1F5F9;
   
-  /* Text Colors - Enhanced Contrast */
+  /* Text Colors - Enhanced Contrast for Better Readability */
   --text-primary: #0F172A;
-  --text-secondary: #334155;
-  --text-tertiary: #64748B;
-  --text-muted: #94A3B8;
-  --text-disabled: #CBD5E1;
+  --text-secondary: #1E293B;
+  --text-tertiary: #475569;
+  --text-muted: #64748B;
+  --text-disabled: #94A3B8;
   --text-inverse: #FFFFFF;
   
   /* Interactive Colors - Sophisticated Palette */
@@ -142,14 +142,14 @@
   --accent-tertiary: var(--accent-green);
   --accent-quaternary: var(--accent-purple);
   
-  /* Border Colors - Refined */
-  --border-primary: #E2E8F0;
-  --border-secondary: #F1F5F9;
-  --border-tertiary: #F8FAFC;
+  /* Border Colors - Refined with Better Contrast */
+  --border-primary: #CBD5E1;
+  --border-secondary: #E2E8F0;
+  --border-tertiary: #F1F5F9;
   --border-focus: var(--brand-red);
   --border-accent: var(--accent-blue);
   
-  /* State Colors - Professional Light */
+  /* State Colors - Professional Light with Better Contrast */
   --success: #059669;
   --success-light: #34D399;
   --warning: #D97706;

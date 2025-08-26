@@ -252,7 +252,7 @@
   display: flex;
   flex-direction: column;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   align-items: center;
 }
 
@@ -332,6 +332,52 @@
 
 .category-arrow-next {
   right: -25px;
+}
+
+/* =============================================================================
+   LIGHT THEME SPECIFIC IMPROVEMENTS
+============================================================================= */
+[data-theme="light"] .category-icons-section {
+  background: var(--bg-secondary);
+}
+
+[data-theme="light"] .category-card-inner {
+  background: var(--bg-card);
+  border: 1px solid var(--border-secondary);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .category-card:hover .category-card-inner {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(var(--category-color), 0.05) 100%);
+  border-color: var(--category-color);
+  box-shadow: var(--card-shadow-hover);
+}
+
+[data-theme="light"] .category-name {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+[data-theme="light"] .category-count {
+  color: var(--text-secondary);
+}
+
+[data-theme="light"] .category-count span:first-child {
+  color: var(--category-color);
+  font-weight: 800;
+}
+
+[data-theme="light"] .category-arrow {
+  background: var(--bg-card);
+  border: 2px solid var(--border-primary);
+  color: var(--text-primary);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .category-arrow:hover {
+  background: var(--interactive-primary);
+  color: white;
+  border-color: var(--interactive-primary);
 }
 
 /* =============================================================================
@@ -531,7 +577,7 @@
 
 /* Focus styles for keyboard navigation */
 .category-card:focus-visible {
-  outline: 2px solid var(--interactive-primary);
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 
