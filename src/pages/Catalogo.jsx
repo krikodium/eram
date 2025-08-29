@@ -13,7 +13,7 @@ import {
   FaTimes, 
   FaIndustry, 
   FaSearch, 
-  FaGrid3X3, 
+  FaTh, 
   FaList,
   FaSortAmountDown,
   FaEye,
@@ -305,7 +305,7 @@ const Catalogo = () => {
               onClick={() => setViewMode('grid')}
               aria-label="Vista en cuadrícula"
             >
-              <FaGrid3X3 />
+              <FaTh />
             </button>
             <button
               className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
