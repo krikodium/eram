@@ -1,17 +1,18 @@
-/* src/components/ProductCard.css - Simplified and Functional */
+/* src/components/ProductCard.css - Completely Redesigned Simple and Elegant */
 
 .product-card-wrapper {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-secondary);
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-secondary);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
   height: 100%;
+  position: relative;
 }
 
 .product-card-wrapper:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
   border-color: var(--interactive-primary);
 }
 
@@ -26,19 +27,21 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 16/12;
+  background: var(--bg-secondary);
 }
 
 .image-link {
   display: block;
   width: 100%;
   height: 100%;
+  transition: transform var(--transition-normal);
 }
 
 .card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-normal);
 }
 
 .product-card-wrapper:hover .card-img {
@@ -53,13 +56,14 @@
   background: linear-gradient(135deg, #ffd700, #ffed4e);
   color: #333;
   padding: 0.5rem 0.75rem;
-  border-radius: 20px;
+  border-radius: var(--radius-full);
   font-size: 0.8rem;
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  box-shadow: var(--shadow-md);
+  z-index: 2;
 }
 
 .out-of-stock-badge {
@@ -69,9 +73,10 @@
   background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 0.5rem 0.75rem;
-  border-radius: 20px;
+  border-radius: var(--radius-full);
   font-size: 0.8rem;
   font-weight: 600;
+  z-index: 2;
 }
 
 /* Quick Actions Overlay */
@@ -136,7 +141,7 @@
 .product-title a {
   color: var(--text-primary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-normal);
 }
 
 .product-title a:hover {
@@ -180,6 +185,9 @@
   gap: 0.75rem;
   color: var(--text-tertiary);
   font-size: 0.9rem;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
 }
 
 .price-icon {
@@ -214,11 +222,11 @@
 }
 
 .in-stock {
-  color: #4caf50;
+  color: var(--success);
 }
 
 .out-of-stock {
-  color: #f44336;
+  color: var(--error);
 }
 
 /* Provider Badge */
@@ -229,10 +237,11 @@
   background: rgba(211, 47, 47, 0.1);
   color: var(--interactive-primary);
   padding: 0.5rem 0.75rem;
-  border-radius: 20px;
+  border-radius: var(--radius-full);
   font-size: 0.8rem;
   font-weight: 600;
   margin-top: auto;
+  border: 1px solid rgba(211, 47, 47, 0.2);
 }
 
 .badge-icon {
@@ -256,11 +265,11 @@
   color: var(--interactive-primary);
   border: 2px solid var(--interactive-primary);
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal);
   text-align: center;
 }
 
@@ -336,6 +345,12 @@
   
   .price-value {
     font-size: 1.1rem;
+  }
+  
+  .featured-badge,
+  .out-of-stock-badge {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
   }
 }
 
