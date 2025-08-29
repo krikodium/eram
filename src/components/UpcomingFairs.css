@@ -1,0 +1,703 @@
+/* src/components/UpcomingFairs.css - Optimized Upcoming Fairs Section Styles */
+
+/* =============================================================================
+   UPCOMING FAIRS SECTION - Enhanced Layout and Design
+============================================================================= */
+.upcoming-fairs-section {
+  padding: 6rem 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.upcoming-fairs-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(211, 47, 47, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(25, 118, 210, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* =============================================================================
+   SECTION HEADER - Consistent Design System
+============================================================================= */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, var(--interactive-primary) 0%, #FF6B35 100%);
+  color: var(--text-inverse);
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title-highlight {
+  background: linear-gradient(135deg, var(--interactive-primary) 0%, #FF6B35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: var(--text-tertiary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =============================================================================
+   UPCOMING CONTAINER - Responsive Grid Layout
+============================================================================= */
+.upcoming-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* =============================================================================
+   UPCOMING SELECTOR - Interactive Fair Cards
+============================================================================= */
+.upcoming-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.upcoming-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-secondary);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+}
+
+.upcoming-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--interactive-primary);
+  box-shadow: 0 15px 40px rgba(211, 47, 47, 0.2);
+}
+
+.upcoming-card.active {
+  border-color: var(--interactive-primary);
+  box-shadow: 0 10px 30px rgba(211, 47, 47, 0.3);
+  transform: translateY(-3px);
+}
+
+.upcoming-card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.fair-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.upcoming-card:hover .fair-thumbnail {
+  transform: scale(1.05);
+}
+
+.status-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--status-color, var(--interactive-primary));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-badge svg {
+  font-size: 0.8rem;
+}
+
+.fair-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.upcoming-card:hover .fair-overlay {
+  opacity: 1;
+}
+
+.upcoming-card-content {
+  padding: 1.5rem;
+}
+
+.upcoming-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.upcoming-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.meta-item svg {
+  color: var(--interactive-primary);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.upcoming-indicator {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.upcoming-card:hover .upcoming-indicator,
+.upcoming-card.active .upcoming-indicator {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =============================================================================
+   UPCOMING DETAILS PANEL - Rich Content Display
+============================================================================= */
+.upcoming-details-panel {
+  background: var(--bg-card);
+  border: 2px solid var(--border-secondary);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.upcoming-detail-card {
+  position: relative;
+}
+
+/* =============================================================================
+   UPCOMING HEADER - Image and Info Layout
+============================================================================= */
+.upcoming-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--bg-secondary);
+}
+
+.upcoming-image {
+  position: relative;
+  height: 250px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.fair-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upcoming-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+.upcoming-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--interactive-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.upcoming-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.upcoming-metadata {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.metadata-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.metadata-icon {
+  color: var(--interactive-primary);
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* =============================================================================
+   UPCOMING CONTENT - Features and Actions
+============================================================================= */
+.upcoming-content {
+  padding: 2rem;
+}
+
+.upcoming-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.features-section {
+  margin-bottom: 2rem;
+}
+
+.features-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.features-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--interactive-primary);
+}
+
+.feature-icon {
+  color: var(--interactive-primary);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.feature-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* =============================================================================
+   STATS SECTION - Event Statistics
+============================================================================= */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-tertiary);
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  color: var(--interactive-primary);
+  opacity: 0.8;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.25rem;
+}
+
+/* =============================================================================
+   ACTION BUTTONS - Call to Action System
+============================================================================= */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  min-width: 160px;
+  justify-content: center;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, var(--interactive-primary) 0%, #b71c1c 100%);
+  color: white;
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.3);
+}
+
+.action-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+}
+
+.action-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.action-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.action-btn.tertiary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-secondary);
+}
+
+.action-btn.tertiary:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--interactive-primary);
+  transform: translateY(-2px);
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN - Mobile-First Approach
+============================================================================= */
+@media (max-width: 1200px) {
+  .upcoming-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .upcoming-selector {
+    order: 2;
+  }
+  
+  .upcoming-details-panel {
+    order: 1;
+  }
+  
+  .upcoming-header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .upcoming-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .upcoming-fairs-section {
+    padding: 4rem 0;
+  }
+  
+  .section-container {
+    padding: 0 1rem;
+  }
+  
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  
+  .section-title {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+  
+  .section-description {
+    font-size: 1rem;
+  }
+  
+  .upcoming-selector {
+    gap: 1rem;
+  }
+  
+  .upcoming-card-image {
+    height: 150px;
+  }
+  
+  .upcoming-card-content {
+    padding: 1rem;
+  }
+  
+  .upcoming-title {
+    font-size: 1rem;
+  }
+  
+  .upcoming-header {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .upcoming-image {
+    height: 180px;
+  }
+  
+  .upcoming-name {
+    font-size: 1.25rem;
+  }
+  
+  .upcoming-content {
+    padding: 1.5rem;
+  }
+  
+  .stats-section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .stat-card {
+    padding: 1.25rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .action-btn {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .upcoming-fairs-section {
+    padding: 3rem 0;
+  }
+  
+  .section-container {
+    padding: 0 0.75rem;
+  }
+  
+  .section-header {
+    margin-bottom: 2rem;
+  }
+  
+  .section-badge {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .upcoming-card-image {
+    height: 120px;
+  }
+  
+  .upcoming-card-content {
+    padding: 0.75rem;
+  }
+  
+  .upcoming-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .meta-item {
+    font-size: 0.8rem;
+  }
+  
+  .upcoming-header {
+    padding: 1rem;
+  }
+  
+  .upcoming-image {
+    height: 150px;
+  }
+  
+  .upcoming-name {
+    font-size: 1.1rem;
+  }
+  
+  .upcoming-content {
+    padding: 1rem;
+  }
+  
+  .feature-item {
+    padding: 0.75rem;
+  }
+  
+  .feature-text {
+    font-size: 0.85rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.25rem;
+  }
+  
+  .action-btn {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY AND PERFORMANCE
+============================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .upcoming-card,
+  .fair-thumbnail,
+  .upcoming-indicator {
+    transition: none;
+    animation: none;
+  }
+  
+  .upcoming-card:hover {
+    transform: none;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.upcoming-card:focus-visible {
+  outline: 3px solid var(--interactive-primary);
+  outline-offset: 2px;
+}
+
+.action-btn:focus-visible {
+  outline: 3px solid var(--interactive-primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .upcoming-card,
+  .upcoming-details-panel {
+    border-width: 3px;
+  }
+  
+  .status-badge {
+    border: 2px solid currentColor;
+  }
+}

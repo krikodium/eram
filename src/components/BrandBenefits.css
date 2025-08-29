@@ -81,8 +81,10 @@
 ============================================================================= */
 .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
   animation: gridFadeIn 1s ease-out 0.3s both;
 }
 
@@ -110,17 +112,17 @@
   background: var(--bg-card);
   border: 1px solid var(--border-secondary);
   border-radius: var(--radius-xl);
-  padding: 2.5rem 2rem;
+  padding: 1.5rem 1.25rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1.5rem;
+  gap: 1rem;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: var(--card-shadow);
   overflow: hidden;
-  min-height: 280px;
+  min-height: 200px;
 }
 
 .benefit-card:hover .benefit-card-inner {
@@ -160,16 +162,16 @@
 }
 
 .benefit-icon {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background: linear-gradient(135deg, var(--benefit-color), rgba(var(--benefit-color), 0.8));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 2.2rem;
-  box-shadow: 0 8px 25px rgba(var(--benefit-color), 0.25);
+  font-size: 1.6rem;
+  box-shadow: 0 6px 20px rgba(var(--benefit-color), 0.25);
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
 }
@@ -202,10 +204,10 @@
 }
 
 .benefit-title {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   line-height: 1.3;
   transition: color 0.3s ease;
 }
@@ -215,8 +217,8 @@
 }
 
 .benefit-description {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: var(--text-tertiary);
   margin: 0;
   transition: color 0.3s ease;
@@ -252,6 +254,25 @@
 /* =============================================================================
    RESPONSIVE DESIGN
 ============================================================================= */
+
+/* Scroll horizontal styling for mobile */
+.benefits-grid::-webkit-scrollbar {
+  height: 4px;
+}
+
+.benefits-grid::-webkit-scrollbar-track {
+  background: var(--border-tertiary);
+  border-radius: var(--radius-full);
+}
+
+.benefits-grid::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: var(--radius-full);
+}
+
+.benefits-grid::-webkit-scrollbar-thumb:hover {
+  background: var(--border-secondary);
+}
 @media (max-width: 1200px) {
   .brand-benefits-section {
     padding: 4rem 0;
@@ -262,18 +283,27 @@
   }
   
   .benefits-grid {
-    gap: 1.8rem;
+    gap: 1.2rem;
+    max-width: 100%;
   }
   
   .benefit-card-inner {
-    padding: 2rem 1.5rem;
-    min-height: 260px;
+    padding: 1.25rem 1rem;
+    min-height: 180px;
   }
   
   .benefit-icon {
-    width: 70px;
-    height: 70px;
-    font-size: 2rem;
+    width: 55px;
+    height: 55px;
+    font-size: 1.4rem;
+  }
+  
+  .benefit-title {
+    font-size: 1rem;
+  }
+  
+  .benefit-description {
+    font-size: 0.8rem;
   }
 }
 
@@ -291,28 +321,34 @@
   }
   
   .benefits-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 1rem;
   }
   
   .benefit-card-inner {
-    padding: 1.8rem 1.25rem;
-    min-height: 240px;
-    gap: 1.25rem;
+    padding: 1rem 0.75rem;
+    min-height: 160px;
+    gap: 0.75rem;
+    min-width: 140px;
   }
   
   .benefit-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 1.8rem;
-  }
-  
-  .benefit-title {
+    width: 45px;
+    height: 45px;
     font-size: 1.2rem;
   }
   
+  .benefit-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
   .benefit-description {
-    font-size: 0.95rem;
+    font-size: 0.75rem;
+    line-height: 1.4;
   }
 }
 
@@ -330,28 +366,34 @@
   }
   
   .benefits-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
   }
   
   .benefit-card-inner {
-    padding: 1.5rem 1rem;
-    min-height: 220px;
-    gap: 1rem;
+    padding: 0.875rem 0.5rem;
+    min-height: 140px;
+    gap: 0.5rem;
+    min-width: 120px;
   }
   
   .benefit-icon {
-    width: 55px;
-    height: 55px;
-    font-size: 1.6rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
   
   .benefit-title {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.375rem;
   }
   
   .benefit-description {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
+    line-height: 1.3;
   }
 }
 

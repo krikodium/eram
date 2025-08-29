@@ -1,0 +1,447 @@
+/* src/components/FeriasHero.css - Optimized Hero Section Styles */
+
+/* =============================================================================
+   HERO SECTION - Enhanced with Better Responsiveness
+============================================================================= */
+.ferias-hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 0;
+  background: var(--bg-primary);
+}
+
+/* =============================================================================
+   BACKGROUND SYSTEM - Enhanced Visual Impact
+============================================================================= */
+.ferias-hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.7) contrast(1.1);
+  transition: transform 20s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.ferias-hero-section:hover .hero-bg-image {
+  transform: scale(1.05);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 11, 0.9) 0%,
+    rgba(26, 26, 27, 0.8) 40%,
+    rgba(211, 47, 47, 0.2) 80%,
+    rgba(211, 47, 47, 0.1) 100%
+  );
+  z-index: 2;
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(211, 47, 47, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(25, 118, 210, 0.1) 0%, transparent 50%);
+  z-index: 3;
+}
+
+/* =============================================================================
+   CONTENT LAYOUT - Centered and Responsive
+============================================================================= */
+.ferias-hero-content {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.hero-container {
+  max-width: 1400px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* =============================================================================
+   BADGE SYSTEM - Enhanced Visual Appeal
+============================================================================= */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, var(--interactive-primary) 0%, #FF6B35 100%);
+  color: var(--text-inverse);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.section-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(211, 47, 47, 0.6);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.badge-icon {
+  font-size: 1.2rem;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* =============================================================================
+   TYPOGRAPHY SYSTEM - Responsive and Impactful
+============================================================================= */
+.ferias-hero-title {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--text-primary);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title-highlight {
+  background: linear-gradient(135deg, var(--interactive-primary) 0%, #FF6B35 50%, var(--interactive-primary) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: highlightShimmer 3s ease-in-out infinite;
+}
+
+@keyframes highlightShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.ferias-hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* =============================================================================
+   STATS GRID - Professional Layout
+============================================================================= */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-xl);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--interactive-primary);
+  box-shadow: 0 10px 30px rgba(211, 47, 47, 0.3);
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  color: var(--interactive-primary);
+  opacity: 0.8;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* =============================================================================
+   ACTION BUTTONS - Enhanced CTA System
+============================================================================= */
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 2px solid transparent;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.hero-btn.primary {
+  background: linear-gradient(135deg, var(--interactive-primary) 0%, #b71c1c 100%);
+  color: white;
+  box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+}
+
+.hero-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(211, 47, 47, 0.6);
+}
+
+.hero-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.hero-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* =============================================================================
+   SCROLL INDICATOR - Enhanced UX
+============================================================================= */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  opacity: 0.7;
+  animation: scrollIndicatorFloat 2s ease-in-out infinite;
+}
+
+.scroll-arrow {
+  width: 2px;
+  height: 20px;
+  background: var(--text-secondary);
+  border-radius: var(--radius-full);
+  position: relative;
+}
+
+.scroll-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid var(--text-secondary);
+}
+
+@keyframes scrollIndicatorFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN - Mobile-First Approach
+============================================================================= */
+@media (max-width: 1200px) {
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .hero-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .ferias-hero-section {
+    min-height: 90vh;
+  }
+  
+  .ferias-hero-content {
+    padding: 1rem;
+  }
+  
+  .hero-container {
+    gap: 1.5rem;
+  }
+  
+  .section-badge {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 100%;
+  }
+  
+  .stat-item {
+    padding: 1.25rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .hero-actions {
+    gap: 1rem;
+  }
+  
+  .hero-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ferias-hero-section {
+    min-height: 85vh;
+  }
+  
+  .ferias-hero-content {
+    padding: 0.75rem;
+  }
+  
+  .hero-container {
+    gap: 1.25rem;
+  }
+  
+  .section-badge {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+  }
+  
+  .stat-item {
+    padding: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.75rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .hero-btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+    min-width: 160px;
+  }
+  
+  .hero-scroll-indicator {
+    bottom: 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY AND PERFORMANCE
+============================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-image,
+  .section-badge,
+  .stat-item,
+  .hero-btn,
+  .scroll-arrow {
+    transition: none;
+    animation: none;
+  }
+  
+  .ferias-hero-section:hover .hero-bg-image {
+    transform: none;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.hero-btn:focus-visible {
+  outline: 3px solid var(--interactive-primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .section-badge {
+    border-width: 3px;
+  }
+  
+  .stat-item {
+    border-width: 2px;
+  }
+}
