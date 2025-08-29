@@ -1,4 +1,4 @@
-/* src/pages/Catalogo.css - Completely Redesigned with ERAM Theme Consistency */
+/* src/pages/Catalogo.css - Completely Redesigned with ERAM Color Palette */
 
 /* =============================================================================
    MAIN CONTAINER
@@ -12,38 +12,19 @@
 }
 
 /* =============================================================================
-   HEADER SECTION - ERAM Brand Style
+   HEADER SECTION - Clean ERAM Style
 ============================================================================= */
 .catalogo-header {
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-secondary);
-  padding: 3rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.catalogo-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(211, 47, 47, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(25, 118, 210, 0.05) 0%, transparent 50%);
-  pointer-events: none;
+  padding: 2rem;
 }
 
 .header-content {
-  max-width: 1400px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  position: relative;
-  z-index: 2;
 }
 
 .header-title-section {
@@ -51,28 +32,24 @@
 }
 
 .page-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 800;
+  font-size: 2.5rem;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 1rem 0;
   display: flex;
   align-items: center;
   gap: 1rem;
-  line-height: 1.2;
 }
 
 .title-icon {
   color: var(--interactive-primary);
   font-size: 0.8em;
-  opacity: 0.8;
 }
 
 .page-subtitle {
   font-size: 1.1rem;
   color: var(--text-tertiary);
   margin: 0;
-  line-height: 1.6;
-  max-width: 600px;
 }
 
 .header-actions {
@@ -84,27 +61,20 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(135deg, var(--interactive-primary) 0%, var(--brand-red-hover) 100%);
+  background: var(--interactive-primary);
   color: white;
   border: none;
-  border-radius: var(--radius-lg);
-  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: all var(--transition-normal);
-  box-shadow: var(--shadow-md);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
 }
 
 .toggle-sidebar-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.toggle-sidebar-btn:active {
-  transform: translateY(0);
+  background: var(--interactive-primary-hover);
+  transform: translateY(-1px);
 }
 
 .btn-text {
@@ -118,25 +88,24 @@
 }
 
 /* =============================================================================
-   RUBROS FILTER SECTION - Enhanced Horizontal Filter System
+   RUBROS FILTER SECTION - Simplified
 ============================================================================= */
 .rubros-filter-section {
   background: var(--bg-card);
   border-bottom: 1px solid var(--border-secondary);
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
   position: sticky;
   top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
+  z-index: 10;
 }
 
 /* =============================================================================
-   CONTROLS SECTION - Professional Search and View Controls
+   CONTROLS SECTION - Clean and Simple
 ============================================================================= */
 .catalogo-controls {
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-tertiary);
-  padding: 2rem;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-secondary);
+  padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -146,7 +115,7 @@
 
 .controls-left {
   flex: 1;
-  min-width: 400px;
+  min-width: 300px;
 }
 
 .search-form {
@@ -155,29 +124,26 @@
 
 .search-input-wrapper {
   position: relative;
-  width: 100%;
-  max-width: 500px;
+  display: flex;
+  align-items: center;
 }
 
 .search-icon {
   position: absolute;
   left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
   color: var(--text-tertiary);
-  font-size: 1.1rem;
-  pointer-events: none;
+  font-size: 1rem;
 }
 
 .search-input {
   width: 100%;
-  padding: 1rem 1rem 1rem 3rem;
+  padding: 0.75rem 1rem 0.75rem 3rem;
   border: 2px solid var(--border-secondary);
-  border-radius: var(--radius-lg);
-  background: var(--bg-card);
+  border-radius: 8px;
+  background: var(--bg-secondary);
   color: var(--text-primary);
   font-size: 1rem;
-  transition: all var(--transition-normal);
+  transition: all 0.2s ease;
 }
 
 .search-input:focus {
@@ -186,49 +152,33 @@
   box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
 }
 
-.search-input::placeholder {
-  color: var(--text-tertiary);
-}
-
 .clear-search-btn {
   position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--text-tertiary);
-  color: white;
+  right: 0.75rem;
+  background: none;
   border: none;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--text-tertiary);
   cursor: pointer;
-  transition: all var(--transition-normal);
-  font-size: 0.8rem;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
 .clear-search-btn:hover {
-  background: var(--interactive-primary);
-  transform: translateY(-50%) scale(1.1);
+  color: var(--text-primary);
+  background: var(--bg-hover);
 }
 
 .controls-right {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: center;
   flex-wrap: wrap;
 }
 
-/* View Controls */
 .view-controls {
   display: flex;
   gap: 0.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-secondary);
-  border-radius: var(--radius-lg);
-  padding: 0.25rem;
 }
 
 .view-btn {
@@ -237,26 +187,25 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: none;
-  background: transparent;
+  border: 2px solid var(--border-secondary);
+  background: var(--bg-secondary);
   color: var(--text-tertiary);
-  border-radius: var(--radius-md);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all var(--transition-normal);
-  font-size: 1rem;
+  transition: all 0.2s ease;
 }
 
 .view-btn:hover {
-  color: var(--text-primary);
-  background: var(--bg-secondary);
+  border-color: var(--interactive-primary);
+  color: var(--interactive-primary);
 }
 
 .view-btn.active {
   background: var(--interactive-primary);
+  border-color: var(--interactive-primary);
   color: white;
 }
 
-/* Sort Controls */
 .sort-controls {
   display: flex;
   gap: 0.5rem;
@@ -265,64 +214,53 @@
 .sort-btn {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border-secondary);
-  background: var(--bg-card);
-  color: var(--text-secondary);
-  border-radius: var(--radius-md);
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--border-secondary);
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all 0.2s ease;
   font-size: 0.9rem;
-  font-weight: 500;
 }
 
 .sort-btn:hover {
   border-color: var(--interactive-primary);
   color: var(--interactive-primary);
-  background: var(--bg-secondary);
 }
 
-.sort-btn.active {
-  border-color: var(--interactive-primary);
-  color: var(--interactive-primary);
-  background: rgba(211, 47, 47, 0.1);
-}
-
-/* Toggle Filters Button */
 .toggle-filters-btn {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.5rem;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
   border: 2px solid var(--border-secondary);
-  background: var(--bg-card);
-  color: var(--text-secondary);
-  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all 0.2s ease;
   font-size: 0.9rem;
-  font-weight: 600;
 }
 
 .toggle-filters-btn:hover {
   border-color: var(--interactive-primary);
   color: var(--interactive-primary);
-  background: var(--bg-secondary);
 }
 
 /* =============================================================================
-   MAIN BODY - Professional Grid Layout
+   MAIN BODY
 ============================================================================= */
 .catalogo-body {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 300px 1fr;
   gap: 0;
   min-height: calc(100vh - 300px);
 }
 
 .catalogo-body.sidebar-visible {
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 300px 1fr;
 }
 
 .catalogo-body:not(.sidebar-visible) {
@@ -330,21 +268,21 @@
 }
 
 /* =============================================================================
-   SIDEBAR - Enhanced Category Navigation
+   SIDEBAR - Clean Category Navigation
 ============================================================================= */
 .category-sidebar {
   background: var(--bg-card) !important;
   border-right: 1px solid var(--border-secondary) !important;
-  padding: 2rem !important;
+  padding: 1.5rem !important;
   height: fit-content !important;
   position: sticky !important;
   top: 120px !important;
   max-height: calc(100vh - 120px) !important;
   overflow-y: auto !important;
   transform: translateX(0) !important;
-  transition: transform var(--transition-normal) !important;
+  transition: transform 0.3s ease !important;
   border-radius: 0 !important;
-  box-shadow: var(--shadow-md) !important;
+  box-shadow: none !important;
   z-index: 1 !important;
 }
 
@@ -356,46 +294,36 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid var(--border-primary);
-  background: var(--bg-secondary);
-  padding: 1rem;
-  border-radius: var(--radius-md);
+  border-bottom: 1px solid var(--border-tertiary);
 }
 
 .sidebar-title {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .close-sidebar-btn {
   display: none;
-  background: var(--text-tertiary);
-  color: white;
+  background: none;
   border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--text-tertiary);
   cursor: pointer;
-  transition: all var(--transition-normal);
-  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
 .close-sidebar-btn:hover {
-  background: var(--interactive-primary);
-  transform: scale(1.1);
+  color: var(--text-primary);
+  background: var(--bg-hover);
 }
 
 /* =============================================================================
-   MAIN CONTENT - Products Display Area
+   MAIN CONTENT
 ============================================================================= */
 .main-content {
   padding: 2rem;
@@ -403,26 +331,21 @@
 }
 
 .advanced-filters {
-  background: var(--bg-card);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-secondary);
-  border-radius: var(--radius-lg);
+  border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: var(--shadow-sm);
 }
 
 .advanced-filters h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
   margin: 0 0 1rem 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: var(--text-primary);
+  font-size: 1.1rem;
 }
 
 .filters-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
 }
 
@@ -433,29 +356,20 @@
 }
 
 .filter-group label {
-  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-secondary);
 }
 
 .filter-select {
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: 1px solid var(--border-secondary);
-  border-radius: var(--radius-md);
-  background: var(--bg-secondary);
+  border-radius: 4px;
+  background: var(--bg-primary);
   color: var(--text-primary);
-  font-size: 0.9rem;
-  transition: all var(--transition-normal);
-}
-
-.filter-select:focus {
-  outline: none;
-  border-color: var(--interactive-primary);
-  box-shadow: 0 0 0 2px rgba(211, 47, 47, 0.1);
 }
 
 /* =============================================================================
-   PRODUCTS SECTION - Enhanced Product Display
+   PRODUCTS SECTION
 ============================================================================= */
 .products-section {
   min-height: 400px;
@@ -471,9 +385,9 @@
 }
 
 .loading-spinner {
-  width: 48px;
-  height: 48px;
-  border: 4px solid var(--border-tertiary);
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-secondary);
   border-top: 4px solid var(--interactive-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -487,7 +401,6 @@
 
 .loading-container p {
   color: var(--text-tertiary);
-  font-size: 1rem;
   margin: 0;
 }
 
@@ -503,64 +416,56 @@
 .no-products-icon {
   font-size: 4rem;
   margin-bottom: 1rem;
-  opacity: 0.5;
 }
 
 .no-products h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
   color: var(--text-primary);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 1rem 0;
 }
 
 .no-products p {
   color: var(--text-tertiary);
-  font-size: 1rem;
   margin: 0 0 1.5rem 0;
-  max-width: 400px;
 }
 
 .clear-filters-btn {
   background: var(--interactive-primary);
   color: white;
   border: none;
-  border-radius: var(--radius-lg);
+  border-radius: 6px;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
-  font-size: 0.9rem;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all 0.2s ease;
 }
 
 .clear-filters-btn:hover {
-  background: var(--brand-red-hover);
+  background: var(--interactive-primary-hover);
 }
 
 .load-more-section {
   display: flex;
   justify-content: center;
-  padding: 3rem 0 1rem 0;
+  margin-top: 3rem;
 }
 
 .load-more-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--interactive-primary) 0%, var(--brand-red-hover) 100%);
+  gap: 0.75rem;
+  background: var(--interactive-primary);
   color: white;
   border: none;
-  border-radius: var(--radius-lg);
-  cursor: pointer;
-  transition: all var(--transition-normal);
+  border-radius: 8px;
+  padding: 1rem 2rem;
   font-weight: 600;
-  font-size: 1rem;
-  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .load-more-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  background: var(--interactive-primary-hover);
+  transform: translateY(-1px);
 }
 
 .btn-arrow {
@@ -569,7 +474,7 @@
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 6px solid currentColor;
-  transition: transform var(--transition-normal);
+  transition: transform 0.2s ease;
 }
 
 .load-more-btn:hover .btn-arrow {
@@ -580,77 +485,50 @@
   text-align: center;
   padding: 2rem;
   color: var(--text-tertiary);
-  font-size: 0.9rem;
 }
 
 /* =============================================================================
-   OVERLAY - Mobile Sidebar Support
+   OVERLAY
 ============================================================================= */
 .sidebar-overlay {
   position: fixed;
-  inset: 0;
-  background: var(--overlay);
-  z-index: 150;
-  backdrop-filter: blur(4px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
   display: none;
 }
 
 /* =============================================================================
-   RESPONSIVE DESIGN - Mobile-First Approach
+   RESPONSIVE DESIGN
 ============================================================================= */
-@media (max-width: 1400px) {
-  .catalogo-body.sidebar-visible {
-    grid-template-columns: 280px 1fr;
-  }
-  
-  .catalogo-controls {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
-  }
-  
-  .controls-left,
-  .controls-right {
-    min-width: auto;
-  }
-  
-  .controls-right {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .catalogo-body {
-    grid-template-columns: 1fr;
-  }
-  
-  .catalogo-body.sidebar-visible {
     grid-template-columns: 1fr;
   }
   
   .category-sidebar {
     position: fixed !important;
-    top: 0 !important;
     left: 0 !important;
-    width: 320px !important;
+    top: 0 !important;
     height: 100vh !important;
+    width: 300px !important;
     z-index: 200 !important;
-    box-shadow: var(--shadow-2xl) !important;
     transform: translateX(-100%) !important;
   }
   
-  .main-content {
-    padding: 1.5rem;
+  .category-sidebar.visible {
+    transform: translateX(0) !important;
   }
   
-  .header-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
+  .close-sidebar-btn {
+    display: block !important;
   }
   
-  .header-actions {
-    justify-content: center;
+  .sidebar-overlay {
+    display: block;
   }
 }
 
@@ -660,15 +538,26 @@
   }
   
   .catalogo-header {
-    padding: 2rem 1rem;
+    padding: 1.5rem;
   }
   
-  .rubros-filter-section {
-    padding: 1rem;
+  .page-title {
+    font-size: 2rem;
   }
   
   .catalogo-controls {
     padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .controls-left {
+    min-width: auto;
+  }
+  
+  .controls-right {
+    justify-content: center;
   }
   
   .main-content {
@@ -678,54 +567,24 @@
   .category-sidebar {
     width: 280px !important;
   }
-  
-  .page-title {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-  }
-  
-  .page-subtitle {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 480px) {
   .catalogo-header {
-    padding: 1.5rem 1rem;
+    padding: 1rem;
   }
   
-  .catalogo-controls {
-    padding: 0.75rem;
+  .page-title {
+    font-size: 1.75rem;
   }
   
-  .main-content {
-    padding: 0.75rem;
+  .view-controls,
+  .sort-controls {
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
-  .search-input {
-    padding: 0.875rem 0.875rem 0.875rem 2.75rem;
-    font-size: 0.9rem;
-  }
-  
-  .search-icon {
-    left: 0.875rem;
-    font-size: 1rem;
-  }
-  
-  .clear-search-btn {
-    right: 0.875rem;
-    width: 20px;
-    height: 20px;
-    font-size: 0.7rem;
-  }
-  
-  .toggle-sidebar-btn {
-    padding: 0.875rem 1.25rem;
-    font-size: 0.9rem;
-  }
-  
-  .view-btn,
-  .sort-btn {
-    padding: 0.625rem 0.875rem;
-    font-size: 0.85rem;
+  .sort-btn span {
+    display: none;
   }
 }
