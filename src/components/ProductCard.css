@@ -47,34 +47,44 @@
   transform: scale(1.05);
 }
 
-/* Badges */
+/* Badges - Well structured and centered */
 .featured-badge {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 12px;
+  left: 12px;
   background: #ffd700;
   color: #333;
-  padding: 0.4rem 0.6rem;
-  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: 0.5rem;
   z-index: 2;
+  min-width: 80px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .out-of-stock-badge {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  background: rgba(0, 0, 0, 0.8);
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.9);
   color: white;
-  padding: 0.4rem 0.6rem;
-  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
   z-index: 2;
+  min-width: 80px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Quick Actions Overlay */
@@ -347,8 +357,9 @@
   
   .featured-badge,
   .out-of-stock-badge {
-    padding: 0.3rem 0.5rem;
+    padding: 0.4rem 0.6rem;
     font-size: 0.7rem;
+    min-width: 70px;
   }
 }
 

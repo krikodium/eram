@@ -5,6 +5,7 @@ import ProductList from '../components/ProductList';
 import CategoryPreview from '../components/CategoryPreview';
 import RubrosFilter from '../features/rubros/components/RubrosFilter';
 import { getAllProductos, getProductosByCategoria } from '../mocks/productos';
+import { useAuth } from '../contexts/AuthContext';
 import './Catalogo.css';
 import { 
   FaFilter, 
@@ -17,6 +18,7 @@ import {
 } from 'react-icons/fa';
 
 const Catalogo = () => {
+  const { isAuthenticated, user } = useAuth();
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showSidebar, setShowSidebar] = useState(window.innerWidth > 1024);
@@ -45,6 +47,9 @@ const Catalogo = () => {
   
   const hoverTimerRef = useRef(null);
   const sidebarRef = useRef(null);
+
+  // Check if user is a provider
+  const isProvider = isAuthenticated && user?.role === 'proveedor';
 
   // Cargar productos
   const fetchProducts = useCallback(async (pageNum, limit, append = false, catId = null) => {
@@ -98,61 +103,20 @@ const Catalogo = () => {
       setPageTitle('Todos los Productos');
       fetchProducts(1, productsPerPage, false, null);
     }
-  }, [categoriaId, fetchProducts, productsPerPage]);
+  }, [categoriaId, productsPerPage, fetchProducts]);
 
-  // Funciones de manejo
-  const handleCategoryMouseEnter = (category, event) => {
-    if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
-    
-    const linkRect = event.currentTarget.getBoundingClientRect();
-    const sidebarRect = sidebarRef.current?.getBoundingClientRect();
-    
-    if (!sidebarRect) return;
-    
-    const calculatedPosition = {
-      top: linkRect.top + (linkRect.height / 2),
-      left: sidebarRect.right + 15
-    };
-
-    hoverTimerRef.current = setTimeout(async () => {
-      setPreview(prev => ({
-        ...prev,
-        category: category,
-        isLoading: true,
-        position: calculatedPosition,
-      }));
-      
-      try {
-        const previewResult = getProductosByCategoria(category.id, 1, 5);
-        setPreview(prev => ({
-          ...prev,
-          products: previewResult.productos || [],
-          isLoading: false,
-        }));
-      } catch (error) {
-        console.error("Error fetching preview products:", error);
-        setPreview(prev => ({ ...prev, products: [], isLoading: false }));
-      }
-    }, 800);
-  };
-
-  const handleCategoryMouseLeave = () => {
-    if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
-    setPreview(prev => ({ ...prev, category: null }));
-  };
-
-  const handleRubroSelect = (rubro) => {
-    console.log('Rubro selected:', rubro);
-  };
-
-  const handleLoadMore = () => {
-    const nextPage = page + 1;
-    fetchProducts(nextPage, productsPerPage, true, categoriaId);
-  };
-
+  // Handlers
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Searching for:', searchTerm);
+    setPage(1);
+    setHasMore(true);
+    setProductos([]);
+    
+    if (categoriaId) {
+      fetchProducts(1, productsPerPage, false, categoriaId);
+    } else {
+      fetchProducts(1, productsPerPage, false, null);
+    }
   };
 
   const handleSort = (field) => {
@@ -164,40 +128,84 @@ const Catalogo = () => {
     }
   };
 
-  const toggleViewMode = () => {
-    setViewMode(viewMode === 'grid' ? 'list' : 'grid');
+  const handleLoadMore = () => {
+    if (hasMore && !loading) {
+      const nextPage = page + 1;
+      if (categoriaId) {
+        fetchProducts(nextPage, productsPerPage, true, categoriaId);
+      } else {
+        fetchProducts(nextPage, productsPerPage, true, null);
+      }
+    }
   };
 
   const toggleFilters = () => {
     setShowFilters(!showFilters);
   };
 
+  const handleRubroSelect = (rubro) => {
+    setPage(1);
+    setHasMore(true);
+    setProductos([]);
+    setPageTitle(rubro ? rubro.nombre : 'Todos los Productos');
+    
+    if (rubro) {
+      // Filter products by rubro (this would need to be implemented in the mock service)
+      fetchProducts(1, productsPerPage, false, null);
+    } else {
+      fetchProducts(1, productsPerPage, false, null);
+    }
+  };
+
+  // Preview de categorías
+  const handleCategoryMouseEnter = (category) => {
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current);
+    }
+    
+    hoverTimerRef.current = setTimeout(() => {
+      setPreview({
+        category,
+        products: category.productos || [],
+        isLoading: false,
+        position: { top: 0, left: 0 },
+      });
+    }, 300);
+  };
+
+  const handleCategoryMouseLeave = () => {
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current);
+    }
+    setPreview({ category: null, products: [], isLoading: false, position: { top: 0, left: 0 } });
+  };
+
   // Productos filtrados y ordenados
   const filteredAndSortedProducts = useMemo(() => {
-    let filtered = [...productos];
+    let filtered = productos;
     
-    if (searchTerm.trim()) {
+    // Filtrar por término de búsqueda
+    if (searchTerm) {
       filtered = filtered.filter(producto =>
         producto.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        producto.descripcion?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         producto.sku.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
     
-    filtered.sort((a, b) => {
+    // Ordenar productos
+    filtered = [...filtered].sort((a, b) => {
       let aValue, bValue;
       
-      switch (sortBy) {
-        case 'precio':
-          aValue = parseFloat(a.precio) || 0;
-          bValue = parseFloat(b.precio) || 0;
-          break;
-        case 'sku':
-          aValue = a.sku || '';
-          bValue = b.sku || '';
-          break;
-        default:
-          aValue = a.nombre || '';
-          bValue = b.nombre || '';
+      if (sortBy === 'precio') {
+        aValue = a.precio || 0;
+        bValue = b.precio || 0;
+      } else if (sortBy === 'sku') {
+        aValue = a.sku || '';
+        bValue = b.sku || '';
+      } else {
+        aValue = a.nombre || '';
+        bValue = b.nombre || '';
       }
       
       if (sortOrder === 'asc') {
@@ -297,22 +305,30 @@ const Catalogo = () => {
               <FaSortAmountDown />
               <span>Nombre</span>
             </button>
-            <button
-              className="sort-btn"
-              onClick={() => handleSort('precio')}
-              aria-label="Ordenar por precio"
-            >
-              <FaSortAmountDown />
-              <span>Precio</span>
-            </button>
-            <button
-              className="sort-btn"
-              onClick={() => handleSort('sku')}
-              aria-label="Ordenar por SKU"
-            >
-              <FaSortAmountDown />
-              <span>SKU</span>
-            </button>
+            
+            {/* Solo mostrar filtro de precio para proveedores */}
+            {isProvider && (
+              <button
+                className="sort-btn"
+                onClick={() => handleSort('precio')}
+                aria-label="Ordenar por precio"
+              >
+                <FaSortAmountDown />
+                <span>Precio</span>
+              </button>
+            )}
+            
+            {/* Solo mostrar filtro de SKU para proveedores */}
+            {isProvider && (
+              <button
+                className="sort-btn"
+                onClick={() => handleSort('sku')}
+                aria-label="Ordenar por SKU"
+              >
+                <FaSortAmountDown />
+                <span>SKU</span>
+              </button>
+            )}
           </div>
 
           <button
@@ -412,40 +428,45 @@ const Catalogo = () => {
             )}
 
             {/* Botón Cargar Más */}
-            {!loading && hasMore && filteredAndSortedProducts.length > 0 && (
+            {hasMore && filteredAndSortedProducts.length > 0 && (
               <div className="load-more-section">
-                <button onClick={handleLoadMore} className="load-more-btn">
-                  <span>Cargar más productos</span>
+                <button 
+                  onClick={handleLoadMore}
+                  className="load-more-btn"
+                  disabled={loading}
+                >
+                  {loading ? 'Cargando...' : 'Cargar más productos'}
                   <div className="btn-arrow"></div>
                 </button>
               </div>
             )}
 
-            {/* Estado Final */}
-            {!loading && !hasMore && filteredAndSortedProducts.length > 0 && (
+            {/* Mensaje de fin */}
+            {!hasMore && filteredAndSortedProducts.length > 0 && (
               <div className="end-message">
-                <p>Has llegado al final de la lista de productos</p>
+                Has visto todos los productos disponibles
               </div>
             )}
           </div>
         </main>
       </div>
 
-      {/* Preview de Categoría */}
+      {/* Overlay para mobile */}
+      {showSidebar && window.innerWidth <= 1024 && (
+        <div 
+          className="sidebar-overlay"
+          onClick={() => setShowSidebar(false)}
+        />
+      )}
+
+      {/* Preview de Categorías */}
       {preview.category && (
         <CategoryPreview
           category={preview.category}
           products={preview.products}
           isLoading={preview.isLoading}
           position={preview.position}
-        />
-      )}
-
-      {/* Overlay para mobile */}
-      {showSidebar && window.innerWidth <= 1024 && (
-        <div 
-          className="sidebar-overlay"
-          onClick={() => setShowSidebar(false)}
+          onClose={() => setPreview({ category: null, products: [], isLoading: false, position: { top: 0, left: 0 } })}
         />
       )}
     </div>

@@ -1,4 +1,4 @@
-// src/features/rubros/components/RubrosFilter.jsx - Simplified Horizontal Filter
+// src/features/rubros/components/RubrosFilter.jsx - Visible Rubros by Default
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { rubrosService } from '../../../services/api';
@@ -10,7 +10,7 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
   const [rubros, setRubros] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(true); // Default to open
   const [searchParams, setSearchParams] = useSearchParams();
   
   const activeRubroId = searchParams.get('rubro_id');
@@ -99,7 +99,7 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
           aria-expanded={isFiltersOpen}
         >
           <FaFilter />
-          <span>Filtros</span>
+          <span>{isFiltersOpen ? 'Ocultar' : 'Mostrar'} Rubros</span>
           <FaChevronDown className={`toggle-icon ${isFiltersOpen ? 'rotated' : ''}`} />
         </button>
         
@@ -114,7 +114,7 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
         )}
       </div>
 
-      {/* Rubros Tabs */}
+      {/* Rubros Tabs - Always visible by default */}
       <div className={`rubros-horizontal-container ${isFiltersOpen ? 'expanded' : ''}`}>
         <div className="rubros-scroll-area">
           <div className="rubros-tabs">
@@ -125,12 +125,12 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
             >
               <FaIndustry />
               <div className="rubro-tab-content">
-                <span className="rubro-name">Todos</span>
+                <span className="rubro-name">Todos los Productos</span>
               </div>
             </button>
 
-            {/* Individual Rubro Tabs - Limit to 6 most important */}
-            {rubros.slice(0, 6).map((rubro) => (
+            {/* Individual Rubro Tabs - Show all important rubros */}
+            {rubros.map((rubro) => (
               <button
                 key={rubro.id}
                 className={`rubro-tab ${activeRubroId === String(rubro.id) ? 'active' : ''}`}
@@ -139,6 +139,7 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
                 <FaIndustry />
                 <div className="rubro-tab-content">
                   <span className="rubro-name">{rubro.nombre}</span>
+                  <span className="rubro-count">({rubro.cantidad_productos || 0})</span>
                 </div>
               </button>
             ))}
