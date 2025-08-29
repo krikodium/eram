@@ -13,7 +13,7 @@ const Catalogo = () => {
   // Estados principales
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showSidebar, setShowSidebar] = useState(window.innerWidth > 768);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
   const rubroId = searchParams.get('rubro_id');
@@ -63,8 +63,8 @@ const Catalogo = () => {
   // Efecto para manejar el resize de la ventana
   useEffect(() => {
     const handleResize = () => {
+      // Solo ocultar el sidebar en mobile, no mostrarlo automáticamente en desktop
       if (window.innerWidth <= 768) setShowSidebar(false);
-      else setShowSidebar(true);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
