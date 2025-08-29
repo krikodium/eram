@@ -4,40 +4,26 @@ import CategorySidebar from '../components/CategorySidebar';
 import ProductList from '../components/ProductList';
 import CategoryPreview from '../components/CategoryPreview';
 import RubrosFilter from '../features/rubros/components/RubrosFilter';
-import { getAllProductos, getProductosByCategoria } from '../mocks/productos';
-import { useAuth } from '../contexts/AuthContext';
+import { rubrosService } from '../services/api';
+import { getRubroById } from '../mocks/rubros';
+import { getAllProductos, getProductosByCategoria, mockCategorias } from '../mocks/productos';
 import './Catalogo.css';
-import { 
-  FaFilter, 
-  FaTimes, 
-  FaIndustry, 
-  FaSearch, 
-  FaTh, 
-  FaList,
-  FaSortAmountDown
-} from 'react-icons/fa';
+import { FaFilter, FaTimes, FaIndustry } from 'react-icons/fa';
 
 const Catalogo = () => {
-  const { isAuthenticated, user } = useAuth();
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showSidebar, setShowSidebar] = useState(window.innerWidth > 1024);
+  const [showSidebar, setShowSidebar] = useState(window.innerWidth > 768);
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
   const rubroId = searchParams.get('rubro_id');
+  const api = useMemo(() => import.meta.env.REACT_APP_BACKEND_URL || 'http://localhost:8001', []);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [pageTitle, setPageTitle] = useState('Todos los Productos');
-  
-  // Estados para funcionalidad
-  const [viewMode, setViewMode] = useState('grid');
-  const [sortBy, setSortBy] = useState('nombre');
-  const [sortOrder, setSortOrder] = useState('asc');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [showFilters, setShowFilters] = useState(false);
-  const [productsPerPage, setProductsPerPage] = useState(12);
+  const [filteredCategories, setFilteredCategories] = useState([]);
 
-  // Estado para preview de categorías
+  // Estado unificado para la previsualización
   const [preview, setPreview] = useState({
     category: null,
     products: [],
@@ -48,13 +34,10 @@ const Catalogo = () => {
   const hoverTimerRef = useRef(null);
   const sidebarRef = useRef(null);
 
-  // Check if user is a provider
-  const isProvider = isAuthenticated && user?.role === 'proveedor';
-
-  // Cargar productos
   const fetchProducts = useCallback(async (pageNum, limit, append = false, catId = null) => {
     setLoading(true);
     try {
+      // Use mock data instead of API calls
       let result;
       if (catId) {
         result = getProductosByCategoria(catId, pageNum, limit);
@@ -75,398 +58,160 @@ const Catalogo = () => {
     }
   }, []);
 
-  // Efectos
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 1024) {
-        setShowSidebar(false);
-        setShowFilters(false);
-      } else {
-        setShowSidebar(true);
-      }
+      if (window.innerWidth <= 768) setShowSidebar(false);
+      else setShowSidebar(true);
     };
-    
     window.addEventListener('resize', handleResize);
-    handleResize();
-    
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Handle rubro filtering
+  useEffect(() => {
+    if (rubroId) {
+      const rubro = getRubroById(parseInt(rubroId));
+      if (rubro) {
+        setPageTitle(`${rubro.nombre} - Productos`);
+        // For now, we'll still call the existing API since we're keeping existing functionality
+        fetchProducts(1, 20, false, null);
+      }
+    }
+  }, [rubroId, fetchProducts]);
+
   useEffect(() => {
     setProductos([]);
     setPage(1);
     setHasMore(true);
     
-    if (categoriaId) {
-      fetchProducts(1, productsPerPage, false, categoriaId);
-    } else {
-      setPageTitle('Todos los Productos');
-      fetchProducts(1, productsPerPage, false, null);
-    }
-  }, [categoriaId, productsPerPage, fetchProducts]);
-
-  // Handlers
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setPage(1);
-    setHasMore(true);
-    setProductos([]);
-    
-    if (categoriaId) {
-      fetchProducts(1, productsPerPage, false, categoriaId);
-    } else {
-      fetchProducts(1, productsPerPage, false, null);
-    }
-  };
-
-  const handleSort = (field) => {
-    if (sortBy === field) {
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-    } else {
-      setSortBy(field);
-      setSortOrder('asc');
-    }
-  };
-
-  const handleLoadMore = () => {
-    if (hasMore && !loading) {
-      const nextPage = page + 1;
-      if (categoriaId) {
-        fetchProducts(nextPage, productsPerPage, true, categoriaId);
-      } else {
-        fetchProducts(nextPage, productsPerPage, true, null);
+    if (rubroId && !categoriaId) {
+      // Just selected a rubro, load all products (simulation for Phase 1)
+      const rubro = getRubroById(parseInt(rubroId));
+      if (rubro) {
+        setPageTitle(`${rubro.nombre} - Productos`);
+        fetchProducts(1, 20, false, null);
       }
-    }
-  };
-
-  const toggleFilters = () => {
-    setShowFilters(!showFilters);
-  };
-
-  const handleRubroSelect = (rubro) => {
-    setPage(1);
-    setHasMore(true);
-    setProductos([]);
-    setPageTitle(rubro ? rubro.nombre : 'Todos los Productos');
-    
-    if (rubro) {
-      // Filter products by rubro (this would need to be implemented in the mock service)
-      fetchProducts(1, productsPerPage, false, null);
+    } else if (categoriaId) {
+      // Category selected, fetch by category
+      fetchProducts(1, 20, false, categoriaId);
     } else {
-      fetchProducts(1, productsPerPage, false, null);
+      // No filters, show all
+      setPageTitle('Todos los Productos');
+      fetchProducts(1, 20, false, null);
     }
-  };
+  }, [categoriaId, rubroId, fetchProducts]);
 
-  // Preview de categorías
-  const handleCategoryMouseEnter = (category) => {
-    if (hoverTimerRef.current) {
-      clearTimeout(hoverTimerRef.current);
-    }
+  const handleCategoryMouseEnter = (category, event) => {
+    if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
     
-    hoverTimerRef.current = setTimeout(() => {
-      setPreview({
-        category,
-        products: category.productos || [],
-        isLoading: false,
-        position: { top: 0, left: 0 },
-      });
-    }, 300);
+    // Capturamos las coordenadas al momento del hover
+    const linkRect = event.currentTarget.getBoundingClientRect();
+    const sidebarRect = sidebarRef.current.getBoundingClientRect();
+    const calculatedPosition = {
+      // Centramos verticalmente el popup con el link
+      top: linkRect.top + (linkRect.height / 2),
+      left: sidebarRect.right + 15 // 15px a la derecha del sidebar
+    };
+
+    hoverTimerRef.current = setTimeout(async () => {
+      setPreview(prev => ({
+        ...prev,
+        category: category,
+        isLoading: true,
+        position: calculatedPosition,
+      }));
+      
+      try {
+        const previewResult = getProductosByCategoria(category.id, 1, 5);
+        setPreview(prev => ({
+          ...prev,
+          products: previewResult.productos || [],
+          isLoading: false,
+        }));
+      } catch (error) {
+        console.error("Error fetching preview products:", error);
+        setPreview(prev => ({ ...prev, products: [], isLoading: false }));
+      }
+    }, 1800);
   };
 
   const handleCategoryMouseLeave = () => {
-    if (hoverTimerRef.current) {
-      clearTimeout(hoverTimerRef.current);
-    }
-    setPreview({ category: null, products: [], isLoading: false, position: { top: 0, left: 0 } });
+    if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
+    // Ocultamos el pop-up al salir del área
+    setPreview(prev => ({ ...prev, category: null }));
   };
 
-  // Productos filtrados y ordenados
-  const filteredAndSortedProducts = useMemo(() => {
-    let filtered = productos;
-    
-    // Filtrar por término de búsqueda
-    if (searchTerm) {
-      filtered = filtered.filter(producto =>
-        producto.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        producto.descripcion?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        producto.sku.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-    
-    // Ordenar productos
-    filtered = [...filtered].sort((a, b) => {
-      let aValue, bValue;
-      
-      if (sortBy === 'precio') {
-        aValue = a.precio || 0;
-        bValue = b.precio || 0;
-      } else if (sortBy === 'sku') {
-        aValue = a.sku || '';
-        bValue = b.sku || '';
-      } else {
-        aValue = a.nombre || '';
-        bValue = b.nombre || '';
-      }
-      
-      if (sortOrder === 'asc') {
-        return aValue > bValue ? 1 : -1;
-      } else {
-        return aValue < bValue ? 1 : -1;
-      }
-    });
-    
-    return filtered;
-  }, [productos, searchTerm, sortBy, sortOrder]);
+  const handleRubroSelect = (rubro) => {
+    // This is handled by URL params through RubrosFilter component
+    // The useEffect will detect the change and update accordingly
+    console.log('Rubro selected:', rubro);
+  };
+
+  const handleLoadMore = () => {
+    const nextPage = page + 1;
+    fetchProducts(nextPage, 15, true, categoriaId);
+  };
 
   return (
     <div className="catalogo-container">
-      {/* Header */}
       <header className="catalogo-header">
-        <div className="header-content">
-          <div className="header-title-section">
-            <h1 className="page-title">
-              {rubroId && <FaIndustry className="title-icon" />}
-              {pageTitle}
-            </h1>
-            <p className="page-subtitle">
-              Descubrí nuestra amplia gama de productos de seguridad industrial
-            </p>
-          </div>
-          
-          <div className="header-actions">
-            <button 
-              className="toggle-sidebar-btn"
-              onClick={() => setShowSidebar(!showSidebar)}
-              aria-label={showSidebar ? 'Ocultar filtros' : 'Mostrar filtros'}
-            >
-              {showSidebar ? <FaTimes /> : <FaFilter />}
-              <span className="btn-text">Filtros</span>
-            </button>
-          </div>
-        </div>
+        <h1>
+          {rubroId && <FaIndustry style={{ marginRight: '0.5rem' }} />}
+          {pageTitle}
+        </h1>
+        <button className="toggle-categories" onClick={() => setShowSidebar(!showSidebar)}>
+          {showSidebar ? <FaTimes /> : <FaFilter />}
+          {showSidebar ? ' Ocultar Filtros' : ' Mostrar Filtros'}
+        </button>
       </header>
-
-      {/* Filtros de Rubros */}
-      <div className="rubros-filter-section">
+      
+      {/* Horizontal Rubros Filter - Above Main Content */}
+      <div className="rubros-filter-horizontal-wrapper">
         <RubrosFilter onRubroSelect={handleRubroSelect} />
       </div>
-
-      {/* Controles */}
-      <div className="catalogo-controls">
-        <div className="controls-left">
-          <form onSubmit={handleSearch} className="search-form">
-            <div className="search-input-wrapper">
-              <FaSearch className="search-icon" />
-              <input
-                type="text"
-                placeholder="Buscar productos..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input"
-              />
-              {searchTerm && (
-                <button
-                  type="button"
-                  onClick={() => setSearchTerm('')}
-                  className="clear-search-btn"
-                  aria-label="Limpiar búsqueda"
-                >
-                  <FaTimes />
-                </button>
-              )}
-            </div>
-          </form>
-        </div>
-
-        <div className="controls-right">
-          <div className="view-controls">
-            <button
-              className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
-              onClick={() => setViewMode('grid')}
-              aria-label="Vista en cuadrícula"
-            >
-              <FaTh />
-            </button>
-            <button
-              className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
-              onClick={() => setViewMode('list')}
-              aria-label="Vista en lista"
-            >
-              <FaList />
-            </button>
-          </div>
-
-          <div className="sort-controls">
-            <button
-              className="sort-btn"
-              onClick={() => handleSort('nombre')}
-              aria-label="Ordenar por nombre"
-            >
-              <FaSortAmountDown />
-              <span>Nombre</span>
-            </button>
-            
-            {/* Solo mostrar filtro de precio para proveedores */}
-            {isProvider && (
-              <button
-                className="sort-btn"
-                onClick={() => handleSort('precio')}
-                aria-label="Ordenar por precio"
-              >
-                <FaSortAmountDown />
-                <span>Precio</span>
-              </button>
-            )}
-            
-            {/* Solo mostrar filtro de SKU para proveedores */}
-            {isProvider && (
-              <button
-                className="sort-btn"
-                onClick={() => handleSort('sku')}
-                aria-label="Ordenar por SKU"
-              >
-                <FaSortAmountDown />
-                <span>SKU</span>
-              </button>
-            )}
-          </div>
-
-          <button
-            className="toggle-filters-btn"
-            onClick={toggleFilters}
-            aria-label={showFilters ? 'Ocultar filtros avanzados' : 'Mostrar filtros avanzados'}
-          >
-            <FaFilter />
-            <span>Filtros Avanzados</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Cuerpo Principal */}
+      
       <div className={`catalogo-body ${showSidebar ? 'sidebar-visible' : ''}`}>
-        {/* Sidebar */}
-        <aside 
-          className={`category-sidebar ${showSidebar ? 'visible' : ''}`} 
-          ref={sidebarRef}
-          onMouseLeave={handleCategoryMouseLeave}
-        >
-          <div className="sidebar-header">
-            <h3 className="sidebar-title">Categorías</h3>
-            <button
-              className="close-sidebar-btn"
-              onClick={() => setShowSidebar(false)}
-              aria-label="Cerrar sidebar"
-            >
-              <FaTimes />
-            </button>
-          </div>
-          
-          <CategorySidebar
-            onLinkClick={() => {
-              if (window.innerWidth <= 1024) setShowSidebar(false);
-            }}
-            onCategoryMouseEnter={handleCategoryMouseEnter}
-          />
+        <aside className="category-sidebar-wrapper" ref={sidebarRef} onMouseLeave={handleCategoryMouseLeave}>
+          {showSidebar && (
+            <>
+              {/* Existing Category Sidebar */}
+              <CategorySidebar
+                onLinkClick={() => {
+                  if (window.innerWidth <= 768) setShowSidebar(false);
+                }}
+                onCategoryMouseEnter={handleCategoryMouseEnter}
+                // Ya no necesitamos onCategoryMouseLeave en cada link
+              />
+            </>
+          )}
         </aside>
-
-        {/* Contenido Principal */}
-        <main className="main-content">
-          {/* Filtros Avanzados */}
-          {showFilters && (
-            <div className="advanced-filters">
-              <h3>Filtros Avanzados</h3>
-              <div className="filters-grid">
-                <div className="filter-group">
-                  <label>Productos por página:</label>
-                  <select
-                    value={productsPerPage}
-                    onChange={(e) => setProductsPerPage(Number(e.target.value))}
-                    className="filter-select"
-                  >
-                    <option value={6}>6 productos</option>
-                    <option value={12}>12 productos</option>
-                    <option value={24}>24 productos</option>
-                    <option value={48}>48 productos</option>
-                  </select>
-                </div>
-              </div>
-            </div>
+        <main className="product-grid-container">
+          {productos.length > 0 ? (
+            <ProductList productos={productos} />
+          ) : !loading && (
+            <p className="status-text">No se encontraron productos.</p>
           )}
 
-          {/* Lista de Productos */}
-          <div className="products-section">
-            {loading && page === 1 ? (
-              <div className="loading-container">
-                <div className="loading-spinner"></div>
-                <p>Cargando productos...</p>
-              </div>
-            ) : filteredAndSortedProducts.length > 0 ? (
-              <ProductList 
-                productos={filteredAndSortedProducts} 
-                viewMode={viewMode}
-                columnas={viewMode === 'grid' ? (window.innerWidth > 1200 ? 4 : 3) : 1}
-              />
-            ) : (
-              <div className="no-products">
-                <div className="no-products-icon">📦</div>
-                <h3>No se encontraron productos</h3>
-                <p>
-                  {searchTerm 
-                    ? `No hay productos que coincidan con "${searchTerm}"`
-                    : 'No hay productos disponibles en esta categoría'
-                  }
-                </p>
-                {searchTerm && (
-                  <button 
-                    onClick={() => setSearchTerm('')}
-                    className="clear-filters-btn"
-                  >
-                    Limpiar filtros
-                  </button>
-                )}
-              </div>
+          <div className="load-more-container">
+            {loading && page > 1 && <p className="status-text">Cargando más productos...</p>}
+            {!loading && hasMore && (
+              <button onClick={handleLoadMore} className="load-more-btn">
+                Cargar más
+              </button>
             )}
-
-            {/* Botón Cargar Más */}
-            {hasMore && filteredAndSortedProducts.length > 0 && (
-              <div className="load-more-section">
-                <button 
-                  onClick={handleLoadMore}
-                  className="load-more-btn"
-                  disabled={loading}
-                >
-                  {loading ? 'Cargando...' : 'Cargar más productos'}
-                  <div className="btn-arrow"></div>
-                </button>
-              </div>
-            )}
-
-            {/* Mensaje de fin */}
-            {!hasMore && filteredAndSortedProducts.length > 0 && (
-              <div className="end-message">
-                Has visto todos los productos disponibles
-              </div>
+            {!loading && !hasMore && productos.length > 0 && (
+              <p className="status-text">Has llegado al final de la lista.</p>
             )}
           </div>
         </main>
       </div>
 
-      {/* Overlay para mobile */}
-      {showSidebar && window.innerWidth <= 1024 && (
-        <div 
-          className="sidebar-overlay"
-          onClick={() => setShowSidebar(false)}
-        />
-      )}
-
-      {/* Preview de Categorías */}
       {preview.category && (
         <CategoryPreview
           category={preview.category}
           products={preview.products}
           isLoading={preview.isLoading}
           position={preview.position}
-          onClose={() => setPreview({ category: null, products: [], isLoading: false, position: { top: 0, left: 0 } })}
         />
       )}
     </div>
