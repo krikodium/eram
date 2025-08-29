@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { mockCategorias } from '../mocks/productos';
-import './CategorySidebar.css';
 
 const CategorySidebar = ({ onLinkClick, onCategoryMouseEnter, onCategoryMouseLeave }) => {
   const [categorias, setCategorias] = useState([]);
@@ -12,7 +11,6 @@ const CategorySidebar = ({ onLinkClick, onCategoryMouseEnter, onCategoryMouseLea
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        // Use mock data instead of API call
         setCategorias(mockCategorias);
       } catch (err) {
         console.error("Error al cargar categorías:", err);
@@ -22,16 +20,13 @@ const CategorySidebar = ({ onLinkClick, onCategoryMouseEnter, onCategoryMouseLea
   }, []);
 
   return (
-    // 👇🏼 Añadir onMouseLeave al contenedor principal del sidebar
-    <aside className="category-sidebar" onMouseLeave={onCategoryMouseLeave}>
-      <h3 className="category-title">Categorías</h3>
-      <ul className="category-list">
+    <div className="categories-container">
+      <ul className="categories-list">
         <li>
           <Link
             to="/catalogo"
-            className={`category-link ${!activeCategoryId ? 'active' : ''}`}
+            className={`category-item ${!activeCategoryId ? 'active' : ''}`}
             onClick={onLinkClick}
-            // El link "Ver Todos" no tendrá previsualización
           >
             Ver Todos
           </Link>
@@ -40,9 +35,8 @@ const CategorySidebar = ({ onLinkClick, onCategoryMouseEnter, onCategoryMouseLea
           <li key={cat.id}>
             <Link
               to={`/catalogo?categoria_id=${cat.id}`}
-              className={`category-link ${activeCategoryId === String(cat.id) ? 'active' : ''}`}
+              className={`category-item ${activeCategoryId === String(cat.id) ? 'active' : ''}`}
               onClick={onLinkClick}
-              // 👇🏼 Añadir los eventos de mouse para la previsualización
               onMouseEnter={(e) => onCategoryMouseEnter(cat, e)}
             >
               {cat.nombre}
@@ -50,7 +44,7 @@ const CategorySidebar = ({ onLinkClick, onCategoryMouseEnter, onCategoryMouseLea
           </li>
         ))}
       </ul>
-    </aside>
+    </div>
   );
 };
 
