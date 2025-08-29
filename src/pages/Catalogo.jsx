@@ -174,7 +174,7 @@ const Catalogo = () => {
       </div>
 
       {/* Contenedor principal */}
-      <div className="catalogo-main">
+      <div className={`catalogo-main ${showSidebar ? 'with-sidebar' : ''}`}>
         {/* Sidebar de categorías */}
         {showSidebar && (
           <aside className="category-sidebar" ref={sidebarRef} onMouseLeave={handleCategoryMouseLeave}>
