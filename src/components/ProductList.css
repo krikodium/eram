@@ -1,17 +1,12 @@
-/* src/components/ProductList.css - Enhanced with View Modes */
+/* src/components/ProductList.css - Simplified and Functional */
 
-/* =============================================================================
-   PRODUCT LIST CONTAINER - Flexible Layout System
-============================================================================= */
 .product-list {
   display: grid;
   gap: 2rem;
   width: 100%;
 }
 
-/* =============================================================================
-   GRID VIEW - Traditional Card Layout
-============================================================================= */
+/* Grid View */
 .product-list.grid-view {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
@@ -21,143 +16,51 @@
 }
 
 .product-list.grid-view.cols-2 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .product-list.grid-view.cols-3 {
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .product-list.grid-view.cols-4 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
 }
 
-/* =============================================================================
-   LIST VIEW - Horizontal Card Layout
-============================================================================= */
+/* List View */
 .product-list.list-view {
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-.product-list.list-view .product-card-wrapper {
-  max-width: 100%;
-}
-
-/* =============================================================================
-   RESPONSIVE DESIGN - Mobile-First Approach
-============================================================================= */
-@media (max-width: 1400px) {
-  .product-list.grid-view.cols-4 {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  }
-}
-
+/* Responsive adjustments */
 @media (max-width: 1200px) {
-  .product-list.grid-view.cols-3,
   .product-list.grid-view.cols-4 {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-  
-  .product-list {
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .product-list.grid-view {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-  
-  .product-list {
-    gap: 1.25rem;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .product-list.grid-view {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  }
-  
-  .product-list {
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
   
-  .product-list.list-view {
-    gap: 1rem;
+  .product-list.grid-view.cols-3,
+  .product-list.grid-view.cols-4 {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
   .product-list.grid-view {
     grid-template-columns: 1fr;
-  }
-  
-  .product-list {
-    gap: 0.75rem;
-  }
-  
-  .product-list.list-view {
-    gap: 0.75rem;
-  }
-}
-
-/* =============================================================================
-   LOADING AND EMPTY STATES
-============================================================================= */
-.product-list:empty::before {
-  content: 'Cargando productos...';
-  display: block;
-  text-align: center;
-  padding: 2rem;
-  color: var(--text-tertiary);
-  font-style: italic;
-}
-
-/* =============================================================================
-   ANIMATIONS AND TRANSITIONS
-============================================================================= */
-.product-list .product-card-wrapper {
-  animation: fadeInUp 0.6s ease-out;
-  animation-fill-mode: both;
-}
-
-.product-list .product-card-wrapper:nth-child(1) { animation-delay: 0.1s; }
-.product-list .product-card-wrapper:nth-child(2) { animation-delay: 0.2s; }
-.product-list .product-card-wrapper:nth-child(3) { animation-delay: 0.3s; }
-.product-list .product-card-wrapper:nth-child(4) { animation-delay: 0.4s; }
-.product-list .product-card-wrapper:nth-child(5) { animation-delay: 0.5s; }
-.product-list .product-card-wrapper:nth-child(6) { animation-delay: 0.6s; }
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* =============================================================================
-   ACCESSIBILITY AND PERFORMANCE
-============================================================================= */
-@media (prefers-reduced-motion: reduce) {
-  .product-list .product-card-wrapper {
-    animation: none;
-  }
-}
-
-/* Focus styles for keyboard navigation */
-.product-list:focus-within {
-  outline: none;
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .product-list {
     gap: 1rem;
   }
-}
+  
+  .product-list.grid-view.cols-2,
+  .product-list.grid-view.cols-3,
+  .product-list.grid-view.cols-4 {
+    grid-template-columns: 1fr;
+  }
 }

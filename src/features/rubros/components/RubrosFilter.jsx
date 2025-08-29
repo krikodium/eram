@@ -1,4 +1,4 @@
-// src/features/rubros/components/RubrosFilter.jsx - Horizontal Top-Bar Selector
+// src/features/rubros/components/RubrosFilter.jsx - Visible Rubros by Default
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { rubrosService } from '../../../services/api';
@@ -10,7 +10,7 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
   const [rubros, setRubros] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(true); // Default to open
   const [searchParams, setSearchParams] = useSearchParams();
   
   const activeRubroId = searchParams.get('rubro_id');
@@ -39,11 +39,11 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
     if (activeRubroId === String(rubro.id)) {
       // If clicking active rubro, deselect it
       newSearchParams.delete('rubro_id');
-      newSearchParams.delete('categoria_id'); // Also clear category filter
+      newSearchParams.delete('categoria_id');
     } else {
       // Select new rubro
       newSearchParams.set('rubro_id', String(rubro.id));
-      newSearchParams.delete('categoria_id'); // Clear category filter when selecting rubro
+      newSearchParams.delete('categoria_id');
     }
     
     setSearchParams(newSearchParams);
@@ -68,7 +68,7 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
         <div className="rubros-header-horizontal">
           <div className="filters-toggle disabled">
             <FaFilter />
-            <span>Cargando filtros...</span>
+            <span>Cargando...</span>
             <LoadingSpinner size="small" />
           </div>
         </div>
@@ -91,7 +91,7 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
 
   return (
     <div className={`rubros-filter horizontal ${className}`}>
-      {/* Filters Toggle Button */}
+      {/* Header with Toggle */}
       <div className="rubros-header-horizontal">
         <button 
           className="filters-toggle"
@@ -99,13 +99,13 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
           aria-expanded={isFiltersOpen}
         >
           <FaFilter />
-          <span>Filtros</span>
+          <span>{isFiltersOpen ? 'Ocultar' : 'Mostrar'} Rubros</span>
           <FaChevronDown className={`toggle-icon ${isFiltersOpen ? 'rotated' : ''}`} />
         </button>
         
         {activeRubroId && (
           <div className="active-filter-indicator">
-            <span>Filtrando por rubro</span>
+            <span>Filtro activo</span>
             <button onClick={handleViewAll} className="clear-filter">
               <FaTimes />
               Limpiar
@@ -114,7 +114,7 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
         )}
       </div>
 
-      {/* Horizontal Rubros Bar */}
+      {/* Rubros Tabs - Always visible by default */}
       <div className={`rubros-horizontal-container ${isFiltersOpen ? 'expanded' : ''}`}>
         <div className="rubros-scroll-area">
           <div className="rubros-tabs">
@@ -124,10 +124,12 @@ const RubrosFilter = ({ onRubroSelect, className = '' }) => {
               onClick={handleViewAll}
             >
               <FaIndustry />
-              <span>Todos los Productos</span>
+              <div className="rubro-tab-content">
+                <span className="rubro-name">Todos los Productos</span>
+              </div>
             </button>
 
-            {/* Individual Rubro Tabs */}
+            {/* Individual Rubro Tabs - Show all important rubros */}
             {rubros.map((rubro) => (
               <button
                 key={rubro.id}

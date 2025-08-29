@@ -1,8 +1,8 @@
-// src/components/ProductCard.jsx - Enhanced with View Modes and Mobile Animations
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import AddToQuoteButton from '../shared/components/AddToQuoteButton';
-import { FaShieldAlt, FaEye, FaStar, FaTruck, FaCheckCircle } from 'react-icons/fa';
+import { FaShieldAlt, FaStar, FaTruck, FaCheckCircle } from 'react-icons/fa';
 import './ProductCard.css';
 
 function ProductCard({ producto, viewMode = 'grid' }) {
@@ -39,17 +39,6 @@ function ProductCard({ producto, viewMode = 'grid' }) {
               </div>
             )}
           </Link>
-          
-          {/* Quick Actions Overlay */}
-          <div className="quick-actions-overlay">
-            <Link 
-              to={`/producto/${id}`} 
-              className="quick-action-btn view-btn"
-              aria-label="Ver producto"
-            >
-              <FaEye />
-            </Link>
-          </div>
         </div>
 
         {/* Card Content */}
@@ -123,7 +112,7 @@ function ProductCard({ producto, viewMode = 'grid' }) {
           {/* Provider Badge */}
           {isProvider && (
             <div className="provider-badge">
-              <FaEye className="badge-icon" />
+              <FaShieldAlt className="badge-icon" />
               <span>Vista de Proveedor</span>
             </div>
           )}

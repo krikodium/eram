@@ -1,38 +1,21 @@
-/* src/components/CategorySidebar.css - Professional Category Sidebar */
+/* src/components/CategorySidebar.css - Fixed for Catalog Integration with ERAM Colors */
+
+/* Base styles that work with the catalog page */
 .category-sidebar {
-  background: var(--bg-card);
-  padding: 2rem;
-  border-radius: var(--radius-xl);
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 0;
   box-sizing: border-box;
   flex-shrink: 0;
   height: fit-content;
   position: sticky;
-  top: 100px;
+  top: 120px;
   z-index: 1;
-  border: 1px solid var(--border-secondary);
-  box-shadow: var(--card-shadow);
-  transition: all var(--transition-normal);
-}
-
-.category-sidebar:hover {
-  box-shadow: var(--card-shadow-hover);
-  border-color: var(--border-primary);
-}
-
-@media (max-width: 768px) {
-  .category-sidebar {
-    width: 100%;
-    margin-bottom: 1.5rem;
-    position: relative;
-    top: unset;
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .category-sidebar {
-    padding: 1.25rem;
-  }
+  border: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  /* Remove overflow to prevent double scroll */
+  overflow: visible;
 }
 
 /* Enhanced Title Section */
@@ -55,8 +38,8 @@
   left: 0;
   width: 60px;
   height: 2px;
-  background: linear-gradient(135deg, var(--interactive-primary), #FF6B35);
-  border-radius: var(--radius-full);
+  background: var(--interactive-primary);
+  border-radius: 50%;
 }
 
 /* Enhanced Category List */
@@ -67,6 +50,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  /* Only scroll the list content, not the entire sidebar */
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
 }
 
 /* Enhanced Category Links */
@@ -76,11 +62,11 @@
   padding: 1rem 1.25rem;
   text-decoration: none;
   color: var(--text-secondary);
-  border-radius: var(--radius-lg);
+  border-radius: 8px;
   font-weight: 500;
   background: transparent;
   border: 2px solid transparent;
-  transition: all var(--transition-normal);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   font-size: 0.95rem;
@@ -93,7 +79,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(var(--interactive-primary), 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(211, 47, 47, 0.1), transparent);
   transition: left 0.5s ease;
 }
 
@@ -106,11 +92,11 @@
   color: var(--text-primary);
   border-color: var(--border-primary);
   transform: translateX(5px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .category-link.active {
-  background: linear-gradient(135deg, var(--interactive-primary), #b71c1c);
+  background: var(--interactive-primary);
   color: white;
   font-weight: 600;
   border-color: var(--interactive-primary);
@@ -118,81 +104,85 @@
   transform: translateX(5px);
 }
 
-.category-link.active::before {
-  display: none;
-}
-
-/* Special styling for "Ver Todos" link */
+/* First category (Ver Todos) - Use ERAM colors, not blue */
 .category-link:first-child {
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-light));
+  background: var(--interactive-primary);
   color: white;
+  border-color: var(--interactive-primary);
   font-weight: 600;
-  border-color: var(--accent-blue);
-  margin-bottom: 1rem;
-  padding: 1.25rem 1.5rem;
-  text-align: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
 }
 
 .category-link:first-child:hover {
-  background: linear-gradient(135deg, var(--accent-blue-light), var(--accent-blue));
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(25, 118, 210, 0.4);
+  background: var(--interactive-primary-hover);
+  border-color: var(--interactive-primary-hover);
+  color: white;
 }
 
 .category-link:first-child.active {
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-light));
-  border-color: var(--accent-blue);
-  transform: translateY(-2px);
+  background: var(--interactive-primary-hover);
+  border-color: var(--interactive-primary-hover);
 }
 
-/* Category count badges (if needed in the future) */
+/* Category Count */
 .category-count {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 24px;
-  height: 24px;
-  background: var(--interactive-primary);
-  color: white;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 600;
   margin-left: auto;
-  padding: 0 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  min-width: 24px;
+  text-align: center;
 }
 
-/* Enhanced responsive design */
-@media (max-width: 1200px) {
+.category-link.active .category-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Category Icon */
+.category-icon {
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--text-tertiary);
+  transition: all 0.3s ease;
+}
+
+.category-link:hover .category-icon,
+.category-link.active .category-icon {
+  color: var(--interactive-primary);
+}
+
+.category-link:first-child .category-icon {
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .category-sidebar {
-    padding: 1.75rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 300px;
+    z-index: 200;
+    transform: translateX(-100%);
+    overflow-y: auto;
   }
   
-  .category-title {
-    font-size: 1.2rem;
-    margin-bottom: 1.75rem;
+  .category-sidebar.visible {
+    transform: translateX(0);
   }
   
-  .category-link {
-    padding: 0.875rem 1.125rem;
-    font-size: 0.9rem;
-  }
-  
-  .category-link:first-child {
-    padding: 1.125rem 1.375rem;
+  .category-list {
+    max-height: calc(100vh - 200px);
   }
 }
 
 @media (max-width: 768px) {
   .category-sidebar {
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .category-title {
-    font-size: 1.15rem;
-    margin-bottom: 1.5rem;
+    width: 280px;
   }
   
   .category-link {
@@ -200,25 +190,16 @@
     font-size: 0.9rem;
   }
   
-  .category-link:first-child {
-    padding: 1rem 1.25rem;
-    margin-bottom: 1rem;
-  }
-  
-  .category-link:hover,
-  .category-link.active {
-    transform: translateX(3px);
+  .category-title {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .category-sidebar {
-    padding: 1.25rem;
-  }
-  
-  .category-title {
-    font-size: 1.1rem;
-    margin-bottom: 1.25rem;
+    width: 260px;
+    padding: 1rem;
   }
   
   .category-link {
@@ -226,14 +207,9 @@
     font-size: 0.85rem;
   }
   
-  .category-link:first-child {
-    padding: 0.875rem 1rem;
-    margin-bottom: 0.875rem;
-  }
-  
-  .category-link:hover,
-  .category-link.active {
-    transform: translateX(2px);
+  .category-title {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
   }
 }
 
