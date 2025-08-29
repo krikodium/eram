@@ -1,4 +1,4 @@
-// src/components/ProductCard.jsx - Enhanced with View Modes and Mobile Animations
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import AddToQuoteButton from '../shared/components/AddToQuoteButton';

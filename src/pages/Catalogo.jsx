@@ -4,9 +4,7 @@ import CategorySidebar from '../components/CategorySidebar';
 import ProductList from '../components/ProductList';
 import CategoryPreview from '../components/CategoryPreview';
 import RubrosFilter from '../features/rubros/components/RubrosFilter';
-import { rubrosService } from '../services/api';
-import { getRubroById } from '../mocks/rubros';
-import { getAllProductos, getProductosByCategoria, mockCategorias } from '../mocks/productos';
+import { getAllProductos, getProductosByCategoria } from '../mocks/productos';
 import './Catalogo.css';
 import { 
   FaFilter, 
@@ -15,9 +13,7 @@ import {
   FaSearch, 
   FaTh, 
   FaList,
-  FaSortAmountDown,
-  FaEye,
-  FaEyeSlash
+  FaSortAmountDown
 } from 'react-icons/fa';
 
 const Catalogo = () => {
@@ -27,21 +23,19 @@ const Catalogo = () => {
   const [searchParams] = useSearchParams();
   const categoriaId = searchParams.get('categoria_id');
   const rubroId = searchParams.get('rubro_id');
-  const api = useMemo(() => import.meta.env.REACT_APP_BACKEND_URL || 'http://localhost:8001', []);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [pageTitle, setPageTitle] = useState('Todos los Productos');
-  const [filteredCategories, setFilteredCategories] = useState([]);
   
-  // Nuevos estados para el diseño mejorado
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' o 'list'
-  const [sortBy, setSortBy] = useState('nombre'); // 'nombre', 'precio', 'sku'
-  const [sortOrder, setSortOrder] = useState('asc'); // 'asc' o 'desc'
+  // Estados para funcionalidad
+  const [viewMode, setViewMode] = useState('grid');
+  const [sortBy, setSortBy] = useState('nombre');
+  const [sortOrder, setSortOrder] = useState('asc');
   const [searchTerm, setSearchTerm] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   const [productsPerPage, setProductsPerPage] = useState(12);
 
-  // Estado unificado para la previsualización
+  // Estado para preview de categorías
   const [preview, setPreview] = useState({
     category: null,
     products: [],
@@ -51,12 +45,11 @@ const Catalogo = () => {
   
   const hoverTimerRef = useRef(null);
   const sidebarRef = useRef(null);
-  const searchInputRef = useRef(null);
 
+  // Cargar productos
   const fetchProducts = useCallback(async (pageNum, limit, append = false, catId = null) => {
     setLoading(true);
     try {
-      // Use mock data instead of API calls
       let result;
       if (catId) {
         result = getProductosByCategoria(catId, pageNum, limit);
@@ -77,7 +70,7 @@ const Catalogo = () => {
     }
   }, []);
 
-  // Efectos para responsive design
+  // Efectos
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 1024) {
@@ -89,42 +82,25 @@ const Catalogo = () => {
     };
     
     window.addEventListener('resize', handleResize);
-    handleResize(); // Ejecutar inmediatamente
+    handleResize();
     
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  // Handle rubro filtering
-  useEffect(() => {
-    if (rubroId) {
-      const rubro = getRubroById(parseInt(rubroId));
-      if (rubro) {
-        setPageTitle(`${rubro.nombre} - Productos`);
-        fetchProducts(1, productsPerPage, false, null);
-      }
-    }
-  }, [rubroId, fetchProducts, productsPerPage]);
 
   useEffect(() => {
     setProductos([]);
     setPage(1);
     setHasMore(true);
     
-    if (rubroId && !categoriaId) {
-      const rubro = getRubroById(parseInt(rubroId));
-      if (rubro) {
-        setPageTitle(`${rubro.nombre} - Productos`);
-        fetchProducts(1, productsPerPage, false, null);
-      }
-    } else if (categoriaId) {
+    if (categoriaId) {
       fetchProducts(1, productsPerPage, false, categoriaId);
     } else {
       setPageTitle('Todos los Productos');
       fetchProducts(1, productsPerPage, false, null);
     }
-  }, [categoriaId, rubroId, fetchProducts, productsPerPage]);
+  }, [categoriaId, fetchProducts, productsPerPage]);
 
-  // Funciones de manejo de eventos
+  // Funciones de manejo
   const handleCategoryMouseEnter = (category, event) => {
     if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
     
@@ -157,7 +133,7 @@ const Catalogo = () => {
         console.error("Error fetching preview products:", error);
         setPreview(prev => ({ ...prev, products: [], isLoading: false }));
       }
-    }, 800); // Reducido de 1800ms a 800ms para mejor UX
+    }, 800);
   };
 
   const handleCategoryMouseLeave = () => {
@@ -176,7 +152,6 @@ const Catalogo = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Implementar búsqueda cuando se conecte con la API real
     console.log('Searching for:', searchTerm);
   };
 
@@ -201,7 +176,6 @@ const Catalogo = () => {
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = [...productos];
     
-    // Aplicar búsqueda si hay término
     if (searchTerm.trim()) {
       filtered = filtered.filter(producto =>
         producto.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -209,7 +183,6 @@ const Catalogo = () => {
       );
     }
     
-    // Aplicar ordenamiento
     filtered.sort((a, b) => {
       let aValue, bValue;
       
@@ -222,7 +195,7 @@ const Catalogo = () => {
           aValue = a.sku || '';
           bValue = b.sku || '';
           break;
-        default: // nombre
+        default:
           aValue = a.nombre || '';
           bValue = b.nombre || '';
       }
@@ -239,7 +212,7 @@ const Catalogo = () => {
 
   return (
     <div className="catalogo-container">
-      {/* Header Principal */}
+      {/* Header */}
       <header className="catalogo-header">
         <div className="header-content">
           <div className="header-title-section">
@@ -270,14 +243,13 @@ const Catalogo = () => {
         <RubrosFilter onRubroSelect={handleRubroSelect} />
       </div>
 
-      {/* Controles de Vista y Búsqueda */}
+      {/* Controles */}
       <div className="catalogo-controls">
         <div className="controls-left">
           <form onSubmit={handleSearch} className="search-form">
             <div className="search-input-wrapper">
               <FaSearch className="search-icon" />
               <input
-                ref={searchInputRef}
                 type="text"
                 placeholder="Buscar productos..."
                 value={searchTerm}
@@ -348,7 +320,7 @@ const Catalogo = () => {
             onClick={toggleFilters}
             aria-label={showFilters ? 'Ocultar filtros avanzados' : 'Mostrar filtros avanzados'}
           >
-            {showFilters ? <FaEyeSlash /> : <FaEye />}
+            <FaFilter />
             <span>Filtros Avanzados</span>
           </button>
         </div>
@@ -356,7 +328,7 @@ const Catalogo = () => {
 
       {/* Cuerpo Principal */}
       <div className={`catalogo-body ${showSidebar ? 'sidebar-visible' : ''}`}>
-        {/* Sidebar de Categorías */}
+        {/* Sidebar */}
         <aside 
           className={`category-sidebar ${showSidebar ? 'visible' : ''}`} 
           ref={sidebarRef}
@@ -401,7 +373,6 @@ const Catalogo = () => {
                     <option value={48}>48 productos</option>
                   </select>
                 </div>
-                {/* Aquí se pueden agregar más filtros avanzados */}
               </div>
             </div>
           )}

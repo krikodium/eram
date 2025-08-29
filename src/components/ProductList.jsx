@@ -16,7 +16,7 @@ function ProductList({ productos, viewMode = 'grid', columnas = 3 }) {
     return null;
   }
 
-  // Determinar el número de columnas basado en el modo de vista y el ancho de pantalla
+  // Determinar el número de columnas basado en el modo de vista
   const getGridColumns = () => {
     if (viewMode === 'list') return 1;
     
