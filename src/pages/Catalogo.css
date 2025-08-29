@@ -102,15 +102,19 @@
    SIDEBAR DE CATEGORÍAS
    ============================================================================= */
 .category-sidebar {
-  background: var(--bg-card);
-  border-right: 1px solid var(--border-tertiary);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
   padding: 2rem;
   position: sticky;
   top: 80px;
   height: fit-content;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    2px 0 20px rgba(0, 0, 0, 0.1),
+    inset 1px 0 0 rgba(255, 255, 255, 0.05);
 }
 
 .sidebar-header {
@@ -119,7 +123,19 @@
   justify-content: space-between;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid var(--border-tertiary);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.sidebar-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--interactive-primary);
+  border-radius: 50%;
 }
 
 .sidebar-header h3 {
@@ -127,11 +143,13 @@
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .close-sidebar-btn {
-  background: none;
-  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-muted);
   font-size: 1.5rem;
   cursor: pointer;
@@ -143,15 +161,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .close-sidebar-btn:hover {
   color: var(--interactive-primary);
   background: rgba(211, 47, 47, 0.1);
+  border-color: rgba(211, 47, 47, 0.3);
+  transform: scale(1.1);
 }
 
 /* =============================================================================
-   ESTILOS DE CATEGORÍAS (RESTAURADOS COMO ANTES)
+   ESTILOS DE CATEGORÍAS (DISEÑO MEJORADO CON EFECTO VIDRIO)
    ============================================================================= */
 .categories-container {
   width: 100%;
@@ -163,34 +185,150 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .category-item {
   display: block;
-  padding: 0.875rem 1rem;
+  padding: 1rem 1.25rem;
   text-decoration: none;
-  color: var(--text-secondary);
-  border-radius: 6px;
-  font-weight: 500;
+  color: var(--text-primary);
+  border-radius: 12px;
+  font-weight: 600;
   font-size: 0.95rem;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
-  background: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  letter-spacing: 0.3px;
+}
+
+.category-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.category-item:hover::before {
+  left: 100%;
 }
 
 .category-item:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-  border-color: var(--border-secondary);
-  transform: translateX(3px);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(8px) translateY(-2px);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .category-item.active {
-  background: var(--interactive-primary);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(50, 50, 50, 0.8));
   color: white;
-  border-color: var(--interactive-primary);
-  font-weight: 600;
+  border-color: rgba(255, 255, 255, 0.3);
+  font-weight: 700;
+  box-shadow: 
+    0 6px 25px rgba(0, 0, 0, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.category-item.active::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--interactive-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(211, 47, 47, 0.6);
+}
+
+/* Efecto de borde brillante en hover */
+.category-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.category-item:hover::after {
+  opacity: 1;
+}
+
+/* Animación de entrada para cada categoría */
+.category-item {
+  animation: slideInLeft 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.category-item:nth-child(1) { animation-delay: 0.1s; }
+.category-item:nth-child(2) { animation-delay: 0.2s; }
+.category-item:nth-child(3) { animation-delay: 0.3s; }
+.category-item:nth-child(4) { animation-delay: 0.4s; }
+.category-item:nth-child(5) { animation-delay: 0.5s; }
+.category-item:nth-child(6) { animation-delay: 0.6s; }
+.category-item:nth-child(7) { animation-delay: 0.7s; }
+.category-item:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive para categorías */
+@media (max-width: 768px) {
+  .category-item {
+    padding: 0.875rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+  
+  .category-item:hover {
+    transform: translateX(5px) translateY(-1px);
+  }
+  
+  .categories-list {
+    gap: 0.5rem;
+  }
 }
 
 /* =============================================================================
