@@ -1,227 +1,142 @@
-/* src/components/ProductList.css - Enhanced Perfect Grid Alignment */
+/* src/components/ProductList.css - Enhanced with View Modes */
 
 /* =============================================================================
-   PRODUCT GRID - Perfect Symmetry and Alignment
+   PRODUCT LIST CONTAINER - Flexible Layout System
 ============================================================================= */
-.product-grid {
+.product-list {
   display: grid;
   gap: 2rem;
   width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 1rem 0;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: start;
 }
 
-/* Grid Variations for Different Layouts */
-.product-grid.cols-1 {
-  grid-template-columns: 1fr;
-  max-width: 600px;
-}
-
-.product-grid.cols-2 {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 800px;
-}
-
-.product-grid.cols-3 {
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 1200px;
-}
-
-.product-grid.cols-4 {
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 1400px;
-}
-
-/* Auto-fit responsive grid for dynamic layouts */
-.product-grid.auto-fit {
+/* =============================================================================
+   GRID VIEW - Traditional Card Layout
+============================================================================= */
+.product-list.grid-view {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  justify-content: center;
+}
+
+.product-list.grid-view.cols-1 {
+  grid-template-columns: 1fr;
+}
+
+.product-list.grid-view.cols-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.product-list.grid-view.cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.product-list.grid-view.cols-4 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 /* =============================================================================
-   LOADING AND EMPTY STATES - Centered Content
+   LIST VIEW - Horizontal Card Layout
 ============================================================================= */
-.product-grid-loading,
-.product-grid-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 400px;
-  text-align: center;
-  color: var(--text-muted);
-  background: var(--bg-card);
-  border-radius: var(--radius-lg);
-  padding: 3rem;
-  margin: 2rem auto;
-  max-width: 600px;
-  border: 1px solid var(--border-secondary);
+.product-list.list-view {
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
 }
 
-.product-grid-loading svg,
-.product-grid-empty svg {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: var(--interactive-primary);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+.product-list.list-view .product-card-wrapper {
+  max-width: 100%;
 }
 
 /* =============================================================================
-   RESPONSIVE GRID SYSTEM - Mobile Perfect
+   RESPONSIVE DESIGN - Mobile-First Approach
 ============================================================================= */
+@media (max-width: 1400px) {
+  .product-list.grid-view.cols-4 {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
 
-/* Large Desktop (1400px+) */
-@media (min-width: 1400px) {
-  .product-grid.cols-3 {
-    grid-template-columns: repeat(4, 1fr);
+@media (max-width: 1200px) {
+  .product-list.grid-view.cols-3,
+  .product-list.grid-view.cols-4 {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
   
-  .product-grid.cols-2 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Desktop (1200px - 1399px) */
-@media (min-width: 1200px) and (max-width: 1399px) {
-  .product-grid {
-    gap: 1.8rem;
-  }
-}
-
-/* Tablet (768px - 1199px) */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .product-grid {
+  .product-list {
     gap: 1.5rem;
   }
-  
-  .product-grid.cols-3,
-  .product-grid.cols-4 {
-    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .product-list.grid-view {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
   
-  .product-grid.cols-2 {
-    grid-template-columns: repeat(2, 1fr);
+  .product-list {
+    gap: 1.25rem;
   }
 }
 
-/* Mobile (480px - 767px) */
-@media (min-width: 480px) and (max-width: 767px) {
-  .product-grid {
-    gap: 1.2rem;
-    padding: 0.5rem 0;
+@media (max-width: 768px) {
+  .product-list.grid-view {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
   
-  .product-grid.cols-2,
-  .product-grid.cols-3,
-  .product-grid.cols-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .product-grid.cols-1 {
-    max-width: 100%;
-  }
-}
-
-/* Small Mobile (320px - 479px) */
-@media (max-width: 479px) {
-  .product-grid {
+  .product-list {
     gap: 1rem;
-    padding: 0.5rem 0;
   }
   
-  .product-grid.cols-2,
-  .product-grid.cols-3,
-  .product-grid.cols-4 {
-    grid-template-columns: 1fr 1fr;
+  .product-list.list-view {
+    gap: 1rem;
   }
-  
-  /* For very small screens, consider single column for better UX */
-  .product-grid.single-mobile {
+}
+
+@media (max-width: 480px) {
+  .product-list.grid-view {
     grid-template-columns: 1fr;
   }
-}
-
-/* =============================================================================
-   MOBILE CATEGORY CONTROLS - Enhanced Styling
-============================================================================= */
-@media (max-width: 768px) {
-  .toggle-categories {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background: linear-gradient(135deg, var(--interactive-primary), #b71c1c);
-    color: white;
-    border: none;
-    border-radius: var(--radius-lg);
-    padding: 1rem 2rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: var(--button-shadow);
-    transition: all var(--transition-normal);
-    width: 100%;
-    max-width: 300px;
+  
+  .product-list {
+    gap: 0.75rem;
   }
   
-  .toggle-categories:hover,
-  .toggle-categories:active {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .categoria-seleccionada {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-    color: var(--text-inverse);
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, var(--interactive-primary), #FF6B35);
-    border-radius: var(--radius-full);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: var(--button-shadow);
-    max-width: fit-content;
+  .product-list.list-view {
+    gap: 0.75rem;
   }
 }
 
 /* =============================================================================
-   GRID ITEM ANIMATIONS - Smooth Entrance
+   LOADING AND EMPTY STATES
 ============================================================================= */
-.product-grid > * {
-  animation: gridItemFadeIn 0.6s ease-out;
+.product-list:empty::before {
+  content: 'Cargando productos...';
+  display: block;
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+/* =============================================================================
+   ANIMATIONS AND TRANSITIONS
+============================================================================= */
+.product-list .product-card-wrapper {
+  animation: fadeInUp 0.6s ease-out;
   animation-fill-mode: both;
 }
 
-.product-grid > *:nth-child(1) { animation-delay: 0.1s; }
-.product-grid > *:nth-child(2) { animation-delay: 0.2s; }
-.product-grid > *:nth-child(3) { animation-delay: 0.3s; }
-.product-grid > *:nth-child(4) { animation-delay: 0.4s; }
-.product-grid > *:nth-child(5) { animation-delay: 0.5s; }
-.product-grid > *:nth-child(6) { animation-delay: 0.6s; }
+.product-list .product-card-wrapper:nth-child(1) { animation-delay: 0.1s; }
+.product-list .product-card-wrapper:nth-child(2) { animation-delay: 0.2s; }
+.product-list .product-card-wrapper:nth-child(3) { animation-delay: 0.3s; }
+.product-list .product-card-wrapper:nth-child(4) { animation-delay: 0.4s; }
+.product-list .product-card-wrapper:nth-child(5) { animation-delay: 0.5s; }
+.product-list .product-card-wrapper:nth-child(6) { animation-delay: 0.6s; }
 
-@keyframes gridItemFadeIn {
-  0% {
+@keyframes fadeInUp {
+  from {
     opacity: 0;
-    transform: translateY(20px) scale(0.95);
+    transform: translateY(30px);
   }
-  100% {
+  to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -229,23 +144,20 @@
    ACCESSIBILITY AND PERFORMANCE
 ============================================================================= */
 @media (prefers-reduced-motion: reduce) {
-  .product-grid > * {
-    animation: none;
-  }
-  
-  .product-grid-loading svg {
+  .product-list .product-card-wrapper {
     animation: none;
   }
 }
 
+/* Focus styles for keyboard navigation */
+.product-list:focus-within {
+  outline: none;
+}
+
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .product-grid {
-    gap: 2.5rem;
+  .product-list {
+    gap: 1rem;
   }
-  
-  .toggle-categories,
-  .categoria-seleccionada {
-    border: 2px solid currentColor;
-  }
+}
 }
