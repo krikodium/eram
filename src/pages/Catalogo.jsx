@@ -7,7 +7,7 @@ import RubrosFilter from '../features/rubros/components/RubrosFilter';
 import { getRubroById } from '../mocks/rubros';
 import { getAllProductos, getProductosByCategoria } from '../mocks/productos';
 import './Catalogo.css';
-import { FaIndustry, FaSearch, FaFilter } from 'react-icons/fa';
+import { FaIndustry, FaSearch, FaFilter, FaTh, FaList } from 'react-icons/fa';
 
 const Catalogo = () => {
   // Estados principales
@@ -20,6 +20,7 @@ const Catalogo = () => {
   
   // Estados de filtros
   const [searchTerm, setSearchTerm] = useState('');
+  const [viewMode, setViewMode] = useState('grid');
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [pageTitle, setPageTitle] = useState('Catálogo de Productos');
@@ -154,13 +155,16 @@ const Catalogo = () => {
 
   return (
     <div className="catalogo-container">
-      {/* Header minimalista */}
+      {/* Header principal */}
       <header className="catalogo-header">
         <div className="header-content">
           <h1 className="page-title">
             {rubroId && <FaIndustry className="title-icon" />}
             {pageTitle}
           </h1>
+          <p className="page-subtitle">
+            Descubre nuestra amplia gama de productos de seguridad industrial
+          </p>
         </div>
       </header>
 
@@ -176,6 +180,13 @@ const Catalogo = () => {
           <aside className="category-sidebar" ref={sidebarRef} onMouseLeave={handleCategoryMouseLeave}>
             <div className="sidebar-header">
               <h3>Categorías</h3>
+              <button 
+                className="close-sidebar-btn"
+                onClick={() => setShowSidebar(false)}
+                aria-label="Cerrar sidebar"
+              >
+                ×
+              </button>
             </div>
             <CategorySidebar
               onLinkClick={() => {
@@ -188,35 +199,61 @@ const Catalogo = () => {
 
         {/* Contenido principal */}
         <main className="catalogo-content">
-          {/* Barra de herramientas simplificada */}
+          {/* Barra de herramientas */}
           <div className="toolbar">
-            <div className="search-container">
-              <FaSearch className="search-icon" />
-              <input
-                type="text"
-                placeholder="Buscar productos..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input"
-              />
+            <div className="toolbar-left">
+              <div className="search-container">
+                <FaSearch className="search-icon" />
+                <input
+                  type="text"
+                  placeholder="Buscar productos..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="search-input"
+                />
+              </div>
             </div>
-            
-            <button 
-              className="toggle-sidebar-btn"
-              onClick={() => setShowSidebar(!showSidebar)}
-              aria-label={showSidebar ? 'Ocultar filtros' : 'Mostrar filtros'}
-            >
-              <FaFilter />
-              <span>{showSidebar ? 'Ocultar' : 'Filtros'}</span>
-            </button>
+
+            <div className="toolbar-right">
+              <div className="view-controls">
+                <button
+                  className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
+                  onClick={() => setViewMode('grid')}
+                  aria-label="Vista en cuadrícula"
+                >
+                  <FaTh />
+                </button>
+                <button
+                  className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
+                  onClick={() => setViewMode('list')}
+                  aria-label="Vista en lista"
+                >
+                  <FaList />
+                </button>
+              </div>
+
+              <button 
+                className="toggle-sidebar-btn"
+                onClick={() => setShowSidebar(!showSidebar)}
+                aria-label={showSidebar ? 'Ocultar filtros' : 'Mostrar filtros'}
+              >
+                <FaFilter />
+                <span>{showSidebar ? 'Ocultar' : 'Filtros'}</span>
+              </button>
+            </div>
           </div>
 
           {/* Información de resultados */}
           {filteredProducts.length > 0 && (
             <div className="results-info">
               <span className="results-count">
-                {filteredProducts.length} producto{filteredProducts.length !== 1 ? 's' : ''}
+                {filteredProducts.length} producto{filteredProducts.length !== 1 ? 's' : ''} encontrado{filteredProducts.length !== 1 ? 's' : ''}
               </span>
+              {searchTerm && (
+                <span className="search-term">
+                  para "{searchTerm}"
+                </span>
+              )}
             </div>
           )}
 
@@ -228,7 +265,7 @@ const Catalogo = () => {
                 <p>Cargando productos...</p>
               </div>
             ) : filteredProducts.length > 0 ? (
-              <ProductList productos={filteredProducts} />
+              <ProductList productos={filteredProducts} viewMode={viewMode} />
             ) : (
               <div className="empty-state">
                 <div className="empty-icon">🔍</div>
