@@ -8,7 +8,9 @@ import {
   FaGift,
   FaCertificate,
   FaGlobe,
-  FaHeadset
+  FaHeadset,
+  FaCalendarAlt,
+  FaEnvelope
 } from 'react-icons/fa';
 import './VisitBenefits.css';
 
