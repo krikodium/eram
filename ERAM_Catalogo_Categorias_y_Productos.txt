@@ -1,0 +1,384 @@
+[CATEGORIAS]
+Categoria|Subcategoria|Fuente(s)|Repetida
+Cintas Industriales||Exworks|
+Delantales||Distribuciones|
+Delantales|Guantes De Proteccion|Distribuciones|
+Escaleras||Exworks|
+Incendio||Distribuciones|
+Incendio|Detector De Humo Importado|Distribuciones|
+Incendio|Mantas De Borosilicato|Distribuciones|
+Incendio|Sica|Distribuciones|
+Indumentaria De Lluvia||Exworks|
+Kits Vehiculares||Distribuciones|
+Kraftex||Distribuciones|
+Kraftex|Botas L39|Distribuciones|
+Kraftex|Cascos Saylens|Distribuciones|
+Kraftex|Guantes Dielectricos|Distribuciones|
+Kraftex|Libus|Distribuciones|
+Primeros Auxilios||Exworks|
+Primeros Auxilios|Delantales De Pvc|Exworks|
+Proteccion Auditiva||Distribuciones|
+Proteccion En Altura||Exworks|
+Proteccion Facial||Distribuciones; Exworks|[REPETIDA]
+Proteccion Facial|Carpa Piso Pvc|Exworks|
+Proteccion Facial|Espejos Parabolicos|Exworks|
+Proteccion Facial|Espejos Plasticos Viales Cartel Corrugado|Exworks|
+Proteccion Ocular||Distribuciones|
+Proteccion Respiratoria||Distribuciones|
+Proteccion Respiratoria|Cartel Corrugado Vial|Distribuciones|
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|Distribuciones|
+Señalizacion Industrial||Distribuciones|
+Señalizacion Industrial|Carteles Adhesivos|Distribuciones|
+Señalizacion Industrial|Carteles Adhesivos Fotoluminicentes|Distribuciones|
+Señalizacion Industrial|Carteles Doble Faz|Distribuciones|
+Señalizacion Industrial|Carteles Doble Faz Fotoluminicentes|Distribuciones|
+Señalizacion Industrial|Carteles Fotoluminicentes|Distribuciones|
+Señalizacion Industrial|Carteles Linea Dorada|Distribuciones|
+Señalizacion Industrial|Chapas Baliza De 0.5 Mm|Distribuciones|
+Señalizacion Industrial|Chapas Baliza De 0.7 Mm|Distribuciones|
+Señalizacion Industrial|Cinta De Doble Contacto|Distribuciones|
+Señalizacion Industrial|Tarjetas De Seguridad Y Linea Chapa|Distribuciones|
+Señalizacion Personal||Exworks|
+Señalización Vial||Exworks|
+Señalización Vial|Baston Led|Exworks|
+Señalización Vial|Cintas De Peligro|Exworks|
+Señalización Vial|Conos Varios|Exworks|
+Señalización Vial|Linea Conos Rojos|Exworks|
+Señalización Vial|Linea Conos Viales Naranjas|Exworks|
+Señalización Vial|Mallas De Advertencia Subterranea|Exworks|
+Señalización Vial|Mallas Reticuladas De Proteccion|Exworks|
+Señalización Vial|Postes / Delineador Vial|Exworks|
+Señalización Vial|Tachas Viales|Exworks|
+Sujecion De Carga||Exworks|
+Sujecion De Carga|Duchas - Lavaojos De Emergencia|Exworks|
+
+[PRODUCTOS]
+Categoria|Subcategoria|Codigo|Descripcion|Medidas|Presentacion|Moneda|Precio_unitario|Precios_por_bulto|Notas
+Kraftex|Guantes Dielectricos|02787|Guante dieléctrico probado a 2.500 volts Kraftex ( Clase 00, Cat A ) -CERTIFICADO Normas IEC 903 /||||||Certificaciones en descripción; Bultos: UNITARIO X 5 UNIDADES
+Kraftex|Guantes Dielectricos|02788|Guante dieléctrico probado a 5.000 volts Kraftex ( Clase 0, Cat A ) - CERTIFICADO Normas IEC 903 /||||||Certificaciones en descripción; Bultos: UNITARIO X 5 UNIDADES
+Kraftex|Guantes Dielectricos|02789|Guante dieléctrico probado a 10.000 volts Kraftex ( Clase 1, Cat A ) - CERTIFICADO Normas IEC 903||||||Certificaciones en descripción; Bultos: UNITARIO X 5 UNIDADES
+Kraftex|Guantes Dielectricos|02790|Guante dieléctrico probado a 20.000 volts Kraftex ( Clase 2, Cat A ) -CERTIFICADO Normas IEC 903 /||||||Certificaciones en descripción; Bultos: UNITARIO X 5 UNIDADES
+Kraftex|Botas L39|01085|Bota 1/2 caña NEGRA, CON puntera , suela y caña en PVC , L 39, industrial NEGRA Modelo||||||Bultos: UNITARIO X 20 UNIDADES
+Kraftex|Botas L39|01083|Bota 1/2 caña NEGRA, SIN puntera , suela y caña en PVC , L 39, industrial NEGRA Modelo Tracktor||||||Bultos: UNITARIO X 20 UNIDADES
+Proteccion Ocular||900499|Anteojo ARGON Transparente HC , con tratamiento antiraya, marco negro, patillas||||||Bultos: UNITARIO X 240 UNIDADES
+Proteccion Ocular||900494|Anteojo ARGON Gris HC , con tratamiento antiraya, marco negro, patillas||||||Bultos: UNITARIO X 240 UNIDADES
+Proteccion Ocular||900558|Anteojo ECO LINE Transparente HC con tratamiento antiraya US$ 0,79 US$ 0,76|||USD|US$                0,79|US$                  0,76|Bultos: UNITARIO X 240 UNIDADES
+Proteccion Ocular||900555|Anteojo ECO LINE Gris HC con tratamiento antiraya US$ 0,79 US$ 0,76|||USD|US$                0,79|US$                  0,76|Bultos: UNITARIO X 240 UNIDADES
+Proteccion Ocular||903121|Antiparra AVIATOR Transparente AF ANTIEMPAÑANTE - Marco gris US$ 7,49 US$ 7,14|||USD|US$                7,49|US$                  7,14|Bultos: UNITARIO X 50 UNIDADES
+Proteccion Ocular||901852|Antiparra Soldador Rectangular Flip-Up US$ 9,77|||USD|US$                9,77||Bultos: UNITARIO
+Proteccion Auditiva||901374|Protector auditivo tipo copa ALTERNATIVE Negro US$ 8,17 US$ 7,78|||USD|US$                8,17|US$                  7,78|Bultos: UNITARIO X 25 UNIDADES
+Proteccion Auditiva||900473|Protector Auditivo QUANTUM endoaural, con cordon textil de poliester, diseño de tres aletas US$ 0,40 US$ 0,38|||USD|US$                0,40|US$                  0,38|Bultos: UNITARIO X 25 UNIDADES
+Proteccion Auditiva||900481|Protector Auditivo de COPA, PARA CASCOS LIBUS Modelo L-320 US$ 23,38 US$ 22,29 US$ 3,69 00155 US$ 3,43 US$ 3,64|||USD|US$              23,38|US$                22,29 | US$                  3,69 | US$                  3,43 | US$                3,64|Bultos: UNITARIO X 20 UNIDADES
+Proteccion Auditiva||0016|2||||||Bultos: UNITARIO X 20 UNIDADES
+Proteccion Auditiva||0122|1||||||Bultos: UNITARIO X 20 UNIDADES
+Proteccion Auditiva||01261|US$ 3,91|||USD|US$                3,91||Bultos: UNITARIO X 20 UNIDADES
+Proteccion Facial||901543|Repuesto Protector Facial Plano TRANSPARENTE US$ 6,88 US$ 6,55|||USD|US$                6,88|US$                  6,55|Bultos: UNITARIO X 20 UNIDADES
+Proteccion Facial||901386|Repuesto Protector Facial Burbuja TRANSPARENTE US$ 17,41|||USD|US$              17,41||Bultos: UNITARIO X 20 UNIDADES
+Proteccion Facial||901389|Repuesto Malla PLÁSTICA Forestal US$ 6,82|||USD|US$                6,82||Bultos: UNITARIO X 20 UNIDADES
+Proteccion Facial||904371|Protector Facial CRONOS Consultar||||Consultar||Consultar; Bultos: UNITARIO X 20 UNIDADES
+Proteccion Facial||902438|Soporte para Repuestos Protector Facial-- Arnés Standard , punto por punto US$ 11,81|||USD|US$              11,81||Bultos: UNITARIO X 20 UNIDADES
+Proteccion Facial||901383|Soporte para Repuestos Protector Facial-- Arnés Cremallera US$ 30,89|||USD|US$              30,89||Bultos: UNITARIO X 20 UNIDADES
+Proteccion Respiratoria||901798|Respirador de Partículas N95 - 1730 US$ 1,69|||USD|US$                1,69||Bultos: UNITARIO
+Proteccion Respiratoria||904064|Respirador de Partículas 1420 PFF2 US$ 0,25|||USD|US$                0,25||Bultos: UNITARIO
+Proteccion Respiratoria||902961|Mascarilla conica 1501 para particulas -Dust Mask Consultar||||Consultar||Consultar; Bultos: UNITARIO
+Proteccion Respiratoria||901793|Respirador MEDIA CARA reutil. 9000 - Talle M US$ 15,95|Talle M||USD|US$              15,95||Bultos: UNITARIO
+Proteccion Respiratoria||902669|Respirador MEDIA CARA reutil. 9000 - Talle L US$ 15,95|Talle L||USD|US$              15,95||Bultos: UNITARIO
+Proteccion Respiratoria||901794|Kit Cartuchos G03 OV/AG p/Res L-9000 (kit por par) US$ 19,90|||USD|US$              19,90||Bultos: UNITARIO
+Proteccion Respiratoria||902075|Kit Cartuchos XP100 p/Resp. L-9000 (kit por par) US$ 11,90|||USD|US$              11,90||Bultos: UNITARIO
+Proteccion Respiratoria||901911|Soporte Prefiltro 172 p/Resp. Línea 9000 (unitario) US$ 3,45|||USD|US$                3,45||Bultos: UNITARIO
+Proteccion Respiratoria||902386|Carcasa MILENIUM Class S/V BLANCO-Sin Arnes US$ 2,86 US$ 2,75|||USD|US$                2,86|US$                  2,75|Bultos: UNITARIO
+Proteccion Respiratoria||902387|Carcasa MILENIUM Class S/V AMARILLO-Sin Arnes US$ 2,86 US$ 2,75|||USD|US$                2,86|US$                  2,75|Bultos: UNITARIO
+Proteccion Respiratoria||902389|Carcasa MILENIUM Class S/V AZUL-Sin Arnes US$ 2,86 US$ 2,75|||USD|US$                2,86|US$                  2,75|Bultos: UNITARIO
+Proteccion Respiratoria||902415|Arnés MILENIUM Standard punto por punto PLÁSTICO US$ 2,15 US$ 2,05|||USD|US$                2,15|US$                  2,05|Bultos: UNITARIO
+Proteccion Respiratoria||902414|Arnés MILENIUM Cremallera PLÁSTICO US$ 3,15 US$ 2,97|||USD|US$                3,15|US$                  2,97|Bultos: UNITARIO
+Proteccion Respiratoria||902493|Adaptador Casco-Facial-Auditivo L-300 [M] MILENIUM US$ 21,94|||USD|US$              21,94||Bultos: UNITARIO
+Proteccion Respiratoria||902495|Adaptador Casco-Facial-Auditivo L-300 [U] UNIVERSAL US$ 27,39|||USD|US$              27,39||Bultos: UNITARIO
+Proteccion Respiratoria||902003|Mentonera con cubre menton (barbijo) 15mm (Gancho C) US$ 4,35|15mm||USD|US$                4,35||Bultos: UNITARIO
+Proteccion Respiratoria||901841|Mentonera simple para casco libus US$ 2,28|||USD|US$                2,28||Bultos: UNITARIO
+Proteccion Respiratoria||903430|Casco HIGH PRO S/V Blanco Con arnes incluido US$ 38,00|||USD|US$              38,00||Bultos: UNITARIO
+Incendio||97657|Balde Metálico Doble manija 10 lts, color rojo, con calco ARENA $ 22.480,00 $ 21.355,00|||ARS|$ 22.480,00|$ 21.355,00|Bultos: UNITARIO X 5 UNIDADES
+Incendio||09806|Balde PLASTICO color rojo con manija fija, soporte, tapa, reflectivo y calco ARENA $ 24.575,00 $ 23.590,00|||ARS|$ 24.575,00|$ 23.590,00|Bultos: UNITARIO X 5 UNIDADES
+Incendio||97656|Balde Metálico manija movil 10 lts color rojo, con calco ARENA Consultar||||Consultar||Consultar; Bultos: UNITARIO X 5 UNIDADES
+Incendio||00890|Tapa para balde Metálico Consultar||||Consultar||Consultar; Bultos: UNITARIO X 5 UNIDADES
+Incendio||00968-1|Soporte para Balde Metálico US$ 0,43 US$ 0,40|||USD|US$                0,43|US$                  0,40|Bultos: UNITARIO X 100 UNIDADES
+Incendio|Sica|971151|US$ 17,39|||USD|US$              17,39||Bultos: UNITARIO X 20 UNIDADES
+Incendio|Sica|971160|/61 US$ 15,26|||USD|US$              15,26||Bultos: UNITARIO X 20 UNIDADES
+Incendio|Sica|915315|BATERIA 9V SICA (Para detectores de humo)-Presentacion blister por unidad US$ 2,07 US$ 1,97||blister por unidad  US$                2,07  US$                  1,97|USD|US$                2,07|US$                  1,97|Bultos: UNITARIO X 20 UNIDADES
+Incendio|Sica|915133|PILA TIPO C SICA x 2 UNIDADES (Para baston vial) Presentacion y precio -blister x 2 Unid. US$ 2,69 US$ 2,57||y precio -blister x 2 Unid|USD|US$                2,69|US$                  2,57|Bultos: UNITARIO X 20 UNIDADES
+Incendio|Sica|915410|CINTA AISLADORA NEGRA SICA - 10 MT X 19MM -Autoextinguible - Sello BUREAU VERITAS US$ 0,49 US$ 0,47|19MM; 10 MT||USD|US$                0,49|US$                  0,47|Bultos: UNITARIO X 20 UNIDADES
+Incendio|Detector De Humo Importado|97726|Detector de humo, utiliza Bateria de 9V NO INCLUIDA - $ 7.755,00 $ 7.389,00|||ARS|$ 7.755,00|$ 7.389,00|Bultos: UNITARIO X 20 UNIDADES
+Incendio|Detector De Humo Importado|01670|Extintor ABC 2,5 KG Con sello DPS Consultar|2,5 KG|||Consultar||Consultar; Bultos: UNITARIO X 5 UNIDADES
+Incendio|Detector De Humo Importado|01651|Extintor de CO2 X 3,5 KG. Con sello DPS Consultar|3,5 KG|||Consultar||Consultar; Bultos: UNITARIO X 5 UNIDADES
+Incendio|Detector De Humo Importado|01921|Extintor rodante ABC x 25 KG. Con sello DPS Consultar|25 KG|||Consultar||Consultar; Bultos: UNITARIO X 5 UNIDADES
+Incendio|Detector De Humo Importado|00968|Soporte de pared para extintores de 2,5 / 5 / 10 kg. US$ 0,43 US$ 0,40|10 kg||USD|US$                0,43|US$                  0,40|Bultos: UNITARIO X 100 UNIDADES
+Incendio|Mantas De Borosilicato|97143|Manta de tela borosilicato, CONFECCIONADA DE 1 X 1 mts Consultar|1 mts|||Consultar||Consultar; Bultos: UNITARIO
+Incendio|Mantas De Borosilicato|01631|Manta de tela borosilicato, CONFECCIONADA DE 2 X 1 mts Consultar|1 mts|||Consultar||Consultar; Bultos: UNITARIO
+Incendio|Mantas De Borosilicato|01470|Confeccion manta de borosilato OTRAS MEDIDAS Consultar||||Consultar||Consultar; Bultos: UNITARIO
+Kits Vehiculares||97720|Kit Vehicular BOLSO NEGRO CON MATAFUEGO MELISAM: 1 chaleco refectivo fluo Poliéster, 1||||||Bultos: UNITARIO X 10 UNIDADES
+Kits Vehiculares||97385|Kit Vehicular Bolso PVC CON MATAFUEGO MELISAM: 1 chaleco fluo con reflectivo Poliéster, 1||||||Bultos: UNITARIO X 10 UNIDADES
+Kits Vehiculares||01080|Kit Vehicular BOLSO NEGRO SIN MATAFUEGO : 1 chaleco refectivo fluo, 2 Triangulo reflectivo , 1||||||Bultos: UNITARIO X 50 UNIDADES
+Kits Vehiculares||01084|Kit Vehicular BOLSO PVC INCOLORO SIN MATAFUEGO : 1 chaleco refectivo fluo, 2 Triangulo||||||Bultos: UNITARIO X 50 UNIDADES
+Kits Vehiculares||97386|Triangulo reflectivo - Presentacion Bolsa x 2 unidades $ 2.578,00 $ 2.457,00||Bolsa x 2 unidades $ 2|ARS|$ 2.578,00|$ 2.457,00|Bultos: UNITARIO X 50 UNIDADES
+Kits Vehiculares||09957|Bolso de friselina NEGRO / ROJO,cierre reforzado, para kits vehiculares $ 945,00 $ 895,00 US$ 10,98 US$ 11,76|||USD|$ 945,00|$ 895,00 | US$                10,98 | US$                11,76|Bultos: UNITARIO X 50 UNIDADES
+Kits Vehiculares||971141|US$ 11,53 US$ 12,35 376405|||USD|US$              11,53|US$              12,35|Bultos: UNITARIO X 50 UNIDADES
+Kits Vehiculares||01649|$ 61.687,00|||ARS|$ 61.687,00||Bultos: UNITARIO X 50 UNIDADES
+Delantales||00349|Delantal en cuero descarne, ENTERO de 60 x 90 cm US$ 5,99 US$ 5,73|60 x 90 cm; 90 cm||USD|US$                5,99|US$                  5,73|Bultos: UNITARIO X 20 UNIDADES
+Delantales||00348|Delantal en cuero descarne, ENTERO de 60 x 90 cm, con refuerzo de cuero US$ 6,76 US$ 6,44|60 x 90 cm; 90 cm||USD|US$                6,76|US$                  6,44|Bultos: UNITARIO X 20 UNIDADES
+Delantales||00351|Delantal en cuero descarne ENTERO , de 60 x 90, con refuerzo de GOMA PLOMADA US$ 9,42 US$ 8,97|||USD|US$                9,42|US$                  8,97|Bultos: UNITARIO X 20 UNIDADES
+Delantales||01437|Delantal de JEAN PESADO , de 60 x 90 cm, de 14 ONZAS US$ 2,73 US$ 2,59|60 x 90 cm; 90 cm||USD|US$                2,73|US$                  2,59|Bultos: UNITARIO X 20 UNIDADES
+Delantales||02516|Delantal de JEAN Liviano, de 60 x 90 cm US$ 1,77 US$ 1,69|60 x 90 cm; 90 cm||USD|US$                1,77|US$                  1,69|Bultos: UNITARIO X 20 UNIDADES
+Delantales||00974|Polaina de cuero descarne (par) US$ 5,19|||USD|US$                5,19||Bultos: UNITARIO X 20 UNIDADES
+Delantales||00336|Manga de cuero descarne (par) US$ 5,25|||USD|US$                5,25||Bultos: UNITARIO X 20 UNIDADES
+Delantales||01320|Gorro de cuero descarne US$ 3,52|||USD|US$                3,52||Bultos: UNITARIO X 20 UNIDADES
+Delantales||01443|Campera de cuero descarne para soldador, con cierre y velcro, cuello solapa, dos bolsillos al frente Consultar||||Consultar||Consultar; Bultos: UNITARIO X 20 UNIDADES
+Delantales|Guantes De Proteccion|00434|Guante de PVC ROJO entelado x 30 cm , semipesado CERTIFICADO US$ 2,74|30 cm||USD|US$                2,74||Bultos: UNITARIO
+Delantales|Guantes De Proteccion|00436|Guante de PVC ROJO entelado x 40 cm , semipesado CERTIFICADO US$ 3,29|40 cm||USD|US$                3,29||Bultos: UNITARIO
+Delantales|Guantes De Proteccion|00437|Guante de PVC ROJO entelado x 60 cm , semipesado CERTIFICADO US$ 4,96|60 cm||USD|US$                4,96||Bultos: UNITARIO
+Delantales|Guantes De Proteccion|00438|Guante de PVC ROJO entelado x 70 cm , semipesado CERTIFICADO US$ 5,38|70 cm||USD|US$                5,38||Bultos: UNITARIO
+Delantales|Guantes De Proteccion|02160|Guante de algodón G-13, algodón 100% - CERTIFICADO US$ 0,69|||USD|US$                0,69||Bultos: UNITARIO PACKS
+Delantales|Guantes De Proteccion|02312|Guante SPECTRA G-10 Anticorte ( x Mano ) - CERTIFICADO US$ 10,37|||USD|US$              10,37||Bultos: UNITARIO PACKS
+Delantales|Guantes De Proteccion|01185|Guante de KEVLAR Terry , 30 cm , con acolchado - CERTIFICADO Consultar|30 cm|||Consultar||Consultar; Bultos: UNITARIO PACKS
+Delantales|Guantes De Proteccion|00457|Guante de KEVLAR Terry , 30 cm , sin acolchado - CERTIFICADO Consultar|30 cm|||Consultar||Consultar; Bultos: UNITARIO PACKS
+Delantales|Guantes De Proteccion|00441|Guante de Vaqueta completo AMARILLA PRIMERA 1/2 paseo , puño de vaqueta - CERTIFICADO||||||Bultos: UNITARIO X 60 UNIDADES
+Delantales|Guantes De Proteccion|00882|Guante de Descarne completo AMARILLO PRIMERA modelo americano puño corto de descarne -||||||Bultos: UNITARIO X 60 UNIDADES
+Delantales|Guantes De Proteccion|01318|Guante Cobertor de guante Dielectrico, de vaqueta AMARILLA ,puño descarne -CERTIFICADO US$ 4,49|||USD|US$                4,49||Bultos: UNITARIO X 60 UNIDADES
+Delantales|Guantes De Proteccion|00884|Guante de latex descartable , caja x 100 manos - ANMAT $ 3.225,00 $ 3.075,00||caja x 100 manos - ANMAT  $             3|ARS|$             3.225,00|$                3.075,00|Bultos: UNITARIO X 50 UNIDADES
+Delantales|Guantes De Proteccion|00891|Guante de nitrilo NEGRO descartable , caja x 100 manos - ANMAT $ 3.480,00 $ 3.375,00||caja x 100 manos - ANMAT  $             3|ARS|$             3.480,00|$                3.375,00|Bultos: UNITARIO X 50 UNIDADES
+Proteccion Respiratoria||01094|Semimáscara Segurind de 2 trompas con arnés de cabeza tipo 3M -- moldeada en compuesto|3M|||||Bultos: UNITARIO X 10 UNIDADES
+Proteccion Respiratoria||01095|Filtro Vapores Orgánicos Y Gases Acidos ‘’AB’’ ,110 cc para semimáscara , IRAM 3649 - Venta por||||||Certificaciones en descripción; Bultos: UNITARIO X 20 UNIDADES
+Proteccion Respiratoria||00235|Filtro para polvos y particulas para semimáscara -- Venta por PAR / Precio por unidad $ 1.739,00 $ 1.658,00LINEA TEJIDOS / KEVLAR / TERRYCLOTH|||ARS|$ 1.739,00|$ 1.658,00|Bultos: UNITARIO X 20 UNIDADES
+Proteccion Respiratoria||00450|LINEA PVC ROJO||||||Bultos: UNITARIO X 20 UNIDADES
+Proteccion Respiratoria||01618|US$ 3,54 US$ 3,37|||USD|US$                3,54|US$                  3,37|Bultos: UNITARIO X 20 UNIDADES
+Proteccion Respiratoria||97617|Mascara cara completa FULL FACE BI-FILTRO ( para filtros de 110 cc ) $ 96.719,00 $ 92.115,00|||ARS|$ 96.719,00|$ 92.115,00|Bultos: UNITARIO X 3 UNIDADES
+Proteccion Respiratoria||01152|Prefiltro ( Paño ) $ 685,00|||ARS|$ 685,00||Bultos: UNITARIO X 3 UNIDADES
+Proteccion Respiratoria||01153|Tapa retenedora para prefiltro $ 515,00|||ARS|$ 515,00||Bultos: UNITARIO X 3 UNIDADES
+Proteccion Respiratoria||01354|Filtro Fumigación y pesticidas ‘’G’’ , 110 cc para semimáscara , IRAM 3649 - Venta por PAR / Precio||||||Certificaciones en descripción; Bultos: UNITARIO X 3 UNIDADES
+Proteccion Respiratoria||01154|Filtro Amoníaco y metilamina , ‘’C’’, 110 cc para semimáscara , IRAM 3649 - Venta por PAR /Precio||||||Certificaciones en descripción; Bultos: UNITARIO X 3 UNIDADES
+Proteccion Respiratoria||97638|Filtro HUMOS ‘’E’’ , 110 cc para semimáscara , IRAM 3649 - Venta por PAR / Precio por unidad Consultar||||Consultar||Consultar; Certificaciones en descripción; Bultos: UNITARIO X 3 UNIDADES
+Proteccion Respiratoria||01257|Filtro Vaso para Full Face monofiltro , 300 cc , mod. AB ( Vapores Orgánicos Y Gases Acidos ) IRAM||||||Certificaciones en descripción; Bultos: UNITARIO X 3 UNIDADES
+Proteccion Respiratoria||3649|Consultar||||Consultar||Consultar; Bultos: UNITARIO X 3 UNIDADES
+Proteccion Respiratoria||01168|Máscara cara completa FULL FACE MONOFILTRO (para filtro de 300 cc) Consultar||||Consultar||Consultar; Bultos: UNITARIO X 3 UNIDADES
+Proteccion Respiratoria||00288|Equipo de respiracion autónoma completo de 30 minutos - Compuesto||||||Bultos: UNITARIO
+Proteccion Respiratoria||01531|Equipo autónomo de 30 minutos para cabinas Blindadas /Bancos / Transporte de caudales,||||||Bultos: UNITARIO
+Proteccion Respiratoria|Cartel Corrugado Vial|02927|Carpa AMARILLA PISO MOJADO, con manija, confeccionada en PVC inyectado, impresión en||||||Bultos: UNITARIO X 10 UNIDADES
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|00707|Cartel Alto Impacto 0.8mm , Leyendas Varias , 22 x 28 cm $ 1.528,00 $ 1.425,00|22 x 28 cm; 0.8mm; 28 cm||ARS|$ 1.528,00|$ 1.425,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|00706|Cartel Alto Impacto 0.8mm , Leyendas Varias , 14 x 41 cm $ 1.528,00 $ 1.425,00|14 x 41 cm; 0.8mm; 41 cm||ARS|$ 1.528,00|$ 1.425,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|00709|Cartel Alto Impacto 0.8mm , Leyendas Varias , 30 x 40 cm $ 2.473,00 $ 2.278,00|30 x 40 cm; 0.8mm; 40 cm||ARS|$ 2.473,00|$ 2.278,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|00710|Cartel Alto Impacto 0.8mm , Leyendas Varias , 40 x 45 cm $ 3.186,00 $ 2.938,00|40 x 45 cm; 0.8mm; 45 cm||ARS|$ 3.186,00|$ 2.938,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|00704|Cartel Alto Impacto 0.8mm , Leyendas Varias , 15 x 25 cm / 15 x 23 cm $ 1.195,00 $ 1.118,00|15 x 25 cm; 15 x 23 cm; 0.8mm; 25 cm; 23 cm||ARS|$ 1.195,00|$ 1.118,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|00708|Cartel Alto Impacto 0.8 mm , Leyendas Varias , 30 x 30 cm $ 2.235,00 $ 2.079,00|30 x 30 cm; 0.8 mm; 30 cm||ARS|$ 2.235,00|$ 2.079,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|01061|Cartel Alto Impacto 0.8mm , Leyendas Varias , 11 x 14 cm $ 829,00 $ 775,00|11 x 14 cm; 0.8mm; 14 cm||ARS|$ 829,00|$ 775,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|01062|Cartel Alto Impacto 0.8mm , Leyendas Varias , 10 x 31 cm $ 1.039,00 $ 976,00|10 x 31 cm; 0.8mm; 31 cm||ARS|$ 1.039,00|$ 976,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|01063|Cartel Alto Impacto 0.8mm , Leyendas Varias , 10 x 25 cm $ 1.039,00 $ 976,00|10 x 25 cm; 0.8mm; 25 cm||ARS|$ 1.039,00|$ 976,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|01057|Cartel Alto Impacto 0.8mm , Leyendas Varias , 15 x 15 cm $ 1.195,00 $ 1.099,00|15 x 15 cm; 0.8mm; 15 cm||ARS|$ 1.195,00|$ 1.099,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|01324|Cartel Alto Impacto 0.8mm , Leyendas Varias , 14 x 14 cm $ 868,00 $ 797,00|14 x 14 cm; 0.8mm; 14 cm||ARS|$ 868,00|$ 797,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|01060|Cartel Alto Impacto 0.8mm , Leyendas Varias , 10 x 10 cm $ 769,00 $ 684,00|10 x 10 cm; 0.8mm; 10 cm||ARS|$ 769,00|$ 684,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|01058|Cartel Alto Impacto 0.8mm , Leyendas Varias, 14 x 30 cm / 14 x 27 cm $ 1.587,00 $ 1.475,00|14 x 30 cm; 14 x 27 cm; 0.8mm; 30 cm; 27 cm||ARS|$ 1.587,00|$ 1.475,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|97495|Cartel Alto Impacto 0.8mm , Leyendas Varias , 11 x 38 cm $ 1.747,00 $ 1.607,00|11 x 38 cm; 0.8mm; 38 cm||ARS|$ 1.747,00|$ 1.607,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|01325|Calcos en PVC ( Línea Obligación ) 30 x 40 cm $ 5.533,00 $ 5.157,00|30 x 40 cm; 40 cm||ARS|$ 5.533,00|$ 5.157,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|96280|Cartel Guía de evacuación en alto impacto ( 3 Colores ), 22 x 28 cm Codigo 628 $ 1.990,00 $ 1.862,00|22 x 28 cm; 28 cm||ARS|$ 1.990,00|$ 1.862,00|Bultos: UNITARIO X 50 SURTIDOS
+Proteccion Respiratoria|Carteleria Alto Impacto 0.8 Mm - Según Catalogo  -|02641|Cartel Guía Varios en alto impacto , 22 x 28 cm - 4 colores - Codigos: 318 - 319 - 650 - $ 2.018,00 $ 1.896,0000001 $ 2.157,00LINEA SEGURIND - EQUIPOS AUTONOMOS|22 x 28 cm; 28 cm||ARS|$ 2.018,00|$ 1.896,00 | $ 2.157,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Chapas Baliza De 0.5 Mm|01180|Chapa baliza en alto impacto de 0.5 mm. 23 cm. x 80 cm. $ 2.266,00 $ 2.078,00|0.5 mm; 23 cm; 80 cm||ARS|$ 2.266,00|$ 2.078,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Chapas Baliza De 0.5 Mm|01326|Chapa baliza columna en alto impacto de 0.5 mm. 26 cm. x 87,5 cm $ 3.055,00 $ 2.785,00|0.5 mm; 26 cm; 87,5 cm||ARS|$ 3.055,00|$ 2.785,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Chapas Baliza De 0.5 Mm|94051|Chapa baliza mediana en alto impacto de 0.5 mm. 35 cm. x 87,5 cm. $ 4.666,00 $ 4.294,00|0.5 mm; 35 cm; 87,5 cm||ARS|$ 4.666,00|$ 4.294,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Chapas Baliza De 0.7 Mm|94030|Chapa Baliza de columna, alto impacto de 0.7 mm 52 cm x 87.5 cm $ 7.412,00 $ 6.843,00|0.7 mm; 52 cm; 87.5 cm||ARS|$ 7.412,00|$ 6.843,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Chapas Baliza De 0.7 Mm|00712|Chapa Baliza Triangulo de 0.7 mm de 37 x 37 cm $ 2.624,00 $ 2.395,00|37 x 37 cm; 0.7 mm; 37 cm||ARS|$ 2.624,00|$ 2.395,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Chapas Baliza De 0.7 Mm|00713|Chapa Baliza cuadrada de 0.7 mm de 32 x 32 cm $ 2.624,00 $ 2.395,00|32 x 32 cm; 0.7 mm; 32 cm||ARS|$ 2.624,00|$ 2.395,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Linea Dorada|00719|Cartel línea dorada en alto impacto de 0.8 mm. de 21 cm. x 8.5 cm. $ 2.436,00 $ 2.253,00|0.8 mm; 21 cm; 8.5 cm||ARS|$ 2.436,00|$ 2.253,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Linea Dorada|00717|Cartel línea dorada en alto impacto de 0.8 mm. de 8.5 cm. x 8.5 cm. $ 1.709,00 $ 1.595,00|0.8 mm; 8.5 cm||ARS|$ 1.709,00|$ 1.595,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Linea Dorada|00718|Cartel línea dorada en alto impacto de 0.8 mm. de 20 cm. x 4 cm. $ 1.709,00 $ 1.595,00|0.8 mm; 20 cm; 4 cm||ARS|$ 1.709,00|$ 1.595,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Linea Dorada|01327|Cartel línea dorada en alto impacto de 0.8 mm. de 10 cm. x 10 cm. $ 2.436,00 $ 2.266,00|0.8 mm; 10 cm||ARS|$ 2.436,00|$ 2.266,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Linea Dorada|01328|Cartel línea dorada ADHESIVO de 0.8 mm. de 9 cm. x 16 cm./ 7cm. x24cm $ 1.695,00 $ 1.594,00|0.8 mm; 9 cm; 16 cm; 7cm||ARS|$ 1.695,00|$ 1.594,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Fotoluminicentes|97438|Cartel fotoluminicente en alto impacto de 0.8 mm., de 15 x 21 cm. $ 3.862,00 $ 3.624,00|15 x 21 cm; 0.8 mm; 21 cm||ARS|$ 3.862,00|$ 3.624,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Fotoluminicentes|00711|Cartel fotoluminicente en alto impacto de 0.8 mm., de 14 cm. x 41 cm. $ 4.666,00 $ 4.354,00|0.8 mm; 14 cm; 41 cm||ARS|$ 4.666,00|$ 4.354,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Fotoluminicentes|93053|Cartel fotoluminicente en alto impacto de 0.8 mm., de 22 cm. x 28 cm. $ 4.666,00 $ 4.354,00|0.8 mm; 22 cm; 28 cm||ARS|$ 4.666,00|$ 4.354,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Fotoluminicentes|93033|Cartel fotoluminicente en alto impacto de 0.8 mm., de 10 cm. x 31cm./ 10 x 25 cm. $ 3.299,00 $ 3.078,00|10 x 25 cm; 0.8 mm; 10 cm; 31cm; 25 cm||ARS|$ 3.299,00|$ 3.078,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Fotoluminicentes|01330|Cartel fotoluminicente en alto impacto de 0.8 mm., de 10 cm. x 10 cm. $ 1.360,00 $ 1.234,00|0.8 mm; 10 cm||ARS|$ 1.360,00|$ 1.234,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Fotoluminicentes|01331|Cartel fotoluminicente en alto impacto de 0.8 mm., de 30 cm. x 40 cm. $ 5.598,00 $ 5.229,00|0.8 mm; 30 cm; 40 cm||ARS|$ 5.598,00|$ 5.229,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Fotoluminicentes|01332|Cartel fotoluminicente en alto impacto de 0.8 mm., de 14 cm. x 14 cm. $ 1.714,00 $ 1.594,00|0.8 mm; 14 cm||ARS|$ 1.714,00|$ 1.594,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos|97439|Cartel autoadhesivo de 15 x 25 cm $ 2.126,00 $ 1.972,00|15 x 25 cm; 25 cm||ARS|$ 2.126,00|$ 1.972,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos|97496|Cartel autoadhesivo de 4 x 4 cm / 3 x 10 cm $ 378,00 $ 338,00|4 x 4 cm; 3 x 10 cm; 4 cm; 10 cm||ARS|$ 378,00|$ 338,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos|97288|Calco bajo vidrio Wi - Fi de 10 x 20 cm $ 2.225,00 $ 2.074,00|10 x 20 cm; 20 cm||ARS|$ 2.225,00|$ 2.074,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos|97289|Calco bajo vidrio dorado de 5 x 12 cm $ 1.100,00 $ 1.018,00|5 x 12 cm; 12 cm||ARS|$ 1.100,00|$ 1.018,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos|00720|Cartel autoadhesivo de 9 x 16 cm /7 x 24 cm / 14 x 14 cm $ 753,00 $ 675,00|9 x 16 cm; 7 x 24 cm; 14 x 14 cm; 16 cm; 24 cm; 14 cm||ARS|$ 753,00|$ 675,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos|01333|Cartel autoadhesivo de 7 x 7 cm/ 5 x 12 cm $ 769,00 $ 612,00|7 x 7 cm; 5 x 12 cm; 7 cm; 12 cm||ARS|$ 769,00|$ 612,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos|09990|Cartel autoadhesivo de 10 x 10 cm $ 495,00 $ 458,00|10 x 10 cm; 10 cm||ARS|$ 495,00|$ 458,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos|09989|Cartel autoadhesivo de 12,5 x 15 cm $ 985,00 $ 914,00|12,5 x 15 cm; 15 cm||ARS|$ 985,00|$ 914,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos|01027|Cartel autoadhesivo de 15 x 15 cm $ 1.220,00 $ 1.123,00|15 x 15 cm; 15 cm||ARS|$ 1.220,00|$ 1.123,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos Fotoluminicentes|01334|Cartel Autoadhesivo fotoluminicente 9 cm. x 16 cm. / 7 cm. x 24 cm./14 cm. x 14cm $ 2.628,00 $ 2.466,00|9 cm; 16 cm; 7 cm; 24 cm; 14 cm; 14cm||ARS|$ 2.628,00|$ 2.466,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Adhesivos Fotoluminicentes|01335|Cartel autoadhesivo fotoluminicente de 7 cm. x 7 cm. $ 1.088,00 $ 1.018,00|7 cm||ARS|$ 1.088,00|$ 1.018,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Doble Faz|93031|Cartel DOBLE FAZ en alto impacto de 1.8 mm x 15 x 21 cm $ 3.919,00 $ 3.666,00|15 x 21 cm; 1.8 mm; 21 cm||ARS|$ 3.919,00|$ 3.666,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Doble Faz|93032|Cartel DOBLE FAZ en alto impacto de 1.8 mm x 22 x 28 cm $ 4.869,00 $ 4.542,00|22 x 28 cm; 1.8 mm; 28 cm||ARS|$ 4.869,00|$ 4.542,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Doble Faz|01255|Cartel DOBLE FAZ en alto impacto de 1.8 mm x 30 x 40 cm $ 5.731,00 $ 5.340,00|30 x 40 cm; 1.8 mm; 40 cm||ARS|$ 5.731,00|$ 5.340,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Doble Faz|02425|Cartel DOBLE FAZ en alto impacto de 1.8 mm x 14 x 41 cm $ 4.869,00 $ 4.542,00|14 x 41 cm; 1.8 mm; 41 cm||ARS|$ 4.869,00|$ 4.542,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Doble Faz|02523|Cartel DOBLE FAZ CARPA en alto impacto de 1.8 mm x 22 x 28 cm $ 7.196,00 $ 6.718,00|22 x 28 cm; 1.8 mm; 28 cm||ARS|$ 7.196,00|$ 6.718,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Doble Faz Fotoluminicentes|97214|Cartel de alto impacto doble faz de 1.8 mm Foto 22 x 28 cm/14x41 cm $ 6.791,00 $ 6.334,00|22 x 28 cm; 14x41 cm; 1.8 mm; 28 cm||ARS|$ 6.791,00|$ 6.334,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Doble Faz Fotoluminicentes|97228|Cartel en alto impacto Doble faz de 1.8 mm Foto 30 x 40 cm $ 9.070,00 $ 8.476,00|30 x 40 cm; 1.8 mm; 40 cm||ARS|$ 9.070,00|$ 8.476,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Carteles Doble Faz Fotoluminicentes|97212|Cartel en alto impacto Doble faz de 1.8 mm Foto 15 x 21 cm $ 5.984,00 $ 5.584,00|15 x 21 cm; 1.8 mm; 21 cm||ARS|$ 5.984,00|$ 5.584,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Tarjetas De Seguridad Y Linea Chapa|97362|Cartel de chapa medida de 12.5 X 20 CM. PROHIBIDO ESTACIONAR-CUIDADO CON EL PERRO $ 7.336,00 $ 6.839,00|20 CM||ARS|$ 7.336,00|$ 6.839,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Tarjetas De Seguridad Y Linea Chapa|97352|Cartel para locales - Horario en Dorado y Negro - $ 2.402,00 $ 2.220,00|||ARS|$ 2.402,00|$ 2.220,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Tarjetas De Seguridad Y Linea Chapa|97586|Cartel en Alto impacto de 6 x 15 - ENSEGUIDA VUELVO - $ 1.966,00 $ 1.829,00|||ARS|$ 1.966,00|$ 1.829,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Tarjetas De Seguridad Y Linea Chapa|02427|Tarjetas alto impacto 10 x 15 Fondo Blanco $ 1.395,00 $ 1.318,00|||ARS|$ 1.395,00|$ 1.318,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Tarjetas De Seguridad Y Linea Chapa|01111|Tarjetas alto impacto 10 x 15 Fondo Amarillo $ 1.446,00 $ 1.349,00|||ARS|$ 1.446,00|$ 1.349,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Tarjetas De Seguridad Y Linea Chapa|02642|Carpa Escritorio 15 x 6 cm $ 1.746,00 $ 1.645,00|15 x 6 cm; 6 cm||ARS|$ 1.746,00|$ 1.645,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Tarjetas De Seguridad Y Linea Chapa|02770|Cartel para locales - Horario 12,5 x 20 cm -- Abierto/Cerrado 10 x 20 cm - $ 2.326,00 $ 2.155,00|12,5 x 20 cm; 10 x 20 cm; 20 cm||ARS|$ 2.326,00|$ 2.155,00|Bultos: UNITARIO X 50 SURTIDOS
+Señalizacion Industrial|Tarjetas De Seguridad Y Linea Chapa|01055|Cartel de chapa 18 x 34 cm. ENTRADA Y SALIDA DE VEHICULOS - DOBLE FAZ $ 9.145,00 $ 8.875,00|18 x 34 cm; 34 cm||ARS|$ 9.145,00|$ 8.875,00|Bultos: UNITARIO X5 UNIDADES
+Señalizacion Industrial|Tarjetas De Seguridad Y Linea Chapa|02471|Cartel de chapa 30 x 40 cm. ENTRADA Y SALIDA DE VEHICULOS/CAMIONES - DOBLE FAZ $ 17.545,00|30 x 40 cm; 40 cm||ARS|$ 17.545,00||Bultos: UNITARIO X5 UNIDADES
+Señalizacion Industrial|Cinta De Doble Contacto|09985|Cinta Doble FAZ de espuma - Doble Contacto - Bifaz Color Blanca. Medida 18 mm x 30 mts Apta|18 mm; 30 mts|||||Bultos: UNITARIO
+Señalización Vial|Mallas Reticuladas De Proteccion|97595|Malla Reticulada Naranja - TRAMA GRUESA - Rollo de 1 mts de alto - 40 mts de largo - Rollo para|1 mts; 40 mts|Rollo de 1 mts de alto - 40 mts de largo -  Rollo para||||Bultos: UNITARIO X30 X60
+Señalización Vial|Baston Led|97268|Baston LED LUMINOSO Rojo Luz fija o intermitente para trafico-Largo 41 cm - Mango Antideslizante -|41 cm|||||Bultos: UNITARIO X60 X 120
+Señalización Vial|Tachas Viales|97724|Tacha reflectiva amarilla VIAL - Bidireccional - Medidas: 11 x 8 x 2 cm $ 2.656,00 $ 2.535,00|8 x 2 cm; 2 cm||ARS|$ 2.656,00|$ 2.535,00|Bultos: UNITARIO X50
+Señalización Vial|Linea Conos Rojos|97758|CONO ROJO de 50 cm - BASE DE GOMA - CON 1 REFLECTIVO de 11 cm , base cuadrada de 29x29cm $ 6.735,00 $ 6.539,00 $ 6.169,00|29x29cm; 50 cm; 11 cm||ARS|$ 6.735,00|$ 6.539,00 | $ 6.169,00|Bultos: UNITARIO X30 X 100
+Señalización Vial|Linea Conos Rojos|97716|CONO ROJO de 65 cm - BASE RECARGABLE - CON 1 REFLECTIVO de 11 cm, base hexagonal de 30x30|65 cm; 11 cm|||||Bultos: UNITARIO X30 X 100
+Señalización Vial|Linea Conos Rojos|97131|CONO ROJO de 75 cm - BASE DE GOMA - CON 1 REFLECTIVO de 21,5 cm, base cuadrada de 38,5 x|75 cm; 21,5 cm|||||Bultos: UNITARIO X30 X 100
+Señalización Vial|Linea Conos Viales Naranjas|97776|CONO NARANJA FLUO de 50 cm - BASE DE GOMA - CON 1 REFLECTIVO de 11 cm , base cuadrada de|50 cm; 11 cm|||||Bultos: UNITARIO X30 X 100
+Señalización Vial|Linea Conos Viales Naranjas|02930|CONO NARANJA FLUO de 70 cm, BASE RECARGABLE CON 4 REFLECTIVOS de 3 cm, base cuadrada de|70 cm; 3 cm|||||Bultos: UNITARIO X30 X 100
+Señalización Vial|Linea Conos Viales Naranjas|97759|CONO NARANJA FLUO de 75 cm - BASE DE GOMA - CON 1 REFLECTIVO de 21,5 cm, base cuadrada de|75 cm; 21,5  cm|||||Bultos: UNITARIO X30 X 100
+Señalización Vial|Linea Conos Viales Naranjas|02946|CONO NARANJA FLUO de 75 cm BASE DE GOMA con 2 REFLECTIVOS PANAL DE ABEJA ALTA|75 cm|||||Bultos: UNITARIO X30 X 100
+Señalización Vial|Linea Conos Viales Naranjas|97717-18|CONO TELEX RUTA, NARANJA FLUO de 120 cm, BASE DE GOMA PESADA 8 Kgr , con 2 REFLECTIVOS de|120 cm; 8 Kgr|||||Bultos: UNITARIO X30 X 100
+Señalización Vial|Linea Conos Viales Naranjas|97756|CONO NARANJA FLUO de 100 cm - BASE DE GOMA - CON 1 REFLECTIVO de 31,5 cm, base cuadrada|100 cm; 31,5 cm|||||Bultos: UNITARIO X30 X 100
+Señalización Vial|Conos Varios|97639|Cono AMARILLO de 70 cm, BASE RECARGABLE cuadrada de 33 x 33 cm, con 4 tiras negras de 3 cm $ 8.838,00|33 x 33 cm; 70 cm; 33 cm; 3 cm||ARS|$ 8.838,00||Bultos: UNITARIO
+Señalización Vial|Conos Varios|97614|PANCARTA Reflectiva Roja/Blanca cebrada de 110 cm ,BASE DE GOMA PESADA 11 Kilos $ 81.207,00|110 cm; 11 Kilos||ARS|$ 81.207,00||Bultos: UNITARIO
+Señalización Vial|Conos Varios|02929|Cono NARANJA FLUO, de 70 cm, BASE RECARGABLE NEGRA de 33x33 cm, con 4 tiras reflectivas de 3|33x33 cm; 70 cm|||||Bultos: UNITARIO
+Señalización Vial|Conos Varios|02950|Cono NEGRO , de 70 cm, BASE RECARGABLE de 33 x 33 cm, con 4 tiras amarillas de 3 cm $ 12.615,00|33 x 33 cm; 70 cm; 33 cm; 3 cm||ARS|$ 12.615,00||Bultos: UNITARIO
+Señalización Vial|Conos Varios|02957|Cadena plástica eslabon grande 8 mm , bicolor ROJA/BLANCA , 08 mm Diametro x 29 mm Ancho x|8 mm; 08 mm; 29 mm|||||Bultos: UNITARIO X 400 MT X1000 MT
+Señalización Vial|Conos Varios|02952|Cadena plástica eslabon grande 8 mm , bicolor AMARILLA/NEGRA , 08mm Diametro x 29mm Ancho x|8 mm; 08mm; 29mm|||||Bultos: UNITARIO X 400 MT X1000 MT
+Señalización Vial|Conos Varios|02961|Cadena plástica eslabon grande 8 mm NARANJA FLUO VIAL , de 08 mm Diametro x 29 mm Ancho x 49|8 mm; 08 mm; 29 mm|||||Bultos: UNITARIO X 400 MT X1000 MT
+Señalización Vial|Conos Varios|97701|Cadena plástica eslabon grande 8 mm AMARILLA FLUO , 08mm Diametro x 29 mm Ancho x 49mm.|8 mm; 08mm; 29 mm; 49mm|||||Bultos: UNITARIO X 400 MT X1000 MT
+Señalización Vial|Conos Varios|97700|Cadena plástica eslabon grande 8 mm BLANCA, 08mm Diametro x 29 mm Ancho x 49mm. Largo.|8 mm; 08mm; 29 mm; 49mm|||||Bultos: UNITARIO X 400 MT X1000 MT
+Señalización Vial|Conos Varios|97699|Cadena plástica eslabon grande 8 mm VERDE, 08mm Diametro x 29 mm Ancho x 49mm. Largo.|8 mm; 08mm; 29 mm; 49mm|||||Bultos: UNITARIO X 400 MT X1000 MT
+Señalización Vial|Conos Varios|97391|Cadena plástica eslabon 6 mm, bicolor ROJA/BLANCA, 06mm Diametro x 20 mm Ancho x 35 mm.|6 mm; 06mm; 20 mm; 35 mm|||||Bultos: UNITARIO X 200 MT X 1000 MT
+Señalización Vial|Conos Varios|97702|Cadena plástica eslabon 6 mm, NARANJA FLUO , 06mm Diametro x 20 mm Ancho x 35mm. Largo.|6 mm; 06mm; 20 mm; 35mm|||||Bultos: UNITARIO X 200 MT X 1000 MT
+Señalización Vial|Conos Varios|97678|Cadena plastica eslabon 6 mm, bicolor AMARILLA/NEGRA, 06 mm Diametro x 20 mm Ancho x 35 mm|6 mm; 06 mm; 20 mm; 35 mm|||||Bultos: UNITARIO X 200 MT X 1000 MT
+Señalización Vial|Conos Varios|97613|Poste demarcatorio Rojo / Blanco , sosten de cadena Reforzado, base Octogonal recargable . Altura||||||Bultos: UNITARIO X 12
+Señalización Vial|Conos Varios|97612|Poste demarcatorio Amarillo/ Negro , sosten de cadena Reforzado, base Octogonal recargable.||||||Bultos: UNITARIO X 12
+Señalización Vial|Conos Varios|97723|Delineador VIAL Amarillo FLEXIBLE REBATIBLE - Altura 75 cm - Con 3 reflectivos de 6 cm - fabricado|75 cm; 6 cm|||||Bultos: UNITARIO X 25
+Señalización Vial|Conos Varios|97643|CALZA tipo taco para rueda, de caucho sintetico,Sistema antideslizante, tipo serrucho. Manija de||||||Bultos: UNITARIO X 20
+Señalización Vial|Conos Varios|97401|Esquinero de Goma Cebrado de 78 cm de Alto y aleta de 9 cm de ancho - Color Negro con bandas|78 cm; 9 cm|||||Bultos: UNITARIO X 25
+Señalización Vial|Conos Varios|97775|Tope estacionamiento de Plastico - Color negro / amarillo - Medidas 55 cm de largo x 15 cm de|55 cm; 15 cm|||||Bultos: UNITARIO X 10
+Señalización Vial|Conos Varios|97777|Lomo de burro de Goma - Color negro y amarillo - Medidas 100 cm de largo x 30 de ancho x 4 cm de|100 cm; 4 cm|||||Bultos: UNITARIO X 10
+Señalización Vial|Conos Varios|97730|Protector de cables DE 2 VIAS - tipo lomo de burro PESO 11 KG - 2 vias de 3x3 cm - Medidas: 100|3x3 cm; 11 KG|||||Bultos: UNITARIO X 10
+Señalización Vial|Conos Varios|97403|Tope estacionamiento de Goma PESADO 5KG - Color negro / amarillo - Medidas 55 cm de largo x 15|55 cm; 5KG|||||Bultos: UNITARIO X 10
+Señalización Vial|Conos Varios|97402|Lomo de burro de Goma - Color negro con bandas amarillas - Medidas 122 cm de largo x 30 de ancho|122 cm|||||Bultos: UNITARIO X 10
+Señalización Vial|Conos Varios|02931|GANCHO sosten/union de cadena para adaptar a poste y conos modelos varios - tipo S - $ 354,00 $ 313,00|||ARS|$ 354,00|$ 313,00|Bultos: UNITARIO X 20
+Señalización Vial|Conos Varios|97761|ARO tipo vaso sosten de cadena para adaptar conos modelos varios - tipo O - $ 1.078,00 $ 1.035,00|||ARS|$ 1.078,00|$ 1.035,00|Bultos: UNITARIO X 20
+Señalización Vial|Conos Varios|97760|Valla amarilla extensible plastica tipo tijera. Altura 96 cm. Extensible hasta 2,5mts $ 83.924,00|96 cm; 2,5mts||ARS|$   83.924,00||Bultos: UNITARIO X 20
+Señalización Vial|Conos Varios|97781|Paleta vial REFLECTIVA de señalizacion leyenda SIGA / PARE - Para transito, escuelas. 28 cm diametro $ 19.015,00 $ 17.928,00|28 cm||ARS|$   19.015,00|$ 17.928,00|Certificaciones en descripción; Bultos: UNITARIO X 20
+Señalización Vial|Mallas De Advertencia Subterranea|01075|Malla Advertencia Subterránea 15cm x 100mt - Colores: Rojo Alta tension / Amarillo Gas / Azul|15cm|||||Bultos: UNITARIO X 5 X15
+Señalización Vial|Cintas De Peligro|00087|Cinta de peligro , Rollo 200 mts. x 8 cm - Rojo / Negro , impreso sobre Blanco $ 1.875,00 $ 1.737,00 $ 1.635,00|8 cm; 200 mts|Rollo 200 mts|ARS|$ 1.875,00|$ 1.737,00 | $ 1.635,00|Bultos: UNITARIO X 5 X15
+Señalización Vial|Cintas De Peligro|97768|/6||||||Bultos: UNITARIO X 5 X15
+Señalización Vial|Postes / Delineador Vial|02945|Faro Intermitente para CONO Y VALLA - LED Bidireccional - Amarillo - Para adaptar a todo tipo de||||||Bultos: UNITARIO X 24
+Señalización Vial|Postes / Delineador Vial|00059|Bateria para faro ---- 6 volts - Duracion 600 horas $ 4.395,00 $ 4.194,00|||ARS|$ 4.395,00|$ 4.194,00|Bultos: UNITARIO X 24
+Señalización Vial|Postes / Delineador Vial|97774|Faro (Para 2 Baterias) Intermitente para CONO Y VALLA - LED Bidireccional - Amarillo - Para adaptar a||||||Bultos: UNITARIO X 24
+Señalización Vial|Postes / Delineador Vial|97729|Faro Intermitente para CONO Y VALLA - LED Bidireccional Amarillo INCLUYE BATERIA A CARGA||||||Bultos: UNITARIO X 24 X 48
+Señalización Vial|Postes / Delineador Vial|97728|Faro Intermitente para CONO - LED Bidireccional Amarillo INCLUYE BATERIA A CARGA SOLAR, Para||||||Bultos: UNITARIO X 24 X 48
+Señalización Vial|Postes / Delineador Vial|97615|Faro Rotativo Imantado para automovil, de 12 volts , color Ambar, con enchufe para encendedor,||||||Bultos: UNITARIO X 10
+Señalización Vial|Postes / Delineador Vial|02057|Bandera de TELA con leyenda PELIGRO cebrada roja y blanca, de 50 x 70 cm, con cordones $ 1.774,00 $ 1.648,00 $ 1.569,00|50 x 70 cm; 70 cm||ARS|$ 1.774,00|$ 1.648,00 | $ 1.569,00|Bultos: UNITARIO X 100 X 200
+Señalización Vial|Postes / Delineador Vial|97348|Bandera de TELA RIBETEADA con leyenda PELIGRO cebrada roja y blanca, de 45 x 65 cm, con|45 x 65 cm; 65 cm|||||Bultos: UNITARIO X 100 X 200
+Señalización Vial|Postes / Delineador Vial|02125|Bandera AERONAUTICA de TELA seguridad para aeropuertos , confeccionada a cuadros rojos y||||||Bultos: UNITARIO X 100 X 200
+Señalización Vial|Postes / Delineador Vial|97494-1|Faja lumbar Reforzada ¨ PROMAX LINE ¨, puntera redondeada, Logo estampado a 1 color en tira||||||Bultos: UNITARIO X 50 X 100
+Señalización Vial|Postes / Delineador Vial|97494|Faja lumbar Reforzada ¨ PROMAX LINE PLUS ¨ EN CAJA , puntera redondeada, Logo estampado a 1||CAJA||||Bultos: UNITARIO X 30 X 90
+Señalización Vial|Postes / Delineador Vial|97746|/7||||||Bultos: UNITARIO X 50 X 100
+Cintas Industriales||01703|Cinta reflectiva PESADA para coser combinada Amarilla Fluo/ Gris 4 x 1 - BASE TEXTIL de 4 cm de|4 cm|||||Bultos: UNITARIO X 500 MT X 1000 MT
+Cintas Industriales||97770|Cinta reflectiva para coser combinada Amarilla Fluo/ Gris 4 x 1 - BASE TEXTIL de 4 cm de ancho con|4 cm|||||Bultos: UNITARIO X 500 MT X 1000 MT
+Cintas Industriales||97321|Cinta Reflectiva para coser Poliester GRIS de 2,5 cm de ancho. Precio por METRO - Presentacion: Rollo|2,5 cm|Rollo||||Bultos: UNITARIO X 1000 MT X 4000 MT
+Cintas Industriales||97322|Cinta Reflectiva para coser Poliester GRIS de 5 cm de ancho. Precio por METRO - Presentacion: Rollo|5 cm|Rollo||||Bultos: UNITARIO X 500 MT X 2000 MT
+Cintas Industriales||97632|Cinta Reflectiva Base ALGODON. GRIS de 5 cm. - Presentacion: Rollo de 200 metros-Precio por METRO $ 598,00 $ 559,00|5 cm|Rollo de 200 metros-Precio por METRO $ 598,00 $ 559,00|ARS|$ 598,00|$ 559,00|Bultos: UNITARIO X 400 MT
+Cintas Industriales||97633|Cinta Reflectiva CERTIFICADA BASE Algodon. GRIS de 5 cm - CERTIFICADA EN471 Class I/ Class II, ANSI|5 cm|||||Certificaciones en descripción; Bultos: UNITARIO X 400 MT
+Cintas Industriales||97680|Cinta Reflectiva Poliester GRIS de 2.5 cm de ancho. CERTIFICADA: EN471 Class I / Class II, ANSI -|2.5 cm|||||Certificaciones en descripción; Bultos: UNITARIO X 500 MT
+Cintas Industriales||97681|Cinta Reflectiva Poliester GRIS de 5 cm de ancho. CERTIFICADA: EN471 Class I / Class II, ANSI - Precio|5 cm|||||Certificaciones en descripción; Bultos: UNITARIO X 500 MT
+Cintas Industriales||97682|TELA Reflectiva x m2 Poliester GRIS CERTIFICADA: EN471 Class I / Class II, ANSI -Presentación por||por||||Certificaciones en descripción; Bultos: UNITARIO
+Cintas Industriales||97653|Cinta AMARILLA X15 MTS demarcatoria adhesiva para pisos - Rollo de 48 mm de ancho x 15 metros|48 mm|Rollo de 48 mm de ancho x 15 metros||||Bultos: UNITARIO X 36
+Cintas Industriales||97737|Cinta CEBRADA ROJA Y BLANCA X30 MTS demarcatoria adhesiva para pisos - Rollo de 48 mm de|48 mm|Rollo de  48 mm de||||Bultos: UNITARIO X 36
+Cintas Industriales||97736|Cinta CEBRADA AMARILLA Y NEGRA X30 MTS demarcatoria adhesiva para pisos - Rollo de 48 mm de|48 mm|Rollo de 48 mm de||||Bultos: UNITARIO X 36
+Cintas Industriales||97674|Cinta antideslizante, color negra , Rollo de 25 mm x 18 mts. Presentacion caja por 40 rollos $ 8.698,00 $ 8.228,00 $ 7.749,00|25 mm; 18 mts|caja por 40 rollos $ 8|ARS|$ 8.698,00|$ 8.228,00 | $ 7.749,00|Bultos: UNITARIO X 40 X 80
+Cintas Industriales||97675|Cinta antideslizante, color negra, Rollo de 50 mm x 18 mts.- Presentacion caja por 20 rollos $ 17.396,00 $ 16.456,00 $ 15.498,00|50 mm; 18 mts|caja por 20 rollos $ 17|ARS|$ 17.396,00|$ 16.456,00 | $ 15.498,00|Bultos: UNITARIO X 20 X 40
+Cintas Industriales||97668|BLISTER 8 TIRAS antideslizantes TRANSPARENTES, de 2 cm de ancho x 45cm de largo Presentacion y|2 cm; 45cm|y||||Bultos: UNITARIO X 10
+Cintas Industriales||9942|ROLLO CINTA REFLECTIVA X 45,7 MTS BLANCA - 5 CM de Ancho $ 56.190,00 $ 54.970,00 $ 52.980,00|5 CM; 45,7 MTS|ROLLO CINTA REFLECTIVA  X 45|ARS|$ 56.190,00|$ 54.970,00 | $ 52.980,00|Bultos: UNITARIO X 2 X 6
+Cintas Industriales||9943|ROLLO CINTA REFLECTIVA X 45,7 MTS ROJA - 7.50 CM de Ancho $ 79.990,00 $ 78.690,00 $ 75.870,00|7.50 CM; 45,7 MTS|ROLLO CINTA REFLECTIVA X 45|ARS|$ 79.990,00|$ 78.690,00 | $ 75.870,00|Bultos: UNITARIO X 2 X 6
+Cintas Industriales||9944|ROLLO CINTA REFLECTIVA X 45,7 MTS CEBRADA 7.50 CM de Ancho $ 79.990,00 $ 78.690,00 $ 75.870,00|7.50 CM; 45,7 MTS|ROLLO CINTA REFLECTIVA X 45|ARS|$ 79.990,00|$ 78.690,00 | $ 75.870,00|Bultos: UNITARIO X 2 X 6
+Cintas Industriales||01942|Círculo reflectivo VTV (Velocidad Máxima 60/80/90/100/110 ) Panal abeja Blanco $ 1.568,00 $ 1.525,00 $ 1.435,00|||ARS|$ 1.568,00|$ 1.525,00 | $ 1.435,00|Bultos: UNITARIO X 20 X 60
+Cintas Industriales||97765|ROLLO CINTA REFLECTIVA BLANCA X 20 MTS -5 CM de Ancho $ 21.675,00 $ 20.645,00 $ 19.660,00|5 CM; 20 MTS|ROLLO CINTA REFLECTIVA BLANCA  X 20 MTS  -5 CM de Ancho $ 21|ARS|$ 21.675,00|$ 20.645,00 | $ 19.660,00|Bultos: UNITARIO X 20 X 60
+Cintas Industriales||97766|ROLLO CINTA REFLECTIVA AMARILLA X 20 MTS -5 CM de Ancho $ 21.675,00 $ 20.645,00 $ 19.660,00|5 CM; 20 MTS|ROLLO CINTA REFLECTIVA AMARILLA  X 20 MTS -5 CM de Ancho $ 21|ARS|$ 21.675,00|$ 20.645,00 | $ 19.660,00|Bultos: UNITARIO X 20 X 60
+Cintas Industriales||97764|ROLLO CINTA REFLECTIVA INTERNACIONAL X 20 MTS -5 CM de Ancho $ 21.675,00 $ 20.645,00 $ 19.660,00|5 CM; 20 MTS|ROLLO CINTA REFLECTIVA INTERNACIONAL  X 20 MTS -5 CM de Ancho $ 21|ARS|$ 21.675,00|$ 20.645,00 | $ 19.660,00|Bultos: UNITARIO X 20 X 60
+Cintas Industriales||97763|ROLLO CINTA REFLECTIVA ROJA X 20 MTS - 7.50 CM de Ancho $ 31.950,00 $ 30.429,00 $ 28.980,00|7.50 CM; 20 MTS|ROLLO CINTA REFLECTIVA ROJA   X 20 MTS  - 7|ARS|$ 31.950,00|$ 30.429,00 | $ 28.980,00|Bultos: UNITARIO X 20 X 60
+Cintas Industriales||97762|ROLLO CINTA REFLECTIVA CEBRADA X 20 MTS - 7.50 CM de Ancho $ 31.950,00 $ 30.429,00 $ 28.980,00|7.50 CM; 20 MTS|ROLLO CINTA REFLECTIVA CEBRADA   X 20 MTS  - 7|ARS|$ 31.950,00|$ 30.429,00 | $ 28.980,00|Bultos: UNITARIO X 20 X 60
+Señalizacion Personal||9948|Chaleco AMARILLO Poliester - Ventilado con 2 bandas reflectivas en toda la circunsferencia --||||||Bultos: UNITARIO X 20 X 60
+Señalizacion Personal||9983|Chaleco NARANJA Poliester - Ventilado con 2 bandas reflectivas toda la circunsferencia -------||||||Bultos: UNITARIO X 20 X 60
+Señalizacion Personal||97384|Chaleco AMARILLO Poliester - Ventilado con 2 bandas reflectivas en toda la circunsferencia ----||||||Bultos: UNITARIO X 20 X 60
+Señalizacion Personal||97469|Chaleco NARANJA Poliester - Ventilado con 2 bandas reflectivas en toda la circunsferencia ----||||||Bultos: UNITARIO X 20 X 60
+Señalizacion Personal||00096|Bandolera PVC naranja fluo c/ reflectivos, tiras de 5 cm , cintura elastizada, ribeteada. US$ 2,09 US$ 1,96|5 cm||USD|US$         2,09|US$        1,96|Bultos: UNITARIO X 100
+Señalizacion Personal||09935|CHALECO PONCHO POLIESTER Nacional - AMARILLO - Cintura elastizada - CON 2 REFLECTIVOS DE 2,5||||||Bultos: UNITARIO  X 20
+Señalizacion Personal||09936|CHALECO PONCHO POLIESTER Nacional - NARANJA - Cintura elastizada - CON 2 REFLECTIVOS DE 5||||||Bultos: UNITARIO  X 20
+Señalizacion Personal||97686|Chaleco PONCHO Poliester -Pesado- CLASE 1- Ventilado - Color NARANJA , CON 2 REFLECTIVOS DE||||||Bultos: UNITARIO  X 20
+Señalizacion Personal||97616|Chaleco PONCHO PVC naranja fluo, ribetado, 2 REFLECTIVOS DE 2,5 CM Frente y dorso US$ 5,73 US$ 5,39|2,5 CM||USD|US$         5,73|US$        5,39|Bultos: UNITARIO  X 20
+Señalizacion Personal||97284|Chaleco PVC con 2 bandas Reflectivas color GRIS de 5 cm de ancho en toda la circunsferencia .Cierre|5 cm|||||Bultos: UNITARIO  X 20
+Indumentaria De Lluvia||97605|CAPA DE LLUVIA de PVC, Con Capucha - color Amarillo TALLE - XL - XXL $ 9.080,00|||ARS|$ 9.080,00||Bultos: UNITARIO
+Indumentaria De Lluvia||97627|TRAJE DE LLUVIA de PVC, REFORZADO, color Amarillo - TALLE XL, Con Capucha -(CAMPERA Y||||||Bultos: UNITARIO
+Indumentaria De Lluvia||97671|TRAJE EJECUTIVO NEGRO - PROMAXLINE - de PVC,CON REFECTIVO DE 5 CM EN TODA SU|5 CM|||||Bultos: UNITARIO
+Escaleras||97663|Escalera de aluminio 12 escalones 3,65 Mts - 4 x 3- Multifuncion- Reforzada - Peso maximo 150 KG -|150 KG|||||Bultos: UNITARIO X 2
+Escaleras||97664|Escalera de aluminio 16 escalones 4,7 Mts - 4 x 4- Multifuncion- Reforzada - Peso maximo 150 KG -|150 KG|||||Bultos: UNITARIO X 2
+Escaleras||97695|Escalera de FIBRA 2.9 mm - 16 escalones 4,7 mts - 4 x 4 - Multifuncion - Peso maximo 150 KG -|2.9 mm; 4,7 mts; 150 KG|||||Bultos: UNITARIO X 2
+Escaleras||97665|Escalera 1,10 Mts de aluminio, 3 escalones , Peso Maximo 150 KG - Longitud de trabajo 58 CM -|58 CM; 150 KG|||||Bultos: UNITARIO X 2
+Escaleras||97666|Escalera 1,65 Mts, de aluminio, 5 escalones - REFORZADA Peso Maximo de 150 KG - Longitud de|150 KG|||||Bultos: UNITARIO X 2
+Escaleras||97667|Escalera 2,25 Mts ,de aluminio, Hoja Simple, 8 escalones Peso Maximo 150 KG - Ancho: 38 CM - Peso:|38 CM; 150 KG|||||Bultos: UNITARIO X 2
+Proteccion En Altura||97429|Arnes Anticaida completo PROMAXLINE con 3 puntos de sujecion, hombros y piernas regulables,||||||Bultos: UNITARIO X 5
+Proteccion En Altura||97433|Cola de Amarre de Sujecion y posicionamiento PROMAXLINE de 2 mts regulable y 2 mosquetones|2 mts|||||Bultos: UNITARIO X 5
+Proteccion En Altura||97453|Cola de Amarre TIPO Y doble elastizado PROMAXLINE de 1.5 mts. con amortiguador, con 2|1.5 mts|||||Bultos: UNITARIO X 5
+Proteccion En Altura||97432|Cinturon Liniero con 2 puntos de sujecion, portaherramienta y faja ergometrica - ART 190 -||||||Bultos: UNITARIO X 5
+Sujecion De Carga||97636|Equipo de Criquet de 25 mm x 5 metros de largo con gancho ¨S¨ Medida de 25 mm x 5 metros de|25 mm|||||Bultos: UNITARIO X 10
+Sujecion De Carga||97637|Equipo de Criquet de 50 mm x 9 metros de largo. con gancho ¨J¨ Tipo GARFIO Medida de 50 mm x 9|50 mm|||||Bultos: UNITARIO X 10
+Sujecion De Carga|Duchas - Lavaojos De Emergencia|00295|Ducha y lavaojos de emergencia , acción manual , con bacha de acero inoxidable Modelo: 211DL,||||||Bultos: UNITARIO X2
+Sujecion De Carga|Duchas - Lavaojos De Emergencia|00297|Lavaojos de acción manual , bacha de acero inoxidable , Lavaojos en caño de acero galvanizado,||||||Bultos: UNITARIO X2
+Sujecion De Carga|Duchas - Lavaojos De Emergencia|01606|Juego (2 UNIDADES) -aspersores repuesto para lavaojos cod 295/297 $ 7.380,00|||ARS|$ 7.380,00||Bultos: UNITARIO X2
+Sujecion De Carga|Duchas - Lavaojos De Emergencia|97727|Lavaojos de PARED , acción manual , 100% acero inoxidable , NORMA ANSI Z358.1-2014, AS||||||Certificaciones en descripción; Bultos: UNITARIO X 2
+Sujecion De Carga|Duchas - Lavaojos De Emergencia|4775|:2007, EN15154-1&2 $ 613.958,00 $ 574.733,00|||ARS|$ 613.958,00|$ 574.733,00|Certificaciones en descripción; Bultos: UNITARIO X 2
+Sujecion De Carga|Duchas - Lavaojos De Emergencia|09938|Estacion lavaojos portátil con 2 botellas de 1lt (sin solución) US$ 44,99 US$ 42,85|||USD|US$      44,99|US$      42,85|Bultos: UNITARIO X 4
+Primeros Auxilios||97502|BOTIQUIN GRANDE de MADERA , Puerta guillotina , construido en Madera de Pino - 37 cm de alto x|37 cm|||||Bultos: UNITARIO X 10
+Primeros Auxilios||97418|BOTIQUIN GRANDE de MADERA , puerta apertura lateral modelo premium ,construido en Madera||||||Bultos: UNITARIO X 10
+Primeros Auxilios||97503|Botiquin VACIO de MADERA, puerta guillotina, construido en Madera de Pino - 37 cm de alto x 22 cm|37 cm; 22 cm|||||Bultos: UNITARIO X 10
+Primeros Auxilios||97417|Botiquin VACIO de MADERA, puerta apertura lateral, modelo premium, construido en Madera||||||Bultos: UNITARIO X 10
+Primeros Auxilios||01120|Reposición para botiquín Grande /Industrial, contiene 16 PRODUCTOS. **38 UNIDADES** Contiene:||||||Bultos: UNITARIO X 10
+Primeros Auxilios||09956|BOTIQUIN E6- Caja plástica negra con tapa cristal , con contenido 6 elementos básicos . Medidas 130||Caja plástica negra con tapa cristal||||Bultos: UNITARIO X 10
+Primeros Auxilios||02758|BOTIQUIN P1- Caja plástica polipropileno cristal , con contenido 7 elementos básicos . Medidas 140 x||Caja plástica polipropileno cristal||||Bultos: UNITARIO X 10
+Primeros Auxilios||110|x 50 mm.-Contiene : 1 Agua oxigenada estabilizada 100 cc, 1 Apósito adhesivo , 10 gasas|50 mm|||||Bultos: UNITARIO X 10
+Primeros Auxilios||02756|BOTIQUIN P2 Caja plástica polipropileno cristal , con contenido 10 elementos básicos. Medidas 210 x||Caja plástica polipropileno cristal||||Bultos: UNITARIO X 10
+Primeros Auxilios||135|x 50 mm.- Contiene: Agua oxigenada estabilizada x 100 ml, tela adhesiva impermeable 12.5 mm x|50 mm; 12.5 mm|||||Bultos: UNITARIO X 10
+Primeros Auxilios||02757|BOTIQUIN P4 Valija plástica c/manija BLANCA con contenido 10 elementos basicos, Medidas 230 x||||||Bultos: UNITARIO X 10
+Primeros Auxilios||150|x 54 mm. - Contiene: Agua oxigenada estabilizada x 100 ml, tela adhesiva impermeable 12.5 mm x|54 mm; 12.5 mm|||||Bultos: UNITARIO X 10
+Primeros Auxilios||00975|Camilla TIPO SAME de MADERA con 3 juegos de cinturones de inmobilizacion y fijacion de cinta de||||||Bultos: UNITARIO X 10
+Primeros Auxilios||97445|Cuello ortopedico Cervical PHILADELPHIA - Semi rigido, confeccionado en material termoplastico,||||||Bultos: UNITARIO X 20
+Primeros Auxilios||97338|Repuesto Kit 3 cinturones de fijacion de cinta de polipropileno reforzados con doble abrojo, de 90 cm|90 cm|||||Bultos: UNITARIO X 20
+Primeros Auxilios||01336|Inmovilizador cervical ¨OLA ¨ para camilla. Anatomico tipo OLA, base acolchada con riendas de||||||Bultos: UNITARIO X 20
+Primeros Auxilios||02293|Kit de férulas inflables + bolso de transporte, construidas en PVC flexible, doble sellado. Ultra||||||Bultos: UNITARIO X 20
+Primeros Auxilios||02116|Inmovilizador cervical Estandar para camillas. Acolchado con riendas de sujecion. Tela lavable. Consultar||||Consultar||Consultar; Bultos: UNITARIO X 20
+Primeros Auxilios||97733|Mameluco SPP5 Blanco Descartable con capucha, color Blanco, cierre a cremallera, manga elastizada,||||||Bultos: UNITARIO X 50 X 300
+Primeros Auxilios||97732|Mameluco PROMAXLINE -RESPIRABLE LAMINADO MICROPOROSO- color Blanco, con capucha,||||||Bultos: UNITARIO X 50 X 300
+Primeros Auxilios|Delantales De Pvc|00353|Delantal de PVC 300 gr, de 60 x 90 cm, Azul - Negro - Verde - Blanco US$ 3,44 US$ 3,22|60 x 90 cm; 90 cm||USD|US$         3,44|US$        3,22|Bultos: UNITARIO X 20
+Primeros Auxilios|Delantales De Pvc|01134|Delantal de PVC PESADO 420 gr, de 70 x 120 cm, doble faz , Entelado / Reforzado - BLANCO Pesado US$ 5,48 US$ 5,12|70 x 120 cm; 120 cm||USD|US$         5,48|US$        5,12|Bultos: UNITARIO X 20
+Primeros Auxilios|Delantales De Pvc|02333|Delantal de PVC PESADO 420 gr, de 70 x 120 cm , doble faz , Entelado / Reforzado BLANCO dorso|70 x 120 cm; 120 cm|||||Bultos: UNITARIO X 20
+Primeros Auxilios|Delantales De Pvc|02390|Delantal de PVC Cristal Transparente, de 70 x 100 cm, 150 micrones US$ 2,52 US$ 2,34|70 x 100 cm; 100 cm||USD|US$         2,52|US$        2,34|Bultos: UNITARIO X 20
+Primeros Auxilios|Delantales De Pvc|01211|Vidrio transparente rectangular, 105 x 50 mm $ 257,00 $ 235,00 $ 226,00|105 x 50 mm; 50 mm||ARS|$ 257,00|$ 235,00 | $ 226,00|Bultos: UNITARIO X 100 X 500
+Primeros Auxilios|Delantales De Pvc|02370|Vidrio tonalizado rectangular, 105 x 50 mm, ( DIN 8 al 13 ) $ 339,00 $ 324,00 $ 299,00|105 x 50 mm; 50 mm||ARS|$ 339,00|$ 324,00 | $ 299,00|Bultos: UNITARIO X 100 X 500
+Proteccion Facial||97689|Careta Para Soldar - Visor Movil - PP - Arnes a Cremallera, Fabricada en Polipropileno (PP). Peso||||||Bultos: UNITARIO X 100 X 500
+Proteccion Facial||97326|Careta FOTOSENSIBLE p/soldar, policarbonato, visor fotosensible solar, 105 x 90 mm, tonalidad del|105 x 90 mm; 90 mm|||||Bultos: UNITARIO
+Proteccion Facial||00136|Careta antideflagración para electricista , tela retardante con pechera, acrílico reforzado de 3 mm.|3 mm|||||Bultos: UNITARIO
+Proteccion Facial||97735|/0||||||Bultos: UNITARIO
+Proteccion Facial||1441|Cofia Plisada Spunbond -DOBLE ELASTICO- Presentacion y venta: Pack x 100 / Precio x unidad $ 28,90 $ 27,50||y venta: Pack x 100 / Precio x unidad $ 28,90 $ 27,50|ARS|$ 28,90|$ 27,50|Bultos: UNITARIO
+Proteccion Facial||97743|Barbijo TRIPLE CAPA con ELASTICO y ajuste CLIP NASAL -- CERTIFICADO CE - UNION EUROPEA - ISO||||||Bultos: UNITARIO
+Proteccion Facial||9001|- TERMOSELLADO - Presentacion : - Caja x 1000 ( 20 Pack x 50) CELESTE O NEGRO$ 38,00||- Caja x 1000 ( 20 Pack x 50) CELESTE O NEGRO$ 38,00|ARS|$ 38,00||Bultos: UNITARIO
+Proteccion Facial||01050|Mascarilla ANMAT CERTIFICADA Conica tipo N95 - Termoformada - Autorizado por ANMAT Proteccion||||||Bultos: UNITARIO X 150
+Proteccion Facial||97670|Mascarilla Conica para polvos descartable - Promaxline - Presentacion caja por 50 unidades -bulto x||caja por 50 unidades -bulto x||||Bultos: UNITARIO X 1000
+Proteccion Facial||1000|unidades - Con ajuse nasal y elastico.$ 89,00 $ 84,00|||ARS|$ 89,00|$ 84,00|Bultos: UNITARIO X 1000
+Proteccion Facial||97697|Mascarilla Conica LINEA PESADA para polvos descartable - Promaxline - Presentacion caja por 50||caja por 50||||Bultos: UNITARIO X 1000
+Proteccion Facial||00341|Cubrecalzado ( Par ) , ajuste elastizado, tela no tejida, Consultar||||Consultar||Consultar; Bultos: UNITARIO X 1000
+Proteccion Facial||00001|Cartel de plástico corrugado Medidas: 50 x 70 cm leyendas: HOMBRES TRABAJANDO, REDUCCION DE|50 x 70 cm; 70 cm|||||Bultos: UNITARIO X 1000
+Proteccion Facial||2927|Carpa AMARILLA PISO MOJADO, con manija, confeccionada en PVC inyectado, impresión en serigrafía||||||Bultos: UNITARIO X 1000
+Proteccion Facial|Espejos Parabolicos|01520|Espejo parabólico inastillable con base de chapa galvanizada x 50 cm con soporte articulado $ 114.500,00 $ 110.400,00|50 cm||ARS|$ 114.500,00|$ 110.400,00|Bultos: UNITARIO X 3
+Proteccion Facial|Espejos Parabolicos|01522|Espejo parabólico inastillable con base de chapa galvanizada x 60 cm con soporte articulado $ 143.100,00 $ 137.900,00|60 cm||ARS|$ 143.100,00|$ 137.900,00|Bultos: UNITARIO X 3
+Proteccion Facial|Espejos Parabolicos|01524|Espejo parabólico inastillable con base de chapa galvanizada x 70 cm con soporte articulado $ 171.200,00 $ 165.600,00|70 cm||ARS|$ 171.200,00|$ 165.600,00|Bultos: UNITARIO X 3
+Proteccion Facial|Espejos Parabolicos|01526|Espejo parabólico inastillable con base de chapa galvanizada x 80 cm con soporte articulado $ 199.800,00 $ 193.200,00|80 cm||ARS|$ 199.800,00|$ 193.200,00|Bultos: UNITARIO X 3
+Proteccion Facial|Espejos Parabolicos|97714|Espejo Media Esfera DOMO - 360º - 45 cm $ 88.742,00|45 cm||ARS|$ 88.742,00||Bultos: UNITARIO
+Proteccion Facial|Espejos Parabolicos|97715|Espejo Media Esfera DOMO - 360º - 60 cm $ 132.255,00|60 cm||ARS|$ 132.255,00||Bultos: UNITARIO
+Proteccion Facial|Espejos Parabolicos|97291|Espejo de 45 cm Parabolico VIAL inyectado en plastico espejado, con soporte - APTO EXTERIOR - con|45 cm|||||Bultos: UNITARIO X 3
+Proteccion Facial|Espejos Parabolicos|97295|Espejo de 60 cm Parabolico VIAL inyectado en plastico espejado, con soporte - APTO EXTERIOR - con|60 cm|||||Bultos: UNITARIO X 3

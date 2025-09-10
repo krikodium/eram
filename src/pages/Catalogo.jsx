@@ -4,8 +4,8 @@ import CategorySidebar from '../components/CategorySidebar';
 import ProductList from '../components/ProductList';
 import CategoryPreview from '../components/CategoryPreview';
 import RubrosFilter from '../features/rubros/components/RubrosFilter';
-import { getRubroById } from '../mocks/rubros';
-import { getAllProductos, getProductosByCategoria } from '../mocks/productos';
+// import { getRubroById } from '../mocks/rubros'; // Removed - using Supabase now
+import { productoService, categoriaService } from '../services/supabase';
 import './Catalogo.css';
 import { FaIndustry, FaSearch, FaFilter, FaTh, FaList } from 'react-icons/fa';
 
@@ -42,16 +42,25 @@ const Catalogo = () => {
     try {
       let result;
       if (catId) {
-        result = getProductosByCategoria(catId, pageNum, limit);
+        result = await productoService.getProductosByCategoria(catId, pageNum, limit);
       } else {
-        result = getAllProductos(pageNum, limit);
+        result = await productoService.getProductos(pageNum, limit);
       }
       
-      const { productos: nuevosProductos, totalPages, categoriaNombre } = result;
+      const { data: nuevosProductos, totalPages, total } = result;
       setProductos(prev => append ? [...prev, ...nuevosProductos] : nuevosProductos);
       setHasMore(pageNum < totalPages);
       setPage(pageNum);
-      if (categoriaNombre) setPageTitle(categoriaNombre);
+      
+      // Obtener nombre de categoría si es necesario
+      if (catId && nuevosProductos.length > 0) {
+        try {
+          const categoria = await categoriaService.getCategoria(catId);
+          if (categoria) setPageTitle(categoria.nombre);
+        } catch (err) {
+          console.warn("No se pudo obtener el nombre de la categoría:", err);
+        }
+      }
     } catch (err) {
       console.error("Error al obtener productos:", err);
       setHasMore(false);
@@ -73,11 +82,10 @@ const Catalogo = () => {
   // Efecto para manejar filtros de rubro
   useEffect(() => {
     if (rubroId) {
-      const rubro = getRubroById(parseInt(rubroId));
-      if (rubro) {
-        setPageTitle(`${rubro.nombre} - Productos`);
-        fetchProducts(1, 20, false, null);
-      }
+      // TODO: Implementar servicio de rubros en Supabase
+      // Por ahora, cargar todos los productos
+      setPageTitle('Productos por Rubro');
+      fetchProducts(1, 20, false, null);
     }
   }, [rubroId, fetchProducts]);
 
@@ -88,11 +96,9 @@ const Catalogo = () => {
     setHasMore(true);
     
     if (rubroId && !categoriaId) {
-      const rubro = getRubroById(parseInt(rubroId));
-      if (rubro) {
-        setPageTitle(`${rubro.nombre} - Productos`);
-        fetchProducts(1, 20, false, null);
-      }
+      // TODO: Implementar servicio de rubros en Supabase
+      setPageTitle('Productos por Rubro');
+      fetchProducts(1, 20, false, null);
     } else if (categoriaId) {
       fetchProducts(1, 20, false, categoriaId);
     } else {
@@ -121,10 +127,10 @@ const Catalogo = () => {
       }));
       
       try {
-        const previewResult = getProductosByCategoria(category.id, 1, 5);
+        const previewResult = await productoService.getProductosByCategoria(category.id, 1, 5);
         setPreview(prev => ({
           ...prev,
-          products: previewResult.productos || [],
+          products: previewResult.data || [],
           isLoading: false,
         }));
       } catch (error) {
@@ -145,13 +151,39 @@ const Catalogo = () => {
     fetchProducts(nextPage, 20, true, categoriaId);
   };
 
-  // Productos filtrados
-  const filteredProducts = searchTerm 
-    ? productos.filter(producto => 
-        producto.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        producto.sku.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : productos;
+  // Función para buscar productos
+  const searchProducts = useCallback(async (term) => {
+    if (!term.trim()) {
+      // Si no hay término de búsqueda, cargar productos normales
+      fetchProducts(1, 20, false, categoriaId);
+      return;
+    }
+    
+    setLoading(true);
+    try {
+      const result = await productoService.buscarProductos(term, 1, 20);
+      setProductos(result.data || []);
+      setHasMore(result.page < result.totalPages);
+      setPage(1);
+    } catch (err) {
+      console.error("Error al buscar productos:", err);
+      setProductos([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [categoriaId, fetchProducts]);
+
+  // Efecto para búsqueda
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      searchProducts(searchTerm);
+    }, 500); // Debounce de 500ms
+
+    return () => clearTimeout(timeoutId);
+  }, [searchTerm, searchProducts]);
+
+  // Productos filtrados (para compatibilidad con el estado actual)
+  const filteredProducts = productos;
 
   return (
     <div className="catalogo-container">

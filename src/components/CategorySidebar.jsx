@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { mockCategorias } from '../mocks/productos';
+import { categoriaService } from '../services/supabase';
 
 const CategorySidebar = ({ onLinkClick, onCategoryMouseEnter, onCategoryMouseLeave }) => {
   const [categorias, setCategorias] = useState([]);
@@ -11,9 +11,11 @@ const CategorySidebar = ({ onLinkClick, onCategoryMouseEnter, onCategoryMouseLea
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        setCategorias(mockCategorias);
+        const data = await categoriaService.getCategorias();
+        setCategorias(data || []);
       } catch (err) {
         console.error("Error al cargar categorías:", err);
+        setCategorias([]);
       }
     };
     fetchCategorias();

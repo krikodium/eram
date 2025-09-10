@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './CategoryIcons.css';
 import { Link } from 'react-router-dom';
-import { mockCategorias } from '../mocks/productos';
+import { categoriaService } from '../services/supabase';
 import {
   FaShieldAlt,
   FaHardHat,
@@ -205,11 +205,9 @@ const CategoryIcons = () => {
     const fetchCategorias = async () => {
       try {
         setLoading(true);
-        // Use mock data instead of API call
-        setTimeout(() => {
-          setCategorias(mockCategorias);
-          setLoading(false);
-        }, 500); // Simulate loading delay
+        const data = await categoriaService.getCategorias();
+        setCategorias(data || []);
+        setLoading(false);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
         setCategorias([]); // Set empty array on error
