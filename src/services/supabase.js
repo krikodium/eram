@@ -90,10 +90,10 @@ export const subcategoriaService = {
 
 export const productoService = {
   // Obtener todos los productos con paginación
-  getProductos: async (page = 1, limit = 20, categoriaId = null) => {
+  getProductos: async (page = 1, limit = 50, categoriaId = null) => {
     try {
       let query = supabase
-        .from('productos_completos')
+        .from('productos')
         .select('*')
         .eq('activo', true)
         .order('nombre')
@@ -121,10 +121,10 @@ export const productoService = {
   },
 
   // Obtener productos por categoría
-  getProductosByCategoria: async (categoriaId, page = 1, limit = 20) => {
+  getProductosByCategoria: async (categoriaId, page = 1, limit = 50) => {
     try {
       const { data, error, count } = await supabase
-        .from('productos_completos')
+        .from('productos')
         .select('*')
         .eq('categoria_id', categoriaId)
         .eq('activo', true)
@@ -150,7 +150,7 @@ export const productoService = {
   getProducto: async (id) => {
     try {
       const { data, error } = await supabase
-        .from('productos_completos')
+        .from('productos')
         .select('*')
         .eq('id', id)
         .eq('activo', true)
@@ -165,10 +165,10 @@ export const productoService = {
   },
 
   // Buscar productos por texto
-  buscarProductos: async (searchTerm, page = 1, limit = 20) => {
+  buscarProductos: async (searchTerm, page = 1, limit = 50) => {
     try {
       const { data, error, count } = await supabase
-        .from('productos_completos')
+        .from('productos')
         .select('*')
         .or(`nombre.ilike.%${searchTerm}%,descripcion.ilike.%${searchTerm}%,codigo.ilike.%${searchTerm}%`)
         .eq('activo', true)
@@ -194,7 +194,7 @@ export const productoService = {
   getProductosDestacados: async (limit = 10) => {
     try {
       const { data, error } = await supabase
-        .from('productos_completos')
+        .from('productos')
         .select('*')
         .eq('activo', true)
         .eq('destacado', true)

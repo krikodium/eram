@@ -85,7 +85,7 @@ const Catalogo = () => {
       // TODO: Implementar servicio de rubros en Supabase
       // Por ahora, cargar todos los productos
       setPageTitle('Productos por Rubro');
-      fetchProducts(1, 20, false, null);
+      fetchProducts(1, 50, false, null);
     }
   }, [rubroId, fetchProducts]);
 
@@ -98,12 +98,12 @@ const Catalogo = () => {
     if (rubroId && !categoriaId) {
       // TODO: Implementar servicio de rubros en Supabase
       setPageTitle('Productos por Rubro');
-      fetchProducts(1, 20, false, null);
+      fetchProducts(1, 50, false, null);
     } else if (categoriaId) {
-      fetchProducts(1, 20, false, categoriaId);
+      fetchProducts(1, 50, false, categoriaId);
     } else {
       setPageTitle('Catálogo de Productos');
-      fetchProducts(1, 20, false, null);
+      fetchProducts(1, 50, false, null);
     }
   }, [categoriaId, rubroId, fetchProducts]);
 
@@ -148,20 +148,20 @@ const Catalogo = () => {
   // Función para cargar más productos
   const handleLoadMore = () => {
     const nextPage = page + 1;
-    fetchProducts(nextPage, 20, true, categoriaId);
+    fetchProducts(nextPage, 50, true, categoriaId);
   };
 
   // Función para buscar productos
   const searchProducts = useCallback(async (term) => {
     if (!term.trim()) {
       // Si no hay término de búsqueda, cargar productos normales
-      fetchProducts(1, 20, false, categoriaId);
+      fetchProducts(1, 50, false, categoriaId);
       return;
     }
     
     setLoading(true);
     try {
-      const result = await productoService.buscarProductos(term, 1, 20);
+      const result = await productoService.buscarProductos(term, 1, 50);
       setProductos(result.data || []);
       setHasMore(result.page < result.totalPages);
       setPage(1);
