@@ -71,22 +71,45 @@ const initialState = {
 export const QuoteProvider = ({ children }) => {
   const [state, dispatch] = useReducer(quoteReducer, initialState);
 
-  // Load saved quote from localStorage
+  // Load saved quote from localStorage with expiration
   useEffect(() => {
     const savedQuote = localStorage.getItem('eram-quote');
-    if (savedQuote) {
+    const savedTimestamp = localStorage.getItem('eram-quote-timestamp');
+    
+    if (savedQuote && savedTimestamp) {
       try {
         const items = JSON.parse(savedQuote);
-        dispatch({ type: 'LOAD_SAVED_QUOTE', payload: items });
+        const timestamp = parseInt(savedTimestamp);
+        const now = Date.now();
+        const expirationTime = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
+        
+        // Solo cargar si no ha expirado
+        if (now - timestamp < expirationTime) {
+          dispatch({ type: 'LOAD_SAVED_QUOTE', payload: items });
+        } else {
+          // Limpiar datos expirados
+          localStorage.removeItem('eram-quote');
+          localStorage.removeItem('eram-quote-timestamp');
+        }
       } catch (error) {
         console.error('Error loading saved quote:', error);
+        // Limpiar datos corruptos
+        localStorage.removeItem('eram-quote');
+        localStorage.removeItem('eram-quote-timestamp');
       }
     }
   }, []);
 
-  // Save quote to localStorage whenever it changes
+  // Save quote to localStorage whenever it changes with timestamp
   useEffect(() => {
-    localStorage.setItem('eram-quote', JSON.stringify(state.items));
+    if (state.items.length > 0) {
+      localStorage.setItem('eram-quote', JSON.stringify(state.items));
+      localStorage.setItem('eram-quote-timestamp', Date.now().toString());
+    } else {
+      // Si no hay items, limpiar el localStorage
+      localStorage.removeItem('eram-quote');
+      localStorage.removeItem('eram-quote-timestamp');
+    }
   }, [state.items]);
 
   const addItem = (product) => {
@@ -103,6 +126,26 @@ export const QuoteProvider = ({ children }) => {
 
   const clearQuote = () => {
     dispatch({ type: 'CLEAR_QUOTE' });
+    // También limpiar localStorage
+    localStorage.removeItem('eram-quote');
+    localStorage.removeItem('eram-quote-timestamp');
+  };
+
+  const clearExpiredData = () => {
+    const savedTimestamp = localStorage.getItem('eram-quote-timestamp');
+    if (savedTimestamp) {
+      const timestamp = parseInt(savedTimestamp);
+      const now = Date.now();
+      const expirationTime = 24 * 60 * 60 * 1000; // 24 horas
+      
+      if (now - timestamp >= expirationTime) {
+        localStorage.removeItem('eram-quote');
+        localStorage.removeItem('eram-quote-timestamp');
+        dispatch({ type: 'CLEAR_QUOTE' });
+        return true; // Indica que se limpiaron datos
+      }
+    }
+    return false;
   };
 
   const getTotalItems = () => {
@@ -139,6 +182,7 @@ export const QuoteProvider = ({ children }) => {
     removeItem,
     updateQuantity,
     clearQuote,
+    clearExpiredData,
     getTotalItems,
     generateWhatsAppMessage,
   };

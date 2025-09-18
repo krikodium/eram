@@ -9,6 +9,8 @@ import './Navbar.css';
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isNewItemAdded, setIsNewItemAdded] = useState(false);
+  const [previousItemCount, setPreviousItemCount] = useState(0);
   const { user, logout } = useAuth();
   const { items } = useQuote();
   const location = useLocation();
@@ -38,6 +40,21 @@ function Navbar() {
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMobileMenuOpen]);
+
+  // Detect new item added to cart
+  useEffect(() => {
+    const currentItemCount = items.length;
+    
+    if (currentItemCount > previousItemCount) {
+      setIsNewItemAdded(true);
+      // Reset animation after it completes
+      setTimeout(() => {
+        setIsNewItemAdded(false);
+      }, 600);
+    }
+    
+    setPreviousItemCount(currentItemCount);
+  }, [items.length, previousItemCount]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -108,7 +125,9 @@ function Navbar() {
             <Link to="/cotizacion" className="quote-link">
               🛒
               {items.length > 0 && (
-                <span className="quote-badge">{items.length}</span>
+                <span className={`quote-badge ${isNewItemAdded ? 'new-item' : ''}`}>
+                  {items.length}
+                </span>
               )}
             </Link>
 

@@ -94,7 +94,7 @@ export const productoService = {
     try {
       let query = supabase
         .from('productos')
-        .select('*')
+        .select('*', { count: 'exact' })
         .eq('activo', true)
         .order('nombre')
         .range((page - 1) * limit, page * limit - 1)
@@ -125,7 +125,7 @@ export const productoService = {
     try {
       const { data, error, count } = await supabase
         .from('productos')
-        .select('*')
+        .select('*', { count: 'exact' })
         .eq('categoria_id', categoriaId)
         .eq('activo', true)
         .order('nombre')
@@ -169,7 +169,7 @@ export const productoService = {
     try {
       const { data, error, count } = await supabase
         .from('productos')
-        .select('*')
+        .select('*', { count: 'exact' })
         .or(`nombre.ilike.%${searchTerm}%,descripcion.ilike.%${searchTerm}%,codigo.ilike.%${searchTerm}%`)
         .eq('activo', true)
         .order('nombre')

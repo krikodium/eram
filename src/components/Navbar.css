@@ -152,26 +152,46 @@
 
 .quote-badge {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  background: linear-gradient(135deg, var(--interactive-primary), #FF6B35);
+  top: -6px;
+  right: -6px;
+  background: var(--interactive-primary);
   color: white;
-  font-size: 0.7rem;
-  font-weight: 700;
-  min-width: 20px;
-  height: 20px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  min-width: 18px;
+  height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  animation: badgePulse 2s ease-in-out infinite;
-  box-shadow: 0 2px 8px rgba(211, 47, 47, 0.4);
-  border: 2px solid var(--bg-primary);
+  box-shadow: 0 1px 4px rgba(211, 47, 47, 0.3);
+  border: 1px solid var(--bg-primary);
+  transition: all 0.2s ease;
 }
 
-@keyframes badgePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+.quote-link:hover .quote-badge {
+  background: var(--interactive-primary-hover);
+  box-shadow: 0 2px 6px rgba(211, 47, 47, 0.4);
+  transform: scale(1.05);
+}
+
+@keyframes newItemAdded {
+  0% { 
+    transform: scale(1);
+    box-shadow: 0 1px 4px rgba(211, 47, 47, 0.3);
+  }
+  50% { 
+    transform: scale(1.15);
+    box-shadow: 0 3px 8px rgba(211, 47, 47, 0.5);
+  }
+  100% { 
+    transform: scale(1);
+    box-shadow: 0 1px 4px rgba(211, 47, 47, 0.3);
+  }
+}
+
+.quote-badge.new-item {
+  animation: newItemAdded 0.6s ease-out;
 }
 
 /* Login Button */
@@ -432,6 +452,14 @@ body {
   
   .quote-link {
     padding: 0.4rem;
+  }
+
+  .quote-badge {
+    min-width: 16px;
+    height: 16px;
+    font-size: 0.6rem;
+    top: -4px;
+    right: -4px;
   }
   
   .nav-links.mobile-menu {
