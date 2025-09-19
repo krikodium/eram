@@ -244,7 +244,7 @@
 
 /* Tab Content */
 .tab-content {
-  padding: 3rem;
+  padding: 2rem;
 }
 
 .tab-panel {
@@ -265,17 +265,32 @@
 /* Ubicación Panel */
 .ubicacion-panel .map-container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 3rem;
-  align-items: start;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  min-height: 500px;
 }
 
 .map-wrapper {
   position: relative;
-  height: 400px;
+  height: 500px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--bg-tertiary);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-bounce);
+}
+
+.map-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 12px 24px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .map-loading {
@@ -313,18 +328,129 @@
   height: 100%;
   border: none;
   opacity: 0;
-  transition: opacity var(--transition-normal);
+  transition: all var(--transition-normal);
+  border-radius: var(--radius-lg);
 }
 
 .map-wrapper iframe.loaded {
   opacity: 1;
+  transform: scale(1.02);
+}
+
+/* Map overlay for better interaction */
+.map-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(211, 47, 47, 0.05) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(25, 118, 210, 0.05) 100%
+  );
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.map-wrapper:hover::after {
+  opacity: 1;
 }
 
 .map-info {
-  background: var(--bg-secondary);
-  padding: 2rem;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-elevated));
+  padding: 1.5rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-secondary);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.map-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--interactive-primary), #FF6B35);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Location Marker */
+.location-marker {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(211, 47, 47, 0.05), rgba(25, 118, 210, 0.05));
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(211, 47, 47, 0.1);
+  flex-shrink: 0;
+}
+
+.marker-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--interactive-primary), #FF6B35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3);
+  animation: markerPulse 2s infinite;
+}
+
+@keyframes markerPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.marker-info h4 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.marker-info p {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Directions Section */
+.directions-section {
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.directions-section h5 {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
 }
 
 .map-info h4 {
@@ -350,12 +476,19 @@
   border-bottom: none;
 }
 
+/* Map Actions */
+.map-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
 .directions-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: var(--interactive-primary);
-  color: white;
   padding: 0.875rem 1.5rem;
   border-radius: var(--radius-md);
   text-decoration: none;
@@ -363,13 +496,36 @@
   transition: all var(--transition-bounce);
   text-transform: uppercase;
   letter-spacing: 0.025em;
+  flex: 1;
+  justify-content: center;
+  min-width: 140px;
 }
 
-.directions-btn:hover {
-  background: var(--interactive-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-colored);
+.directions-btn.primary {
+  background: linear-gradient(135deg, var(--interactive-primary), #FF6B35);
   color: white;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+}
+
+.directions-btn.primary:hover {
+  background: linear-gradient(135deg, var(--interactive-primary-hover), #E55A2B);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
+  color: white;
+}
+
+.directions-btn.secondary {
+  background: transparent;
+  color: var(--interactive-primary);
+  border: 2px solid var(--interactive-primary);
+}
+
+.directions-btn.secondary:hover {
+  background: var(--interactive-primary);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(211, 47, 47, 0.3);
 }
 
 /* Instalaciones Panel */
@@ -615,7 +771,16 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .ubicacion-panel .map-container,
+  .ubicacion-panel .map-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    min-height: auto;
+  }
+  
+  .map-wrapper {
+    height: 400px;
+  }
+  
   .facility-grid,
   .schedule-grid {
     grid-template-columns: 1fr;
@@ -623,7 +788,7 @@
   }
   
   .tab-content {
-    padding: 2rem;
+    padding: 1.5rem;
   }
 }
 
@@ -689,7 +854,25 @@
   }
   
   .map-wrapper {
-    height: 300px;
+    height: 350px;
+  }
+  
+  .location-marker {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .marker-icon {
+    align-self: center;
+  }
+  
+  .map-actions {
+    flex-direction: column;
+  }
+  
+  .directions-btn {
+    min-width: auto;
   }
   
   .findus-cta h3 {

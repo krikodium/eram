@@ -48,9 +48,10 @@
 .product-card-wrapper.grid-view .card-image-section {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 280px;
   overflow: hidden;
-  border-radius: 16px 16px 0 0;
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
 }
 
 .product-card-wrapper.grid-view .card-img {
@@ -61,9 +62,10 @@
 }
 
 .product-card-wrapper.grid-view:hover {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
 }
 
 .product-card-wrapper.grid-view:hover .card-img {
@@ -71,11 +73,12 @@
 }
 
 .product-card-wrapper.grid-view .card-content {
-  padding: 1.75rem;
+  padding: 2.25rem 2rem 1.5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.03));
 }
 
 .product-card-wrapper.grid-view .content-header {
@@ -95,11 +98,13 @@
 }
 
 .product-card-wrapper.grid-view .product-title {
-  margin: 0 0 1rem 0;
-  font-size: 1.4rem;
+  margin: 0 0 1.25rem 0;
+  font-size: 1.6rem;
   font-weight: 800;
-  line-height: 1.3;
+  line-height: 1.25;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .product-card-wrapper.grid-view .product-title a {
@@ -197,10 +202,11 @@
 }
 
 .product-card-wrapper.grid-view .card-actions {
-  padding: 1.75rem;
-  padding-top: 0;
+  padding: 0 2rem 2.25rem;
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
+  border-radius: 0 0 12px 12px;
 }
 
 .product-card-wrapper.grid-view .card-quote-btn {
@@ -463,6 +469,13 @@
   text-shadow: none;
 }
 
+@media (min-width: 1200px) {
+  .product-card-wrapper.grid-view .card-image-section { height: 280px; }
+  .product-card-wrapper.list-view { grid-template-columns: 300px 1fr auto; padding: 20px 24px; }
+  .product-card-wrapper.list-view .card-image-section { width: 300px; height: 300px; }
+  .product-card-wrapper.list-view .product-title { font-size: 22px; }
+}
+
 .product-card-wrapper.list-view .detail-value.in-stock {
   color: #4ade80;
 }
@@ -523,14 +536,14 @@
 }
 
 .product-card-wrapper.list-view .card-quote-btn {
-  width: 100px;
-  height: 36px;
+  width: 120px;
+  height: 44px;
   padding: 0;
-  font-size: 0.8rem;
-  font-weight: 700;
-  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border-radius: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.5px;
   background: linear-gradient(135deg, var(--interactive-primary), #d32f2f);
   color: white;
   border: none;
@@ -539,8 +552,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+  gap: 0.5rem;
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
   flex-shrink: 0;
   position: relative;
   overflow: hidden;

@@ -18,60 +18,141 @@ import {
   FaIndustry,
   FaCertificate,
   FaChevronLeft,
-  FaChevronRight
+  FaChevronRight,
+  FaHeadphones,
+  FaTshirt,
+  FaCar,
+  FaArrowUp,
+  FaUmbrella,
+  FaBox,
+  FaHandsHelping,
+  FaUserShield,
+  FaClipboardCheck,
+  FaWrench,
+  FaGlasses,
+  FaMask,
+  FaHands,
+  FaThermometer,
+  FaExclamationCircle,
+  FaAward
 } from "react-icons/fa";
 
-// Enhanced Icon Configuration - More organized structure
+// Enhanced Icon Configuration - Specific and Representative Icons
 const CATEGORY_ICONS = {
   "Baldes de Incendio": { 
     icon: <FaFire />, 
-    color: "#FF6B35", 
-    bgColor: "rgba(255, 107, 53, 0.1)" 
+    color: "#FF4444", 
+    bgColor: "rgba(255, 68, 68, 0.15)" 
   },
   "Botas Industriales": { 
     icon: <FaIndustry />, 
     color: "#2E7D32", 
-    bgColor: "rgba(46, 125, 50, 0.1)" 
+    bgColor: "rgba(46, 125, 50, 0.15)" 
   },
   "Botiquines Primeros Auxilios": { 
     icon: <FaBriefcaseMedical />, 
     color: "#D32F2F", 
-    bgColor: "rgba(211, 47, 47, 0.1)" 
+    bgColor: "rgba(211, 47, 47, 0.15)" 
   },
   "Camillas - Inmovilizador - Férulas": { 
-    icon: <FaHeartbeat />, 
+    icon: <FaHandsHelping />, 
     color: "#1976D2", 
-    bgColor: "rgba(25, 118, 210, 0.1)" 
+    bgColor: "rgba(25, 118, 210, 0.15)" 
   },
   "Carpa Para piso": { 
-    icon: <FaShieldAlt />, 
+    icon: <FaUmbrella />, 
     color: "#7B1FA2", 
-    bgColor: "rgba(123, 31, 162, 0.1)" 
+    bgColor: "rgba(123, 31, 162, 0.15)" 
   },
   "Carteleria": { 
     icon: <FaExclamationTriangle />, 
     color: "#FF9800", 
-    bgColor: "rgba(255, 152, 0, 0.1)" 
+    bgColor: "rgba(255, 152, 0, 0.15)" 
   },
   "Cascos": { 
     icon: <FaHardHat />, 
     color: "#F57C00", 
-    bgColor: "rgba(245, 124, 0, 0.1)" 
+    bgColor: "rgba(245, 124, 0, 0.15)" 
   },
   "Equipos": { 
-    icon: <FaTools />, 
+    icon: <FaWrench />, 
     color: "#00796B", 
-    bgColor: "rgba(0, 121, 107, 0.1)" 
+    bgColor: "rgba(0, 121, 107, 0.15)" 
   },
   "Protección Visual": { 
-    icon: <FaEye />, 
+    icon: <FaGlasses />, 
     color: "#3F51B5", 
-    bgColor: "rgba(63, 81, 181, 0.1)" 
+    bgColor: "rgba(63, 81, 181, 0.15)" 
   },
   "Certificaciones": { 
-    icon: <FaCertificate />, 
+    icon: <FaAward />, 
     color: "#E91E63", 
-    bgColor: "rgba(233, 30, 99, 0.1)" 
+    bgColor: "rgba(233, 30, 99, 0.15)" 
+  },
+  "Delantales": { 
+    icon: <FaTshirt />, 
+    color: "#795548", 
+    bgColor: "rgba(121, 85, 72, 0.15)" 
+  },
+  "Escaleras": { 
+    icon: <FaArrowUp />, 
+    color: "#607D8B", 
+    bgColor: "rgba(96, 125, 139, 0.15)" 
+  },
+  "Incendio": { 
+    icon: <FaFire />, 
+    color: "#FF5722", 
+    bgColor: "rgba(255, 87, 34, 0.15)" 
+  },
+  "Indumentaria De Lluvia": { 
+    icon: <FaUmbrella />, 
+    color: "#2196F3", 
+    bgColor: "rgba(33, 150, 243, 0.15)" 
+  },
+  "Kits Vehiculares": { 
+    icon: <FaCar />, 
+    color: "#9C27B0", 
+    bgColor: "rgba(156, 39, 176, 0.15)" 
+  },
+  "Kraftex": { 
+    icon: <FaBox />, 
+    color: "#FF9800", 
+    bgColor: "rgba(255, 152, 0, 0.15)" 
+  },
+  "Primeros Auxilios": { 
+    icon: <FaBriefcaseMedical />, 
+    color: "#F44336", 
+    bgColor: "rgba(244, 67, 54, 0.15)" 
+  },
+  "Protección Auditiva": { 
+    icon: <FaHeadphones />, 
+    color: "#4CAF50", 
+    bgColor: "rgba(76, 175, 80, 0.15)" 
+  },
+  "Protección Respiratoria": { 
+    icon: <FaMask />, 
+    color: "#00BCD4", 
+    bgColor: "rgba(0, 188, 212, 0.15)" 
+  },
+  "Higiene": { 
+    icon: <FaHands />, 
+    color: "#8BC34A", 
+    bgColor: "rgba(139, 195, 74, 0.15)" 
+  },
+  "Temperatura": { 
+    icon: <FaThermometer />, 
+    color: "#FF5722", 
+    bgColor: "rgba(255, 87, 34, 0.15)" 
+  },
+  "Radiación": { 
+    icon: <FaExclamationTriangle />, 
+    color: "#FFEB3B", 
+    bgColor: "rgba(255, 235, 59, 0.15)" 
+  },
+  "Toxicidad": { 
+    icon: <FaExclamationCircle />, 
+    color: "#9E9E9E", 
+    bgColor: "rgba(158, 158, 158, 0.15)" 
   }
 };
 

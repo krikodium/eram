@@ -1,0 +1,460 @@
+/* src/components/CredibilitySection.css - Credibility and Trust Section */
+
+/* =============================================================================
+   CREDIBILITY SECTION BASE
+============================================================================= */
+.credibility-section {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.credibility-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(211, 47, 47, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(25, 118, 210, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.credibility-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* =============================================================================
+   HEADER SECTION
+============================================================================= */
+.credibility-header {
+  text-align: center;
+  margin-bottom: 6rem;
+  animation: credibilityFadeIn 1.2s ease-out;
+}
+
+@keyframes credibilityFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, rgba(211, 47, 47, 0.1), rgba(211, 47, 47, 0.05));
+  border: 1px solid rgba(211, 47, 47, 0.2);
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--interactive-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+}
+
+.badge-icon {
+  font-size: 1rem;
+}
+
+.credibility-title {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.title-highlight {
+  background: linear-gradient(135deg, #D32F2F 0%, #FF6B35 50%, #FF8A65 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  filter: drop-shadow(0 2px 4px rgba(211, 47, 47, 0.3));
+}
+
+.title-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 5px;
+  background: linear-gradient(90deg, #D32F2F, #FF6B35, #FF8A65);
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(211, 47, 47, 0.4);
+}
+
+.credibility-description {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* =============================================================================
+   CREDIBILITY CARDS
+============================================================================= */
+.credibility-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+
+.credibility-card {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.credibility-card-inner {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.credibility-card:hover .credibility-card-inner {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: var(--credibility-color);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+}
+
+/* =============================================================================
+   CREDIBILITY ICONS
+============================================================================= */
+.credibility-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  flex-shrink: 0;
+}
+
+.credibility-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--credibility-color), rgba(var(--credibility-color), 0.9));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.2rem;
+  box-shadow: 0 8px 32px rgba(var(--credibility-color), 0.3);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  z-index: 2;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.credibility-card:hover .credibility-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 40px rgba(var(--credibility-color), 0.5);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.credibility-icon-glow {
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(circle, var(--credibility-color) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.credibility-card:hover .credibility-icon-glow {
+  opacity: 0.3;
+}
+
+/* =============================================================================
+   CREDIBILITY CONTENT
+============================================================================= */
+.credibility-content {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.credibility-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--credibility-color);
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(var(--credibility-color), 0.3);
+  margin-bottom: 0.5rem;
+}
+
+.credibility-label {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.credibility-card:hover .credibility-label {
+  color: var(--credibility-color);
+  text-shadow: 0 2px 4px rgba(var(--credibility-color), 0.2);
+}
+
+.credibility-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+/* =============================================================================
+   TRUST INDICATORS
+============================================================================= */
+.trust-indicators {
+  text-align: center;
+}
+
+.trust-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+  letter-spacing: -0.01em;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.trust-item:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.trust-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--interactive-primary), rgba(211, 47, 47, 0.8));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(211, 47, 47, 0.3);
+}
+
+.trust-content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.trust-content p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+============================================================================= */
+@media (max-width: 1200px) {
+  .credibility-container {
+    padding: 0 2rem;
+  }
+  
+  .credibility-cards {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .credibility-card-inner {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .credibility-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+  
+  .credibility-number {
+    font-size: 3rem;
+  }
+  
+  .credibility-label {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .credibility-section {
+    padding: 6rem 0;
+  }
+  
+  .credibility-header {
+    margin-bottom: 4rem;
+  }
+  
+  .credibility-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
+  
+  .credibility-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  
+  .credibility-card-inner {
+    padding: 2rem 1.5rem;
+  }
+  
+  .credibility-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+  
+  .credibility-number {
+    font-size: 2.5rem;
+  }
+  
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .trust-item {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .credibility-container {
+    padding: 0 1rem;
+  }
+  
+  .credibility-card-inner {
+    padding: 1.5rem 1rem;
+  }
+  
+  .credibility-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  .credibility-number {
+    font-size: 2rem;
+  }
+  
+  .credibility-label {
+    font-size: 1.1rem;
+  }
+  
+  .trust-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY AND PERFORMANCE
+============================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .credibility-card,
+  .credibility-icon,
+  .trust-item {
+    transition: none;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.credibility-card:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .credibility-card-inner {
+    border-width: 2px;
+  }
+  
+  .credibility-icon {
+    border: 2px solid currentColor;
+  }
+}
+
+

@@ -1,9 +1,9 @@
 /* src/pages/ProductDetail.css */
 
 .product-detail-container {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   min-height: 100vh;
   background: var(--bg-primary);
   color: var(--text-primary);
@@ -206,12 +206,12 @@
 
 .product-detail-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
   align-items: start;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 3rem 0;
 }
 
 /* =============================================================================
@@ -224,9 +224,9 @@
 }
 
 .product-image-placeholder {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   padding: 3rem;
   min-height: 600px;
   display: flex;
@@ -234,7 +234,8 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
 }
 
 /* =============================================================================
@@ -244,11 +245,12 @@
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
 }
 
 .product-header {
@@ -263,18 +265,18 @@
 }
 
 .product-title {
-  font-size: 2.5rem;
+  font-size: 3.2rem;
   font-weight: 900;
   color: #ffffff !important;
-  line-height: 1.2;
-  margin: 0 0 1rem 0;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-  background: linear-gradient(135deg, #ffffff, #e0e0e0);
+  line-height: 1.1;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  min-height: 3rem;
+  min-height: 3.5rem;
   display: block;
 }
 
@@ -341,12 +343,12 @@
 .product-actions {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 3rem;
-  margin: 2.5rem 0;
+  padding: 2rem;
+  margin: 1.5rem 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -416,26 +418,28 @@
 }
 
 .cotizar-btn {
-  background: var(--interactive-primary);
+  background: linear-gradient(135deg, var(--interactive-primary), #d32f2f);
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 1.5rem 3rem;
   font-size: 1.3rem;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 32px rgba(211, 47, 47, 0.4);
   align-self: flex-start;
-  min-width: 200px;
+  min-width: 240px;
+  position: relative;
+  overflow: hidden;
 }
 
 .cotizar-btn:hover {
-  background: var(--interactive-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+  background: linear-gradient(135deg, var(--interactive-primary-hover), #c62828);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(211, 47, 47, 0.5);
 }
 
 .cotizar-btn:active {

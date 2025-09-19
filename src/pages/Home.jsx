@@ -1,35 +1,39 @@
-// src/pages/Home.jsx - Enhanced Professional Home Page
+// src/pages/Home.jsx - Restructured Professional Home Page
 import React from 'react';
 import HeroCarousel from '../components/HeroCarousel';
-import CategoryIcons from '../components/CategoryIcons';
+import CredibilitySection from '../components/CredibilitySection';
 import BrandBenefits from '../components/BrandBenefits';
-import AboutUs from '../components/AboutUs';
-import FindUs from '../components/FindUs';
+import CategoryIcons from '../components/CategoryIcons';
+import AboutUsUnified from '../components/AboutUsUnified';
+import CertificationsSection from '../components/CertificationsSection';
+import ContactUnified from '../components/ContactUnified';
 import './Home.css';
 
 function Home() {
   return (
     <main className="home-container">
-      {/* Hero Carousel - Full Width Professional */}
+      {/* 1. Hero Carousel - First Impression */}
       <HeroCarousel />
 
-      {/* Enhanced Category Icons Section */}
-      <CategoryIcons />
+      {/* 2. Credibility Section - Trust Building */}
+      <CredibilitySection />
 
-      {/* Enhanced Brand Benefits - Ultra Professional */}
+      {/* 3. Value Proposition - What We Offer */}
       <section className="brand-benefits">
         <BrandBenefits />
       </section>
 
-      {/* About Us Section */}
-      <section className="about-us">
-        <AboutUs />
-      </section>
+      {/* 4. Category Carousel - Product Discovery */}
+      <CategoryIcons />
 
-      {/* Location Section */}
-      <section className="findus">
-        <FindUs />
-      </section>
+      {/* 5. About Us - Company Story */}
+      <AboutUsUnified />
+
+      {/* 6. Certifications - Quality Assurance */}
+      <CertificationsSection />
+
+      {/* 7. Contact - Call to Action */}
+      <ContactUnified />
     </main>
   );
 }

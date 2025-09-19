@@ -67,9 +67,9 @@
   grid-template-columns: 280px 1fr;
   gap: 2rem;
   min-height: auto;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem 1.5rem;
   position: relative;
   background: var(--bg-primary);
 }
@@ -687,7 +687,7 @@
    SECCIÓN DE PRODUCTOS
    ============================================================================= */
 .products-section {
-  padding: 2rem;
+  padding: 1.5rem 1rem;
   margin: 0;
   flex: 1;
   overflow-y: visible;
@@ -704,7 +704,15 @@
 }
 
 .products-grid.grid-view {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Ultra-wide desktops: 4 columnas */
+@media (min-width: 1800px) {
+  .products-grid.grid-view {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .products-grid.list-view {
@@ -812,7 +820,7 @@
   }
   
   .products-grid.grid-view {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -856,7 +864,7 @@
   }
   
   .products-grid.grid-view {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
   }
 }

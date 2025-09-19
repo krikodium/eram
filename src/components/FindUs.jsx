@@ -164,33 +164,61 @@ function FindUs() {
                         </div>
                       )}
                       <iframe
-                        title="Ubicación ERAM - CABA, Buenos Aires"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13127.223152964826!2d-58.5463279!3d-34.5668501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb8301059d3cf%3A0x2cb12c5411cfa34a!2sERAM!5e0!3m2!1ses-419!2sar!4v1718200000000!5m2!1ses-419!2sar"
+                        title="Ubicación ERAM - Av. San Martín 7421, CABA, Buenos Aires"
+                        src="https://maps.google.com/maps?q=Av%20San%20Martin%207421%2C%20CABA%2C%20Buenos%20Aires%2C%20Argentina&output=embed&z=16"
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
                         onLoad={() => setMapLoaded(true)}
                         className={mapLoaded ? 'loaded' : ''}
+                        style={{
+                          filter: 'grayscale(20%) contrast(110%) saturate(120%)',
+                          borderRadius: '16px'
+                        }}
                       />
                     </div>
                     
                     <div className="map-info">
-                      <h4>¿Cómo llegar?</h4>
-                      <ul>
-                        <li><strong>En Auto:</strong> Av. San Martín 7421, CABA</li>
-                        <li><strong>En Tren:</strong> Estación San Martín (Línea Mitre)</li>
-                        <li><strong>En Colectivo:</strong> Líneas 21, 57, 175</li>
-                      </ul>
+                      <div className="location-marker">
+                        <div className="marker-icon">
+                          <FaMapMarkerAlt />
+                        </div>
+                        <div className="marker-info">
+                          <h4>📍 Ubicación Exacta</h4>
+                          <p><strong>ERAM S.A.</strong><br/>Av. San Martín 7421<br/>C1424 CABA, Buenos Aires</p>
+                        </div>
+                      </div>
                       
-                                              <a 
-                        href="https://www.google.com/maps/dir//Av.+San+Martin+7421+CABA+Buenos+Aires"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="directions-btn"
-                      >
-                        <FaDirections />
-                        Cómo llegar
-                      </a>
+                      <div className="directions-section">
+                        <h5>¿Cómo llegar?</h5>
+                        <ul>
+                          <li><strong>🚗 En Auto:</strong> Av. San Martín 7421, CABA</li>
+                          <li><strong>🚂 En Tren:</strong> Estación San Martín (Línea Mitre)</li>
+                          <li><strong>🚌 En Colectivo:</strong> Líneas 21, 57, 175</li>
+                          <li><strong>🚇 En Subte:</strong> Línea B - Estación San Martín</li>
+                        </ul>
+                      </div>
+                      
+                      <div className="map-actions">
+                        <a 
+                          href="https://www.google.com/maps/dir//Av.+San+Martin+7421+CABA+Buenos+Aires"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="directions-btn primary"
+                        >
+                          <FaDirections />
+                          Cómo llegar
+                        </a>
+                        <a 
+                          href="https://www.google.com/maps/place/Av.+San+Mart%C3%ADn+7421,+C1424+CABA/@-34.5668501,-58.5463279,17z"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="directions-btn secondary"
+                        >
+                          <FaMapMarkerAlt />
+                          Ver en Maps
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
