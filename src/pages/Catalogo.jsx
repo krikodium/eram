@@ -82,13 +82,22 @@ const Catalogo = () => {
       
       const { data: nuevosProductos, totalPages: totalPagesCount, total } = result;
       
-      setProductos(nuevosProductos);
-      setTotalPages(totalPagesCount);
+      console.log('Resultado de fetchProducts:', {
+        pageNum,
+        nuevosProductos: nuevosProductos?.length || 0,
+        totalPagesCount,
+        total,
+        catId,
+        search
+      });
+      
+      setProductos(nuevosProductos || []);
+      setTotalPages(totalPagesCount || 1);
       setCurrentPage(pageNum);
-      setTotalProducts(total);
+      setTotalProducts(total || 0);
       
       // Obtener nombre de categoría si es necesario
-      if (catId && nuevosProductos.length > 0) {
+      if (catId && nuevosProductos && nuevosProductos.length > 0) {
         try {
           const categoria = await categoriaService.getCategoria(catId);
           if (categoria) setSelectedCategory(categoria);
@@ -98,6 +107,10 @@ const Catalogo = () => {
       }
     } catch (err) {
       console.error("Error al obtener productos:", err);
+      setProductos([]);
+      setTotalPages(1);
+      setCurrentPage(1);
+      setTotalProducts(0);
     } finally {
       setLoading(false);
     }
@@ -131,7 +144,8 @@ const Catalogo = () => {
 
   // Función para cambiar de página
   const handlePageChange = (newPage) => {
-    if (newPage >= 1 && newPage <= totalPages && newPage !== currentPage) {
+    if (newPage >= 1 && newPage <= totalPages && newPage !== currentPage && !loading) {
+      console.log(`Cambiando a página ${newPage} de ${totalPages}`);
       fetchProducts(newPage, categoriaId, searchTerm);
       // Scroll hacia arriba para mejor UX
       window.scrollTo({ top: 0, behavior: 'smooth' });

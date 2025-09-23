@@ -111,12 +111,6 @@ function Navbar() {
             >
               Quiénes Somos
             </Link>
-            <Link 
-              to="/ferias" 
-              className={`nav-link ${isActive('/ferias') ? 'active' : ''}`}
-            >
-              Ferias
-            </Link>
           </div>
 
           {/* Right Side Actions */}
@@ -143,7 +137,7 @@ function Navbar() {
               </button>
             ) : (
               <Link to="/login" className="login-btn">
-                Proveedor
+                Cliente
               </Link>
             )}
 
@@ -185,13 +179,7 @@ function Navbar() {
         >
           Quiénes Somos
         </Link>
-        <Link 
-          to="/ferias" 
-          className={`nav-link ${isActive('/ferias') ? 'active' : ''}`}
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          Ferias
-        </Link>
+        
 
         {/* Mobile Actions */}
         <div className="mobile-actions">
@@ -213,7 +201,7 @@ function Navbar() {
               className="nav-link login-mobile"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Área Proveedor
+              Área Cliente
             </Link>
           )}
         </div>

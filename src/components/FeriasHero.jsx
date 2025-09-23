@@ -1,6 +1,6 @@
 // src/components/FeriasHero.jsx - Optimized Hero Section for Trade Shows
 import React from 'react';
-import { FaGlobe, FaCalendarAlt, FaUsers, FaHandshake } from 'react-icons/fa';
+import { FaCalendarAlt, FaUsers, FaHandshake } from 'react-icons/fa';
 import './FeriasHero.css';
 
 const FeriasHero = () => {
@@ -8,7 +8,7 @@ const FeriasHero = () => {
     { number: "8+", label: "Años Experiencia", icon: <FaCalendarAlt /> },
     { number: "20+", label: "Ferias Participadas", icon: <FaGlobe /> },
     { number: "6K+", label: "Contactos Comerciales", icon: <FaUsers /> },
-    { number: "15+", label: "Países Alcanzados", icon: <FaHandshake /> }
+    
   ];
 
   return (

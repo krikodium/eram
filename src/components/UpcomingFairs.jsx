@@ -88,19 +88,12 @@ const UpcomingFairs = () => {
       <div className="section-container">
         {/* Section Header */}
         <div className="section-header" data-aos="fade-up">
-          <div className="section-badge">
-            <FaCalendarAlt />
-            <span>Próximos Eventos</span>
-          </div>
-          
           <h2 className="section-title">
-            Próximas
-            <span className="title-highlight">Participaciones</span>
+            Ferias por
+            <span className="title-highlight"> Venir</span>
           </h2>
-          
           <p className="section-description">
-            Encontranos en los próximos eventos internacionales. Vení a conocer nuestras últimas innovaciones 
-            y aprovechá las promociones exclusivas para visitantes.
+            Próximas participaciones donde presentaremos novedades, demos y asesoramiento técnico.
           </p>
         </div>
 

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { QuoteProvider } from './contexts/QuoteContext';
+import useScrollToTop from './hooks/useScrollToTop';
 
 // Eager load critical components
 import Navbar from './components/Navbar';
@@ -31,28 +32,36 @@ function App() {
         <AuthProvider>
           <QuoteProvider>
             <BrowserRouter>
-              <div className="theme-transition-wrapper">
-                <Navbar />
-                <main className="page-container">
-                  <Suspense fallback={<LoadingSpinner />}>
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/catalogo" element={<Catalogo />} />
-                      <Route path="/producto/:id" element={<ProductDetail />} />
-                      <Route path="/quienes-somos" element={<QuienesSomos />} />
-                      <Route path="/ferias" element={<Ferias />} />
-                      <Route path="/login" element={<Login />} />
-                      <Route path="/cotizacion" element={<QuoteCart />} />
-                    </Routes>
-                  </Suspense>
-                </main>
-                <Footer />
-              </div>
+              <AppContent />
             </BrowserRouter>
           </QuoteProvider>
         </AuthProvider>
       </ThemeProvider>
     </ErrorBoundary>
+  );
+}
+
+function AppContent() {
+  useScrollToTop();
+  
+  return (
+    <div className="theme-transition-wrapper">
+      <Navbar />
+      <main className="page-container">
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/catalogo" element={<Catalogo />} />
+            <Route path="/producto/:id" element={<ProductDetail />} />
+            <Route path="/quienes-somos" element={<QuienesSomos />} />
+            <Route path="/ferias" element={<Ferias />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cotizacion" element={<QuoteCart />} />
+          </Routes>
+        </Suspense>
+      </main>
+      <Footer />
+    </div>
   );
 }
 

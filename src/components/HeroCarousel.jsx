@@ -7,11 +7,11 @@ import {
   FaShieldAlt, 
   FaIndustry, 
   FaHardHat, 
-  FaCertificate,
   FaArrowRight,
   FaAward,
   FaUsers,
-  FaFlag
+  FaFlag,
+  FaHeadset
 } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -34,9 +34,9 @@ function HeroCarousel() {
       secondaryLink: "/quienes-somos",
       icon: <FaFlag />,
       metrics: [
-        { value: "50+", label: "AÑOS DE EXPERIENCIA", icon: <FaCertificate /> },
-        { value: "10K+", label: "CLIENTES ACTIVOS", icon: <FaUsers /> },
-        { value: "100%", label: "PRODUCTOS CERTIFICADOS", icon: <FaAward /> }
+        { value: "50+", label: "AÑOS DE EXPERIENCIA", icon: <FaFlag /> },
+        { value: "10K+", label: "CLIENTES", icon: <FaUsers /> },
+        { value: "24", label: "PROVINCIAS", icon: <FaIndustry /> }
       ]
     },
     {
@@ -45,7 +45,7 @@ function HeroCarousel() {
       mainTitle: "PROTECCIÓN",
       highlight: "INTEGRAL",
       subtitle: "MÁXIMA SEGURIDAD",
-      description: "Línea completa de equipos de protección personal certificados por organismos internacionales. Soluciones integrales para todas las industrias y ambientes de trabajo.",
+      description: "Línea completa de equipos de protección personal. Soluciones integrales para todas las industrias y ambientes de trabajo.",
       image: "/proteccion-respiratoria.jpg",
       primaryCTA: "VER PRODUCTOS",
       secondaryCTA: "ASESORAMIENTO",
@@ -53,9 +53,9 @@ function HeroCarousel() {
       secondaryLink: "/contacto",
       icon: <FaShieldAlt />,
       metrics: [
-        { value: "500+", label: "PRODUCTOS DISPONIBLES", icon: <FaIndustry /> },
-        { value: "24H", label: "ENVÍOS RÁPIDOS", icon: <FaShieldAlt /> },
-        { value: "ISO", label: "CERTIFICACIONES", icon: <FaCertificate /> }
+        { value: "500+", label: "PRODUCTOS", icon: <FaIndustry /> },
+        { value: "24H", label: "ENVÍOS", icon: <FaShieldAlt /> },
+        { value: "24/7", label: "SOPORTE", icon: <FaHeadset /> }
       ]
     },
     {
@@ -72,9 +72,8 @@ function HeroCarousel() {
       secondaryLink: "/capacitacion",
       icon: <FaHardHat />,
       metrics: [
-        { value: "15M", label: "ALTURA MÁXIMA", icon: <FaHardHat /> },
-        { value: "CE", label: "CERTIFICACIÓN EUROPEA", icon: <FaAward /> },
-        { value: "24/7", label: "SOPORTE TÉCNICO", icon: <FaUsers /> }
+        { value: "15M", label: "ALTURA", icon: <FaHardHat /> },
+        { value: "24/7", label: "SOPORTE", icon: <FaUsers /> }
       ]
     }
   ];

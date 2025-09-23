@@ -5,7 +5,7 @@ import CredibilitySection from '../components/CredibilitySection';
 import BrandBenefits from '../components/BrandBenefits';
 import CategoryIcons from '../components/CategoryIcons';
 import AboutUsUnified from '../components/AboutUsUnified';
-import CertificationsSection from '../components/CertificationsSection';
+// Removed Certifications section as requested
 import ContactUnified from '../components/ContactUnified';
 import './Home.css';
 
@@ -29,8 +29,7 @@ function Home() {
       {/* 5. About Us - Company Story */}
       <AboutUsUnified />
 
-      {/* 6. Certifications - Quality Assurance */}
-      <CertificationsSection />
+      {/* Certifications removed */}
 
       {/* 7. Contact - Call to Action */}
       <ContactUnified />

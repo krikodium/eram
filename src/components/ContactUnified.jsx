@@ -354,27 +354,7 @@ function ContactUnified() {
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="contact-cta">
-          <h3 className="cta-title">¿Listo para comenzar?</h3>
-          <p className="cta-description">
-            Nuestro equipo de expertos está esperándote para brindarte la mejor atención
-          </p>
-          <div className="cta-buttons">
-            <a href="https://wa.me/5491133749000" className="cta-btn primary">
-              <FaWhatsapp />
-              Consultar Ahora
-            </a>
-            <a href="mailto:ventas@eram.com.ar" className="cta-btn secondary">
-              <FaEnvelope />
-              Solicitar Cita
-            </a>
-            <a href="tel:+541147537846" className="cta-btn tertiary">
-              <FaPhone />
-              Llamar Ahora
-            </a>
-          </div>
-        </div>
+        {/* CTA removed as requested */}
       </div>
     </section>
   );

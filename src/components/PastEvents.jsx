@@ -156,14 +156,9 @@ const PastEvents = () => {
       <div className="section-container">
         {/* Section Header */}
         <div className="section-header" data-aos="fade-up">
-          <div className="section-badge">
-            <FaImages />
-            <span>Nuestra Trayectoria</span>
-          </div>
-          
           <h2 className="section-title">
-            Nuestras
-            <span className="title-highlight">Participaciones</span>
+            Ferias
+            <span className="title-highlight"> Participadas</span>
           </h2>
           
           <p className="section-description">

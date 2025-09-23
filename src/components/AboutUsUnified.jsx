@@ -4,17 +4,15 @@ import {
   FaFlag, 
   FaIndustry, 
   FaUsers,
-  FaCertificate,
-  FaAward,
   FaTrophy,
   FaMapMarkerAlt,
   FaCalendarAlt,
   FaChartLine,
   FaShieldAlt,
-  FaHandshake,
   FaGlobe,
   FaRocket,
-  FaHeart
+  FaHeart,
+  FaHandshake
 } from 'react-icons/fa';
 import './AboutUsUnified.css';
 
@@ -35,16 +33,11 @@ const companyStory = {
       description: "Ampliamos nuestra cobertura a las 24 provincias del país",
       icon: <FaMapMarkerAlt />
     },
-    {
-      year: "2000s",
-      title: "Certificaciones Internacionales",
-      description: "Obtuvimos las primeras certificaciones ISO y comenzamos a exportar",
-      icon: <FaCertificate />
-    },
+    // Removed certifications milestone
     {
       year: "2024",
       title: "Liderazgo Consolidado",
-      description: "Más de 10,000 clientes activos y presencia en 15+ países",
+      description: "Más de 10,000 clientes activos a nivel nacional",
       icon: <FaTrophy />
     }
   ]
@@ -62,12 +55,6 @@ const companyValues = [
     title: "Compromiso Nacional",
     description: "Somos una empresa argentina que cree en el potencial de nuestra industria y nuestros trabajadores",
     color: "#1976D2"
-  },
-  {
-    icon: <FaAward />,
-    title: "Excelencia en Calidad",
-    description: "Mantenemos los más altos estándares internacionales en todos nuestros procesos y productos",
-    color: "#2E7D32"
   },
   {
     icon: <FaHandshake />,
@@ -96,12 +83,7 @@ const industryExpertise = [
     description: "Soluciones de seguridad para operaciones mineras",
     highlight: "20+ minas"
   },
-  {
-    icon: <FaGlobe />,
-    title: "Exportación",
-    description: "Presencia internacional en 15+ países",
-    highlight: "5 continentes"
-  }
+  
 ];
 
 function AboutUsUnified() {
@@ -216,23 +198,7 @@ function AboutUsUnified() {
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="aboutus-cta">
-          <h3 className="cta-title">¿Querés conocer más sobre nosotros?</h3>
-          <p className="cta-description">
-            Descubrí nuestra historia completa y conocé cómo podemos ayudarte
-          </p>
-          <div className="cta-buttons">
-            <a href="/quienes-somos" className="cta-btn primary">
-              <FaUsers />
-              Nuestra Historia
-            </a>
-            <a href="/contacto" className="cta-btn secondary">
-              <FaHandshake />
-              Contactanos
-            </a>
-          </div>
-        </div>
+        {/* CTA removed as requested */}
       </div>
     </section>
   );

@@ -16,7 +16,6 @@ import {
   FaHeartbeat,
   FaFire,
   FaIndustry,
-  FaCertificate,
   FaChevronLeft,
   FaChevronRight,
   FaHeadphones,
@@ -33,8 +32,7 @@ import {
   FaMask,
   FaHands,
   FaThermometer,
-  FaExclamationCircle,
-  FaAward
+  FaExclamationCircle
 } from "react-icons/fa";
 
 // Enhanced Icon Configuration - Specific and Representative Icons
@@ -83,11 +81,6 @@ const CATEGORY_ICONS = {
     icon: <FaGlasses />, 
     color: "#3F51B5", 
     bgColor: "rgba(63, 81, 181, 0.15)" 
-  },
-  "Certificaciones": { 
-    icon: <FaAward />, 
-    color: "#E91E63", 
-    bgColor: "rgba(233, 30, 99, 0.15)" 
   },
   "Delantales": { 
     icon: <FaTshirt />, 
@@ -241,10 +234,6 @@ const CategoryCard = ({ categoria }) => {
           
           <div className="category-content">
             <h3 className="category-name">{categoria.nombre}</h3>
-            <div className="category-count">
-              <span>{categoria.cantidad_productos || 0}</span>
-              <span>productos</span>
-            </div>
           </div>
           
           <div className="category-hover-overlay">
@@ -265,8 +254,8 @@ const LoadingState = () => (
     <div className="category-container">
       <div className="category-header">
         <h2 className="category-title">
-          Nuestras
-          <span className="title-highlight">Categorías</span>
+          Nuestros
+          <span className="title-highlight">Productos</span>
         </h2>
       </div>
       <div className="category-loading">
@@ -309,8 +298,8 @@ const CategoryIcons = () => {
         <div className="category-container">
           <div className="category-header">
             <h2 className="category-title">
-              Nuestras
-              <span className="title-highlight">Categorías</span>
+              Nuestros
+              <span className="title-highlight">Productos</span>
             </h2>
           </div>
           <div className="category-loading">
@@ -326,8 +315,8 @@ const CategoryIcons = () => {
       <div className="category-container">
         <div className="category-header">
           <h2 className="category-title">
-            Nuestras
-            <span className="title-highlight">Categorías</span>
+            Nuestros
+            <span className="title-highlight">Productos</span>
           </h2>
           <p className="category-description">
             Explora nuestra amplia gama de productos de seguridad industrial

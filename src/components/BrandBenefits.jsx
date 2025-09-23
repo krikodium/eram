@@ -1,5 +1,5 @@
 // src/components/BrandBenefits.jsx - Enhanced Feature Cards
-import { FaShippingFast, FaCertificate, FaBoxes, FaHeadset } from 'react-icons/fa';
+import { FaShippingFast, FaBoxes, FaHeadset } from 'react-icons/fa';
 import './BrandBenefits.css';
 
 const benefits = [
@@ -10,13 +10,7 @@ const benefits = [
     color: '#FF6B35',
     bgColor: 'rgba(255, 107, 53, 0.1)'
   },
-  {
-    icon: <FaCertificate />,
-    title: 'Certificaciones IRAM',
-    description: 'Productos que cumplen normas de seguridad industrial internacionales.',
-    color: '#2E7D32',
-    bgColor: 'rgba(46, 125, 50, 0.1)'
-  },
+  
   {
     icon: <FaBoxes />,
     title: 'Stock Permanente',
@@ -40,7 +34,7 @@ function BrandBenefits() {
         <div className="benefits-header">
           <h2 className="benefits-title">
             ¿Por qué elegir
-            <span className="title-highlight">ERAM?</span>
+            <span className="title-highlight">ERAM? </span>
           </h2>
           <p className="benefits-description">
             Más de 50 años de experiencia nos respaldan como líderes en seguridad industrial

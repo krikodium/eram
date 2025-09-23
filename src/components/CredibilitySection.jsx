@@ -5,7 +5,6 @@ import {
   FaUsers, 
   FaShieldAlt, 
   FaMapMarkerAlt,
-  FaAward,
   FaChartLine,
   FaHandshake,
   FaGlobe
@@ -29,14 +28,7 @@ const credibilityData = [
     color: "#1976D2",
     bgColor: "rgba(25, 118, 210, 0.1)"
   },
-  {
-    icon: <FaShieldAlt />,
-    number: "100%",
-    label: "Productos Certificados",
-    description: "Cumplimos con los más altos estándares",
-    color: "#2E7D32",
-    bgColor: "rgba(46, 125, 50, 0.1)"
-  },
+  
   {
     icon: <FaMapMarkerAlt />,
     number: "24",
@@ -49,11 +41,6 @@ const credibilityData = [
 
 const trustIndicators = [
   {
-    icon: <FaAward />,
-    title: "Certificaciones Internacionales",
-    description: "ISO 9001:2015, IRAM, OHSAS 18001"
-  },
-  {
     icon: <FaHandshake />,
     title: "Compromiso Nacional",
     description: "Empresa argentina con valores locales"
@@ -63,11 +50,7 @@ const trustIndicators = [
     title: "Crecimiento Sostenido",
     description: "Expansión constante en el mercado"
   },
-  {
-    icon: <FaGlobe />,
-    title: "Presencia Global",
-    description: "Exportamos a más de 15 países"
-  }
+  
 ];
 
 function CredibilitySection() {

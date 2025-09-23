@@ -9,7 +9,6 @@ import {
   FaClock,
   FaShieldAlt,
   FaAward,
-  FaCertificate,
   FaLinkedin,
   FaFacebook,
   FaInstagram,
@@ -42,21 +41,7 @@ const Footer = () => {
               trabajadores en toda Argentina.
             </p>
             
-            {/* Certifications */}
-            <div className="certifications">
-              <div className="cert-item">
-                <FaCertificate />
-                <span>ISO 9001:2015</span>
-              </div>
-              <div className="cert-item">
-                <FaAward />
-                <span>IRAM Certificado</span>
-              </div>
-              <div className="cert-item">
-                <FaShieldAlt />
-                <span>ANMAT Autorizado</span>
-              </div>
-            </div>
+            {/* Certifications removed */}
           </div>
 
           {/* Contact Info Section */}
@@ -114,8 +99,6 @@ const Footer = () => {
                 <ul>
                   <li><Link to="/quienes-somos">Quiénes Somos</Link></li>
                   <li><Link to="/historia">Nuestra Historia</Link></li>
-                  <li><Link to="/certificaciones">Certificaciones</Link></li>
-                  <li><Link to="/ferias">Ferias y Eventos</Link></li>
                 </ul>
               </div>
               
@@ -133,7 +116,7 @@ const Footer = () => {
                 <h5>Servicios</h5>
                 <ul>
                   <li><Link to="/cotizacion">Solicitar Cotización</Link></li>
-                  <li><Link to="/login">Área Proveedores</Link></li>
+                  <li><Link to="/login">Área Clientes</Link></li>
                   <li><Link to="/capacitacion">Capacitación</Link></li>
                   <li><Link to="/soporte-tecnico">Soporte Técnico</Link></li>
                 </ul>
@@ -165,7 +148,7 @@ const Footer = () => {
                 <FaLock />
                 <div>
                   <strong>Compra Segura</strong>
-                  <p>Plataforma certificada SSL</p>
+                  <p>Protección SSL</p>
                 </div>
               </div>
               
@@ -173,7 +156,7 @@ const Footer = () => {
                 <FaAward />
                 <div>
                   <strong>Garantía de Calidad</strong>
-                  <p>Productos certificados</p>
+                  <p>Productos verificados</p>
                 </div>
               </div>
             </div>

@@ -4,8 +4,6 @@ import {
   FaShieldAlt, 
   FaIndustry, 
   FaUsers,
-  FaCertificate,
-  FaAward,
   FaTrophy,
   FaFlag,
   FaMapMarkerAlt,
@@ -29,13 +27,7 @@ const companyHighlights = [
     description: "Empresas que confían en nuestra experiencia",
     color: "#1976D2"
   },
-  {
-    icon: <FaShieldAlt />,
-    number: "100%",
-    label: "Productos Certificados",
-    description: "Cumplimos con los más altos estándares",
-    color: "#2E7D32"
-  },
+  
   {
     icon: <FaMapMarkerAlt />,
     number: "24",
@@ -78,12 +70,7 @@ const industryExpertise = [
   }
 ];
 
-const certifications = [
-  { name: "ISO 9001:2015", description: "Gestión de Calidad" },
-  { name: "IRAM", description: "Normas Argentinas" },
-  { name: "CE Europeo", description: "Conformidad Europea" },
-  { name: "ANSI", description: "Estándares Americanos" }
-];
+// Certifications removed as requested
 
 function AboutUs() {
   const [activeCard, setActiveCard] = useState(0);
@@ -184,44 +171,9 @@ function AboutUs() {
         ))}
       </div>
 
-      {/* Certifications Section */}
-      <div className="certifications-section">
-        <h3 className="certifications-title">
-          <FaCertificate />
-          Nuestras Certificaciones
-        </h3>
-        
-        <div className="certifications-grid">
-          {certifications.map((cert, index) => (
-            <div key={index} className="certification-item">
-              <div className="certification-badge">
-                <FaAward />
-              </div>
-              <div className="certification-info">
-                <div className="certification-name">{cert.name}</div>
-                <div className="certification-desc">{cert.description}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Certifications section removed */}
 
-      {/* Call to Action */}
-      <div className="aboutus-cta">
-        <div className="cta-content">
-          <h3>¿Querés conocer más sobre nosotros?</h3>
-          <p>Descubrí nuestra historia completa y cómo podemos ayudar a tu empresa.</p>
-        </div>
-        <div className="cta-actions">
-          <a href="/quienes-somos" className="cta-btn primary">
-            <FaIndustry />
-            Nuestra Historia
-          </a>
-          <a href="/contacto" className="cta-btn secondary">
-            Contactar Ahora
-          </a>
-        </div>
-      </div>
+      {/* CTA removed as requested */}
     </section>
   );
 }

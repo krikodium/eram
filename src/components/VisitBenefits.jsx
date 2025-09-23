@@ -6,7 +6,6 @@ import {
   FaLightbulb, 
   FaUsers,
   FaGift,
-  FaCertificate,
   FaGlobe,
   FaHeadset,
   FaCalendarAlt,
@@ -19,9 +18,9 @@ const VisitBenefits = () => {
     {
       id: 1,
       icon: <FaShieldAlt />,
-      title: "Productos Certificados",
-      description: "Toda nuestra línea cumple con las más altas normas internacionales de seguridad y calidad.",
-      highlight: "ISO 9001:2015"
+      title: "Protección Garantizada",
+      description: "Toda nuestra línea cumple con estrictos estándares de seguridad y calidad.",
+      highlight: "Calidad Comprobada"
     },
     {
       id: 2,
@@ -53,18 +52,12 @@ const VisitBenefits = () => {
     },
     {
       id: 6,
-      icon: <FaCertificate />,
+      icon: <FaHeadset />,
       title: "Capacitación Gratuita",
-      description: "Recibí entrenamiento certificado sobre el uso correcto de nuestros productos.",
-      highlight: "Certificación Oficial"
+      description: "Entrenamiento sobre el uso correcto de nuestros productos.",
+      highlight: "Incluida"
     },
-    {
-      id: 7,
-      icon: <FaGlobe />,
-      title: "Presencia Internacional",
-      description: "Conectate con nuestra red global de clientes y proveedores estratégicos.",
-      highlight: "Mercado Global"
-    },
+    
     {
       id: 8,
       icon: <FaHeadset />,
