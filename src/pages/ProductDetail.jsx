@@ -145,14 +145,20 @@ function ProductDetail() {
 
   return (
     <div className="product-detail-container">
-      <Link to="/catalogo" className="back-link">
-        &larr; Volver al Catálogo
-      </Link>
+      {/* Breadcrumb Navigation */}
+      <nav className="breadcrumb-nav">
+        <Link to="/" className="breadcrumb-link">Inicio</Link>
+        <span className="breadcrumb-separator">›</span>
+        <Link to="/catalogo" className="breadcrumb-link">Catálogo</Link>
+        <span className="breadcrumb-separator">›</span>
+        <span className="breadcrumb-current">{producto.nombre}</span>
+      </nav>
 
       <div className="product-detail-layout">
-        {/* Columna Izquierda - Imagen del Producto */}
-        <div className="product-image-section">
-          <div className="product-image-placeholder">
+        {/* Sección Principal - Imagen y Info Básica */}
+        <div className="product-main-section">
+          {/* Imagen del Producto */}
+          <div className="product-image-container">
             {producto.imagen_url ? (
               <>
                 {imageLoading && (
@@ -163,7 +169,7 @@ function ProductDetail() {
                 <img 
                   src={producto.imagen_url} 
                   alt={producto.nombre} 
-                  className={`product-img-real ${imageLoading ? 'loading' : 'loaded'}`}
+                  className={`product-main-image ${imageLoading ? 'loading' : 'loaded'}`}
                   onLoad={handleImageLoad}
                   onError={handleImageError}
                   loading="lazy"
@@ -175,106 +181,150 @@ function ProductDetail() {
               </div>
             )}
           </div>
+
+          {/* Información Principal */}
+          <div className="product-main-info">
+            <div className="product-header">
+              <h1 className="product-title">{producto.nombre}</h1>
+              <div className="product-identifiers">
+                <div className="identifier-item">
+                  <span className="identifier-label">Código</span>
+                  <span className="identifier-value">{producto.codigo}</span>
+                </div>
+                {producto.categoria_nombre && (
+                  <div className="identifier-item">
+                    <span className="identifier-label">Categoría</span>
+                    <span className="identifier-value">{producto.categoria_nombre}</span>
+                  </div>
+                )}
+                <div className="identifier-item">
+                  <span className="identifier-label">Fuente</span>
+                  <span className="identifier-value">{producto.fuente}</span>
+                </div>
+              </div>
+            </div>
+
+            {producto.descripcion && (
+              <div className="product-description">
+                <h3>Descripción</h3>
+                <p>{producto.descripcion}</p>
+              </div>
+            )}
+
+            {/* Precio y Acciones */}
+            <div className="product-pricing-section">
+              {formattedPrice && (
+                <div className="price-display">
+                  <span className="price-label">Precio Unitario</span>
+                  <span className="price-value">
+                    ${formattedPrice} 
+                    {producto.moneda && <span className="price-currency">({producto.moneda})</span>}
+                  </span>
+                </div>
+              )}
+
+              <div className="product-actions">
+                <div className="quantity-selector">
+                  <label htmlFor="cantidad" className="quantity-label">Cantidad</label>
+                  <div className="quantity-controls">
+                    <button 
+                      type="button" 
+                      className="quantity-btn quantity-decrease"
+                      onClick={handleCantidadDecrement}
+                      disabled={cantidad <= 1}
+                    >
+                      −
+                    </button>
+                    <input
+                      type="number"
+                      id="cantidad"
+                      value={cantidad}
+                      onChange={handleCantidadChange}
+                      min="1"
+                      className="quantity-input"
+                    />
+                    <button 
+                      type="button" 
+                      className="quantity-btn quantity-increase"
+                      onClick={handleCantidadIncrement}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                
+                <button 
+                  className="cotizar-btn primary"
+                  onClick={handleCotizar}
+                >
+                  <span className="btn-icon">📋</span>
+                  Agregar a Cotización
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Columna Derecha - Información del Producto */}
-        <div className="product-info-section">
-          <div className="product-header">
-            <h1 className="product-title">{producto.nombre}</h1>
-            <div className="product-identifier">
-              <span className="product-code">CÓDIGO: {producto.codigo}</span>
-              {producto.categoria_nombre && (
-                <span className="product-category">| CATEGORÍA: {producto.categoria_nombre}</span>
-              )}
-            </div>
-          </div>
-
-          {producto.descripcion && (
-            <div className="product-description">
-              <p>{producto.descripcion}</p>
-            </div>
-          )}
-
-          {formattedPrice && (
-            <div className="product-price-section">
-              <div className="price-display">
-                <span className="price-label">Precio Unitario:</span>
-                <span className="price-value">${formattedPrice} {producto.moneda && `(${producto.moneda})`}</span>
+        {/* Sección de Especificaciones Técnicas */}
+        <div className="product-specs-section">
+          <h2>Especificaciones Técnicas</h2>
+          <div className="specs-grid">
+            {technicalSpecs.map((spec, index) => (
+              <div key={index} className="spec-item">
+                <span className="spec-label">{spec.label}</span>
+                <span className="spec-value">{spec.value}</span>
               </div>
-            </div>
-          )}
-
-          {/* Selector de Cantidad y Botón COTIZAR */}
-          <div className="product-actions">
-            <div className="quantity-selector">
-              <label htmlFor="cantidad" className="quantity-label">Cantidad:</label>
-              <div className="quantity-controls">
-                <button 
-                  type="button" 
-                  className="quantity-btn quantity-decrease"
-                  onClick={handleCantidadDecrement}
-                  disabled={cantidad <= 1}
-                >
-                  -
-                </button>
-                <input
-                  type="number"
-                  id="cantidad"
-                  value={cantidad}
-                  onChange={handleCantidadChange}
-                  min="1"
-                  className="quantity-input"
-                />
-                <button 
-                  type="button" 
-                  className="quantity-btn quantity-increase"
-                  onClick={handleCantidadIncrement}
-                >
-                  +
-                </button>
-              </div>
-            </div>
-            
-            <button 
-              className="cotizar-btn"
-              onClick={handleCotizar}
-            >
-              COTIZAR
-            </button>
+            ))}
           </div>
+        </div>
 
-          {producto.precios_por_bulto && Object.keys(producto.precios_por_bulto).length > 0 && (
-            <div className="bulk-prices">
-              <h4>Precios por Bulto</h4>
-              <div className="bulk-prices-list">
-                {Object.entries(producto.precios_por_bulto).map(([quantity, price]) => (
-                  <div key={quantity} className="bulk-price-item">
-                    <span className="quantity">{quantity}</span>
-                    <span className="price">${parseFloat(price).toFixed(2)}</span>
+        {/* Sección de Precios por Bulto */}
+        {producto.precios_por_bulto && Object.keys(producto.precios_por_bulto).length > 0 && (
+          <div className="bulk-prices-section">
+            <h2>Precios por Bulto</h2>
+            <div className="bulk-prices-grid">
+              {Object.entries(producto.precios_por_bulto).map(([quantity, price]) => (
+                <div key={quantity} className="bulk-price-item">
+                  <div className="bulk-quantity">
+                    <span className="quantity-number">{quantity}</span>
+                    <span className="quantity-label">unidades</span>
                   </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="product-specs">
-            <h3>Especificaciones Técnicas</h3>
-            <div className="specs-list">
-              {technicalSpecs.map((spec, index) => (
-                <div key={index} className="spec-item">
-                  <span className="spec-label">{spec.label}</span>
-                  <span className="spec-value">{spec.value}</span>
+                  <div className="bulk-price">
+                    <span className="price-value">${parseFloat(price).toFixed(2)}</span>
+                    <span className="price-per-unit">por unidad</span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
+        )}
 
-          {producto.notas && (
-            <div className="product-notes">
-              <h4>Notas Adicionales</h4>
+        {/* Sección de Notas Adicionales */}
+        {producto.notas && (
+          <div className="product-notes-section">
+            <h2>Información Adicional</h2>
+            <div className="notes-content">
               <p>{producto.notas}</p>
             </div>
-          )}
+          </div>
+        )}
+
+        {/* Sección de Stock */}
+        <div className="product-stock-section">
+          <div className="stock-info">
+            <div className="stock-status">
+              <span className="stock-label">Disponibilidad</span>
+              <span className={`stock-value ${producto.stock > 0 ? 'in-stock' : 'out-of-stock'}`}>
+                {producto.stock > 0 ? 'En Stock' : 'Sin Stock'}
+              </span>
+            </div>
+            {producto.stock > 0 && (
+              <div className="stock-quantity">
+                <span className="stock-label">Cantidad disponible</span>
+                <span className="stock-value">{producto.stock} unidades</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
