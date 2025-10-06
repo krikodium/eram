@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Google OAuth tokens (sensitive)
+scripts/token.json
+scripts/credentials.json
