@@ -1,0 +1,3514 @@
+{
+  "timestamp": "2025-10-03T20:31:23.792Z",
+  "summary": {
+    "totalCategories": 18,
+    "totalProducts": 328,
+    "productsWithCategories": 328,
+    "productsWithoutCategories": 0,
+    "inconsistenciesFound": 0,
+    "criticalIssues": 0,
+    "highIssues": 0,
+    "mediumIssues": 0
+  },
+  "categories": [
+    {
+      "id": 13,
+      "nombre": "Cintas Industriales",
+      "descripcion": "Cintas reflectivas y demarcatorias industriales",
+      "imagen_url": null,
+      "fuente": "159EXWORKS",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 14,
+      "nombre": "Delantales",
+      "descripcion": "Delantales y guantes de protección",
+      "imagen_url": null,
+      "fuente": "99DIST",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 15,
+      "nombre": "Escaleras",
+      "descripcion": "Escaleras de aluminio y fibra",
+      "imagen_url": null,
+      "fuente": "159EXWORKS",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 16,
+      "nombre": "Incendio",
+      "descripcion": "Equipos de protección contra incendios",
+      "imagen_url": null,
+      "fuente": "99DIST",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 17,
+      "nombre": "Indumentaria De Lluvia",
+      "descripcion": "Ropa de protección para lluvia",
+      "imagen_url": null,
+      "fuente": "159EXWORKS",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 18,
+      "nombre": "Kits Vehiculares",
+      "descripcion": "Kits de seguridad para vehículos",
+      "imagen_url": null,
+      "fuente": "99DIST",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 19,
+      "nombre": "Kraftex",
+      "descripcion": "Equipos de protección Kraftex",
+      "imagen_url": null,
+      "fuente": "99DIST",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 20,
+      "nombre": "Primeros Auxilios",
+      "descripcion": "Botiquines y equipos de primeros auxilios",
+      "imagen_url": null,
+      "fuente": "159EXWORKS",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 21,
+      "nombre": "Proteccion Auditiva",
+      "descripcion": "Protectores auditivos",
+      "imagen_url": null,
+      "fuente": "99DIST",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 22,
+      "nombre": "Proteccion En Altura",
+      "descripcion": "Equipos para trabajo en altura",
+      "imagen_url": null,
+      "fuente": "159EXWORKS",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 23,
+      "nombre": "Proteccion Facial",
+      "descripcion": "Protectores faciales y mascarillas",
+      "imagen_url": null,
+      "fuente": "99DIST",
+      "repetida": true,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 24,
+      "nombre": "Proteccion Ocular",
+      "descripcion": "Anteojos y antiparras de protección",
+      "imagen_url": null,
+      "fuente": "99DIST",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 25,
+      "nombre": "Proteccion Respiratoria",
+      "descripcion": "Respiradores y mascarillas",
+      "imagen_url": null,
+      "fuente": "99DIST",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 26,
+      "nombre": "Señalizacion Industrial",
+      "descripcion": "Señalización y cartelería industrial",
+      "imagen_url": null,
+      "fuente": "99DIST",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 28,
+      "nombre": "Señalizacion Personal",
+      "descripcion": "Chalecos y elementos de señalización personal",
+      "imagen_url": null,
+      "fuente": "159EXWORKS",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 27,
+      "nombre": "Señalización Vial",
+      "descripcion": "Señalización vial y de tránsito",
+      "imagen_url": null,
+      "fuente": "159EXWORKS",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    },
+    {
+      "id": 1,
+      "nombre": "Sin Categoría",
+      "descripcion": "Productos sin categoría asignada",
+      "imagen_url": null,
+      "fuente": "AMBAS",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:10:30.38852+00:00",
+      "updated_at": "2025-09-10T18:10:30.38852+00:00"
+    },
+    {
+      "id": 29,
+      "nombre": "Sujecion De Carga",
+      "descripcion": "Equipos de sujeción y emergencia",
+      "imagen_url": null,
+      "fuente": "159EXWORKS",
+      "repetida": false,
+      "activa": true,
+      "created_at": "2025-09-10T18:20:16.792251+00:00",
+      "updated_at": "2025-09-17T20:46:55.444331+00:00"
+    }
+  ],
+  "products": [
+    {
+      "id": 73,
+      "nombre": "Adaptador Casco-Facial-Auditivo L-300",
+      "codigo": "902493",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 74,
+      "nombre": "Adaptador Casco-Facial-Auditivo L-300",
+      "codigo": "902495",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 8,
+      "nombre": "Anteojo ARGON Gris HC",
+      "codigo": "900494",
+      "categoria_id": 24,
+      "categorias": {
+        "id": 24,
+        "nombre": "Proteccion Ocular"
+      }
+    },
+    {
+      "id": 7,
+      "nombre": "Anteojo ARGON Transparente HC",
+      "codigo": "900499",
+      "categoria_id": 24,
+      "categorias": {
+        "id": 24,
+        "nombre": "Proteccion Ocular"
+      }
+    },
+    {
+      "id": 10,
+      "nombre": "Anteojo ECO LINE Gris HC",
+      "codigo": "900555",
+      "categoria_id": 24,
+      "categorias": {
+        "id": 24,
+        "nombre": "Proteccion Ocular"
+      }
+    },
+    {
+      "id": 9,
+      "nombre": "Anteojo ECO LINE Transparente HC",
+      "codigo": "900558",
+      "categoria_id": 24,
+      "categorias": {
+        "id": 24,
+        "nombre": "Proteccion Ocular"
+      }
+    },
+    {
+      "id": 11,
+      "nombre": "Antiparra AVIATOR Transparente AF ANTIEMPAÑANTE",
+      "codigo": "903121",
+      "categoria_id": 24,
+      "categorias": {
+        "id": 24,
+        "nombre": "Proteccion Ocular"
+      }
+    },
+    {
+      "id": 12,
+      "nombre": "Antiparra Soldador Rectangular Flip-Up",
+      "codigo": "901852",
+      "categoria_id": 24,
+      "categorias": {
+        "id": 24,
+        "nombre": "Proteccion Ocular"
+      }
+    },
+    {
+      "id": 304,
+      "nombre": "Arnés Anticaída completo PROMAXLINE",
+      "codigo": "97429",
+      "categoria_id": 22,
+      "categorias": {
+        "id": 22,
+        "nombre": "Proteccion En Altura"
+      }
+    },
+    {
+      "id": 72,
+      "nombre": "Arnés MILENIUM Cremallera",
+      "codigo": "902414",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 71,
+      "nombre": "Arnés MILENIUM Standard",
+      "codigo": "902415",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 243,
+      "nombre": "ARO tipo vaso sosten de cadena",
+      "codigo": "97761",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 25,
+      "nombre": "Balde Metálico Doble manija",
+      "codigo": "97657",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 27,
+      "nombre": "Balde Metálico manija movil",
+      "codigo": "97656",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 26,
+      "nombre": "Balde PLÁSTICO",
+      "codigo": "09806",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 257,
+      "nombre": "Bandera AERONAUTICA de TELA seguridad",
+      "codigo": "02125",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 255,
+      "nombre": "Bandera de TELA",
+      "codigo": "02057",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 256,
+      "nombre": "Bandera de TELA RIBETEADA",
+      "codigo": "97348",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 289,
+      "nombre": "Bandolera PVC naranja fluo",
+      "codigo": "00096",
+      "categoria_id": 28,
+      "categorias": {
+        "id": 28,
+        "nombre": "Señalizacion Personal"
+      }
+    },
+    {
+      "id": 348,
+      "nombre": "Barbijo TRIPLE CAPA",
+      "codigo": "9001",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 347,
+      "nombre": "Barbijo TRIPLE CAPA con ELÁSTICO",
+      "codigo": "97743",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 208,
+      "nombre": "Bastón LED LUMINOSO Rojo",
+      "codigo": "97268",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 85,
+      "nombre": "BATERIA 9V SICA (Para detectores de humo)",
+      "codigo": "915315",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 250,
+      "nombre": "Batería para faro",
+      "codigo": "00059",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 275,
+      "nombre": "BLISTER 8 TIRAS antideslizantes TRANSPARENTES",
+      "codigo": "97668",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 101,
+      "nombre": "Bolso de friselina",
+      "codigo": "09957",
+      "categoria_id": 18,
+      "categorias": {
+        "id": 18,
+        "nombre": "Kits Vehiculares"
+      }
+    },
+    {
+      "id": 102,
+      "nombre": "Bolso para Kits Vehiculares",
+      "codigo": "971141",
+      "categoria_id": 18,
+      "categorias": {
+        "id": 18,
+        "nombre": "Kits Vehiculares"
+      }
+    },
+    {
+      "id": 5,
+      "nombre": "Bota industrial L 39, 1/2 caña NEGRA, con puntera",
+      "codigo": "01085",
+      "categoria_id": 19,
+      "categorias": {
+        "id": 19,
+        "nombre": "Kraftex"
+      }
+    },
+    {
+      "id": 6,
+      "nombre": "Bota industrial L 39, 1/2 caña NEGRA, sin puntera",
+      "codigo": "01083",
+      "categoria_id": 19,
+      "categorias": {
+        "id": 19,
+        "nombre": "Kraftex"
+      }
+    },
+    {
+      "id": 321,
+      "nombre": "BOTIQUIN E6",
+      "codigo": "09956",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 35,
+      "nombre": "BOTIQUIN GRANDE de MADERA",
+      "codigo": "97418",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 34,
+      "nombre": "BOTIQUIN GRANDE de MADERA",
+      "codigo": "97502",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 322,
+      "nombre": "BOTIQUIN P1",
+      "codigo": "02758",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 324,
+      "nombre": "BOTIQUIN P2",
+      "codigo": "02756",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 326,
+      "nombre": "BOTIQUIN P4",
+      "codigo": "02757",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 318,
+      "nombre": "Botiquín VACIO de MADERA",
+      "codigo": "97503",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 319,
+      "nombre": "Botiquín VACIO de MADERA",
+      "codigo": "97417",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 231,
+      "nombre": "Cadena plástica eslabón 6 mm",
+      "codigo": "97678",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 229,
+      "nombre": "Cadena plástica eslabón 6 mm",
+      "codigo": "97391",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 230,
+      "nombre": "Cadena plástica eslabón 6 mm, NARANJA FLUO",
+      "codigo": "97702",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 224,
+      "nombre": "Cadena plástica eslabón grande",
+      "codigo": "02952",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 223,
+      "nombre": "Cadena plástica eslabón grande",
+      "codigo": "02957",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 226,
+      "nombre": "Cadena plástica eslabón grande AMARILLA FLUO",
+      "codigo": "97701",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 227,
+      "nombre": "Cadena plástica eslabón grande BLANCA",
+      "codigo": "97700",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 225,
+      "nombre": "Cadena plástica eslabón grande NARANJA FLUO VIAL",
+      "codigo": "02961",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 228,
+      "nombre": "Cadena plástica eslabón grande VERDE",
+      "codigo": "97699",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 181,
+      "nombre": "Calco bajo vidrio dorado",
+      "codigo": "97289",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 180,
+      "nombre": "Calco bajo vidrio Wi - Fi",
+      "codigo": "97288",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 157,
+      "nombre": "Calcos en PVC (Línea Obligación)",
+      "codigo": "01325",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 235,
+      "nombre": "CALZA tipo taco para rueda",
+      "codigo": "97643",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 328,
+      "nombre": "Camilla TIPO SAME de MADERA",
+      "codigo": "00975",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 112,
+      "nombre": "Campera de cuero descarne para soldador",
+      "codigo": "01443",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 295,
+      "nombre": "CAPA DE LLUVIA de PVC",
+      "codigo": "97605",
+      "categoria_id": 17,
+      "categorias": {
+        "id": 17,
+        "nombre": "Indumentaria De Lluvia"
+      }
+    },
+    {
+      "id": 68,
+      "nombre": "Carcasa MILENIUM Class S/V",
+      "codigo": "902386",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 69,
+      "nombre": "Carcasa MILENIUM Class S/V",
+      "codigo": "902387",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 70,
+      "nombre": "Carcasa MILENIUM Class S/V",
+      "codigo": "902389",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 345,
+      "nombre": "Careta",
+      "codigo": "97735",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 344,
+      "nombre": "Careta antideflagración para electricista",
+      "codigo": "00136",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 343,
+      "nombre": "Careta FOTOSENSIBLE p/soldar",
+      "codigo": "97326",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 342,
+      "nombre": "Careta Para Soldar - Visor Movil",
+      "codigo": "97689",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 142,
+      "nombre": "Carpa AMARILLA PISO MOJADO",
+      "codigo": "02927",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 355,
+      "nombre": "Carpa AMARILLA PISO MOJADO",
+      "codigo": "2927",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 202,
+      "nombre": "Carpa Escritorio",
+      "codigo": "02642",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 148,
+      "nombre": "Cartel Alto Impacto 0.8 mm",
+      "codigo": "00708",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 150,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "01062",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 151,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "01063",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 152,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "01057",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 144,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "00706",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 153,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "01324",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 155,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "01058",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 154,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "01060",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 156,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "97495",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 145,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "00709",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 146,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "00710",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 147,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "00704",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 143,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "00707",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 149,
+      "nombre": "Cartel Alto Impacto 0.8mm",
+      "codigo": "01061",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 184,
+      "nombre": "Cartel autoadhesivo",
+      "codigo": "09990",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 183,
+      "nombre": "Cartel autoadhesivo",
+      "codigo": "01333",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 186,
+      "nombre": "Cartel autoadhesivo",
+      "codigo": "01027",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 182,
+      "nombre": "Cartel autoadhesivo",
+      "codigo": "00720",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 178,
+      "nombre": "Cartel autoadhesivo",
+      "codigo": "97439",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 179,
+      "nombre": "Cartel autoadhesivo",
+      "codigo": "97496",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 185,
+      "nombre": "Cartel autoadhesivo",
+      "codigo": "09989",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 188,
+      "nombre": "Cartel autoadhesivo fotoluminicente",
+      "codigo": "01335",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 187,
+      "nombre": "Cartel Autoadhesivo fotoluminicente",
+      "codigo": "01334",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 194,
+      "nombre": "Cartel de alto impacto doble faz Foto",
+      "codigo": "97214",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 197,
+      "nombre": "Cartel de chapa",
+      "codigo": "97362",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 205,
+      "nombre": "Cartel de chapa DOBLE FAZ",
+      "codigo": "02471",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 204,
+      "nombre": "Cartel de chapa DOBLE FAZ",
+      "codigo": "01055",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 354,
+      "nombre": "Cartel de plástico corrugado",
+      "codigo": "00001",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 191,
+      "nombre": "Cartel DOBLE FAZ",
+      "codigo": "01255",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 189,
+      "nombre": "Cartel DOBLE FAZ",
+      "codigo": "93031",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 190,
+      "nombre": "Cartel DOBLE FAZ",
+      "codigo": "93032",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 192,
+      "nombre": "Cartel DOBLE FAZ",
+      "codigo": "02425",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 193,
+      "nombre": "Cartel DOBLE FAZ CARPA",
+      "codigo": "02523",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 199,
+      "nombre": "Cartel en Alto impacto",
+      "codigo": "97586",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 195,
+      "nombre": "Cartel en alto impacto Doble faz Foto",
+      "codigo": "97228",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 196,
+      "nombre": "Cartel en alto impacto Doble faz Foto",
+      "codigo": "97212",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 171,
+      "nombre": "Cartel fotoluminicente",
+      "codigo": "97438",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 177,
+      "nombre": "Cartel fotoluminicente",
+      "codigo": "01332",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 173,
+      "nombre": "Cartel fotoluminicente",
+      "codigo": "93053",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 172,
+      "nombre": "Cartel fotoluminicente",
+      "codigo": "00711",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 176,
+      "nombre": "Cartel fotoluminicente",
+      "codigo": "01331",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 175,
+      "nombre": "Cartel fotoluminicente",
+      "codigo": "01330",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 174,
+      "nombre": "Cartel fotoluminicente",
+      "codigo": "93033",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 158,
+      "nombre": "Cartel Guía de evacuación",
+      "codigo": "96280",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 159,
+      "nombre": "Cartel Guía Varios en alto impacto",
+      "codigo": "02641",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 167,
+      "nombre": "Cartel línea dorada",
+      "codigo": "00717",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 168,
+      "nombre": "Cartel línea dorada",
+      "codigo": "00718",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 31,
+      "nombre": "Cartel línea dorada",
+      "codigo": "00719",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 169,
+      "nombre": "Cartel línea dorada",
+      "codigo": "01327",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 170,
+      "nombre": "Cartel línea dorada ADHESIVO",
+      "codigo": "01328",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 203,
+      "nombre": "Cartel para locales",
+      "codigo": "02770",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 198,
+      "nombre": "Cartel para locales",
+      "codigo": "97352",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 77,
+      "nombre": "Casco HIGH PRO S/V Blanco",
+      "codigo": "903430",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 285,
+      "nombre": "Chaleco AMARILLO Poliester",
+      "codigo": "9948",
+      "categoria_id": 28,
+      "categorias": {
+        "id": 28,
+        "nombre": "Señalizacion Personal"
+      }
+    },
+    {
+      "id": 287,
+      "nombre": "Chaleco AMARILLO Poliester",
+      "codigo": "97384",
+      "categoria_id": 28,
+      "categorias": {
+        "id": 28,
+        "nombre": "Señalizacion Personal"
+      }
+    },
+    {
+      "id": 286,
+      "nombre": "Chaleco NARANJA Poliester",
+      "codigo": "9983",
+      "categoria_id": 28,
+      "categorias": {
+        "id": 28,
+        "nombre": "Señalizacion Personal"
+      }
+    },
+    {
+      "id": 288,
+      "nombre": "Chaleco NARANJA Poliester",
+      "codigo": "97469",
+      "categoria_id": 28,
+      "categorias": {
+        "id": 28,
+        "nombre": "Señalizacion Personal"
+      }
+    },
+    {
+      "id": 292,
+      "nombre": "Chaleco PONCHO Poliester -Pesado-",
+      "codigo": "97686",
+      "categoria_id": 28,
+      "categorias": {
+        "id": 28,
+        "nombre": "Señalizacion Personal"
+      }
+    },
+    {
+      "id": 290,
+      "nombre": "CHALECO PONCHO POLIESTER Nacional - AMARILLO",
+      "codigo": "09935",
+      "categoria_id": 28,
+      "categorias": {
+        "id": 28,
+        "nombre": "Señalizacion Personal"
+      }
+    },
+    {
+      "id": 291,
+      "nombre": "CHALECO PONCHO POLIESTER Nacional - NARANJA",
+      "codigo": "09936",
+      "categoria_id": 28,
+      "categorias": {
+        "id": 28,
+        "nombre": "Señalizacion Personal"
+      }
+    },
+    {
+      "id": 293,
+      "nombre": "Chaleco PONCHO PVC naranja fluo",
+      "codigo": "97616",
+      "categoria_id": 28,
+      "categorias": {
+        "id": 28,
+        "nombre": "Señalizacion Personal"
+      }
+    },
+    {
+      "id": 294,
+      "nombre": "Chaleco PVC con 2 bandas Reflectivas",
+      "codigo": "97284",
+      "categoria_id": 28,
+      "categorias": {
+        "id": 28,
+        "nombre": "Señalizacion Personal"
+      }
+    },
+    {
+      "id": 30,
+      "nombre": "Chapa baliza",
+      "codigo": "01180",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 161,
+      "nombre": "Chapa baliza columna",
+      "codigo": "01326",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 165,
+      "nombre": "Chapa Baliza cuadrada",
+      "codigo": "00713",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 163,
+      "nombre": "Chapa Baliza de columna",
+      "codigo": "94030",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 162,
+      "nombre": "Chapa baliza mediana",
+      "codigo": "94051",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 164,
+      "nombre": "Chapa Baliza Triangulo",
+      "codigo": "00712",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 87,
+      "nombre": "CINTA AISLADORA NEGRA SICA",
+      "codigo": "915410",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 270,
+      "nombre": "Cinta AMARILLA X15 MTS demarcatoria adhesiva para pisos",
+      "codigo": "97653",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 273,
+      "nombre": "Cinta antideslizante",
+      "codigo": "97674",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 274,
+      "nombre": "Cinta antideslizante",
+      "codigo": "97675",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 272,
+      "nombre": "Cinta CEBRADA AMARILLA Y NEGRA X30 MTS demarcatoria adhesiva para pisos",
+      "codigo": "97736",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 271,
+      "nombre": "Cinta CEBRADA ROJA Y BLANCA X30 MTS demarcatoria adhesiva para pisos",
+      "codigo": "97737",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 247,
+      "nombre": "Cinta de peligro",
+      "codigo": "00087",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 248,
+      "nombre": "Cinta de peligro",
+      "codigo": "97768",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 206,
+      "nombre": "Cinta Doble FAZ de espuma",
+      "codigo": "09985",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 265,
+      "nombre": "Cinta Reflectiva Base ALGODON. GRIS",
+      "codigo": "97632",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 266,
+      "nombre": "Cinta Reflectiva CERTIFICADA BASE Algodón. GRIS",
+      "codigo": "97633",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 262,
+      "nombre": "Cinta reflectiva para coser",
+      "codigo": "97770",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 33,
+      "nombre": "Cinta Reflectiva para coser Poliester GRIS",
+      "codigo": "97321",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 264,
+      "nombre": "Cinta Reflectiva para coser Poliester GRIS",
+      "codigo": "97322",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 32,
+      "nombre": "Cinta reflectiva PESADA para coser",
+      "codigo": "01703",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 268,
+      "nombre": "Cinta Reflectiva Poliester GRIS",
+      "codigo": "97681",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 267,
+      "nombre": "Cinta Reflectiva Poliester GRIS",
+      "codigo": "97680",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 307,
+      "nombre": "Cinturón Liniero",
+      "codigo": "97432",
+      "categoria_id": 22,
+      "categorias": {
+        "id": 22,
+        "nombre": "Proteccion En Altura"
+      }
+    },
+    {
+      "id": 279,
+      "nombre": "Círculo reflectivo VTV",
+      "codigo": "01942",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 346,
+      "nombre": "Cofia Plisada Spunbond",
+      "codigo": "1441",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 305,
+      "nombre": "Cola de Amarre de Sujeción y posicionamiento",
+      "codigo": "97433",
+      "categoria_id": 22,
+      "categorias": {
+        "id": 22,
+        "nombre": "Proteccion En Altura"
+      }
+    },
+    {
+      "id": 306,
+      "nombre": "Cola de Amarre TIPO Y doble elastizado",
+      "codigo": "97453",
+      "categoria_id": 22,
+      "categorias": {
+        "id": 22,
+        "nombre": "Proteccion En Altura"
+      }
+    },
+    {
+      "id": 95,
+      "nombre": "Confección de manta de borosilicato",
+      "codigo": "01470",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 219,
+      "nombre": "Cono AMARILLO",
+      "codigo": "97639",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 221,
+      "nombre": "Cono NARANJA FLUO",
+      "codigo": "02929",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 215,
+      "nombre": "CONO NARANJA FLUO",
+      "codigo": "97759",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 29,
+      "nombre": "CONO NARANJA FLUO",
+      "codigo": "97776",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 214,
+      "nombre": "CONO NARANJA FLUO",
+      "codigo": "02930",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 218,
+      "nombre": "CONO NARANJA FLUO",
+      "codigo": "97756",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 216,
+      "nombre": "CONO NARANJA FLUO",
+      "codigo": "02946",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 222,
+      "nombre": "Cono NEGRO",
+      "codigo": "02950",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 212,
+      "nombre": "CONO ROJO",
+      "codigo": "97131",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 211,
+      "nombre": "CONO ROJO",
+      "codigo": "97716",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 28,
+      "nombre": "CONO ROJO",
+      "codigo": "97758",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 217,
+      "nombre": "CONO TELEX RUTA",
+      "codigo": "97717-18",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 323,
+      "nombre": "Contenido de botiquin P1",
+      "codigo": "110",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 325,
+      "nombre": "Contenido de botiquin P2",
+      "codigo": "135",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 327,
+      "nombre": "Contenido de botiquin P4",
+      "codigo": "150",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 353,
+      "nombre": "Cubrecalzado",
+      "codigo": "00341",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 329,
+      "nombre": "Cuello ortopédico Cervical PHILADELPHIA",
+      "codigo": "97445",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 108,
+      "nombre": "Delantal de JEAN Liviano",
+      "codigo": "02516",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 107,
+      "nombre": "Delantal de JEAN PESADO",
+      "codigo": "01437",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 336,
+      "nombre": "Delantal de PVC",
+      "codigo": "00353",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 339,
+      "nombre": "Delantal de PVC Cristal Transparente",
+      "codigo": "02390",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 338,
+      "nombre": "Delantal de PVC PESADO",
+      "codigo": "02333",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 337,
+      "nombre": "Delantal de PVC PESADO",
+      "codigo": "01134",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 104,
+      "nombre": "Delantal en cuero descarne",
+      "codigo": "00349",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 105,
+      "nombre": "Delantal en cuero descarne con refuerzo",
+      "codigo": "00348",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 106,
+      "nombre": "Delantal en cuero descarne con refuerzo de GOMA PLOMADA",
+      "codigo": "00351",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 234,
+      "nombre": "Delineador VIAL Amarillo FLEXIBLE REBATIBLE",
+      "codigo": "97723",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 88,
+      "nombre": "Detector de humo",
+      "codigo": "97726",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 310,
+      "nombre": "Ducha y lavaojos de emergencia",
+      "codigo": "00295",
+      "categoria_id": 29,
+      "categorias": {
+        "id": 29,
+        "nombre": "Sujecion De Carga"
+      }
+    },
+    {
+      "id": 141,
+      "nombre": "Equipo autónomo",
+      "codigo": "01531",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 308,
+      "nombre": "Equipo de Criquet",
+      "codigo": "97636",
+      "categoria_id": 29,
+      "categorias": {
+        "id": 29,
+        "nombre": "Sujecion De Carga"
+      }
+    },
+    {
+      "id": 309,
+      "nombre": "Equipo de Criquet",
+      "codigo": "97637",
+      "categoria_id": 29,
+      "categorias": {
+        "id": 29,
+        "nombre": "Sujecion De Carga"
+      }
+    },
+    {
+      "id": 140,
+      "nombre": "Equipo de respiración autónoma",
+      "codigo": "00288",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 298,
+      "nombre": "Escalera de aluminio 12 escalones",
+      "codigo": "97663",
+      "categoria_id": 15,
+      "categorias": {
+        "id": 15,
+        "nombre": "Escaleras"
+      }
+    },
+    {
+      "id": 299,
+      "nombre": "Escalera de aluminio 16 escalones",
+      "codigo": "97664",
+      "categoria_id": 15,
+      "categorias": {
+        "id": 15,
+        "nombre": "Escaleras"
+      }
+    },
+    {
+      "id": 301,
+      "nombre": "Escalera de aluminio 3 escalones",
+      "codigo": "97665",
+      "categoria_id": 15,
+      "categorias": {
+        "id": 15,
+        "nombre": "Escaleras"
+      }
+    },
+    {
+      "id": 302,
+      "nombre": "Escalera de aluminio 5 escalones",
+      "codigo": "97666",
+      "categoria_id": 15,
+      "categorias": {
+        "id": 15,
+        "nombre": "Escaleras"
+      }
+    },
+    {
+      "id": 303,
+      "nombre": "Escalera de aluminio, Hoja Simple",
+      "codigo": "97667",
+      "categoria_id": 15,
+      "categorias": {
+        "id": 15,
+        "nombre": "Escaleras"
+      }
+    },
+    {
+      "id": 300,
+      "nombre": "Escalera de FIBRA",
+      "codigo": "97695",
+      "categoria_id": 15,
+      "categorias": {
+        "id": 15,
+        "nombre": "Escaleras"
+      }
+    },
+    {
+      "id": 360,
+      "nombre": "Espejo Media Esfera DOMO - 360º",
+      "codigo": "97714",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 361,
+      "nombre": "Espejo Media Esfera DOMO - 360º",
+      "codigo": "97715",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 356,
+      "nombre": "Espejo parabólico inastillable",
+      "codigo": "01520",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 359,
+      "nombre": "Espejo parabólico inastillable",
+      "codigo": "01526",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 358,
+      "nombre": "Espejo parabólico inastillable",
+      "codigo": "01524",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 357,
+      "nombre": "Espejo parabólico inastillable",
+      "codigo": "01522",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 363,
+      "nombre": "Espejo Parabolico VIAL",
+      "codigo": "97295",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 362,
+      "nombre": "Espejo Parabolico VIAL",
+      "codigo": "97291",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 236,
+      "nombre": "Esquinero de Goma Cebrado",
+      "codigo": "97401",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 315,
+      "nombre": "Estación lavaojos portátil",
+      "codigo": "09938",
+      "categoria_id": 29,
+      "categorias": {
+        "id": 29,
+        "nombre": "Sujecion De Carga"
+      }
+    },
+    {
+      "id": 89,
+      "nombre": "Extintor ABC",
+      "codigo": "01670",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 90,
+      "nombre": "Extintor de CO2",
+      "codigo": "01651",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 91,
+      "nombre": "Extintor rodante ABC",
+      "codigo": "01921",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 260,
+      "nombre": "Faja lumbar",
+      "codigo": "97746",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 258,
+      "nombre": "Faja lumbar Reforzada",
+      "codigo": "97494-1",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 259,
+      "nombre": "Faja lumbar Reforzada",
+      "codigo": "97494",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 251,
+      "nombre": "Faro (Para 2 Baterías) Intermitente para CONO Y VALLA",
+      "codigo": "97774",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 252,
+      "nombre": "Faro Intermitente",
+      "codigo": "97729",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 253,
+      "nombre": "Faro Intermitente para CONO",
+      "codigo": "97728",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 249,
+      "nombre": "Faro Intermitente para CONO Y VALLA",
+      "codigo": "02945",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 254,
+      "nombre": "Faro Rotativo Imantado para automóvil",
+      "codigo": "97615",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 138,
+      "nombre": "Filtro",
+      "codigo": "3649",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 135,
+      "nombre": "Filtro Amoníaco y metilamina 'C'",
+      "codigo": "01154",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 134,
+      "nombre": "Filtro Fumigación y pesticidas 'G'",
+      "codigo": "01354",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 136,
+      "nombre": "Filtro HUMOS 'E'",
+      "codigo": "97638",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 128,
+      "nombre": "Filtro para polvos y partículas para semimáscara",
+      "codigo": "00235",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 127,
+      "nombre": "Filtro Vapores Orgánicos Y Gases Acidos 'AB'",
+      "codigo": "01095",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 137,
+      "nombre": "Filtro Vaso para Full Face monofiltro",
+      "codigo": "01257",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 242,
+      "nombre": "GANCHO sosten/unión de cadena",
+      "codigo": "02931",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 111,
+      "nombre": "Gorro de cuero descarne",
+      "codigo": "01320",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 123,
+      "nombre": "Guante Cobertor de guante Dielectrico",
+      "codigo": "01318",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 117,
+      "nombre": "Guante de algodón G-13",
+      "codigo": "02160",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 122,
+      "nombre": "Guante de Descarne completo AMARILLO PRIMERA",
+      "codigo": "00882",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 119,
+      "nombre": "Guante de KEVLAR Terry",
+      "codigo": "01185",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 120,
+      "nombre": "Guante de KEVLAR Terry",
+      "codigo": "00457",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 124,
+      "nombre": "Guante de latex descartable",
+      "codigo": "00884",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 125,
+      "nombre": "Guante de nitrilo NEGRO descartable",
+      "codigo": "00891",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 116,
+      "nombre": "Guante de PVC ROJO entelado",
+      "codigo": "00438",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 115,
+      "nombre": "Guante de PVC ROJO entelado",
+      "codigo": "00437",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 114,
+      "nombre": "Guante de PVC ROJO entelado",
+      "codigo": "00436",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 113,
+      "nombre": "Guante de PVC ROJO entelado",
+      "codigo": "00434",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 121,
+      "nombre": "Guante de Vaqueta completo AMARILLA PRIMERA",
+      "codigo": "00441",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 2,
+      "nombre": "Guante dieléctrico Kraftex (Clase 0, Cat A)",
+      "codigo": "02788",
+      "categoria_id": 19,
+      "categorias": {
+        "id": 19,
+        "nombre": "Kraftex"
+      }
+    },
+    {
+      "id": 1,
+      "nombre": "Guante dieléctrico Kraftex (Clase 00, Cat A)",
+      "codigo": "02787",
+      "categoria_id": 19,
+      "categorias": {
+        "id": 19,
+        "nombre": "Kraftex"
+      }
+    },
+    {
+      "id": 3,
+      "nombre": "Guante dieléctrico Kraftex (Clase 1, Cat A)",
+      "codigo": "02789",
+      "categoria_id": 19,
+      "categorias": {
+        "id": 19,
+        "nombre": "Kraftex"
+      }
+    },
+    {
+      "id": 4,
+      "nombre": "Guante dieléctrico Kraftex (Clase 2, Cat A)",
+      "codigo": "02790",
+      "categoria_id": 19,
+      "categorias": {
+        "id": 19,
+        "nombre": "Kraftex"
+      }
+    },
+    {
+      "id": 118,
+      "nombre": "Guante SPECTRA G-10 Anticorte",
+      "codigo": "02312",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 331,
+      "nombre": "Inmovilizador cervical 'OLA' para camilla",
+      "codigo": "01336",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 333,
+      "nombre": "Inmovilizador cervical Estándar para camillas",
+      "codigo": "02116",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 312,
+      "nombre": "Juego (2 UNIDADES) -aspersores repuesto",
+      "codigo": "01606",
+      "categoria_id": 29,
+      "categorias": {
+        "id": 29,
+        "nombre": "Sujecion De Carga"
+      }
+    },
+    {
+      "id": 65,
+      "nombre": "Kit Cartuchos G03 OV/AG p/Respirador L-9000",
+      "codigo": "901794",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 66,
+      "nombre": "Kit Cartuchos XP100 p/Resp. L-9000",
+      "codigo": "902075",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 332,
+      "nombre": "Kit de férulas inflables + bolso de transporte",
+      "codigo": "02293",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 96,
+      "nombre": "Kit Vehicular BOLSO NEGRO CON MATAFUEGO MELISAM",
+      "codigo": "97720",
+      "categoria_id": 18,
+      "categorias": {
+        "id": 18,
+        "nombre": "Kits Vehiculares"
+      }
+    },
+    {
+      "id": 98,
+      "nombre": "Kit Vehicular BOLSO NEGRO SIN MATAFUEGO",
+      "codigo": "01080",
+      "categoria_id": 18,
+      "categorias": {
+        "id": 18,
+        "nombre": "Kits Vehiculares"
+      }
+    },
+    {
+      "id": 97,
+      "nombre": "Kit Vehicular Bolso PVC CON MATAFUEGO MELISAM",
+      "codigo": "97385",
+      "categoria_id": 18,
+      "categorias": {
+        "id": 18,
+        "nombre": "Kits Vehiculares"
+      }
+    },
+    {
+      "id": 99,
+      "nombre": "Kit Vehicular BOLSO PVC INCOLORO SIN MATAFUEGO",
+      "codigo": "01084",
+      "categoria_id": 18,
+      "categorias": {
+        "id": 18,
+        "nombre": "Kits Vehiculares"
+      }
+    },
+    {
+      "id": 103,
+      "nombre": "Kits Vehiculares",
+      "codigo": "01649",
+      "categoria_id": 18,
+      "categorias": {
+        "id": 18,
+        "nombre": "Kits Vehiculares"
+      }
+    },
+    {
+      "id": 311,
+      "nombre": "Lavaojos de acción manual",
+      "codigo": "00297",
+      "categoria_id": 29,
+      "categorias": {
+        "id": 29,
+        "nombre": "Sujecion De Carga"
+      }
+    },
+    {
+      "id": 314,
+      "nombre": "Lavaojos de PARED",
+      "codigo": "4775",
+      "categoria_id": 29,
+      "categorias": {
+        "id": 29,
+        "nombre": "Sujecion De Carga"
+      }
+    },
+    {
+      "id": 313,
+      "nombre": "Lavaojos de PARED",
+      "codigo": "97727",
+      "categoria_id": 29,
+      "categorias": {
+        "id": 29,
+        "nombre": "Sujecion De Carga"
+      }
+    },
+    {
+      "id": 129,
+      "nombre": "Línea PVC Rojo",
+      "codigo": "00450",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 241,
+      "nombre": "Lomo de burro de Goma",
+      "codigo": "97402",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 238,
+      "nombre": "Lomo de burro de Goma",
+      "codigo": "97777",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 246,
+      "nombre": "Malla Advertencia Subterránea",
+      "codigo": "01075",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 207,
+      "nombre": "Malla Reticulada Naranja",
+      "codigo": "97595",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 335,
+      "nombre": "Mameluco PROMAXLINE -RESPIRABLE LAMINADO MICROPOROSO-",
+      "codigo": "97732",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 334,
+      "nombre": "Mameluco SPP5 Blanco Descartable",
+      "codigo": "97733",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 110,
+      "nombre": "Manga de cuero descarne",
+      "codigo": "00336",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 93,
+      "nombre": "Manta de tela borosilicato, CONFECCIONADA",
+      "codigo": "97143",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 94,
+      "nombre": "Manta de tela borosilicato, CONFECCIONADA",
+      "codigo": "01631",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 131,
+      "nombre": "Máscara cara completa FULL FACE BI-FILTRO",
+      "codigo": "97617",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 139,
+      "nombre": "Máscara cara completa FULL FACE MONOFILTRO",
+      "codigo": "01168",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 349,
+      "nombre": "Mascarilla ANMAT CERTIFICADA Conica tipo N95",
+      "codigo": "01050",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 22,
+      "nombre": "Mascarilla cónica 1501 para partículas",
+      "codigo": "902961",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 352,
+      "nombre": "Mascarilla Conica LINEA PESADA para polvos descartable",
+      "codigo": "97697",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 350,
+      "nombre": "Mascarilla Conica para polvos descartable",
+      "codigo": "97670",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 351,
+      "nombre": "Mascarilla Conica para polvos descartable",
+      "codigo": "1000",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 75,
+      "nombre": "Mentonera con cubre mentón",
+      "codigo": "902003",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 76,
+      "nombre": "Mentonera simple para casco libus",
+      "codigo": "901841",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 245,
+      "nombre": "Paleta vial REFLECTIVA de señalización",
+      "codigo": "97781",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 220,
+      "nombre": "PANCARTA Reflectiva Roja/Blanca",
+      "codigo": "97614",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 86,
+      "nombre": "PILA TIPO C SICA",
+      "codigo": "915133",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 109,
+      "nombre": "Polaina de cuero descarne",
+      "codigo": "00974",
+      "categoria_id": 14,
+      "categorias": {
+        "id": 14,
+        "nombre": "Delantales"
+      }
+    },
+    {
+      "id": 233,
+      "nombre": "Poste demarcatorio",
+      "codigo": "97612",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 232,
+      "nombre": "Poste demarcatorio",
+      "codigo": "97613",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 132,
+      "nombre": "Prefiltro",
+      "codigo": "01152",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 84,
+      "nombre": "Productos de la marca Sica",
+      "codigo": "971160",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 83,
+      "nombre": "Productos de la marca Sica",
+      "codigo": "971151",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 130,
+      "nombre": "Protección Respiratoria",
+      "codigo": "01618",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 51,
+      "nombre": "Protector Auditivo",
+      "codigo": "0016",
+      "categoria_id": 21,
+      "categorias": {
+        "id": 21,
+        "nombre": "Proteccion Auditiva"
+      }
+    },
+    {
+      "id": 53,
+      "nombre": "Protector Auditivo",
+      "codigo": "01261",
+      "categoria_id": 21,
+      "categorias": {
+        "id": 21,
+        "nombre": "Proteccion Auditiva"
+      }
+    },
+    {
+      "id": 52,
+      "nombre": "Protector Auditivo",
+      "codigo": "0122",
+      "categoria_id": 21,
+      "categorias": {
+        "id": 21,
+        "nombre": "Proteccion Auditiva"
+      }
+    },
+    {
+      "id": 15,
+      "nombre": "Protector Auditivo de COPA, PARA CASCOS LIBUS Modelo L-320",
+      "codigo": "900481",
+      "categoria_id": 21,
+      "categorias": {
+        "id": 21,
+        "nombre": "Proteccion Auditiva"
+      }
+    },
+    {
+      "id": 14,
+      "nombre": "Protector Auditivo QUANTUM endoaural",
+      "codigo": "900473",
+      "categoria_id": 21,
+      "categorias": {
+        "id": 21,
+        "nombre": "Proteccion Auditiva"
+      }
+    },
+    {
+      "id": 13,
+      "nombre": "Protector auditivo tipo copa ALTERNATIVE Negro",
+      "codigo": "901374",
+      "categoria_id": 21,
+      "categorias": {
+        "id": 21,
+        "nombre": "Proteccion Auditiva"
+      }
+    },
+    {
+      "id": 239,
+      "nombre": "Protector de cables DE 2 VÍAS",
+      "codigo": "97730",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 19,
+      "nombre": "Protector Facial CRONOS",
+      "codigo": "904371",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 320,
+      "nombre": "Reposición para botiquín Grande /Industrial",
+      "codigo": "01120",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 330,
+      "nombre": "Repuesto Kit 3 cinturones de fijación",
+      "codigo": "97338",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 18,
+      "nombre": "Repuesto Malla PLÁSTICA Forestal",
+      "codigo": "901389",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 17,
+      "nombre": "Repuesto Protector Facial Burbuja TRANSPARENTE",
+      "codigo": "901386",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 16,
+      "nombre": "Repuesto Protector Facial Plano TRANSPARENTE",
+      "codigo": "901543",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 21,
+      "nombre": "Respirador de Partículas 1420 PFF2",
+      "codigo": "904064",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 20,
+      "nombre": "Respirador de Partículas N95 - 1730",
+      "codigo": "901798",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 24,
+      "nombre": "Respirador MEDIA CARA reutilizable 9000",
+      "codigo": "902669",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 23,
+      "nombre": "Respirador MEDIA CARA reutilizable 9000",
+      "codigo": "901793",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 281,
+      "nombre": "ROLLO CINTA REFLECTIVA AMARILLA X 20 MTS",
+      "codigo": "97766",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 276,
+      "nombre": "ROLLO CINTA REFLECTIVA BLANCA",
+      "codigo": "9942",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 280,
+      "nombre": "ROLLO CINTA REFLECTIVA BLANCA X 20 MTS",
+      "codigo": "97765",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 278,
+      "nombre": "ROLLO CINTA REFLECTIVA CEBRADA",
+      "codigo": "9944",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 284,
+      "nombre": "ROLLO CINTA REFLECTIVA CEBRADA X 20 MTS",
+      "codigo": "97762",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 282,
+      "nombre": "ROLLO CINTA REFLECTIVA INTERNACIONAL X 20 MTS",
+      "codigo": "97764",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 277,
+      "nombre": "ROLLO CINTA REFLECTIVA ROJA",
+      "codigo": "9943",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 283,
+      "nombre": "ROLLO CINTA REFLECTIVA ROJA X 20 MTS",
+      "codigo": "97763",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 126,
+      "nombre": "Semimáscara Segurind de 2 trompas",
+      "codigo": "01094",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 92,
+      "nombre": "Soporte de pared para extintores",
+      "codigo": "00968",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 82,
+      "nombre": "Soporte para Balde Metálico",
+      "codigo": "00968-1",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 59,
+      "nombre": "Soporte para Repuestos Protector Facial",
+      "codigo": "901383",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 58,
+      "nombre": "Soporte para Repuestos Protector Facial",
+      "codigo": "902438",
+      "categoria_id": 23,
+      "categorias": {
+        "id": 23,
+        "nombre": "Proteccion Facial"
+      }
+    },
+    {
+      "id": 67,
+      "nombre": "Soporte Prefiltro 172 p/Resp. Línea 9000",
+      "codigo": "901911",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 209,
+      "nombre": "Tacha reflectiva amarilla VIAL",
+      "codigo": "97724",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 81,
+      "nombre": "Tapa para balde Metálico",
+      "codigo": "00890",
+      "categoria_id": 16,
+      "categorias": {
+        "id": 16,
+        "nombre": "Incendio"
+      }
+    },
+    {
+      "id": 133,
+      "nombre": "Tapa retenedora para prefiltro",
+      "codigo": "01153",
+      "categoria_id": 25,
+      "categorias": {
+        "id": 25,
+        "nombre": "Proteccion Respiratoria"
+      }
+    },
+    {
+      "id": 201,
+      "nombre": "Tarjetas alto impacto Fondo Amarillo",
+      "codigo": "01111",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 200,
+      "nombre": "Tarjetas alto impacto Fondo Blanco",
+      "codigo": "02427",
+      "categoria_id": 26,
+      "categorias": {
+        "id": 26,
+        "nombre": "Señalizacion Industrial"
+      }
+    },
+    {
+      "id": 269,
+      "nombre": "TELA Reflectiva x m2 Poliester GRIS",
+      "codigo": "97682",
+      "categoria_id": 13,
+      "categorias": {
+        "id": 13,
+        "nombre": "Cintas Industriales"
+      }
+    },
+    {
+      "id": 240,
+      "nombre": "Tope estacionamiento de Goma PESADO",
+      "codigo": "97403",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 237,
+      "nombre": "Tope estacionamiento de Plástico",
+      "codigo": "97775",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 296,
+      "nombre": "TRAJE DE LLUVIA de PVC, REFORZADO",
+      "codigo": "97627",
+      "categoria_id": 17,
+      "categorias": {
+        "id": 17,
+        "nombre": "Indumentaria De Lluvia"
+      }
+    },
+    {
+      "id": 297,
+      "nombre": "TRAJE EJECUTIVO NEGRO - PROMAXLINE",
+      "codigo": "97671",
+      "categoria_id": 17,
+      "categorias": {
+        "id": 17,
+        "nombre": "Indumentaria De Lluvia"
+      }
+    },
+    {
+      "id": 100,
+      "nombre": "Triángulo reflectivo",
+      "codigo": "97386",
+      "categoria_id": 18,
+      "categorias": {
+        "id": 18,
+        "nombre": "Kits Vehiculares"
+      }
+    },
+    {
+      "id": 244,
+      "nombre": "Valla amarilla extensible plástica",
+      "codigo": "97760",
+      "categoria_id": 27,
+      "categorias": {
+        "id": 27,
+        "nombre": "Señalización Vial"
+      }
+    },
+    {
+      "id": 341,
+      "nombre": "Vidrio tonalizado rectangular",
+      "codigo": "02370",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    },
+    {
+      "id": 340,
+      "nombre": "Vidrio transparente rectangular",
+      "codigo": "01211",
+      "categoria_id": 20,
+      "categorias": {
+        "id": 20,
+        "nombre": "Primeros Auxilios"
+      }
+    }
+  ],
+  "inconsistencies": [],
+  "recommendations": [
+    {
+      "type": "UNUSED_CATEGORY",
+      "category": {
+        "id": 1,
+        "nombre": "Sin Categoría",
+        "descripcion": "Productos sin categoría asignada",
+        "imagen_url": null,
+        "fuente": "AMBAS",
+        "repetida": false,
+        "activa": true,
+        "created_at": "2025-09-10T18:10:30.38852+00:00",
+        "updated_at": "2025-09-10T18:10:30.38852+00:00"
+      },
+      "action": "Consider removing or reassigning products to this category",
+      "priority": "LOW"
+    }
+  ]
+}

@@ -14,9 +14,9 @@ import './CredibilitySection.css';
 const credibilityData = [
   {
     icon: <FaCalendarAlt />,
-    number: "50+",
+    number: "20+",
     label: "Años de Trayectoria",
-    description: "Desde 1974 protegiendo la industria argentina",
+    description: "Desde 2003 protegiendo la industria argentina",
     color: "#D32F2F",
     bgColor: "rgba(211, 47, 47, 0.1)"
   },
@@ -65,7 +65,7 @@ function CredibilitySection() {
           </div>
           
           <h2 className="credibility-title">
-            Más de medio siglo de
+            Más de dos décadas de
             <span className="title-highlight">Experiencia</span>
           </h2>
           

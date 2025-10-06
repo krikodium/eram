@@ -22,11 +22,11 @@ function HeroCarousel() {
   const heroSlides = [
     {
       id: 'liderazgo-industrial',
-      badge: "Empresa Nacional desde 1974",
+      badge: "Empresa Nacional desde 2003",
       mainTitle: "LÍDERES EN",
       highlight: "SEGURIDAD INDUSTRIAL",
       subtitle: "ARGENTINA",
-      description: "Más de 50 años protegiendo trabajadores argentinos con equipos de máxima calidad y tecnología de vanguardia. Somos la elección de las principales industrias del país.",
+      description: "Más de 20 años protegiendo trabajadores argentinos con equipos de máxima calidad y tecnología de vanguardia. Somos la elección de las principales industrias del país.",
       image: "/banner-industria.jpg",
       primaryCTA: "EXPLORAR CATÁLOGO",
       secondaryCTA: "CONOCER MÁS",
@@ -34,7 +34,7 @@ function HeroCarousel() {
       secondaryLink: "/quienes-somos",
       icon: <FaFlag />,
       metrics: [
-        { value: "50+", label: "AÑOS DE EXPERIENCIA", icon: <FaFlag /> },
+        { value: "20+", label: "AÑOS DE EXPERIENCIA", icon: <FaFlag /> },
         { value: "10K+", label: "CLIENTES", icon: <FaUsers /> },
         { value: "24", label: "PROVINCIAS", icon: <FaIndustry /> }
       ]

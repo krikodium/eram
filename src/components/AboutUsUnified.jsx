@@ -18,17 +18,17 @@ import './AboutUsUnified.css';
 
 const companyStory = {
   title: "Nuestra Historia",
-  subtitle: "Más de medio siglo protegiendo la industria argentina",
-  description: "Desde 1974, ERAM ha sido el referente indiscutible en seguridad industrial en Argentina. Nacimos con la misión de proteger a los trabajadores argentinos y hoy, con más de 50 años de experiencia, continuamos siendo líderes en innovación y calidad.",
+  subtitle: "Más de dos décadas protegiendo la industria argentina",
+  description: "Desde 2003, ERAM ha sido el referente indiscutible en seguridad industrial en Argentina. Nacimos con la misión de proteger a los trabajadores argentinos y hoy, con más de 20 años de experiencia, continuamos siendo líderes en innovación y calidad.",
   highlights: [
     {
-      year: "1974",
+      year: "2003",
       title: "Fundación",
       description: "ERAM nace con la visión de revolucionar la seguridad industrial en Argentina",
       icon: <FaRocket />
     },
     {
-      year: "1990s",
+      year: "2010",
       title: "Expansión Nacional",
       description: "Ampliamos nuestra cobertura a las 24 provincias del país",
       icon: <FaMapMarkerAlt />
@@ -117,7 +117,7 @@ function AboutUsUnified() {
         <div className="aboutus-unified-header">
           <div className="section-badge">
             <FaFlag className="badge-icon" />
-            <span>Empresa Nacional desde 1974</span>
+            <span>Empresa Nacional desde 2003</span>
           </div>
           
           <h2 className="aboutus-unified-title">

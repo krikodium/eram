@@ -15,9 +15,9 @@ import './AboutUs.css';
 const companyHighlights = [
   {
     icon: <FaCalendarAlt />,
-    number: "50+",
+    number: "20+",
     label: "Años de Trayectoria",
-    description: "Desde 1974 protegiendo la industria argentina",
+    description: "Desde 2003 protegiendo la industria argentina",
     color: "#D32F2F"
   },
   {
@@ -40,7 +40,7 @@ const companyHighlights = [
 const industryExpertise = [
   {
     title: "Liderazgo en Seguridad Industrial",
-    description: "Como empresa argentina con más de cinco décadas de experiencia, somos pioneros en la importación y distribución de equipos de protección personal de máxima calidad.",
+    description: "Como empresa argentina con más de dos décadas de experiencia, somos pioneros en la importación y distribución de equipos de protección personal de máxima calidad.",
     image: "/industria.jpg",
     features: [
       "Equipos de última generación",
@@ -100,7 +100,7 @@ function AboutUs() {
       <div className="aboutus-header">
         <div className="section-badge">
           <FaFlag className="badge-icon" />
-          <span>Empresa Nacional desde 1974</span>
+          <span>Empresa Nacional desde 2003</span>
         </div>
         
         <h2 className="aboutus-title">
@@ -109,7 +109,7 @@ function AboutUs() {
         </h2>
         
         <p className="aboutus-subtitle">
-          Más de medio siglo protegiendo la industria argentina con 
+          Más de dos décadas protegiendo la industria argentina con 
           equipos de protección personal de máxima calidad y tecnología de vanguardia.
         </p>
       </div>

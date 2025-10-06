@@ -10,6 +10,7 @@ function ProductDetail() {
   const [error, setError] = useState('');
   const [imageLoading, setImageLoading] = useState(true);
   const [cantidad, setCantidad] = useState(1);
+  const [imageModalOpen, setImageModalOpen] = useState(false);
 
   // Memoizar la función de carga para evitar re-renders innecesarios
   const fetchProduct = useCallback(async () => {
@@ -44,8 +45,8 @@ function ProductDetail() {
     
     const specs = [
       { label: 'Código', value: producto.codigo },
-      { label: 'Categoría', value: producto.categoria_nombre || 'N/A' },
-      { label: 'Fuente', value: producto.fuente },
+      { label: 'Categoría', value: producto.categoria_nombre || 'No especificada' },
+      { label: 'Peso', value: producto.peso ? `${producto.peso} kg` : 'No especificado', icon: 'weight' },
     ];
 
     if (producto.medidas) {
@@ -54,89 +55,54 @@ function ProductDetail() {
     if (producto.presentacion) {
       specs.push({ label: 'Presentación', value: producto.presentacion });
     }
-    if (producto.moneda) {
-      specs.push({ label: 'Moneda', value: producto.moneda });
+    if (producto.material) {
+      specs.push({ label: 'Material', value: producto.material });
+    }
+    if (producto.color) {
+      specs.push({ label: 'Color', value: producto.color });
     }
 
     return specs;
   }, [producto]);
 
-  // Manejar carga de imagen
-  const handleImageLoad = useCallback(() => {
-    setImageLoading(false);
-  }, []);
+  // Handlers
+  const handleImageLoad = () => setImageLoading(false);
+  const handleImageError = () => setImageLoading(false);
 
-  const handleImageError = useCallback(() => {
-    setImageLoading(false);
-  }, []);
-
-  // Funciones para manejar la cantidad
-  const handleCantidadChange = useCallback((e) => {
+  const handleCantidadChange = (e) => {
     const value = parseInt(e.target.value);
-    if (value > 0) {
+    if (value >= 1) {
       setCantidad(value);
     }
-  }, []);
+  };
 
-  const handleCantidadIncrement = useCallback(() => {
-    setCantidad(prev => prev + 1);
-  }, []);
+  const handleCantidadIncrement = () => setCantidad(prev => prev + 1);
+  const handleCantidadDecrement = () => setCantidad(prev => Math.max(1, prev - 1));
 
-  const handleCantidadDecrement = useCallback(() => {
-    setCantidad(prev => prev > 1 ? prev - 1 : 1);
-  }, []);
+  const handleCotizar = () => {
+    // Lógica para agregar a cotización
+    console.log('Agregar a cotización:', { producto: producto.nombre, cantidad });
+  };
 
-  const handleCotizar = useCallback(() => {
-    // Aquí se implementaría la lógica para agregar al carrito/cotización
-    console.log(`Cotizar ${cantidad} unidades del producto ${producto?.nombre}`);
-  }, [cantidad, producto]);
-
-  // Componente de carga optimizado
   if (loading) {
     return (
-      <div className="product-detail-container">
-        <div className="loading-skeleton">
-          <div className="skeleton-back-link"></div>
-          <div className="skeleton-layout">
-            <div className="skeleton-image"></div>
-            <div className="skeleton-content">
-              <div className="skeleton-title"></div>
-              <div className="skeleton-description"></div>
-              <div className="skeleton-price"></div>
-              <div className="skeleton-specs">
-                {[...Array(4)].map((_, i) => (
-                  <div key={i} className="skeleton-spec-row"></div>
-                ))}
-              </div>
-            </div>
-          </div>
+      <div className="product-detail-loading">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Cargando producto...</p>
         </div>
       </div>
     );
   }
 
-  if (error) {
+  if (error || !producto) {
     return (
-      <div className="product-detail-container">
-        <div className="error-state">
-          <h2>Error al cargar el producto</h2>
-          <p>{error}</p>
-          <Link to="/catalogo" className="back-link">
-            &larr; Volver al Catálogo
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  if (!producto) {
-    return (
-      <div className="product-detail-container">
-        <div className="error-state">
+      <div className="product-detail-error">
+        <div className="error-container">
           <h2>Producto no encontrado</h2>
-          <p>El producto que buscas no existe o ha sido eliminado.</p>
-          <Link to="/catalogo" className="back-link">
-            &larr; Volver al Catálogo
+          <p>{error || 'El producto solicitado no existe.'}</p>
+          <Link to="/catalogo" className="back-to-catalog-btn">
+            Volver al Catálogo
           </Link>
         </div>
       </div>
@@ -144,7 +110,7 @@ function ProductDetail() {
   }
 
   return (
-    <div className="product-detail-container">
+    <div className="product-detail-page">
       {/* Breadcrumb Navigation */}
       <nav className="breadcrumb-nav">
         <Link to="/" className="breadcrumb-link">Inicio</Link>
@@ -154,56 +120,67 @@ function ProductDetail() {
         <span className="breadcrumb-current">{producto.nombre}</span>
       </nav>
 
-      <div className="product-detail-layout">
-        {/* Sección Principal - Imagen y Info Básica */}
+      <div className="product-detail-container">
+        {/* Main Product Section */}
         <div className="product-main-section">
-          {/* Imagen del Producto */}
-          <div className="product-image-container">
-            {producto.imagen_url ? (
-              <>
-                {imageLoading && (
-                  <div className="image-loading-skeleton">
-                    <div className="loading-spinner"></div>
+          {/* Product Image */}
+          <div className="product-image-section">
+            <div className="product-image-container" onClick={() => setImageModalOpen(true)}>
+              {producto.imagen_url ? (
+                <>
+                  {imageLoading && (
+                    <div className="image-loading-skeleton">
+                      <div className="loading-spinner"></div>
+                    </div>
+                  )}
+                  <img 
+                    src={producto.imagen_url} 
+                    alt={producto.nombre} 
+                    className={`product-main-image ${imageLoading ? 'loading' : 'loaded'}`}
+                    onLoad={handleImageLoad}
+                    onError={handleImageError}
+                    loading="lazy"
+                  />
+                  <div className="image-zoom-overlay">
+                    <span className="zoom-icon">🔍</span>
+                    <span className="zoom-text">Hacer clic para ampliar</span>
                   </div>
-                )}
-                <img 
-                  src={producto.imagen_url} 
-                  alt={producto.nombre} 
-                  className={`product-main-image ${imageLoading ? 'loading' : 'loaded'}`}
-                  onLoad={handleImageLoad}
-                  onError={handleImageError}
-                  loading="lazy"
-                />
-              </>
-            ) : (
-              <div className="no-image-placeholder">
-                <span>Imagen Próximamente</span>
-              </div>
-            )}
+                </>
+              ) : (
+                <div className="no-image-placeholder">
+                  <span>Imagen Próximamente</span>
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* Información Principal */}
-          <div className="product-main-info">
+          {/* Product Information */}
+          <div className="product-info-section">
+            {/* Product Header */}
             <div className="product-header">
               <h1 className="product-title">{producto.nombre}</h1>
-              <div className="product-identifiers">
-                <div className="identifier-item">
-                  <span className="identifier-label">Código</span>
-                  <span className="identifier-value">{producto.codigo}</span>
-                </div>
+              <div className="product-meta">
+                <span className="product-code">Código: {producto.codigo}</span>
                 {producto.categoria_nombre && (
-                  <div className="identifier-item">
-                    <span className="identifier-label">Categoría</span>
-                    <span className="identifier-value">{producto.categoria_nombre}</span>
-                  </div>
+                  <span className="product-category">{producto.categoria_nombre}</span>
                 )}
-                <div className="identifier-item">
-                  <span className="identifier-label">Fuente</span>
-                  <span className="identifier-value">{producto.fuente}</span>
-                </div>
               </div>
             </div>
 
+            {/* IRAM Certification - Professional */}
+            <div className="iram-certification">
+              <div className="certification-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
+                </svg>
+              </div>
+              <div className="certification-content">
+                <h3>Certificación IRAM</h3>
+                <p>Producto certificado según normativas argentinas de seguridad industrial</p>
+              </div>
+            </div>
+
+            {/* Product Description */}
             {producto.descripcion && (
               <div className="product-description">
                 <h3>Descripción</h3>
@@ -211,20 +188,21 @@ function ProductDetail() {
               </div>
             )}
 
-            {/* Precio y Acciones */}
-            <div className="product-pricing-section">
+            {/* Price and Actions */}
+            <div className="product-pricing">
               {formattedPrice && (
-                <div className="price-display">
+                <div className="price-section">
                   <span className="price-label">Precio Unitario</span>
-                  <span className="price-value">
-                    ${formattedPrice} 
-                    {producto.moneda && <span className="price-currency">({producto.moneda})</span>}
-                  </span>
+                  <div className="price-value">
+                    <span className="currency">$</span>
+                    <span className="amount">{formattedPrice}</span>
+                    {producto.moneda && <span className="currency-code">({producto.moneda})</span>}
+                  </div>
                 </div>
               )}
 
               <div className="product-actions">
-                <div className="quantity-selector">
+                <div className="quantity-section">
                   <label htmlFor="cantidad" className="quantity-label">Cantidad</label>
                   <div className="quantity-controls">
                     <button 
@@ -254,7 +232,7 @@ function ProductDetail() {
                 </div>
                 
                 <button 
-                  className="cotizar-btn primary"
+                  className="add-to-quote-btn"
                   onClick={handleCotizar}
                 >
                   <span className="btn-icon">📋</span>
@@ -265,23 +243,33 @@ function ProductDetail() {
           </div>
         </div>
 
-        {/* Sección de Especificaciones Técnicas */}
-        <div className="product-specs-section">
-          <h2>Especificaciones Técnicas</h2>
+        {/* Technical Specifications */}
+        <div className="technical-specs-section">
+          <div className="specs-header">
+            <h2>Especificaciones Técnicas</h2>
+            <p>Detalles técnicos del producto</p>
+          </div>
+          
           <div className="specs-grid">
             {technicalSpecs.map((spec, index) => (
               <div key={index} className="spec-item">
-                <span className="spec-label">{spec.label}</span>
-                <span className="spec-value">{spec.value}</span>
+                <div className="spec-label">
+                  {spec.icon === 'weight' && <span className="weight-icon">⚖️</span>}
+                  {spec.label}
+                </div>
+                <div className="spec-value">{spec.value}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Sección de Precios por Bulto */}
+        {/* Bulk Prices */}
         {producto.precios_por_bulto && Object.keys(producto.precios_por_bulto).length > 0 && (
           <div className="bulk-prices-section">
-            <h2>Precios por Bulto</h2>
+            <div className="bulk-prices-header">
+              <h2>Precios por Bulto</h2>
+              <p>Descuentos por cantidad</p>
+            </div>
             <div className="bulk-prices-grid">
               {Object.entries(producto.precios_por_bulto).map(([quantity, price]) => (
                 <div key={quantity} className="bulk-price-item">
@@ -299,34 +287,30 @@ function ProductDetail() {
           </div>
         )}
 
-        {/* Sección de Notas Adicionales */}
-        {producto.notas && (
-          <div className="product-notes-section">
-            <h2>Información Adicional</h2>
-            <div className="notes-content">
-              <p>{producto.notas}</p>
-            </div>
-          </div>
-        )}
+      </div>
 
-        {/* Sección de Stock */}
-        <div className="product-stock-section">
-          <div className="stock-info">
-            <div className="stock-status">
-              <span className="stock-label">Disponibilidad</span>
-              <span className={`stock-value ${producto.stock > 0 ? 'in-stock' : 'out-of-stock'}`}>
-                {producto.stock > 0 ? 'En Stock' : 'Sin Stock'}
-              </span>
+      {/* Image Modal */}
+      {imageModalOpen && (
+        <div className="image-modal-overlay" onClick={() => setImageModalOpen(false)}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="modal-close-btn"
+              onClick={() => setImageModalOpen(false)}
+            >
+              ×
+            </button>
+            <img 
+              src={producto.imagen_url} 
+              alt={producto.nombre}
+              className="modal-image"
+            />
+            <div className="modal-image-info">
+              <h3>{producto.nombre}</h3>
+              <p>Código: {producto.codigo}</p>
             </div>
-            {producto.stock > 0 && (
-              <div className="stock-quantity">
-                <span className="stock-label">Cantidad disponible</span>
-                <span className="stock-value">{producto.stock} unidades</span>
-              </div>
-            )}
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

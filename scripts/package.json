@@ -1,0 +1,28 @@
+{
+  "name": "eram-category-debugger",
+  "version": "1.0.0",
+  "description": "Professional category debugging and fixing tools for ERAM database",
+  "main": "debug-categories.js",
+  "scripts": {
+    "debug": "node debug-categories.js",
+    "fix": "node fix-categories.js",
+    "fix-dry": "node fix-categories.js --dry-run",
+    "install-deps": "npm install @supabase/supabase-js dotenv"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0",
+    "dotenv": "^16.3.1"
+  },
+  "keywords": [
+    "eram",
+    "database",
+    "categories",
+    "debug",
+    "supabase"
+  ],
+  "author": "ERAM Development Team",
+  "license": "MIT"
+}
+
+
+

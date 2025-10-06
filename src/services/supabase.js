@@ -94,7 +94,13 @@ export const productoService = {
     try {
       let query = supabase
         .from('productos')
-        .select('*', { count: 'exact' })
+        .select(`
+          *,
+          categorias (
+            id,
+            nombre
+          )
+        `, { count: 'exact' })
         .eq('activo', true)
         .order('nombre')
         .range((page - 1) * limit, page * limit - 1)
@@ -106,6 +112,15 @@ export const productoService = {
       const { data, error, count } = await query
 
       if (error) throw error
+
+      // Agregar categoria_nombre para compatibilidad
+      if (data) {
+        data.forEach(product => {
+          if (product.categorias) {
+            product.categoria_nombre = product.categorias.nombre;
+          }
+        });
+      }
 
       return {
         data,
@@ -125,13 +140,28 @@ export const productoService = {
     try {
       const { data, error, count } = await supabase
         .from('productos')
-        .select('*', { count: 'exact' })
+        .select(`
+          *,
+          categorias (
+            id,
+            nombre
+          )
+        `, { count: 'exact' })
         .eq('categoria_id', categoriaId)
         .eq('activo', true)
         .order('nombre')
         .range((page - 1) * limit, page * limit - 1)
 
       if (error) throw error
+
+      // Agregar categoria_nombre para compatibilidad
+      if (data) {
+        data.forEach(product => {
+          if (product.categorias) {
+            product.categoria_nombre = product.categorias.nombre;
+          }
+        });
+      }
 
       return {
         data,
@@ -151,12 +181,24 @@ export const productoService = {
     try {
       const { data, error } = await supabase
         .from('productos')
-        .select('*')
+        .select(`
+          *,
+          categorias (
+            id,
+            nombre
+          )
+        `)
         .eq('id', id)
         .eq('activo', true)
         .single()
       
       if (error) throw error
+      
+      // Agregar categoria_nombre para compatibilidad
+      if (data && data.categorias) {
+        data.categoria_nombre = data.categorias.nombre;
+      }
+      
       return data
     } catch (error) {
       console.error('Error fetching product:', error)

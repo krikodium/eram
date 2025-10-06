@@ -47,8 +47,8 @@ function QuienesSomos() {
             <span className="title-highlight"> ERAM</span>
           </h1>
           <p className="intro-description">
-            Desde 1974, ERAM es líder en la distribución de equipos de protección personal 
-            y seguridad industrial en Argentina. Con más de 50 años de experiencia, 
+            Desde 2003, ERAM es líder en la distribución de equipos de protección personal 
+            y seguridad industrial en Argentina. Con más de 20 años de experiencia, 
             brindamos soluciones integrales para proteger a los trabajadores en las 
             industrias más exigentes del país.
           </p>
@@ -62,12 +62,12 @@ function QuienesSomos() {
         </div>
       </section>
 
-      {/* Ferias por venir (después) */}
-      <section className="qs-upcoming-section">
+      {/* Ferias por venir (temporalmente oculto) */}
+      {/* <section className="qs-upcoming-section">
         <div className="section-content">
           <UpcomingFairs />
         </div>
-      </section>
+      </section> */}
 
       {/* Beneficios */}
       <section className="qs-benefits-section">

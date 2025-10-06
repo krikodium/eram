@@ -147,7 +147,7 @@ function CertificationsSection() {
           <div className="trust-content">
             <h3 className="trust-title">Confianza Garantizada</h3>
             <p className="trust-description">
-              Más de 50 años de experiencia respaldan nuestro compromiso con la calidad. 
+              Más de 20 años de experiencia respaldan nuestro compromiso con la calidad. 
               Cada producto que desarrollamos pasa por rigurosos controles de calidad 
               para garantizar la máxima protección y durabilidad.
             </p>

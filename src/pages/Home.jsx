@@ -5,7 +5,7 @@ import CredibilitySection from '../components/CredibilitySection';
 import BrandBenefits from '../components/BrandBenefits';
 import CategoryIcons from '../components/CategoryIcons';
 import AboutUsUnified from '../components/AboutUsUnified';
-// Removed Certifications section as requested
+import IramCertificates from '../components/IramCertificates';
 import ContactUnified from '../components/ContactUnified';
 import './Home.css';
 
@@ -29,7 +29,8 @@ function Home() {
       {/* 5. About Us - Company Story */}
       <AboutUsUnified />
 
-      {/* Certifications removed */}
+      {/* 6. IRAM Certificates - Professional Certifications */}
+      <IramCertificates />
 
       {/* 7. Contact - Call to Action */}
       <ContactUnified />

@@ -36,7 +36,7 @@ const Footer = () => {
               <p className="footer-tagline">Seguridad Industrial de Excelencia</p>
             </div>
             <p className="company-description">
-              Desde 1974, ERAM es líder en la distribución de equipos de protección 
+              Desde 2003, ERAM es líder en la distribución de equipos de protección 
               personal y seguridad industrial, comprometidos con la protección de 
               trabajadores en toda Argentina.
             </p>
@@ -190,7 +190,7 @@ const Footer = () => {
           <div className="footer-bottom-content">
             <div className="copyright">
               <p>&copy; {currentYear} ERAM Seguridad Industrial. Todos los derechos reservados.</p>
-              <p className="established">Empresa Argentina desde 1974</p>
+              <p className="established">Empresa Argentina desde 2003</p>
             </div>
             
             <div className="footer-links">

@@ -37,7 +37,8 @@ function BrandBenefits() {
             <span className="title-highlight">ERAM? </span>
           </h2>
           <p className="benefits-description">
-            Más de 50 años de experiencia nos respaldan como líderes en seguridad industrial
+            Más de 20 años de experiencia nos respaldan como líderes en seguridad industrial. 
+            Nuestros productos cuentan con certificados y licencias IRAM y certificado UL de Argentina.
           </p>
         </div>
 

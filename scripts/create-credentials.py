@@ -1,0 +1,18 @@
+import json
+
+credentials = {
+    "installed": {
+        "client_id": "1007457237488-jr1u2cduf8uvg3pg6vfaosagtn8odth5.apps.googleusercontent.com",
+        "project_id": "n8n-agent-469601",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "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",
+        "redirect_uris": ["http://localhost"]
+    }
+}
+
+with open('credentials.json', 'w') as f:
+    json.dump(credentials, f, indent=2)
+
+print("Archivo credentials.json creado correctamente")
