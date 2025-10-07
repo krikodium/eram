@@ -327,6 +327,13 @@
   margin-bottom: 1rem;
 }
 
+.iram-logo-img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+}
+
 .logo-icon {
   font-size: 3rem;
   color: var(--accent-primary);

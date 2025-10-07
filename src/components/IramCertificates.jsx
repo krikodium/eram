@@ -127,11 +127,17 @@ function IramCertificates() {
           </div>
         </div>
 
-        {/* IRAM Logo Placeholder */}
+        {/* IRAM Logo (from public/) */}
         <div className="iram-logo-section">
           <div className="logo-container">
             <div className="logo-placeholder">
-              <FaCertificate className="logo-icon" />
+              <img
+                src="/Gemini_Generated_Image_el3ma4el3ma4el3m.png"
+                alt="Logo IRAM Argentina"
+                className="iram-logo-img"
+                loading="lazy"
+                decoding="async"
+              />
               <span className="logo-text">IRAM Argentina</span>
             </div>
             <p className="logo-description">
