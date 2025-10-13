@@ -331,7 +331,8 @@
   height: 64px;
   width: auto;
   object-fit: contain;
-  filter: grayscale(100%);
+  background: transparent;
+  display: block;
 }
 
 .logo-icon {

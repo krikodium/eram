@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { productoService, categoriaService } from '../services/supabase';
 import ProductCard from '../components/ProductCard';
 import Pagination from '../components/Pagination';
@@ -21,6 +21,7 @@ const Catalogo = () => {
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const categoriaId = searchParams.get('categoria_id');
   const rubroId = searchParams.get('rubro_id');
   
@@ -71,33 +72,60 @@ const Catalogo = () => {
     setLoading(true);
     
     try {
-      let result;
+      let todosLosProductos;
+      
+      // Obtener TODOS los productos primero (sin paginación)
       if (search.trim()) {
-        result = await productoService.buscarProductos(search, pageNum, itemsPerPage);
+        // Para búsqueda, obtener todos los productos que coincidan
+        const result = await productoService.buscarProductos(search, 1, 1000); // Obtener muchos productos
+        todosLosProductos = result.data || [];
       } else if (catId) {
-        result = await productoService.getProductosByCategoria(catId, pageNum, itemsPerPage);
+        // Para categoría, obtener todos los productos de esa categoría
+        const result = await productoService.getProductosByCategoria(catId, 1, 1000); // Obtener muchos productos
+        todosLosProductos = result.data || [];
       } else {
-        result = await productoService.getProductos(pageNum, itemsPerPage);
+        // Para catálogo general, obtener todos los productos
+        const result = await productoService.getProductos(1, 1000); // Obtener muchos productos
+        todosLosProductos = result.data || [];
       }
       
-      const { data: nuevosProductos, totalPages: totalPagesCount, total } = result;
+      // Filtrar productos sin fotos ANTES de paginar
+      const productosConFotos = todosLosProductos.filter(producto => {
+        const imagenUrl = producto.imagen_url;
+        return imagenUrl && 
+               imagenUrl.trim() !== '' && 
+               !imagenUrl.includes('default-product.jpg') &&
+               (imagenUrl.startsWith('http') || imagenUrl.startsWith('/'));
+      });
+      
+      // Calcular paginación manualmente con productos filtrados
+      const totalProductosFiltrados = productosConFotos.length;
+      const totalPagesCalculadas = Math.ceil(totalProductosFiltrados / itemsPerPage);
+      
+      // Obtener productos para la página actual
+      const inicio = (pageNum - 1) * itemsPerPage;
+      const fin = inicio + itemsPerPage;
+      const productosParaMostrar = productosConFotos.slice(inicio, fin);
       
       console.log('Resultado de fetchProducts:', {
         pageNum,
-        nuevosProductos: nuevosProductos?.length || 0,
-        totalPagesCount,
-        total,
+        productosOriginales: todosLosProductos.length,
+        productosConFotos: productosConFotos.length,
+        productosOcultos: todosLosProductos.length - productosConFotos.length,
+        productosParaMostrar: productosParaMostrar.length,
+        totalPagesCalculadas,
+        totalProductosFiltrados,
         catId,
         search
       });
       
-      setProductos(nuevosProductos || []);
-      setTotalPages(totalPagesCount || 1);
+      setProductos(productosParaMostrar);
+      setTotalPages(totalPagesCalculadas);
       setCurrentPage(pageNum);
-      setTotalProducts(total || 0);
+      setTotalProducts(totalProductosFiltrados);
       
       // Obtener nombre de categoría si es necesario
-      if (catId && nuevosProductos && nuevosProductos.length > 0) {
+      if (catId && todosLosProductos && todosLosProductos.length > 0) {
         try {
           const categoria = await categoriaService.getCategoria(catId);
           if (categoria) setSelectedCategory(categoria);
@@ -126,17 +154,53 @@ const Catalogo = () => {
     }
   }, []);
 
-  // Efecto para cargar datos iniciales
+  // Efecto para cargar categorías primero
   useEffect(() => {
     fetchCategorias();
-    fetchProducts(1, categoriaId, searchTerm);
-  }, [categoriaId, fetchCategorias, fetchProducts]);
+  }, [fetchCategorias]);
+
+  // Efecto para verificar URL y cargar productos después de que las categorías estén listas
+  useEffect(() => {
+    if (categorias.length > 0) {
+      const categoriaIdFromURL = searchParams.get('categoria_id');
+      
+      console.log('Verificando URL después de cargar categorías:', {
+        categoriaIdFromURL,
+        categoriasCargadas: categorias.length,
+        searchTerm
+      });
+      
+      if (categoriaIdFromURL) {
+        // Hay categoría en URL, seleccionarla
+        const categoriaIdInt = parseInt(categoriaIdFromURL);
+        const categoria = categorias.find(cat => cat.id === categoriaIdInt);
+        
+        if (categoria) {
+          console.log('Categoría encontrada en URL:', categoria);
+          setSelectedCategory(categoria);
+          fetchProducts(1, categoriaIdInt, searchTerm);
+        } else {
+          console.warn('Categoría en URL no encontrada:', categoriaIdFromURL);
+          setSelectedCategory(null);
+          fetchProducts(1, null, searchTerm);
+        }
+      } else {
+        // No hay categoría en URL, mostrar todas
+        console.log('No hay categoría en URL, mostrando todas');
+        setSelectedCategory(null);
+        fetchProducts(1, null, searchTerm);
+      }
+    }
+  }, [categorias, searchParams, fetchProducts, searchTerm]);
 
   // Efecto para búsqueda con debounce
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (searchTerm !== searchRef.current?.value) return;
       fetchProducts(1, categoriaId, searchTerm);
+      
+      // Scroll hacia arriba cuando se ejecuta la búsqueda
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 500);
 
     return () => clearTimeout(timeoutId);
@@ -157,6 +221,16 @@ const Catalogo = () => {
     setSelectedCategory(categorias.find(cat => cat.id === catId));
     fetchProducts(1, catId, searchTerm);
     setShowFilters(false);
+    
+    // Actualizar URL para mantener estado en refresh
+    if (catId) {
+      navigate(`/catalogo?categoria_id=${catId}`, { replace: true });
+    } else {
+      navigate('/catalogo', { replace: true });
+    }
+    
+    // Scroll hacia arriba para mejor UX
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Función para limpiar filtros
@@ -165,6 +239,9 @@ const Catalogo = () => {
     setSelectedCategory(null);
     setSortBy('nombre');
     fetchProducts(1, null, '');
+    
+    // Scroll hacia arriba para mejor UX
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Función para cambiar ordenamiento

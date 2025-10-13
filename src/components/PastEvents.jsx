@@ -162,8 +162,8 @@ const PastEvents = () => {
           </h2>
           
           <p className="section-description">
-            Reviví nuestras participaciones más destacadas en las ferias más importantes del sector. 
-            Cada evento ha sido un hito en nuestro crecimiento y expansión internacional.
+            Descubrí nuestras participaciones más exitosas en las principales ferias del sector. 
+            Cada evento representa un hito en nuestro crecimiento y expansión internacional.
           </p>
         </div>
 

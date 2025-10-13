@@ -39,8 +39,20 @@ function QuienesSomos() {
 
   return (
     <div className={`quienes-somos-section ${isVisible ? 'visible' : ''}`}>
-      {/* Introducción de ERAM */}
+      {/* Introducción de ERAM con fondo de video */}
       <section className="qs-intro-section">
+        <div className="intro-video-background">
+          <video 
+            className="intro-video" 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          >
+            <source src="/vids/forklift.mp4" type="video/mp4" />
+          </video>
+          <div className="intro-video-overlay"></div>
+        </div>
         <div className="intro-container">
           <h1 className="intro-title">
             Conocé a
@@ -50,7 +62,8 @@ function QuienesSomos() {
             Desde 2003, ERAM es líder en la distribución de equipos de protección personal 
             y seguridad industrial en Argentina. Con más de 20 años de experiencia, 
             brindamos soluciones integrales para proteger a los trabajadores en las 
-            industrias más exigentes del país.
+            industrias más exigentes del país. Contamos con certificaciones IRAM y UL, 
+            además de licencias de productos a nombre propio de IRAM.
           </p>
         </div>
       </section>

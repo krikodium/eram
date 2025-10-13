@@ -6,151 +6,199 @@ import 'slick-carousel/slick/slick-theme.css';
 import './CategoryIcons.css';
 import { Link } from 'react-router-dom';
 import { categoriaService } from '../services/supabase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  FaShieldAlt,
-  FaHardHat,
-  FaBriefcaseMedical,
-  FaTools,
-  FaExclamationTriangle,
-  FaEye,
-  FaHeartbeat,
-  FaFire,
-  FaIndustry,
-  FaChevronLeft,
-  FaChevronRight,
-  FaHeadphones,
-  FaTshirt,
-  FaCar,
-  FaArrowUp,
-  FaUmbrella,
-  FaBox,
-  FaHandsHelping,
-  FaUserShield,
-  FaClipboardCheck,
-  FaWrench,
-  FaGlasses,
-  FaMask,
-  FaHands,
-  FaThermometer,
-  FaExclamationCircle
-} from "react-icons/fa";
+  faShield,
+  faHardHat,
+  faWrench,
+  faExclamationTriangle,
+  faHeart,
+  faFire,
+  faIndustry,
+  faChevronLeft,
+  faChevronRight,
+  faHeadphones,
+  faShirt,
+  faCar,
+  faArrowUp,
+  faUmbrella,
+  faBox,
+  faGlasses,
+  faThermometer,
+  faMountain,
+  faUser,
+  faRunning,
+  faTape,
+  faFirstAid,
+  faTent,
+  faSkull,
+  faExclamationCircle,
+  faEye,
+  faMask,
+  faFireExtinguisher,
+  faExclamation,
+  faTools,
+  faRadiation,
+  faTshirt,
+  faClipboardCheck,
+  faStethoscope,
+  faBolt,
+  faLayerGroup,
+  faPlus,
+  faCross,
+  faSquare,
+  faCircle
+} from '@fortawesome/free-solid-svg-icons';
 
-// Enhanced Icon Configuration - Specific and Representative Icons
+// Enhanced Icon Configuration - Specific and Representative Icons using FontAwesome
 const CATEGORY_ICONS = {
-  "Baldes de Incendio": { 
-    icon: <FaFire />, 
-    color: "#FF4444", 
-    bgColor: "rgba(255, 68, 68, 0.15)" 
-  },
-  "Botas Industriales": { 
-    icon: <FaIndustry />, 
-    color: "#2E7D32", 
-    bgColor: "rgba(46, 125, 50, 0.15)" 
-  },
-  "Botiquines Primeros Auxilios": { 
-    icon: <FaBriefcaseMedical />, 
-    color: "#D32F2F", 
-    bgColor: "rgba(211, 47, 47, 0.15)" 
-  },
-  "Camillas - Inmovilizador - Férulas": { 
-    icon: <FaHandsHelping />, 
-    color: "#1976D2", 
-    bgColor: "rgba(25, 118, 210, 0.15)" 
-  },
-  "Carpa Para piso": { 
-    icon: <FaUmbrella />, 
-    color: "#7B1FA2", 
-    bgColor: "rgba(123, 31, 162, 0.15)" 
-  },
-  "Carteleria": { 
-    icon: <FaExclamationTriangle />, 
-    color: "#FF9800", 
-    bgColor: "rgba(255, 152, 0, 0.15)" 
-  },
-  "Cascos": { 
-    icon: <FaHardHat />, 
-    color: "#F57C00", 
-    bgColor: "rgba(245, 124, 0, 0.15)" 
-  },
-  "Equipos": { 
-    icon: <FaWrench />, 
-    color: "#00796B", 
-    bgColor: "rgba(0, 121, 107, 0.15)" 
-  },
-  "Protección Visual": { 
-    icon: <FaGlasses />, 
-    color: "#3F51B5", 
-    bgColor: "rgba(63, 81, 181, 0.15)" 
+  // Categorías principales del catálogo ERAM
+  "Cintas Industriales": { 
+    icon: <FontAwesomeIcon icon={faTape} size="lg" />, 
+    color: "#FF6B35", 
+    bgColor: "rgba(255, 107, 53, 0.15)" 
   },
   "Delantales": { 
-    icon: <FaTshirt />, 
+    icon: <FontAwesomeIcon icon={faTshirt} size="lg" />, 
     color: "#795548", 
     bgColor: "rgba(121, 85, 72, 0.15)" 
   },
   "Escaleras": { 
-    icon: <FaArrowUp />, 
+    icon: <FontAwesomeIcon icon={faArrowUp} size="lg" />, 
     color: "#607D8B", 
     bgColor: "rgba(96, 125, 139, 0.15)" 
   },
   "Incendio": { 
-    icon: <FaFire />, 
+    icon: <FontAwesomeIcon icon={faFire} size="lg" />, 
     color: "#FF5722", 
     bgColor: "rgba(255, 87, 34, 0.15)" 
   },
   "Indumentaria De Lluvia": { 
-    icon: <FaUmbrella />, 
+    icon: <FontAwesomeIcon icon={faUmbrella} size="lg" />, 
     color: "#2196F3", 
     bgColor: "rgba(33, 150, 243, 0.15)" 
   },
   "Kits Vehiculares": { 
-    icon: <FaCar />, 
+    icon: <FontAwesomeIcon icon={faCar} size="lg" />, 
     color: "#9C27B0", 
     bgColor: "rgba(156, 39, 176, 0.15)" 
   },
   "Kraftex": { 
-    icon: <FaBox />, 
+    icon: <FontAwesomeIcon icon={faBox} size="lg" />, 
     color: "#FF9800", 
     bgColor: "rgba(255, 152, 0, 0.15)" 
   },
   "Primeros Auxilios": { 
-    icon: <FaBriefcaseMedical />, 
+    icon: <FontAwesomeIcon icon={faFirstAid} size="lg" />, 
     color: "#F44336", 
     bgColor: "rgba(244, 67, 54, 0.15)" 
   },
-  "Protección Auditiva": { 
-    icon: <FaHeadphones />, 
+  "Proteccion Auditiva": { 
+    icon: <FontAwesomeIcon icon={faHeadphones} size="lg" />, 
     color: "#4CAF50", 
     bgColor: "rgba(76, 175, 80, 0.15)" 
   },
-  "Protección Respiratoria": { 
-    icon: <FaMask />, 
+  "Proteccion En Altura": { 
+    icon: <FontAwesomeIcon icon={faMountain} size="lg" />, 
+    color: "#795548", 
+    bgColor: "rgba(121, 85, 72, 0.15)" 
+  },
+  "Proteccion Facial": { 
+    icon: <FontAwesomeIcon icon={faUser} size="lg" />, 
+    color: "#3F51B5", 
+    bgColor: "rgba(63, 81, 181, 0.15)" 
+  },
+  "Proteccion Ocular": { 
+    icon: <FontAwesomeIcon icon={faGlasses} size="lg" />, 
+    color: "#3F51B5", 
+    bgColor: "rgba(63, 81, 181, 0.15)" 
+  },
+  "Proteccion Respiratoria": { 
+    icon: <FontAwesomeIcon icon={faUser} size="lg" />, 
     color: "#00BCD4", 
     bgColor: "rgba(0, 188, 212, 0.15)" 
   },
+  "Señalizacion Industrial": { 
+    icon: <FontAwesomeIcon icon={faExclamationCircle} size="lg" />, 
+    color: "#FF9800", 
+    bgColor: "rgba(255, 152, 0, 0.15)" 
+  },
+  "Señalización Vial": { 
+    icon: <FontAwesomeIcon icon={faExclamationTriangle} size="lg" />, 
+    color: "#FFC107", 
+    bgColor: "rgba(255, 193, 7, 0.15)" 
+  },
+  
+  // Categorías adicionales (mantener compatibilidad)
+  "Baldes de Incendio": { 
+    icon: <FontAwesomeIcon icon={faFire} size="lg" />, 
+    color: "#FF4444", 
+    bgColor: "rgba(255, 68, 68, 0.15)" 
+  },
+  "Botas Industriales": { 
+    icon: <FontAwesomeIcon icon={faIndustry} size="lg" />, 
+    color: "#2E7D32", 
+    bgColor: "rgba(46, 125, 50, 0.15)" 
+  },
+  "Botiquines Primeros Auxilios": { 
+    icon: <FontAwesomeIcon icon={faFirstAid} size="lg" />, 
+    color: "#D32F2F", 
+    bgColor: "rgba(211, 47, 47, 0.15)" 
+  },
+  "Camillas - Inmovilizador - Férulas": { 
+    icon: <FontAwesomeIcon icon={faHeart} size="lg" />, 
+    color: "#1976D2", 
+    bgColor: "rgba(25, 118, 210, 0.15)" 
+  },
+  "Carpa Para piso": { 
+    icon: <FontAwesomeIcon icon={faTent} size="lg" />, 
+    color: "#7B1FA2", 
+    bgColor: "rgba(123, 31, 162, 0.15)" 
+  },
+  "Carteleria": { 
+    icon: <FontAwesomeIcon icon={faExclamationTriangle} size="lg" />, 
+    color: "#FF9800", 
+    bgColor: "rgba(255, 152, 0, 0.15)" 
+  },
+  "Cascos": { 
+    icon: <FontAwesomeIcon icon={faHardHat} size="lg" />, 
+    color: "#F57C00", 
+    bgColor: "rgba(245, 124, 0, 0.15)" 
+  },
+  "Equipos": { 
+    icon: <FontAwesomeIcon icon={faWrench} size="lg" />, 
+    color: "#00796B", 
+    bgColor: "rgba(0, 121, 107, 0.15)" 
+  },
+  "Protección Visual": { 
+    icon: <FontAwesomeIcon icon={faGlasses} size="lg" />, 
+    color: "#3F51B5", 
+    bgColor: "rgba(63, 81, 181, 0.15)" 
+  },
   "Higiene": { 
-    icon: <FaHands />, 
+    icon: <FontAwesomeIcon icon={faRunning} size="lg" />, 
     color: "#8BC34A", 
     bgColor: "rgba(139, 195, 74, 0.15)" 
   },
   "Temperatura": { 
-    icon: <FaThermometer />, 
+    icon: <FontAwesomeIcon icon={faThermometer} size="lg" />, 
     color: "#FF5722", 
     bgColor: "rgba(255, 87, 34, 0.15)" 
   },
   "Radiación": { 
-    icon: <FaExclamationTriangle />, 
+    icon: <FontAwesomeIcon icon={faExclamationTriangle} size="lg" />, 
     color: "#FFEB3B", 
     bgColor: "rgba(255, 235, 59, 0.15)" 
   },
   "Toxicidad": { 
-    icon: <FaExclamationCircle />, 
+    icon: <FontAwesomeIcon icon={faSkull} size="lg" />, 
     color: "#9E9E9E", 
     bgColor: "rgba(158, 158, 158, 0.15)" 
   }
 };
 
 const DEFAULT_ICON = { 
-  icon: <FaShieldAlt />, 
+  icon: <FontAwesomeIcon icon={faShield} size="lg" />, 
   color: "#D32F2F", 
   bgColor: "rgba(211, 47, 47, 0.1)" 
 };
@@ -162,7 +210,7 @@ const CustomArrow = ({ direction, onClick }) => (
     onClick={onClick}
     aria-label={`${direction === 'prev' ? 'Previous' : 'Next'} categories`}
   >
-    {direction === 'prev' ? <FaChevronLeft /> : <FaChevronRight />}
+    {direction === 'prev' ? <FontAwesomeIcon icon={faChevronLeft} size="sm" /> : <FontAwesomeIcon icon={faChevronRight} size="sm" />}
   </div>
 );
 
@@ -239,7 +287,7 @@ const CategoryCard = ({ categoria }) => {
           <div className="category-hover-overlay">
             <div className="category-cta">
               <span>Ver Productos</span>
-              <FaChevronRight />
+              <FontAwesomeIcon icon={faChevronRight} size="sm" />
             </div>
           </div>
         </div>

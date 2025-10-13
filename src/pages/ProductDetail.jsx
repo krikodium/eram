@@ -1,10 +1,12 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { productoService } from '../services/supabase';
+import { FaArrowLeft } from 'react-icons/fa';
 import './ProductDetail.css';
 
 function ProductDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -35,9 +37,9 @@ function ProductDetail() {
 
   // Memoizar el precio formateado
   const formattedPrice = useMemo(() => {
-    if (!producto?.precio_unitario) return null;
-    return parseFloat(producto.precio_unitario).toFixed(2);
-  }, [producto?.precio_unitario]);
+    if (!producto?.precio) return null;
+    return parseFloat(producto.precio).toFixed(2);
+  }, [producto?.precio]);
 
   // Memoizar las especificaciones técnicas
   const technicalSpecs = useMemo(() => {
@@ -84,6 +86,11 @@ function ProductDetail() {
     console.log('Agregar a cotización:', { producto: producto.nombre, cantidad });
   };
 
+  // Función simple para volver al catálogo
+  const handleBackToCatalog = () => {
+    navigate('/catalogo');
+  };
+
   if (loading) {
     return (
       <div className="product-detail-loading">
@@ -113,11 +120,17 @@ function ProductDetail() {
     <div className="product-detail-page">
       {/* Breadcrumb Navigation */}
       <nav className="breadcrumb-nav">
-        <Link to="/" className="breadcrumb-link">Inicio</Link>
-        <span className="breadcrumb-separator">›</span>
-        <Link to="/catalogo" className="breadcrumb-link">Catálogo</Link>
-        <span className="breadcrumb-separator">›</span>
-        <span className="breadcrumb-current">{producto.nombre}</span>
+        <button onClick={handleBackToCatalog} className="back-button">
+          <FaArrowLeft />
+          <span>Volver</span>
+        </button>
+        <div className="breadcrumb-path">
+          <Link to="/" className="breadcrumb-link">Inicio</Link>
+          <span className="breadcrumb-separator">›</span>
+          <Link to="/catalogo" className="breadcrumb-link">Catálogo</Link>
+          <span className="breadcrumb-separator">›</span>
+          <span className="breadcrumb-current">{producto.nombre}</span>
+        </div>
       </nav>
 
       <div className="product-detail-container">

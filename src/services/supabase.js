@@ -24,13 +24,14 @@ export const supabase = createClient(supabaseUrl, supabaseKey, {
 // =============================================================================
 
 export const categoriaService = {
-  // Obtener todas las categorías activas
+  // Obtener todas las categorías activas (excluyendo "Sin Categoría")
   getCategorias: async () => {
     try {
       const { data, error } = await supabase
         .from('categorias')
         .select('*')
         .eq('activa', true)
+        .neq('id', 1) // Excluir categoría "Sin Categoría" (ID: 1)
         .order('nombre')
       
       if (error) throw error

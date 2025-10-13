@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="IRAM Argentina">
+  <defs>
+    <style>
+      .stroke { fill: none; stroke: currentColor; stroke-width: 12; }
+      .fill { fill: currentColor; }
+    </style>
+  </defs>
+  <!-- Outer circle -->
+  <circle class="stroke" cx="128" cy="128" r="120"/>
+
+  <!-- Letters (stylized, geometric) -->
+  <!-- I -->
+  <rect class="fill" x="62" y="52" width="12" height="152" rx="2"/>
+
+  <!-- R (built from vertical + arc + leg) -->
+  <rect class="fill" x="86" y="52" width="12" height="152" rx="2"/>
+  <path class="fill" d="M98 52h34c18 0 30 12 30 28s-12 28-30 28h-22V52z"/>
+  <polygon class="fill" points="110,114 128,114 166,204 150,204"/>
+
+  <!-- A -->
+  <polygon class="fill" points="132,204 156,52 180,204 168,204 160,168 148,168 140,204"/>
+  <rect class="fill" x="150" y="140" width="16" height="12"/>
+
+  <!-- M (two verticals + inner diagonals) -->
+  <rect class="fill" x="184" y="52" width="12" height="152" rx="2"/>
+  <rect class="fill" x="216" y="52" width="12" height="152" rx="2"/>
+  <polygon class="fill" points="196,120 206,204 200,204 188,120"/>
+  <polygon class="fill" points="226,120 216,204 210,204 220,120"/>
+</svg>
+
+
+
