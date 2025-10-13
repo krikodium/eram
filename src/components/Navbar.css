@@ -1,5 +1,9 @@
 /* src/components/Navbar.css - Fixed Header with Proper Z-Index */
 
+:root { 
+  --icon-color: var(--text-primary, #eaeaea); 
+}
+
 /* =============================================================================
    NAVBAR BASE - Professional Fixed Header with Proper Z-Index
 ============================================================================= */
@@ -129,6 +133,9 @@
   align-items: center;
   gap: 1rem;
   z-index: 10001;
+  overflow: visible;
+  position: relative;
+  z-index: 20;
 }
 
 /* Quote Cart Link */
@@ -234,24 +241,16 @@
    MOBILE NAVIGATION - Enhanced Burger Menu
 ============================================================================= */
 .mobile-nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 3px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.75rem;
-  border-radius: var(--radius-md);
-  transition: all var(--transition-normal);
-  z-index: 10002;
-  /* Ensure proper centering and visibility */
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  place-items: center;
+  padding: 10px;
   min-width: 44px;
   min-height: 44px;
-  box-sizing: border-box;
-  /* Additional centering fixes */
+  border: 0;
+  background: transparent;
+  cursor: pointer;
   position: relative;
+  isolation: isolate;
   overflow: visible;
 }
 
@@ -259,29 +258,103 @@
   background: rgba(var(--interactive-primary), 0.1);
 }
 
-.nav-hamburger {
-  width: 20px;
+.mobile-nav-toggle .nav-hamburger {
+  position: absolute;
+  left: 50%;
+  width: 24px;
   height: 2px;
-  background: var(--text-primary);
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform-origin: center;
+  background: var(--icon-color);
   border-radius: 2px;
-  /* Ensure proper positioning */
-  display: block;
-  margin: 0;
+  transform: translateX(-50%);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s ease-in-out,
+              width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity, width, height;
+  transform-origin: center;
+}
+
+.mobile-nav-toggle .nav-hamburger:nth-child(1) { 
+  top: 10px;
+  transition-delay: 0s;
+}
+
+.mobile-nav-toggle .nav-hamburger:nth-child(2) { 
+  top: 50%; 
+  transform: translate(-50%, -50%);
+  transition-delay: 0.05s;
+}
+
+.mobile-nav-toggle .nav-hamburger:nth-child(3) { 
+  bottom: 10px;
+  transition-delay: 0.1s;
 }
 
 .mobile-nav-toggle.active .nav-hamburger:nth-child(1) {
-  transform: rotate(45deg) translate(4px, 4px);
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 24px;
+  transition-delay: 0.1s;
 }
 
 .mobile-nav-toggle.active .nav-hamburger:nth-child(2) {
   opacity: 0;
-  transform: scaleX(0);
+  transform: translate(-50%, -50%) scale(0.8);
+  transition-delay: 0.05s;
 }
 
 .mobile-nav-toggle.active .nav-hamburger:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -5px);
+  bottom: auto; 
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 24px;
+  transition-delay: 0.15s;
+}
+
+.mobile-nav-toggle:active .nav-hamburger { 
+  width: 22px;
+  height: 1.5px;
+  transform: translateX(-50%) scale(0.95);
+}
+
+/* Efecto de hover mejorado */
+.mobile-nav-toggle:hover .nav-hamburger {
+  background: var(--interactive-primary);
+  box-shadow: 0 0 8px rgba(var(--interactive-primary-rgb), 0.3);
+}
+
+/* Animación de entrada suave */
+.mobile-nav-toggle {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mobile-nav-toggle:hover {
+  transform: scale(1.05);
+  background: rgba(var(--interactive-primary), 0.15);
+}
+
+.mobile-nav-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Animación de pulso cuando el menú está abierto */
+.mobile-nav-toggle.active {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(var(--interactive-primary-rgb), 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(var(--interactive-primary-rgb), 0.1);
+  }
+}
+
+/* Mejora de la animación de las líneas en estado activo */
+.mobile-nav-toggle.active .nav-hamburger:nth-child(1),
+.mobile-nav-toggle.active .nav-hamburger:nth-child(3) {
+  box-shadow: 0 0 4px rgba(var(--interactive-primary-rgb), 0.3);
 }
 
 /* =============================================================================
@@ -431,7 +504,6 @@ body {
   
   .mobile-nav-toggle {
     display: flex;
-    /* Ensure proper spacing in mobile */
     margin-left: 0.5rem;
   }
   
@@ -441,7 +513,6 @@ body {
   
   .navbar-actions {
     gap: 0.5rem;
-    /* Ensure proper alignment */
     align-items: center;
   }
   
@@ -487,15 +558,26 @@ body {
   }
   
   .mobile-nav-toggle {
-    /* Adjust for very small screens */
-    padding: 0.6rem;
+    padding: 8px;
     min-width: 40px;
     min-height: 40px;
   }
   
-  .nav-hamburger {
-    width: 18px;
+  .mobile-nav-toggle .nav-hamburger {
+    width: 20px;
     height: 2px;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.25s ease-in-out,
+                width 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                height 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .mobile-nav-toggle:hover {
+    transform: scale(1.08);
+  }
+  
+  .mobile-nav-toggle:active {
+    transform: scale(0.92);
   }
   
   .nav-links.mobile-menu {
@@ -530,6 +612,19 @@ body {
   
   .quote-badge {
     animation: none;
+  }
+  
+  .mobile-nav-toggle {
+    transition: none;
+    animation: none;
+  }
+  
+  .mobile-nav-toggle.active {
+    animation: none;
+  }
+  
+  .mobile-nav-toggle .nav-hamburger {
+    transition: opacity 0.2s ease, transform 0.2s ease;
   }
 }
 

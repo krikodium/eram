@@ -483,31 +483,89 @@
   }
   
   .hero-content {
-    padding: 0 2rem;
+    padding: 0 1.5rem;
   }
   
   .hero-container {
-    gap: 2rem;
+    gap: 2.5rem;
     text-align: center;
   }
   
   .hero-left-content {
     align-items: center;
+    gap: 2.5rem;
+  }
+  
+  /* Badge mejorado para móvil */
+  .hero-badge {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Typography mejorada para móvil */
+  .hero-typography {
+    gap: 1rem;
+    margin-bottom: 0.5rem;
   }
   
   .hero-main-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.8rem, 7vw, 4.2rem);
+    line-height: 0.95;
+    margin-bottom: 0.5rem;
   }
   
+  /* Subrayado naranja mejorado */
+  .title-highlight {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .title-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #FF6B35 0%, #D32F2F 50%, #FF6B35 100%);
+    border-radius: 2px;
+    animation: underlineGlow 2s ease-in-out infinite;
+  }
+  
+  @keyframes underlineGlow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    letter-spacing: 1.5px;
+    margin-top: 0.5rem;
+  }
+  
+  /* Descripción mejorada */
+  .hero-description {
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+    line-height: 1.6;
+    max-width: 100%;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0 0.5rem;
+  }
+  
+  /* Botones mejorados */
   .hero-actions {
     flex-direction: column;
     width: 100%;
-    gap: 1rem;
+    gap: 1.2rem;
+    margin-top: 1rem;
   }
   
   .hero-btn {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
   }
   
   .hero-right-content {
@@ -524,8 +582,8 @@
 
 @media (max-width: 480px) {
   .hero-carousel-section {
-    height: 60vh;
-    min-height: 400px;
+    height: 65vh;
+    min-height: 450px;
   }
   
   .hero-content {
@@ -533,21 +591,58 @@
   }
   
   .hero-container {
-    gap: 1.5rem;
+    gap: 2rem;
+  }
+  
+  .hero-left-content {
+    gap: 2rem;
   }
   
   .hero-badge {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .hero-typography {
+    gap: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .hero-main-title {
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+    line-height: 0.9;
+    margin-bottom: 0.3rem;
+  }
+  
+  /* Subrayado naranja para móviles pequeños */
+  .title-highlight::after {
+    bottom: -6px;
+    height: 2.5px;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    letter-spacing: 1px;
+    margin-top: 0.3rem;
   }
   
   .hero-description {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    line-height: 1.5;
+    margin: 0.3rem 0 0.8rem 0;
+    padding: 0 0.3rem;
+  }
+  
+  .hero-actions {
+    gap: 1rem;
+    margin-top: 0.8rem;
   }
   
   .hero-btn {
-    padding: 0.875rem 2rem;
+    padding: 0.875rem 1.8rem;
     font-size: 0.875rem;
+    max-width: 260px;
   }
 }
 
