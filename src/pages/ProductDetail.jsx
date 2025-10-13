@@ -1,12 +1,14 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { productoService } from '../services/supabase';
+import { useQuote } from '../contexts/QuoteContext';
 import { FaArrowLeft } from 'react-icons/fa';
 import './ProductDetail.css';
 
 function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addItem } = useQuote();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -82,8 +84,20 @@ function ProductDetail() {
   const handleCantidadDecrement = () => setCantidad(prev => Math.max(1, prev - 1));
 
   const handleCotizar = () => {
-    // Lógica para agregar a cotización
-    console.log('Agregar a cotización:', { producto: producto.nombre, cantidad });
+    if (producto) {
+      // Crear un objeto producto con la cantidad especificada
+      const productToAdd = {
+        ...producto,
+        quantity: cantidad
+      };
+      addItem(productToAdd);
+      
+      // Mostrar mensaje de éxito (opcional)
+      console.log(`Producto "${producto.nombre}" agregado a la cotización con cantidad ${cantidad}`);
+      
+      // Opcional: navegar a la cotización
+      // navigate('/cotizacion');
+    }
   };
 
   // Función simple para volver al catálogo

@@ -161,7 +161,7 @@ export const QuoteProvider = ({ children }) => {
     
     state.items.forEach((item, index) => {
       message += `${index + 1}. ${item.nombre}\n`;
-      message += `   SKU: ${item.sku}\n`;
+      message += `   Código: ${item.codigo}\n`;
       message += `   Cantidad: ${item.quantity}\n\n`;
     });
     
