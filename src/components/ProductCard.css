@@ -197,9 +197,6 @@
   color: var(--success-color);
 }
 
-.product-card-wrapper.grid-view .detail-value.out-of-stock {
-  color: var(--error-color);
-}
 
 .product-card-wrapper.grid-view .card-actions {
   padding: 0 2rem 2.25rem;
@@ -480,9 +477,6 @@
   color: #4ade80;
 }
 
-.product-card-wrapper.list-view .detail-value.out-of-stock {
-  color: #f87171;
-}
 
 /* Información de precios - Compacta */
 .product-card-wrapper.list-view .provider-price,
@@ -599,26 +593,6 @@
   transition: transform 0.3s ease;
 }
 
-.out-of-stock-badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: rgba(220, 38, 38, 0.25);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  color: #ffffff;
-  padding: 0.6rem 1.2rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3);
-  z-index: 3;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  opacity: 0.9;
-}
 
 .featured-badge {
   position: absolute;

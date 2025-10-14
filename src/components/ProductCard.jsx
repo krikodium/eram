@@ -70,12 +70,14 @@ function ProductCard({ producto, viewMode = 'grid' }) {
                 <span className="detail-value">{codigo}</span>
               </div>
               
-              <div className="detail-item">
-                <span className="detail-label">STOCK:</span>
-                <span className={`detail-value ${isInStock ? 'in-stock' : 'out-of-stock'}`}>
-                  {isInStock ? 'Disponible' : 'Agotado'}
-                </span>
-              </div>
+              {isInStock && (
+                <div className="detail-item">
+                  <span className="detail-label">STOCK:</span>
+                  <span className="detail-value in-stock">
+                    Disponible
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -110,11 +112,6 @@ function ProductCard({ producto, viewMode = 'grid' }) {
               <div className="featured-badge">
                 <FaStar />
                 <span>Destacado</span>
-              </div>
-            )}
-            {!isInStock && (
-              <div className="out-of-stock-badge">
-                <span>Sin Stock</span>
               </div>
             )}
           </Link>

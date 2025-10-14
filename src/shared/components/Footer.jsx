@@ -94,32 +94,36 @@ const Footer = () => {
           <div className="footer-section quick-links">
             <h4>Enlaces Rápidos</h4>
             <div className="links-grid">
-              <div className="link-group">
-                <h5>Empresa</h5>
-                <ul>
-                  <li><Link to="/quienes-somos">Quiénes Somos</Link></li>
-                  <li><Link to="/historia">Nuestra Historia</Link></li>
-                </ul>
+              <div className="pyramid-row top-row">
+                <div className="link-group">
+                  <h5>Productos</h5>
+                  <ul>
+                    <li><Link to="/catalogo">Catálogo Completo</Link></li>
+                    <li><Link to="/catalogo?rubro_id=1">Protección Personal</Link></li>
+                    <li><Link to="/catalogo?rubro_id=2">Trabajo en Altura</Link></li>
+                    <li><Link to="/novedades">Novedades</Link></li>
+                  </ul>
+                </div>
+                
+                <div className="link-group">
+                  <h5>Servicios</h5>
+                  <ul>
+                    <li><Link to="/cotizacion">Solicitar Cotización</Link></li>
+                    <li><Link to="/login">Área Clientes</Link></li>
+                    <li><Link to="/capacitacion">Capacitación</Link></li>
+                    <li><Link to="/soporte-tecnico">Soporte Técnico</Link></li>
+                  </ul>
+                </div>
               </div>
               
-              <div className="link-group">
-                <h5>Productos</h5>
-                <ul>
-                  <li><Link to="/catalogo">Catálogo Completo</Link></li>
-                  <li><Link to="/catalogo?rubro_id=1">Protección Personal</Link></li>
-                  <li><Link to="/catalogo?rubro_id=2">Trabajo en Altura</Link></li>
-                  <li><Link to="/novedades">Novedades</Link></li>
-                </ul>
-              </div>
-              
-              <div className="link-group">
-                <h5>Servicios</h5>
-                <ul>
-                  <li><Link to="/cotizacion">Solicitar Cotización</Link></li>
-                  <li><Link to="/login">Área Clientes</Link></li>
-                  <li><Link to="/capacitacion">Capacitación</Link></li>
-                  <li><Link to="/soporte-tecnico">Soporte Técnico</Link></li>
-                </ul>
+              <div className="pyramid-row bottom-row">
+                <div className="link-group services-group">
+                  <h5>Empresa</h5>
+                  <ul>
+                    <li><Link to="/quienes-somos">Quiénes Somos</Link></li>
+                    <li><Link to="/historia">Nuestra Historia</Link></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

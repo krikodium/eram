@@ -241,7 +241,7 @@
    MOBILE NAVIGATION - Enhanced Burger Menu
 ============================================================================= */
 .mobile-nav-toggle {
-  display: flex;
+  display: none; /* Hidden by default on desktop */
   place-items: center;
   padding: 10px;
   min-width: 44px;
@@ -558,6 +558,7 @@ body {
   }
   
   .mobile-nav-toggle {
+    display: flex;
     padding: 8px;
     min-width: 40px;
     min-height: 40px;
