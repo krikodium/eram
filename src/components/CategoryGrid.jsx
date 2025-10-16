@@ -1,6 +1,6 @@
 // src/components/CategoryGrid.jsx - Professional Category Grid Component
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { categoriaService } from '../services/supabase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -248,6 +248,8 @@ const CategoryGrid = () => {
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -263,7 +265,20 @@ const CategoryGrid = () => {
       }
     };
 
+    // Detectar si es móvil
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
     fetchCategorias();
+    checkIsMobile();
+    
+    // Escuchar cambios de tamaño de ventana
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
   }, []);
 
   if (loading) {
@@ -323,9 +338,22 @@ const CategoryGrid = () => {
           <div className="category-actions">
             <button 
               className="show-more-btn"
-              onClick={() => setShowAll(true)}
+              onClick={() => {
+                if (isMobile) {
+                  // En móvil, ir directamente al catálogo
+                  navigate('/catalogo');
+                } else {
+                  // En desktop, mostrar más categorías
+                  setShowAll(true);
+                }
+              }}
             >
-              <span>Ver {remainingCount} categorías más</span>
+              <span>
+                {isMobile 
+                  ? 'Ver más productos' 
+                  : `Ver ${remainingCount} categorías más`
+                }
+              </span>
               <FontAwesomeIcon icon={faChevronDown} />
             </button>
           </div>
