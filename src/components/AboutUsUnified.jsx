@@ -19,12 +19,12 @@ import './AboutUsUnified.css';
 const companyStory = {
   title: "Nuestra Historia",
   subtitle: "Más de dos décadas protegiendo la industria argentina",
-  description: "Desde 2003, ERAM ha sido el referente indiscutible en seguridad industrial en Argentina. Nacimos con la misión de proteger a los trabajadores argentinos y hoy, con más de 20 años de experiencia, continuamos siendo líderes en innovación y calidad.",
+  description: "Desde 2003, ERAM S.R.L. ha sido el referente indiscutible en seguridad industrial en Argentina. Nacimos con la misión de proteger a los trabajadores argentinos y hoy, con más de 20 años de experiencia, continuamos siendo líderes en innovación y calidad.",
   highlights: [
     {
       year: "2003",
       title: "Fundación",
-      description: "ERAM nace con la visión de revolucionar la seguridad industrial en Argentina",
+      description: "ERAM S.R.L. nace con la visión de revolucionar la seguridad industrial en Argentina",
       icon: <FaRocket />
     },
     {
@@ -66,22 +66,22 @@ const companyValues = [
 
 const industryExpertise = [
   {
-    icon: <FaIndustry />,
-    title: "Industria Petrolera",
-    description: "Equipos especializados para refinerías y plataformas offshore",
-    highlight: "15+ años"
-  },
-  {
     icon: <FaUsers />,
     title: "Construcción",
-    description: "Protección integral para obras de gran envergadura",
-    highlight: "500+ obras"
+    description: "Protección integral para obras de distintas escalas",
+    highlight: "100+ obras"
   },
   {
     icon: <FaChartLine />,
     title: "Minería",
     description: "Soluciones de seguridad para operaciones mineras",
-    highlight: "20+ minas"
+    highlight: "~200 operaciones"
+  },
+  {
+    icon: <FaHandshake />,
+    title: "Ferreterías",
+    description: "Cobertura nacional de puntos de venta y distribución",
+    highlight: "~1500 puntos"
   },
   
 ];

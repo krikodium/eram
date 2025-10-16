@@ -4,7 +4,7 @@
    BASE LAYOUT AND CONTAINER
 ============================================================================= */
 .quienes-somos-section {
-  background-color: #1a1a1a;
+  background: var(--bg-primary);
   color: var(--text-secondary);
   transition: opacity var(--transition-slow), transform var(--transition-slow);
   opacity: 1;
@@ -32,7 +32,7 @@
 .qs-intro-section {
   position: relative;
   padding: 0;
-  background-color: #1a1a1a;
+  background: var(--bg-primary);
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -84,19 +84,21 @@
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 2rem;
-  color: var(--text-primary);
+  color: #FFFFFF;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .intro-description {
   font-size: 1.2rem;
   line-height: 1.7;
-  color: var(--text-tertiary);
+  color: #FFFFFF;
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
   padding: 0 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* =============================================================================
@@ -169,7 +171,8 @@
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  color: var(--text-primary);
+  color: #FFFFFF;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .title-highlight {
@@ -184,9 +187,10 @@
 .qs-hero-subtitle {
   font-size: 1.25rem;
   line-height: 1.7;
-  color: var(--text-tertiary);
+  color: #FFFFFF;
   max-width: 800px;
   margin: 0 auto 3rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-actions {
@@ -573,8 +577,8 @@
   background: var(--bg-card);
   padding: 2rem;
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-secondary);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-primary);
   transition: all var(--transition-normal);
   position: relative;
   overflow: visible;
@@ -595,8 +599,9 @@
 }
 
 .value-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
   box-shadow: var(--card-shadow-hover);
+  border-color: var(--interactive-primary);
 }
 
 .value-header {
@@ -609,14 +614,16 @@
 .value-icon {
   width: 56px;
   height: 56px;
-  background: var(--value-color);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   font-size: 1.6rem;
   flex-shrink: 0;
+  box-shadow: none;
 }
 
 .value-title {
@@ -665,7 +672,7 @@
   padding: 6rem 2rem;
   text-align: center;
   overflow: hidden;
-  background: #1a1a1a;
+  background: var(--bg-primary);
 }
 
 .cta-background {
@@ -701,16 +708,18 @@
 .cta-title {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
-  color: var(--text-primary);
+  color: #FFFFFF;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cta-description {
   font-size: 1.2rem;
-  color: var(--text-tertiary);
+  color: #FFFFFF;
   line-height: 1.6;
   margin-bottom: 3rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cta-actions {
@@ -743,6 +752,7 @@
   background: var(--bg-card);
   color: var(--text-primary);
   border: 2px solid var(--border-primary);
+  box-shadow: var(--card-shadow);
 }
 
 .cta-btn.tertiary {

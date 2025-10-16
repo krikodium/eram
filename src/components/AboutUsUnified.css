@@ -4,10 +4,12 @@
    ABOUT US UNIFIED SECTION BASE
 ============================================================================= */
 .aboutus-unified-section {
-  padding: 8rem 0;
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  padding: var(--section-padding);
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  margin: 0;
 }
 
 .aboutus-unified-section::before {
@@ -27,6 +29,8 @@
   padding: 0 3rem;
   position: relative;
   z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* =============================================================================
@@ -53,17 +57,18 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, rgba(25, 118, 210, 0.1), rgba(25, 118, 210, 0.05));
-  border: 1px solid rgba(25, 118, 210, 0.2);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 50px;
   padding: 0.75rem 1.5rem;
   margin-bottom: 2rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--interactive-primary);
+  color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   backdrop-filter: blur(10px);
+  box-shadow: var(--card-shadow);
 }
 
 .badge-icon {
@@ -87,26 +92,14 @@
 }
 
 .title-highlight {
-  background: linear-gradient(135deg, #1976D2 0%, #42A5F5 50%, #64B5F6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-  filter: drop-shadow(0 2px 4px rgba(25, 118, 210, 0.3));
+  color: var(--text-primary);
+  -webkit-text-fill-color: unset;
+  background: none;
+  position: static;
+  filter: none;
 }
 
-.title-highlight::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 5px;
-  background: linear-gradient(90deg, #1976D2, #42A5F5, #64B5F6);
-  border-radius: 3px;
-  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.4);
-}
+.title-highlight::after { content: none; }
 
 .aboutus-unified-subtitle {
   font-size: 1.3rem;
@@ -126,6 +119,9 @@
 .company-story {
   margin-bottom: 8rem;
   text-align: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 .story-title {
@@ -146,9 +142,11 @@
 .story-timeline {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1000px;
+  gap: 1.5rem;
+  max-width: 1100px;
   margin: 0 auto;
+  align-items: stretch;
+  width: 100%;
 }
 
 .timeline-item {
@@ -158,20 +156,24 @@
   align-items: center;
   text-align: center;
   padding: 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 20px;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(20px);
-  min-height: 300px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-height: 280px;
+  height: auto;
   justify-content: flex-start;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: var(--card-shadow);
+  width: 100%;
 }
 
 .timeline-item:hover {
-  transform: translateY(-5px);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  border-color: var(--interactive-primary);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .timeline-marker {
@@ -185,21 +187,23 @@
 .timeline-icon {
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, var(--interactive-primary), rgba(211, 47, 47, 0.9));
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  box-shadow: 0 8px 32px rgba(211, 47, 47, 0.3);
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 
 .timeline-item:hover .timeline-icon {
-  transform: scale(1.1);
-  box-shadow: 0 12px 40px rgba(211, 47, 47, 0.4);
+  transform: scale(1.05);
+  border-color: var(--interactive-primary);
+  color: var(--interactive-primary);
 }
 
 .timeline-year {
@@ -266,38 +270,40 @@
   align-items: flex-start;
   gap: 1.5rem;
   padding: 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 20px;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--card-shadow);
 }
 
 .value-card:hover {
-  transform: translateY(-5px);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
-  border-color: var(--value-color);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  border-color: var(--interactive-primary);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .value-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, var(--value-color), rgba(var(--value-color), 0.8));
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   font-size: 1.8rem;
   flex-shrink: 0;
-  box-shadow: 0 6px 24px rgba(var(--value-color), 0.3);
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 
 .value-card:hover .value-icon {
-  transform: scale(1.1);
-  box-shadow: 0 8px 32px rgba(var(--value-color), 0.4);
+  transform: scale(1.05);
+  border-color: var(--interactive-primary);
+  color: var(--interactive-primary);
 }
 
 .value-content {
@@ -349,18 +355,26 @@
   gap: 2rem;
   max-width: 1000px;
   margin: 0 auto;
+  justify-items: center;
+  width: 100%;
 }
 
 .expertise-card {
   padding: 2.5rem 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 24px;
   text-align: center;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(25px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--card-shadow);
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .expertise-card::before {
@@ -380,30 +394,31 @@
 }
 
 .expertise-card:hover {
-  transform: translateY(-8px);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  border-color: var(--interactive-primary);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .expertise-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--interactive-primary), rgba(211, 47, 47, 0.9));
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   font-size: 2.2rem;
   margin: 0 auto 1.5rem;
-  box-shadow: 0 8px 32px rgba(211, 47, 47, 0.3);
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 
 .expertise-card:hover .expertise-icon {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 12px 40px rgba(211, 47, 47, 0.4);
+  transform: scale(1.05);
+  border-color: var(--interactive-primary);
+  color: var(--interactive-primary);
 }
 
 .expertise-content {
@@ -533,15 +548,37 @@
     padding: 1.5rem;
   }
   
+  .values-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .expertise-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .story-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
   .values-grid,
   .expertise-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .aboutus-unified-section {
     padding: 6rem 0;
+  }
+  
+  .aboutus-unified-container {
+    padding: 0 1.5rem;
   }
   
   .aboutus-unified-header {
@@ -571,12 +608,14 @@
   
   .timeline-item {
     padding: 1.5rem;
-    min-height: 250px;
+    min-height: 240px;
+    width: 100%;
   }
   
   .value-card,
   .expertise-card {
     padding: 1.5rem;
+    width: 100%;
   }
   
   .cta-buttons {

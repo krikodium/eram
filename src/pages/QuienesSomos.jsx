@@ -39,7 +39,7 @@ function QuienesSomos() {
 
   return (
     <div className={`quienes-somos-section ${isVisible ? 'visible' : ''}`}>
-      {/* Introducción de ERAM con fondo de video */}
+      {/* Introducción de ERAM S.R.L. con fondo de video */}
       <section className="qs-intro-section">
         <div className="intro-video-background">
           <video 
@@ -56,10 +56,10 @@ function QuienesSomos() {
         <div className="intro-container">
           <h1 className="intro-title">
             Conocé a
-            <span className="title-highlight"> ERAM</span>
+            <span className="title-highlight"> ERAM S.R.L.</span>
           </h1>
           <p className="intro-description">
-            Desde 2003, ERAM es líder en la distribución de equipos de protección personal 
+            Desde 2003, ERAM S.R.L. es líder en la distribución de equipos de protección personal 
             y seguridad industrial en Argentina. Con más de 20 años de experiencia, 
             brindamos soluciones integrales para proteger a los trabajadores en las 
             industrias más exigentes del país. Contamos con certificaciones IRAM y UL, 
@@ -86,7 +86,7 @@ function QuienesSomos() {
       <section className="qs-benefits-section">
         <div className="section-header">
           <h2 className="section-title">
-            Beneficios de elegir <span className="title-highlight">ERAM</span>
+            Beneficios de elegir <span className="title-highlight">ERAM S.R.L.</span>
           </h2>
           <p className="section-description">Por qué somos la mejor opción para tu empresa</p>
         </div>

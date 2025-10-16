@@ -5,7 +5,7 @@
 ============================================================================= */
 .category-icons-section {
   padding: 8rem 0;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
@@ -66,26 +66,14 @@
 }
 
 .title-highlight {
-  background: linear-gradient(135deg, #D32F2F 0%, #FF6B35 50%, #FF8A65 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-  filter: drop-shadow(0 2px 4px rgba(211, 47, 47, 0.3));
+  color: var(--text-primary);
+  -webkit-text-fill-color: unset;
+  background: none;
+  position: static;
+  filter: none;
 }
 
-.title-highlight::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 5px;
-  background: linear-gradient(90deg, #D32F2F, #FF6B35, #FF8A65);
-  border-radius: 3px;
-  box-shadow: 0 2px 8px rgba(211, 47, 47, 0.4);
-}
+.title-highlight::after { content: none; }
 
 .category-description {
   font-size: 1.3rem;
@@ -222,18 +210,18 @@
 .category-icon {
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, var(--category-color), rgba(var(--category-color), 0.9));
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   font-size: 2rem;
-  box-shadow: 0 6px 24px rgba(var(--category-color), 0.25);
+  box-shadow: none;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
   z-index: 2;
-  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .category-card:hover .category-icon {
@@ -299,7 +287,7 @@
 .category-hover-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(var(--category-color), 0.95), rgba(var(--category-color), 0.85));
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;

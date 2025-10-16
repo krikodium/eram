@@ -25,8 +25,8 @@ const credibilityData = [
     number: "10,000+",
     label: "Clientes Activos",
     description: "Empresas que confían en nuestra experiencia",
-    color: "#1976D2",
-    bgColor: "rgba(25, 118, 210, 0.1)"
+    color: "#D32F2F",
+    bgColor: "rgba(211, 47, 47, 0.1)"
   },
   
   {
@@ -34,8 +34,8 @@ const credibilityData = [
     number: "24",
     label: "Provincias Alcanzadas",
     description: "Cobertura en todo el territorio nacional",
-    color: "#FF6B35",
-    bgColor: "rgba(255, 107, 53, 0.1)"
+    color: "#D32F2F",
+    bgColor: "rgba(211, 47, 47, 0.1)"
   }
 ];
 

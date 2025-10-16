@@ -4,10 +4,11 @@
    CREDIBILITY SECTION BASE
 ============================================================================= */
 .credibility-section {
-  padding: 8rem 0;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  padding: var(--section-padding);
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
+  margin: 0;
 }
 
 .credibility-section::before {
@@ -24,7 +25,7 @@
 .credibility-container {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 3rem;
+  padding: 0 var(--component-padding);
   position: relative;
   z-index: 2;
 }
@@ -34,7 +35,7 @@
 ============================================================================= */
 .credibility-header {
   text-align: center;
-  margin-bottom: 6rem;
+  margin-bottom: var(--spacing-3xl);
   animation: credibilityFadeIn 1.2s ease-out;
 }
 
@@ -85,26 +86,13 @@
 }
 
 .title-highlight {
-  background: linear-gradient(135deg, #D32F2F 0%, #FF6B35 50%, #FF8A65 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-  filter: drop-shadow(0 2px 4px rgba(211, 47, 47, 0.3));
+  color: var(--text-primary);
+  -webkit-text-fill-color: unset;
+  background: none;
+  filter: none;
 }
 
-.title-highlight::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 5px;
-  background: linear-gradient(90deg, #D32F2F, #FF6B35, #FF8A65);
-  border-radius: 3px;
-  box-shadow: 0 2px 8px rgba(211, 47, 47, 0.4);
-}
+.title-highlight::after { content: none; }
 
 .credibility-description {
   font-size: 1.3rem;
@@ -122,8 +110,8 @@
 .credibility-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 6rem;
+  gap: var(--card-gap);
+  margin-bottom: var(--spacing-3xl);
 }
 
 .credibility-card {
@@ -176,18 +164,18 @@
 .credibility-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--credibility-color), rgba(var(--credibility-color), 0.9));
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   font-size: 2.2rem;
-  box-shadow: 0 8px 32px rgba(var(--credibility-color), 0.3);
+  box-shadow: none;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
   z-index: 2;
-  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .credibility-card:hover .credibility-icon {
@@ -281,32 +269,29 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 14px;
+  transition: all 0.25s ease;
+  box-shadow: var(--card-shadow);
 }
 
-.trust-item:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
+.trust-item:hover { border-color: var(--interactive-primary); transform: translateY(-2px); }
 
 .trust-icon {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, var(--interactive-primary), rgba(211, 47, 47, 0.8));
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   font-size: 1.5rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(211, 47, 47, 0.3);
+  box-shadow: none;
 }
 
 .trust-content h4 {
@@ -329,16 +314,16 @@
 ============================================================================= */
 @media (max-width: 1200px) {
   .credibility-container {
-    padding: 0 2rem;
+    padding: 0 var(--component-padding-mobile);
   }
   
   .credibility-cards {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    gap: var(--card-gap-mobile);
   }
   
   .credibility-card-inner {
-    padding: 2.5rem 1.5rem;
+    padding: var(--spacing-2xl) var(--spacing-md);
   }
   
   .credibility-icon {
@@ -358,11 +343,11 @@
 
 @media (max-width: 768px) {
   .credibility-section {
-    padding: 6rem 0;
+    padding: var(--section-padding-mobile);
   }
   
   .credibility-header {
-    margin-bottom: 4rem;
+    margin-bottom: var(--spacing-2xl);
   }
   
   .credibility-title {
@@ -371,12 +356,12 @@
   
   .credibility-cards {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    gap: var(--card-gap-mobile);
+    margin-bottom: var(--spacing-2xl);
   }
   
   .credibility-card-inner {
-    padding: 2rem 1.5rem;
+    padding: var(--spacing-lg) var(--spacing-md);
   }
   
   .credibility-icon {
@@ -391,21 +376,21 @@
   
   .trust-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: var(--card-gap-mobile);
   }
   
   .trust-item {
-    padding: 1.25rem;
+    padding: var(--spacing-md);
   }
 }
 
 @media (max-width: 480px) {
   .credibility-container {
-    padding: 0 1rem;
+    padding: 0 var(--spacing-sm);
   }
   
   .credibility-card-inner {
-    padding: 1.5rem 1rem;
+    padding: var(--spacing-md) var(--spacing-sm);
   }
   
   .credibility-icon {
@@ -425,7 +410,7 @@
   .trust-item {
     flex-direction: column;
     text-align: center;
-    gap: 0.75rem;
+    gap: var(--spacing-sm);
   }
 }
 

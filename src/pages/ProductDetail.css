@@ -97,10 +97,11 @@
   gap: 4rem;
   margin-bottom: 4rem;
   padding: 3rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 24px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--card-shadow);
 }
 
 /* =============================================================================
@@ -118,14 +119,16 @@
   border-radius: 16px;
   overflow: hidden;
   background: var(--bg-secondary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-primary);
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: var(--card-shadow);
 }
 
 .product-image-container:hover {
   transform: scale(1.02);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--interactive-primary);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .product-main-image {
@@ -286,9 +289,10 @@
 
 .product-description {
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-card);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--card-shadow);
 }
 
 .product-description h3 {
@@ -311,9 +315,10 @@
 
 .product-pricing {
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 16px;
+  box-shadow: var(--card-shadow);
 }
 
 .price-section {
@@ -462,10 +467,11 @@
 .technical-specs-section {
   margin-bottom: 4rem;
   padding: 3rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 24px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--card-shadow);
 }
 
 .specs-header {
@@ -497,18 +503,19 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 12px;
   transition: all 0.3s ease;
   text-align: left;
   min-height: auto;
   height: auto;
+  box-shadow: var(--card-shadow);
 }
 
 .spec-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--interactive-primary);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .spec-label {
@@ -548,10 +555,11 @@
 .bulk-prices-section {
   margin-bottom: 4rem;
   padding: 3rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 24px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--card-shadow);
 }
 
 .bulk-prices-header {

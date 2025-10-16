@@ -3,7 +3,7 @@ import React from 'react';
 import HeroCarousel from '../components/HeroCarousel';
 import CredibilitySection from '../components/CredibilitySection';
 import BrandBenefits from '../components/BrandBenefits';
-import CategoryIcons from '../components/CategoryIcons';
+import CategoryGrid from '../components/CategoryGrid';
 import AboutUsUnified from '../components/AboutUsUnified';
 import IramCertificates from '../components/IramCertificates';
 import ContactUnified from '../components/ContactUnified';
@@ -23,8 +23,8 @@ function Home() {
         <BrandBenefits />
       </section>
 
-      {/* 4. Category Carousel - Product Discovery */}
-      <CategoryIcons />
+      {/* 4. Category Grid - Product Discovery */}
+      <CategoryGrid />
 
       {/* 5. About Us - Company Story */}
       <AboutUsUnified />

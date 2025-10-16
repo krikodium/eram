@@ -16,7 +16,7 @@ const FeriasHero = () => {
       <div className="ferias-hero-background">
         <img 
           src="/ferias/expo-ferretera-buenos-aires-2023-1.jpg" 
-          alt="ERAM en Ferias Internacionales" 
+          alt="ERAM S.R.L. en Ferias Internacionales" 
           className="hero-bg-image" 
           loading="eager"
         />

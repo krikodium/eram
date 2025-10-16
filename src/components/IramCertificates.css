@@ -1,10 +1,11 @@
 /* src/components/IramCertificates.css - Professional IRAM Certificates Styling */
 
 .iram-certificates-section {
-  padding: 6rem 0;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  padding: var(--section-padding);
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
+  margin: 0;
 }
 
 .iram-certificates-section::before {
@@ -40,20 +41,21 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: rgba(211, 47, 47, 0.1);
-  border: 1px solid rgba(211, 47, 47, 0.3);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 50px;
   padding: 0.75rem 1.5rem;
   margin-bottom: 2rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--accent-primary);
+  color: var(--text-primary);
   backdrop-filter: blur(10px);
+  box-shadow: var(--card-shadow);
 }
 
 .badge-icon {
   font-size: 1rem;
-  color: var(--accent-primary);
+  color: var(--text-primary);
 }
 
 .certificates-title {
@@ -64,21 +66,8 @@
   color: var(--text-primary);
 }
 
-.title-highlight {
-  color: var(--accent-primary);
-  position: relative;
-}
-
-.title-highlight::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-  border-radius: 2px;
-}
+.title-highlight { color: var(--text-primary); }
+.title-highlight::after { content: none; }
 
 .certificates-subtitle {
   font-size: 1.2rem;
@@ -103,15 +92,16 @@
 }
 
 .certificate-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 20px;
   padding: 2.5rem;
   text-align: center;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--card-shadow);
   animation: slideInUp 0.8s ease-out var(--delay, 0s) both;
 }
 
@@ -132,23 +122,24 @@
 }
 
 .certificate-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(211, 47, 47, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  border-color: var(--interactive-primary);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .certificate-icon {
   width: 80px;
   height: 80px;
   margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  color: white;
-  box-shadow: 0 10px 30px rgba(211, 47, 47, 0.3);
+  color: var(--text-primary);
+  box-shadow: none;
 }
 
 .certificate-title {
@@ -225,13 +216,14 @@
   align-items: center;
   text-align: center;
   padding: 2.5rem 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 20px;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--card-shadow);
 }
 
 .benefit-card::before {
@@ -251,10 +243,9 @@
 }
 
 .benefit-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(211, 47, 47, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  transform: translateY(-4px);
+  border-color: var(--interactive-primary);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .benefit-icon-wrapper {
@@ -264,20 +255,22 @@
 .benefit-icon {
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-primary);
   font-size: 1.8rem;
-  box-shadow: 0 8px 32px rgba(211, 47, 47, 0.3);
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 
 .benefit-card:hover .benefit-icon {
-  transform: scale(1.1);
-  box-shadow: 0 12px 40px rgba(211, 47, 47, 0.4);
+  transform: scale(1.05);
+  border-color: var(--interactive-primary);
+  color: var(--interactive-primary);
 }
 
 .benefit-content {
@@ -305,18 +298,19 @@
 
 .logo-container {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(211, 47, 47, 0.2);
+  background: var(--bg-card);
+  border: 2px solid var(--border-primary);
   border-radius: 20px;
   padding: 2rem 3rem;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  box-shadow: var(--card-shadow);
 }
 
 .logo-container:hover {
-  border-color: rgba(211, 47, 47, 0.4);
+  border-color: var(--interactive-primary);
   transform: translateY(-4px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .logo-placeholder {
@@ -337,7 +331,7 @@
 
 .logo-icon {
   font-size: 3rem;
-  color: var(--accent-primary);
+  color: var(--text-primary);
 }
 
 .logo-text {

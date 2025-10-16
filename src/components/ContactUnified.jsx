@@ -208,7 +208,7 @@ function ContactUnified() {
                         </div>
                       )}
                       <iframe
-                        title="Ubicación ERAM - Av. San Martín 7421, CABA, Buenos Aires"
+                        title="Ubicación ERAM S.R.L. - Av. San Martín 7421, CABA, Buenos Aires"
                         src="https://maps.google.com/maps?q=Av%20San%20Martin%207421%2C%20CABA%2C%20Buenos%20Aires%2C%20Argentina&output=embed&z=16"
                         allowFullScreen
                         loading="lazy"
@@ -225,7 +225,7 @@ function ContactUnified() {
                     <div className="map-info">
                       <div className="location-header">
                         <h4>📍 Ubicación Exacta</h4>
-                        <p><strong>ERAM S.A.</strong><br/>Av. San Martín 7421<br/>C1424 CABA, Buenos Aires</p>
+                        <p><strong>ERAM S.R.L.</strong><br/>Av. San Martín 7421<br/>C1424 CABA, Buenos Aires</p>
                       </div>
                       
                       <div className="contact-details">

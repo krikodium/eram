@@ -82,12 +82,12 @@ const PastEvents = () => {
       country: "Argentina",
       category: "Ferretería Industrial",
       status: "fundacional",
-      description: "Una de nuestras primeras participaciones importantes que marcó el crecimiento de ERAM en el sector ferretero argentino. Estableció las bases para nuestro liderazgo actual en el mercado.",
+      description: "Una de nuestras primeras participaciones importantes que marcó el crecimiento de ERAM S.R.L. en el sector ferretero argentino. Estableció las bases para nuestro liderazgo actual en el mercado.",
       images: [
         "/ferias/expo-ferretera-buenos-aires-2017-1.jpg"
       ],
       highlights: [
-        "Consolidación definitiva de la marca ERAM en el mercado nacional",
+        "Consolidación definitiva de la marca ERAM S.R.L. en el mercado nacional",
         "Establecimiento de relaciones comerciales duraderas y estratégicas",
         "Presentación de productos innovadores que marcaron tendencia",
         "Base sólida establecida para futuras participaciones internacionales",

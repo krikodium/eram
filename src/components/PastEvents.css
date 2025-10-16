@@ -5,7 +5,7 @@
 ============================================================================= */
 .past-events-section {
   padding: 6rem 0;
-  background: #1a1a1a;
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
 }
@@ -14,9 +14,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(211, 47, 47, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(25, 118, 210, 0.03) 0%, transparent 50%);
+  background: transparent;
   pointer-events: none;
   z-index: 1;
 }
@@ -42,15 +40,15 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(135deg, var(--interactive-primary) 0%, #FF6B35 100%);
-  color: var(--text-inverse);
+  background: var(--bg-card);
+  color: var(--text-primary);
   padding: 0.875rem 2rem;
   border-radius: var(--radius-full);
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 2rem;
-  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-primary);
   backdrop-filter: blur(10px);
 }
 
@@ -69,10 +67,10 @@
 }
 
 .title-highlight {
-  background: linear-gradient(135deg, var(--interactive-primary) 0%, #FF6B35 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
+  -webkit-text-fill-color: unset;
+  background: none;
+  filter: none;
 }
 
 .section-description {
@@ -106,24 +104,25 @@
 
 .event-card {
   background: var(--bg-card);
-  border: 2px solid var(--border-secondary);
+  border: 1px solid var(--border-primary);
   border-radius: var(--radius-xl);
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.3s ease;
   position: relative;
+  box-shadow: var(--card-shadow);
 }
 
 .event-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: var(--interactive-primary);
-  box-shadow: 0 15px 40px rgba(211, 47, 47, 0.2);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .event-card.active {
   border-color: var(--interactive-primary);
-  box-shadow: 0 10px 30px rgba(211, 47, 47, 0.3);
-  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
 }
 
 .event-card-image {
@@ -234,7 +233,7 @@
 ============================================================================= */
 .event-details-panel {
   background: var(--bg-card);
-  border: 2px solid var(--border-secondary);
+  border: 1px solid var(--border-primary);
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--card-shadow);
@@ -320,8 +319,9 @@
   display: flex;
   gap: 0.5rem;
   padding: 1rem;
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   overflow-x: auto;
+  border-top: 1px solid var(--border-primary);
 }
 
 .thumbnail-btn {
@@ -358,7 +358,8 @@
 ============================================================================= */
 .event-info-section {
   padding: 2rem;
-  background: var(--bg-secondary);
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-primary);
 }
 
 .category-badge {
@@ -437,9 +438,11 @@
   align-items: flex-start;
   gap: 0.75rem;
   padding: 1rem;
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   border-radius: var(--radius-lg);
   border-left: 4px solid var(--interactive-primary);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--card-shadow);
 }
 
 .achievement-icon {

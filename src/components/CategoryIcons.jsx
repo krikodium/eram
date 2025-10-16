@@ -75,13 +75,13 @@ const CATEGORY_ICONS = {
   },
   "Indumentaria De Lluvia": { 
     icon: <FontAwesomeIcon icon={faUmbrella} size="lg" />, 
-    color: "#2196F3", 
-    bgColor: "rgba(33, 150, 243, 0.15)" 
+    color: "#D32F2F", 
+    bgColor: "rgba(211, 47, 47, 0.15)" 
   },
   "Kits Vehiculares": { 
     icon: <FontAwesomeIcon icon={faCar} size="lg" />, 
-    color: "#9C27B0", 
-    bgColor: "rgba(156, 39, 176, 0.15)" 
+    color: "#D32F2F", 
+    bgColor: "rgba(211, 47, 47, 0.15)" 
   },
   "Kraftex": { 
     icon: <FontAwesomeIcon icon={faBox} size="lg" />, 
@@ -95,8 +95,8 @@ const CATEGORY_ICONS = {
   },
   "Proteccion Auditiva": { 
     icon: <FontAwesomeIcon icon={faHeadphones} size="lg" />, 
-    color: "#4CAF50", 
-    bgColor: "rgba(76, 175, 80, 0.15)" 
+    color: "#D32F2F", 
+    bgColor: "rgba(211, 47, 47, 0.15)" 
   },
   "Proteccion En Altura": { 
     icon: <FontAwesomeIcon icon={faMountain} size="lg" />, 
@@ -105,23 +105,23 @@ const CATEGORY_ICONS = {
   },
   "Proteccion Facial": { 
     icon: <FontAwesomeIcon icon={faUser} size="lg" />, 
-    color: "#3F51B5", 
-    bgColor: "rgba(63, 81, 181, 0.15)" 
+    color: "#D32F2F", 
+    bgColor: "rgba(211, 47, 47, 0.15)" 
   },
   "Proteccion Ocular": { 
     icon: <FontAwesomeIcon icon={faGlasses} size="lg" />, 
-    color: "#3F51B5", 
-    bgColor: "rgba(63, 81, 181, 0.15)" 
+    color: "#D32F2F", 
+    bgColor: "rgba(211, 47, 47, 0.15)" 
   },
   "Proteccion Respiratoria": { 
     icon: <FontAwesomeIcon icon={faUser} size="lg" />, 
-    color: "#00BCD4", 
-    bgColor: "rgba(0, 188, 212, 0.15)" 
+    color: "#D32F2F", 
+    bgColor: "rgba(211, 47, 47, 0.15)" 
   },
   "Señalizacion Industrial": { 
     icon: <FontAwesomeIcon icon={faExclamationCircle} size="lg" />, 
-    color: "#FF9800", 
-    bgColor: "rgba(255, 152, 0, 0.15)" 
+    color: "#D32F2F", 
+    bgColor: "rgba(211, 47, 47, 0.15)" 
   },
   "Señalización Vial": { 
     icon: <FontAwesomeIcon icon={faExclamationTriangle} size="lg" />, 

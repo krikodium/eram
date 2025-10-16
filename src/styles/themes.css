@@ -15,14 +15,15 @@
   --brand-red-dark: #8B0000;
   
   /* Accent Colors for Light Theme */
-  --accent-blue: #1976D2;
-  --accent-blue-light: #42A5F5;
-  --accent-orange: #FF6B35;
-  --accent-orange-light: #FF8A65;
-  --accent-green: #2E7D32;
-  --accent-green-light: #66BB6A;
-  --accent-purple: #7B1FA2;
-  --accent-purple-light: #AB47BC;
+  /* Remove unused accents (blue/orange/green/purple) per new palette */
+  --accent-blue: #000000;
+  --accent-blue-light: #000000;
+  --accent-orange: #D32F2F; /* map orange ref to brand red */
+  --accent-orange-light: #D32F2F;
+  --accent-green: #000000;
+  --accent-green-light: #000000;
+  --accent-purple: #000000;
+  --accent-purple-light: #000000;
   
   /* Shadows and Effects - Enhanced */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -46,6 +47,35 @@
   --radius-xl: 24px;
   --radius-2xl: 32px;
   --radius-full: 9999px;
+  
+  /* Spacing System - Consistent Vertical Rhythm */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 1rem;      /* 16px */
+  --spacing-md: 1.5rem;    /* 24px */
+  --spacing-lg: 2rem;      /* 32px */
+  --spacing-xl: 3rem;      /* 48px */
+  --spacing-2xl: 4rem;     /* 64px */
+  --spacing-3xl: 6rem;     /* 96px */
+  --spacing-4xl: 8rem;     /* 128px */
+  --spacing-5xl: 10rem;    /* 160px */
+  
+  /* Section Spacing - Unified Home Layout */
+  --section-padding: var(--spacing-4xl) 0;        /* 8rem top/bottom */
+  --section-padding-mobile: var(--spacing-3xl) 0; /* 6rem top/bottom mobile */
+  --section-gap: var(--spacing-2xl);              /* 4rem between sections */
+  --section-gap-mobile: var(--spacing-xl);        /* 3rem between sections mobile */
+  
+  /* Component Spacing - Internal Elements */
+  --component-padding: var(--spacing-xl);         /* 3rem internal padding */
+  --component-padding-mobile: var(--spacing-lg);  /* 2rem internal padding mobile */
+  --component-gap: var(--spacing-lg);             /* 2rem between components */
+  --component-gap-mobile: var(--spacing-md);      /* 1.5rem between components mobile */
+  
+  /* Card Spacing - Consistent Card Layout */
+  --card-padding: var(--spacing-lg);              /* 2rem card padding */
+  --card-padding-mobile: var(--spacing-md);       /* 1.5rem card padding mobile */
+  --card-gap: var(--spacing-md);                  /* 1.5rem between cards */
+  --card-gap-mobile: var(--spacing-sm);           /* 1rem between cards mobile */
 }
 
 /* =============================================================================
@@ -53,13 +83,13 @@
 ============================================================================= */
 [data-theme="dark"] {
   /* Background Colors - Enhanced */
-  --bg-primary: #0A0A0B;
-  --bg-secondary: #1A1A1B;
-  --bg-tertiary: #2D2D30;
-  --bg-elevated: #3C3C41;
-  --bg-surface: #252527;
-  --bg-card: #1E1E1F;
-  --bg-hover: #2A2A2C;
+  --bg-primary: #000000; /* fondo 100% negro */
+  --bg-secondary: #0A0A0A;
+  --bg-tertiary: #121212;
+  --bg-elevated: #161616;
+  --bg-surface: #0D0D0D;
+  --bg-card: #0F0F0F;
+  --bg-hover: #1A1A1A;
   
   /* Text Colors - Enhanced */
   --text-primary: #FFFFFF;
@@ -111,13 +141,13 @@
 ============================================================================= */
 [data-theme="light"] {
   /* Background Colors - Sophisticated Light with Better Contrast */
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F8FAFC;
-  --bg-tertiary: #F1F5F9;
+  --bg-primary: #FFFFFF; /* fondo 100% blanco */
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #FFFFFF;
   --bg-elevated: #FFFFFF;
-  --bg-surface: #FEFEFE;
+  --bg-surface: #FFFFFF;
   --bg-card: #FFFFFF;
-  --bg-hover: #F1F5F9;
+  --bg-hover: #F6F6F6;
   
   /* Text Colors - Enhanced Contrast for Better Readability */
   --text-primary: #0F172A;
@@ -133,12 +163,12 @@
   --interactive-primary-active: var(--brand-red-dark);
   --interactive-secondary: #E2E8F0;
   --interactive-secondary-hover: #CBD5E1;
-  --interactive-accent: var(--accent-blue);
-  --interactive-accent-hover: #1565C0;
+  --interactive-accent: var(--brand-red);
+  --interactive-accent-hover: var(--brand-red-hover);
   
   /* Accent Variations for Light Theme */
-  --accent-primary: var(--accent-blue);
-  --accent-secondary: var(--accent-orange);
+  --accent-primary: var(--brand-red);
+  --accent-secondary: var(--brand-red);
   --accent-tertiary: var(--accent-green);
   --accent-quaternary: var(--accent-purple);
   

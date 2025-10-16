@@ -124,7 +124,7 @@ const VisitBenefits = () => {
         {/* Call to Action */}
         <div className="benefits-cta" data-aos="fade-up" data-aos-delay="800">
           <div className="cta-content">
-            <h3 className="cta-title">¿Listo para experimentar la diferencia ERAM?</h3>
+            <h3 className="cta-title">¿Listo para experimentar la diferencia ERAM S.R.L.?</h3>
             <p className="cta-description">
               Visitá nuestro stand en la próxima feria y descubrí por qué somos líderes en seguridad industrial
             </p>

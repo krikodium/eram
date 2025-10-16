@@ -7,23 +7,23 @@ const benefits = [
     icon: <FaShippingFast />,
     title: 'Envíos en 24hs',
     description: 'Logística ágil y envíos a todo el país con seguimiento completo.',
-    color: '#FF6B35',
-    bgColor: 'rgba(255, 107, 53, 0.1)'
+    color: '#D32F2F',
+    bgColor: 'rgba(211, 47, 47, 0.1)'
   },
   
   {
     icon: <FaBoxes />,
     title: 'Stock Permanente',
     description: 'Disponibilidad continua de productos esenciales para tu industria.',
-    color: '#1976D2',
-    bgColor: 'rgba(25, 118, 210, 0.1)'
+    color: '#D32F2F',
+    bgColor: 'rgba(211, 47, 47, 0.1)'
   },
   {
     icon: <FaHeadset />,
     title: 'Asesoramiento Técnico',
     description: 'Especialistas que te acompañan en cada etapa de tu compra.',
-    color: '#7B1FA2',
-    bgColor: 'rgba(123, 31, 162, 0.1)'
+    color: '#D32F2F',
+    bgColor: 'rgba(211, 47, 47, 0.1)'
   },
 ];
 
@@ -34,7 +34,7 @@ function BrandBenefits() {
         <div className="benefits-header">
           <h2 className="benefits-title">
             ¿Por qué elegir
-            <span className="title-highlight">ERAM? </span>
+            <span className="title-highlight">ERAM S.R.L.? </span>
           </h2>
           <p className="benefits-description">
             Más de 20 años de experiencia nos respaldan como líderes en seguridad industrial. 
