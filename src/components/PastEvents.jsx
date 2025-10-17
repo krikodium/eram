@@ -124,7 +124,22 @@ const PastEvents = () => {
       setImageLoading(true);
       setSelectedEvent(index);
       setCurrentImageIndex(0);
-      setTimeout(() => setImageLoading(false), 300);
+      
+      // Scroll hacia arriba donde empieza la foto de la feria
+      setTimeout(() => {
+        const eventDetailsPanel = document.getElementById('event-details-panel');
+        if (eventDetailsPanel) {
+          // Detectar si es mobile para ajustar el scroll
+          const isMobile = window.innerWidth <= 768;
+          
+          eventDetailsPanel.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: isMobile ? 'center' : 'start',
+            inline: 'nearest'
+          });
+        }
+        setImageLoading(false);
+      }, 100);
     }
   };
 
@@ -222,7 +237,7 @@ const PastEvents = () => {
           </div>
 
           {/* Event Details Panel */}
-          <div className="event-details-panel" data-aos="fade-left" data-aos-delay="400">
+          <div id="event-details-panel" className="event-details-panel" data-aos="fade-left" data-aos-delay="400">
             {pastEvents[selectedEvent] && (
               <div 
                 className={`detail-card ${imageLoading ? 'loading' : ''}`} 
