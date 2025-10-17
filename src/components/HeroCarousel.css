@@ -10,7 +10,7 @@
   min-height: 700px;
   max-height: 900px;
   overflow: hidden;
-  background: var(--bg-primary);
+  background: transparent;
   margin: 0;
   padding: 0;
 }

@@ -5,7 +5,7 @@
 ============================================================================= */
 .aboutus-unified-section {
   padding: var(--section-padding);
-  background: var(--bg-primary);
+  background: transparent;
   position: relative;
   overflow: hidden;
   width: 100%;

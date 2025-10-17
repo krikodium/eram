@@ -5,7 +5,7 @@
 ============================================================================= */
 .category-grid-section {
   padding: var(--section-padding);
-  background: var(--bg-primary);
+  background: transparent;
   position: relative;
   overflow: hidden;
   margin: 0;
