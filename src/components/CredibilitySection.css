@@ -80,7 +80,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   letter-spacing: -0.02em;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -309,6 +309,51 @@
   margin: 0;
 }
 
+/* Mobile optimizations for trust content */
+@media (max-width: 768px) {
+  .trust-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .trust-content h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .trust-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    text-align: center;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  .trust-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    opacity: 0.9;
+    text-align: center;
+    max-width: 250px;
+  }
+}
+
 /* =============================================================================
    RESPONSIVE DESIGN
 ============================================================================= */
@@ -347,40 +392,119 @@
   }
   
   .credibility-header {
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-xl);
   }
   
   .credibility-title {
-    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    font-size: clamp(2.2rem, 7vw, 3rem);
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .credibility-title span {
+    white-space: nowrap;
+  }
+  
+  .credibility-description {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
   }
   
   .credibility-cards {
     grid-template-columns: 1fr;
-    gap: var(--card-gap-mobile);
-    margin-bottom: var(--spacing-2xl);
+    gap: 1rem;
+    margin-bottom: var(--spacing-xl);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .credibility-card-inner {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: 1.25rem 1rem;
+    border-radius: 16px;
+    gap: 0.75rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .credibility-card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+    opacity: 0.6;
   }
   
   .credibility-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 1.8rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
   
   .credibility-number {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  
+  .credibility-label {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  .credibility-card .credibility-description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    opacity: 0.9;
+    max-width: 280px;
+    margin: 0 auto;
   }
   
   .trust-grid {
     grid-template-columns: 1fr;
-    gap: var(--card-gap-mobile);
+    gap: 1rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .trust-item {
-    padding: var(--spacing-md);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .trust-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+    opacity: 0.6;
+  }
+  
+  .trust-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -389,28 +513,111 @@
     padding: 0 var(--spacing-sm);
   }
   
+  .credibility-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+  
+  .credibility-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .credibility-cards {
+    gap: 0.75rem;
+    max-width: 320px;
+  }
+  
   .credibility-card-inner {
-    padding: var(--spacing-md) var(--spacing-sm);
+    padding: 1rem 0.75rem;
+    border-radius: 14px;
+    gap: 0.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .credibility-card-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+    opacity: 0.6;
   }
   
   .credibility-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
   }
   
   .credibility-number {
-    font-size: 2rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
   }
   
   .credibility-label {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  .credibility-card .credibility-description {
+    font-size: 0.75rem;
+    line-height: 1.3;
+    opacity: 0.9;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+  
+  .trust-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .trust-grid {
+    max-width: 320px;
   }
   
   .trust-item {
     flex-direction: column;
     text-align: center;
-    gap: var(--spacing-sm);
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .trust-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+    opacity: 0.6;
+  }
+  
+  .trust-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
   }
 }
 

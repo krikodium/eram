@@ -65,8 +65,8 @@ function CredibilitySection() {
           </div>
           
           <h2 className="credibility-title">
-            Más de dos décadas de
-            <span className="title-highlight">Experiencia</span>
+            <span>Más de dos décadas</span>
+            <span className="title-highlight">de Experiencia</span>
           </h2>
           
           <p className="credibility-description">

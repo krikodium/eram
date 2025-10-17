@@ -156,24 +156,53 @@
   align-items: center;
   text-align: center;
   padding: 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(0, 0, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   backdrop-filter: blur(10px);
   min-height: 280px;
   height: auto;
   justify-content: flex-start;
   overflow: hidden;
   box-sizing: border-box;
-  box-shadow: var(--card-shadow);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   width: 100%;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
 
 .timeline-item:hover {
   transform: translateY(-4px);
-  border-color: var(--interactive-primary);
-  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(211, 47, 47, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(0, 0, 0, 0.08) 100%);
+}
+
+.timeline-item:hover::before {
+  opacity: 1;
 }
 
 .timeline-marker {
@@ -187,8 +216,10 @@
 .timeline-icon {
   width: 70px;
   height: 70px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -196,14 +227,25 @@
   color: var(--text-primary);
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  box-shadow: none;
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  backdrop-filter: blur(10px);
 }
 
 .timeline-item:hover .timeline-icon {
-  transform: scale(1.05);
-  border-color: var(--interactive-primary);
+  transform: scale(1.1) rotate(5deg);
+  border-color: rgba(211, 47, 47, 0.4);
   color: var(--interactive-primary);
+  box-shadow: 
+    0 12px 32px rgba(211, 47, 47, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(211, 47, 47, 0.1) 0%, 
+    rgba(211, 47, 47, 0.02) 100%);
 }
 
 .timeline-year {
@@ -270,25 +312,58 @@
   align-items: flex-start;
   gap: 1.5rem;
   padding: 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(0, 0, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   backdrop-filter: blur(10px);
-  box-shadow: var(--card-shadow);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
 
 .value-card:hover {
   transform: translateY(-4px);
-  border-color: var(--interactive-primary);
-  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(211, 47, 47, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(0, 0, 0, 0.08) 100%);
+}
+
+.value-card:hover::before {
+  opacity: 1;
 }
 
 .value-icon {
   width: 60px;
   height: 60px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -296,14 +371,25 @@
   color: var(--text-primary);
   font-size: 1.8rem;
   flex-shrink: 0;
-  box-shadow: none;
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  backdrop-filter: blur(10px);
 }
 
 .value-card:hover .value-icon {
-  transform: scale(1.05);
-  border-color: var(--interactive-primary);
+  transform: scale(1.1) rotate(5deg);
+  border-color: rgba(211, 47, 47, 0.4);
   color: var(--interactive-primary);
+  box-shadow: 
+    0 12px 32px rgba(211, 47, 47, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(211, 47, 47, 0.1) 0%, 
+    rgba(211, 47, 47, 0.02) 100%);
 }
 
 .value-content {
@@ -361,15 +447,21 @@
 
 .expertise-card {
   padding: 2.5rem 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(0, 0, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--card-shadow);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   width: 100%;
   min-height: 300px;
   display: flex;
@@ -383,9 +475,9 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--interactive-primary), #FF6B35);
-  opacity: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+  opacity: 0.6;
   transition: opacity 0.3s ease;
 }
 
@@ -395,15 +487,24 @@
 
 .expertise-card:hover {
   transform: translateY(-4px);
-  border-color: var(--interactive-primary);
-  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(211, 47, 47, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(0, 0, 0, 0.08) 100%);
 }
 
 .expertise-icon {
   width: 80px;
   height: 80px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -411,14 +512,25 @@
   color: var(--text-primary);
   font-size: 2.2rem;
   margin: 0 auto 1.5rem;
-  box-shadow: none;
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  backdrop-filter: blur(10px);
 }
 
 .expertise-card:hover .expertise-icon {
-  transform: scale(1.05);
-  border-color: var(--interactive-primary);
+  transform: scale(1.1) rotate(5deg);
+  border-color: rgba(211, 47, 47, 0.4);
   color: var(--interactive-primary);
+  box-shadow: 
+    0 12px 32px rgba(211, 47, 47, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(211, 47, 47, 0.1) 0%, 
+    rgba(211, 47, 47, 0.02) 100%);
 }
 
 .expertise-content {

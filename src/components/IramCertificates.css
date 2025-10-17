@@ -92,16 +92,22 @@
 }
 
 .certificate-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(0, 0, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 2.5rem;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--card-shadow);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   animation: slideInUp 0.8s ease-out var(--delay, 0s) both;
 }
 
@@ -111,35 +117,62 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
 
 .certificate-card:hover::before {
-  transform: scaleX(1);
+  opacity: 1;
 }
 
 .certificate-card:hover {
   transform: translateY(-4px);
-  border-color: var(--interactive-primary);
-  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(211, 47, 47, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(0, 0, 0, 0.08) 100%);
 }
 
 .certificate-icon {
   width: 80px;
   height: 80px;
   margin: 0 auto 1.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   color: var(--text-primary);
-  box-shadow: none;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  backdrop-filter: blur(10px);
+}
+
+.certificate-card:hover .certificate-icon {
+  transform: scale(1.1) rotate(5deg);
+  border-color: rgba(211, 47, 47, 0.4);
+  color: var(--interactive-primary);
+  box-shadow: 
+    0 12px 32px rgba(211, 47, 47, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(211, 47, 47, 0.1) 0%, 
+    rgba(211, 47, 47, 0.02) 100%);
 }
 
 .certificate-title {
@@ -216,14 +249,20 @@
   align-items: center;
   text-align: center;
   padding: 2.5rem 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(0, 0, 0, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--card-shadow);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .benefit-card::before {
@@ -232,20 +271,27 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
 
 .benefit-card:hover::before {
-  transform: scaleX(1);
+  opacity: 1;
 }
 
 .benefit-card:hover {
   transform: translateY(-4px);
-  border-color: var(--interactive-primary);
-  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(211, 47, 47, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.12) 0%, 
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(0, 0, 0, 0.08) 100%);
 }
 
 .benefit-icon-wrapper {
@@ -255,22 +301,35 @@
 .benefit-icon {
   width: 70px;
   height: 70px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
   font-size: 1.8rem;
-  box-shadow: none;
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  backdrop-filter: blur(10px);
 }
 
 .benefit-card:hover .benefit-icon {
-  transform: scale(1.05);
-  border-color: var(--interactive-primary);
+  transform: scale(1.1) rotate(5deg);
+  border-color: rgba(211, 47, 47, 0.4);
   color: var(--interactive-primary);
+  box-shadow: 
+    0 12px 32px rgba(211, 47, 47, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    rgba(211, 47, 47, 0.1) 0%, 
+    rgba(211, 47, 47, 0.02) 100%);
 }
 
 .benefit-content {
