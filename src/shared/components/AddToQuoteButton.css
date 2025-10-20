@@ -649,3 +649,322 @@
     display: none;
   }
 }
+
+/* =============================================================================
+   ESTILOS ESPECÍFICOS PARA BOTONES DEL CATÁLOGO
+   ============================================================================= */
+
+/* Asegurar que el botón del catálogo se renderice correctamente desde el primer momento */
+.card-quote-btn {
+  /* Forzar tamaño correcto desde el primer render */
+  min-height: 44px !important;
+  height: 44px !important;
+  width: 120px !important;
+  padding: 0 !important;
+  font-size: 0.9rem !important;
+  font-weight: 800 !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  background: linear-gradient(135deg, var(--interactive-primary), #d32f2f) !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Mobile específico para botones del catálogo */
+@media (max-width: 768px) {
+  .card-quote-btn {
+    min-height: 40px !important;
+    height: 40px !important;
+    width: 100px !important;
+    font-size: 0.8rem !important;
+    border-radius: 10px !important;
+    gap: 0.4rem !important;
+  }
+  
+  .quantity-controls {
+    min-height: 32px !important;
+    height: 32px !important;
+    width: 95px !important;
+    gap: 0.6rem !important;
+    padding: 0.4rem 0.6rem !important;
+    border-radius: 10px !important;
+    /* Animación de entrada para mobile */
+    animation: counterSlideInMobile 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  }
+  
+  .quantity-controls .quantity-btn {
+    width: 14px !important;
+    height: 14px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .quantity-controls .quantity-display {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-quote-btn {
+    min-height: 36px !important;
+    height: 36px !important;
+    width: 90px !important;
+    font-size: 0.75rem !important;
+    border-radius: 8px !important;
+    gap: 0.3rem !important;
+  }
+  
+  .quantity-controls {
+    min-height: 28px !important;
+    height: 28px !important;
+    width: 85px !important;
+    gap: 0.5rem !important;
+    padding: 0.3rem 0.5rem !important;
+    border-radius: 8px !important;
+    /* Animación de entrada para mobile pequeño */
+    animation: counterSlideInMobileSmall 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  }
+  
+  .quantity-controls .quantity-btn {
+    width: 12px !important;
+    height: 12px !important;
+    font-size: 0.7rem !important;
+  }
+  
+  .quantity-controls .quantity-display {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* =============================================================================
+   ANIMACIONES DE ENTRADA DEL CONTADOR
+   ============================================================================= */
+
+/* Animación de entrada del contador para desktop */
+@keyframes counterSlideIn {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: scale(0.95) translateY(5px);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Animación de entrada del contador para mobile */
+@keyframes counterSlideInMobile {
+  0% { 
+    opacity: 0;
+    transform: scale(0.85) translateY(8px);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(0.92) translateY(4px);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Animación de entrada del contador para mobile pequeño */
+@keyframes counterSlideInMobileSmall {
+  0% { 
+    opacity: 0;
+    transform: scale(0.9) translateY(6px);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(0.95) translateY(3px);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* =============================================================================
+   ANIMACIONES DE ÉXITO PARA BOTONES DEL CATÁLOGO
+   ============================================================================= */
+
+/* Animación de éxito para botones del catálogo */
+@keyframes cardSuccessPulse {
+  0% { 
+    transform: scale(1);
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  100% { 
+    transform: scale(1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes cardHandOkAnimation {
+  0% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  25% { 
+    transform: scale(1.2) rotate(-10deg);
+    opacity: 0.9;
+  }
+  50% { 
+    transform: scale(1.3) rotate(5deg);
+    opacity: 1;
+  }
+  75% { 
+    transform: scale(1.1) rotate(-5deg);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes listSuccessPulse {
+  0% { 
+    transform: scale(1);
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+  }
+  50% { 
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  100% { 
+    transform: scale(1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes listHandOkAnimation {
+  0% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  25% { 
+    transform: scale(1.15) rotate(-8deg);
+    opacity: 0.9;
+  }
+  50% { 
+    transform: scale(1.25) rotate(4deg);
+    opacity: 1;
+  }
+  75% { 
+    transform: scale(1.08) rotate(-3deg);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Estado de éxito para botones del catálogo - Solo animación temporal */
+.card-quote-btn.success {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  animation: cardSuccessPulse 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(15px) !important;
+}
+
+.card-quote-btn.success .btn-icon {
+  animation: cardHandOkAnimation 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) !important;
+}
+
+/* Contador fijo con estilo glass - Desktop más grande, mobile igual */
+.quantity-controls {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(25px) !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    0 1px 3px rgba(211, 47, 47, 0.15) !important;
+  padding: 0.6rem 0.9rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.9rem !important;
+  min-height: 42px !important;
+  height: 42px !important;
+  width: 125px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+  /* Animación de entrada */
+  animation: counterSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.quantity-controls::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+  opacity: 0.5 !important;
+}
+
+.quantity-controls .quantity-btn {
+  background: transparent !important;
+  border: none !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  width: 18px !important;
+  height: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  border-radius: 3px !important;
+}
+
+.quantity-controls .quantity-btn:hover {
+  color: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  transform: scale(1.1) !important;
+}
+
+.quantity-controls .quantity-display {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  min-width: 20px !important;
+  text-align: center !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
+}
+
+/* Animación específica para list view */
+.product-card-wrapper.list-view .card-quote-btn.success {
+  animation: listSuccessPulse 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.product-card-wrapper.list-view .card-quote-btn.success .btn-icon {
+  animation: listHandOkAnimation 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}

@@ -15,6 +15,8 @@ function ProductDetail() {
   const [imageLoading, setImageLoading] = useState(true);
   const [cantidad, setCantidad] = useState(1);
   const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
+  const [isComponentReady, setIsComponentReady] = useState(false);
 
   // Memoizar la función de carga para evitar re-renders innecesarios
   const fetchProduct = useCallback(async () => {
@@ -36,6 +38,24 @@ function ProductDetail() {
   useEffect(() => {
     fetchProduct();
   }, [fetchProduct]);
+
+  // Controlar cuando el componente está completamente listo
+  useEffect(() => {
+    if (!loading && producto) {
+      // Delay más largo para mobile para asegurar que el DOM esté completamente renderizado
+      const isMobile = window.innerWidth <= 768;
+      const delay = isMobile ? 200 : 100;
+      
+      const timer = setTimeout(() => {
+        // Verificar que el DOM esté listo usando requestAnimationFrame
+        requestAnimationFrame(() => {
+          setIsComponentReady(true);
+        });
+      }, delay);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [loading, producto]);
 
   // Memoizar el precio formateado
   const formattedPrice = useMemo(() => {
@@ -90,7 +110,16 @@ function ProductDetail() {
         ...producto,
         quantity: cantidad
       };
+      
       addItem(productToAdd);
+      
+      // Activar animación de éxito
+      setShowSuccessAnimation(true);
+      
+      // Resetear animación después de un tiempo
+      setTimeout(() => {
+        setShowSuccessAnimation(false);
+      }, 2000);
       
       // Mostrar mensaje de éxito (opcional)
       console.log(`Producto "${producto.nombre}" agregado a la cotización con cantidad ${cantidad}`);
@@ -265,13 +294,15 @@ function ProductDetail() {
                   </div>
                 </div>
                 
-                <button 
-                  className="add-to-quote-btn"
-                  onClick={handleCotizar}
-                >
-                  <span className="btn-icon">📋</span>
-                  Agregar a Cotización
-                </button>
+                {isComponentReady && (
+                  <button 
+                    className={`add-to-quote-btn ${showSuccessAnimation ? 'success' : ''}`}
+                    onClick={handleCotizar}
+                  >
+                    <span className="btn-icon">{showSuccessAnimation ? '👍' : '📋'}</span>
+                    <span className="btn-text">{showSuccessAnimation ? '' : 'Agregar a Cotización'}</span>
+                  </button>
+                )}
               </div>
             </div>
           </div>

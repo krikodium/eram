@@ -76,15 +76,15 @@ const AddToQuoteButton = ({ product, className = '', size = 'medium' }) => {
   return (
     <button
       onClick={handleAddToQuote}
-      className={`add-to-quote-btn ${size} ${isAdded ? 'added' : ''} ${className}`}
+      className={`add-to-quote-btn ${size} ${isAdded ? 'success' : ''} ${className}`}
       title="Agregar a cotización"
       disabled={isAdded}
     >
       <span className="btn-icon">
-        {isAdded ? <FaCheck /> : <FaPlus />}
+        {isAdded ? '👍' : <FaPlus />}
       </span>
       <span className="btn-text">
-        {isAdded ? 'Agregado' : 'Cotizar'}
+        {isAdded ? '' : 'COTIZAR'}
       </span>
     </button>
   );

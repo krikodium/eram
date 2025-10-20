@@ -20,6 +20,7 @@ const Catalogo = () => {
   const [productos, setProductos] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [catalogReady, setCatalogReady] = useState(false);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const categoriaId = searchParams.get('categoria_id');
@@ -158,6 +159,23 @@ const Catalogo = () => {
   useEffect(() => {
     fetchCategorias();
   }, [fetchCategorias]);
+
+  // Controlar cuando el catálogo está completamente listo
+  useEffect(() => {
+    if (!loading && productos.length > 0) {
+      // Delay para asegurar que el DOM esté completamente renderizado
+      const isMobile = window.innerWidth <= 768;
+      const delay = isMobile ? 300 : 150;
+      
+      const timer = setTimeout(() => {
+        requestAnimationFrame(() => {
+          setCatalogReady(true);
+        });
+      }, delay);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [loading, productos]);
 
   // Efecto para verificar URL y cargar productos después de que las categorías estén listas
   useEffect(() => {
@@ -481,11 +499,17 @@ const Catalogo = () => {
               <>
                 <div className={`products-grid ${viewMode}-view`}>
                   {productos.map(producto => (
-                    <ProductCard 
-                      key={producto.id} 
-                      producto={producto} 
-                      viewMode={viewMode}
-                    />
+                    catalogReady ? (
+                      <ProductCard 
+                        key={producto.id} 
+                        producto={producto} 
+                        viewMode={viewMode}
+                      />
+                    ) : (
+                      <div key={producto.id} className="product-card-skeleton">
+                        <div className="skeleton-content"></div>
+                      </div>
+                    )
                   ))}
                 </div>
                 
