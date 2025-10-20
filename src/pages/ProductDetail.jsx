@@ -16,7 +16,6 @@ function ProductDetail() {
   const [cantidad, setCantidad] = useState(1);
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
-  const [isComponentReady, setIsComponentReady] = useState(false);
 
   // Memoizar la función de carga para evitar re-renders innecesarios
   const fetchProduct = useCallback(async () => {
@@ -39,21 +38,21 @@ function ProductDetail() {
     fetchProduct();
   }, [fetchProduct]);
 
-  // Controlar cuando el componente está completamente listo
+  // Controlar cuando el componente está completamente listo - Solo una vez por sesión
   useEffect(() => {
     if (!loading && producto) {
-      // Delay más largo para mobile para asegurar que el DOM esté completamente renderizado
-      const isMobile = window.innerWidth <= 768;
-      const delay = isMobile ? 200 : 100;
+      // Verificar si ya se hizo refresh en esta sesión
+      const hasRefreshed = sessionStorage.getItem('productDetailRefreshed');
       
-      const timer = setTimeout(() => {
-        // Verificar que el DOM esté listo usando requestAnimationFrame
-        requestAnimationFrame(() => {
-          setIsComponentReady(true);
-        });
-      }, delay);
-      
-      return () => clearTimeout(timer);
+      if (!hasRefreshed) {
+        // Refresh automático para asegurar renderizado correcto del botón
+        const refreshTimer = setTimeout(() => {
+          sessionStorage.setItem('productDetailRefreshed', 'true');
+          window.location.reload();
+        }, 100);
+        
+        return () => clearTimeout(refreshTimer);
+      }
     }
   }, [loading, producto]);
 
@@ -294,15 +293,13 @@ function ProductDetail() {
                   </div>
                 </div>
                 
-                {isComponentReady && (
-                  <button 
-                    className={`add-to-quote-btn ${showSuccessAnimation ? 'success' : ''}`}
-                    onClick={handleCotizar}
-                  >
-                    <span className="btn-icon">{showSuccessAnimation ? '👍' : '📋'}</span>
-                    <span className="btn-text">{showSuccessAnimation ? '' : 'Agregar a Cotización'}</span>
-                  </button>
-                )}
+                <button 
+                  className={`add-to-quote-btn ${showSuccessAnimation ? 'success' : ''}`}
+                  onClick={handleCotizar}
+                >
+                  <span className="btn-icon">{showSuccessAnimation ? '👍' : '📋'}</span>
+                  <span className="btn-text">{showSuccessAnimation ? '' : 'Agregar a Cotización'}</span>
+                </button>
               </div>
             </div>
           </div>
