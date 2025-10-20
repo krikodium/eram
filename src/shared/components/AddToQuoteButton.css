@@ -423,6 +423,10 @@
     text-align: center !important;
     line-height: 1 !important;
     flex-direction: row !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0.5rem 1rem !important;
   }
   
   .card-quote-btn .btn-icon,
@@ -432,6 +436,8 @@
     justify-content: center !important;
     margin: 0 !important;
     padding: 0 !important;
+    text-align: center !important;
+    flex-shrink: 0 !important;
   }
   
   /* Centrado para botones del detalle de producto también */
@@ -442,6 +448,14 @@
     justify-content: center;
     margin: 0;
     padding: 0;
+  }
+
+  /* Asegurar que el contenedor del botón del catálogo esté centrado */
+  .card-actions {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
   }
   
   .add-to-quote-btn.medium {
@@ -570,6 +584,10 @@
     text-align: center !important;
     line-height: 1 !important;
     flex-direction: row !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0.5rem 1rem !important;
   }
   
   .card-quote-btn .btn-icon,
@@ -579,6 +597,8 @@
     justify-content: center !important;
     margin: 0 !important;
     padding: 0 !important;
+    text-align: center !important;
+    flex-shrink: 0 !important;
   }
   
   /* Centrado para botones del detalle de producto también */
@@ -589,6 +609,14 @@
     justify-content: center;
     margin: 0;
     padding: 0;
+  }
+
+  /* Asegurar que el contenedor del botón del catálogo esté centrado */
+  .card-actions {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
   }
 }
 
