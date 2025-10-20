@@ -143,7 +143,12 @@ function ProductDetail() {
           <span className="breadcrumb-separator">›</span>
           <Link to="/catalogo" className="breadcrumb-link">Catálogo</Link>
           <span className="breadcrumb-separator">›</span>
-          <span className="breadcrumb-current">{producto.nombre}</span>
+          <span className="breadcrumb-current">
+            {producto.nombre.length > 30 
+              ? `${producto.nombre.substring(0, 30)}...` 
+              : producto.nombre
+            }
+          </span>
         </div>
       </nav>
 
@@ -197,9 +202,11 @@ function ProductDetail() {
             {/* IRAM Certification - Professional */}
             <div className="iram-certification">
               <div className="certification-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
-                </svg>
+                <img
+                  src="/iramsinfondo.png"
+                  alt="Logo IRAM"
+                  className="iram-logo"
+                />
               </div>
               <div className="certification-content">
                 <h3>Certificación IRAM</h3>

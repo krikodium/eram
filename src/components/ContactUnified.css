@@ -343,7 +343,7 @@
 ============================================================================= */
 .map-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr; /* mapa más grande */
   gap: 2.5rem;
   align-items: center;
   min-height: 500px;
@@ -355,7 +355,7 @@
 
 .map-wrapper {
   position: relative;
-  height: 500px;
+  height: 560px; /* mapa más alto */
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--card-shadow);
@@ -402,9 +402,9 @@
 }
 
 .map-info {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-  border: 1px solid var(--border-primary);
-  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
   padding: 2rem;
   backdrop-filter: blur(15px);
   display: flex;
@@ -413,15 +413,33 @@
   justify-content: flex-start;
   height: 100%;
   text-align: center;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.map-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+  opacity: 0.6;
 }
 
 /* Location Header */
 .location-header {
   margin-bottom: 1rem;
   padding: 1.25rem;
-  background: var(--bg-card);
-  border-radius: 12px;
-  border: 1px solid var(--border-primary);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .location-header h4 {
@@ -496,14 +514,28 @@
 }
 
 .contact-item {
-  padding: 1rem;
-  border: 1px solid var(--border-primary);
-  background: var(--bg-card);
+  position: relative;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
   color: var(--text-secondary);
   line-height: 1.5;
   font-size: 1rem;
-  border-radius: 12px;
+  border-radius: 14px;
   margin-bottom: 0.75rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.contact-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+  opacity: 0.6;
 }
 
 .contact-item:last-child {
@@ -917,7 +949,7 @@
   }
   
   .map-wrapper {
-    height: 400px;
+    height: 480px; /* mapa más alto en tablet */
   }
   
   .map-actions {
@@ -972,6 +1004,15 @@
     padding: 2rem;
   }
   
+  .map-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .map-wrapper {
+    height: 420px; /* Altura específica para mobile */
+  }
+  
   .facility-features {
     grid-template-columns: 1fr;
   }
@@ -995,6 +1036,10 @@
 @media (max-width: 480px) {
   .contact-unified-container {
     padding: 0 1rem;
+  }
+  
+  .map-wrapper {
+    height: 380px; /* Altura específica para pantallas pequeñas */
   }
   
   .contact-method-inner {
