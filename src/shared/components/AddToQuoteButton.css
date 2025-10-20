@@ -20,6 +20,21 @@
   /* Fix for mobile positioning issues */
   transform-origin: center;
   will-change: transform;
+  /* Eliminar animaciones de carga problemáticas */
+  opacity: 1;
+  transform: none;
+  text-align: center;
+  line-height: 1;
+  flex-direction: row;
+}
+
+.add-to-quote-btn .btn-icon,
+.add-to-quote-btn .btn-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 /* Enhanced sizes */
@@ -391,6 +406,42 @@
     position: relative;
     transform: none;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+    flex-direction: row;
+    opacity: 1;
+  }
+  
+  /* Centrado específico para botones del catálogo */
+  .card-quote-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    flex-direction: row !important;
+  }
+  
+  .card-quote-btn .btn-icon,
+  .card-quote-btn .btn-text {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Centrado para botones del detalle de producto también */
+  .add-to-quote-btn .btn-icon,
+  .add-to-quote-btn .btn-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
   }
   
   .add-to-quote-btn.medium {
@@ -510,6 +561,37 @@
 }
 
 /* High contrast mode support */
+@media (max-width: 480px) {
+  /* Centrado específico para botones del catálogo */
+  .card-quote-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    flex-direction: row !important;
+  }
+  
+  .card-quote-btn .btn-icon,
+  .card-quote-btn .btn-text {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Centrado para botones del detalle de producto también */
+  .add-to-quote-btn .btn-icon,
+  .add-to-quote-btn .btn-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 @media (prefers-contrast: high) {
   .add-to-quote-btn {
     border-width: 3px;
