@@ -10,7 +10,6 @@ import {
   FaShieldAlt,
   FaAward,
   FaLinkedin,
-  FaFacebook,
   FaInstagram,
   FaWhatsapp,
   FaTruck,
@@ -52,7 +51,7 @@ const Footer = () => {
                 <FaMapMarkerAlt />
                 <div>
                   <strong>Oficina Principal</strong>
-                  <p>Av. Industria 1234<br />Buenos Aires, Argentina</p>
+                  <p>Av. Corrientes 1234<br />Buenos Aires, Argentina</p>
                 </div>
               </div>
               
@@ -76,7 +75,7 @@ const Footer = () => {
                 <FaEnvelope />
                 <div>
                   <strong>Email</strong>
-                  <p>ventas@eram.com.ar<br />Único mail de contacto</p>
+                  <p>ventas@eram.com.ar<br />Mail de contacto</p>
                 </div>
               </div>
               
@@ -169,16 +168,13 @@ const Footer = () => {
             <div className="social-media">
               <h5>Síguenos</h5>
               <div className="social-links">
-                <a href="https://linkedin.com/company/eram" target="_blank" rel="noopener noreferrer">
+                <a href="/" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin />
                 </a>
-                <a href="https://facebook.com/eram.seguridad" target="_blank" rel="noopener noreferrer">
-                  <FaFacebook />
-                </a>
-                <a href="https://instagram.com/eram_seguridad" target="_blank" rel="noopener noreferrer">
+                <a href="/" target="_blank" rel="noopener noreferrer">
                   <FaInstagram />
                 </a>
-                <a href="https://wa.me/5491123456789" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/5491133749000" target="_blank" rel="noopener noreferrer">
                   <FaWhatsapp />
                 </a>
               </div>

@@ -99,19 +99,50 @@ const Catalogo = () => {
                (imagenUrl.startsWith('http') || imagenUrl.startsWith('/'));
       });
       
+      // Ordenar productos para mostrar primero las categorías destacadas
+      const categoriasDestacadas = ['Señalizacion Industrial', 'Señalización Vial', 'Señalizacion Personal'];
+      const productosOrdenados = productosConFotos.sort((a, b) => {
+        // Si no hay categoría en la búsqueda, ordenar por categorías destacadas
+        if (!catId && !search.trim()) {
+          const categoriaA = a.categoria_nombre || '';
+          const categoriaB = b.categoria_nombre || '';
+          
+          const indexA = categoriasDestacadas.indexOf(categoriaA);
+          const indexB = categoriasDestacadas.indexOf(categoriaB);
+          
+          // Si ambas están en categorías destacadas, mantener orden original
+          if (indexA !== -1 && indexB !== -1) {
+            return indexA - indexB;
+          }
+          // Si solo A está en destacadas, A va primero
+          if (indexA !== -1 && indexB === -1) {
+            return -1;
+          }
+          // Si solo B está en destacadas, B va primero
+          if (indexA === -1 && indexB !== -1) {
+            return 1;
+          }
+          // Si ninguna está en destacadas, mantener orden original
+          return 0;
+        }
+        // Para búsquedas o categorías específicas, mantener orden original
+        return 0;
+      });
+      
       // Calcular paginación manualmente con productos filtrados
-      const totalProductosFiltrados = productosConFotos.length;
+      const totalProductosFiltrados = productosOrdenados.length;
       const totalPagesCalculadas = Math.ceil(totalProductosFiltrados / itemsPerPage);
       
       // Obtener productos para la página actual
       const inicio = (pageNum - 1) * itemsPerPage;
       const fin = inicio + itemsPerPage;
-      const productosParaMostrar = productosConFotos.slice(inicio, fin);
+      const productosParaMostrar = productosOrdenados.slice(inicio, fin);
       
       console.log('Resultado de fetchProducts:', {
         pageNum,
         productosOriginales: todosLosProductos.length,
         productosConFotos: productosConFotos.length,
+        productosOrdenados: productosOrdenados.length,
         productosOcultos: todosLosProductos.length - productosConFotos.length,
         productosParaMostrar: productosParaMostrar.length,
         totalPagesCalculadas,

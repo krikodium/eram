@@ -5,7 +5,7 @@ import './BrandBenefits.css';
 const benefits = [
   {
     icon: <FaShippingFast />,
-    title: 'Envíos en 24hs',
+    title: 'Envíos Express',
     description: 'Logística ágil y envíos a todo el país con seguimiento completo.',
     color: '#D32F2F',
     bgColor: 'rgba(211, 47, 47, 0.1)'

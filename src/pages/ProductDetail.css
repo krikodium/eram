@@ -1380,15 +1380,21 @@
 @keyframes detailSuccessPulse {
   0% { 
     transform: scale(1);
-    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   50% { 
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
   100% { 
     transform: scale(1);
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -1452,6 +1458,25 @@
   font-size: 1rem !important;
   line-height: 1.2 !important;
   box-sizing: border-box !important;
+  background: linear-gradient(135deg, rgba(211, 47, 47, 0.8), rgba(183, 28, 28, 0.9)) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 
+    0 4px 12px rgba(211, 47, 47, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+/* Hover effect para el botón rojo glass */
+.product-detail-page .add-to-quote-btn:hover {
+  background: linear-gradient(135deg, rgba(211, 47, 47, 0.9), rgba(183, 28, 28, 1)) !important;
+  backdrop-filter: blur(20px) !important;
+  transform: translateY(-1px) scale(1.01) !important;
+  box-shadow: 
+    0 6px 20px rgba(211, 47, 47, 0.4),
+    0 0 30px rgba(211, 47, 47, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Mobile específico */
@@ -1468,10 +1493,14 @@
 
 /* Estado de éxito para el botón */
 .product-detail-page .add-to-quote-btn.success {
-  background: linear-gradient(135deg, var(--success), #2e7d32);
-  border-color: var(--success);
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.7), rgba(46, 125, 50, 0.8)) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
   animation: detailSuccessPulse 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
 }
 
 .product-detail-page .add-to-quote-btn.success .btn-icon {

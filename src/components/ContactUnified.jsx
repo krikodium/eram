@@ -21,7 +21,7 @@ import './ContactUnified.css';
 const contactMethods = [
   {
     icon: <FaMapMarkerAlt />,
-    title: "Nuestra Sede",
+    title: "Ubicación",
     primary: "Av. San Martín 7421",
     secondary: "CABA, Buenos Aires",
     action: "Ver en Google Maps",
@@ -47,13 +47,13 @@ const contactMethods = [
     action: "Chatear",
     actionLink: "https://wa.me/5491133749000",
     color: "#25D366",
-    description: "Respuesta rápida las 24 horas"
+    description: "Consultas inmediatas"
   },
   {
     icon: <FaEnvelope />,
     title: "Email",
     primary: "ventas@eram.com.ar",
-    secondary: "Único mail de contacto",
+    secondary: "Mail de contacto",
     action: "Enviar Email",
     actionLink: "mailto:ventas@eram.com.ar",
     color: "#FF6B35",

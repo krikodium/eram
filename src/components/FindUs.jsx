@@ -4,13 +4,8 @@ import {
   FaMapMarkerAlt, 
   FaPhone, 
   FaEnvelope, 
-  FaClock,
   FaWhatsapp,
-  FaDirections,
-  FaBuilding,
-  FaParking,
-  FaRoute,
-  FaInfoCircle
+  FaDirections
 } from 'react-icons/fa';
 import './FindUs.css';
 
@@ -46,27 +41,15 @@ const contactInfo = [
     icon: <FaEnvelope />,
     title: "Email",
     primary: "ventas@eram.com.ar",
-    secondary: "Único mail de contacto",
+    secondary: "Mail de contacto",
     action: "Enviar Email",
     actionLink: "mailto:ventas@eram.com.ar",
     color: "#FF6B35"
   }
 ];
 
-const facilityFeatures = [
-  { icon: <FaBuilding />, text: "Showroom de 500m²" },
-  { icon: <FaParking />, text: "Estacionamiento gratuito" },
-  { icon: <FaRoute />, text: "Fácil acceso desde autopistas" },
-  { icon: <FaInfoCircle />, text: "Asesoramiento técnico presencial" }
-];
-
 function FindUs() {
-  const [activeTab, setActiveTab] = useState('ubicacion');
   const [mapLoaded, setMapLoaded] = useState(false);
-
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
 
   return (
     <section className="findus-section" id="findus">
@@ -124,37 +107,17 @@ function FindUs() {
           {/* Map and Info Section */}
           <div className="location-section">
             
-            {/* Tab Navigation */}
-            <div className="location-tabs">
-              <button 
-                className={`tab-button ${activeTab === 'ubicacion' ? 'active' : ''}`}
-                onClick={() => handleTabChange('ubicacion')}
-              >
+            {/* Location Header */}
+            <div className="location-header">
+              <div className="location-title">
                 <FaMapMarkerAlt />
-                Ubicación
-              </button>
-              <button 
-                className={`tab-button ${activeTab === 'instalaciones' ? 'active' : ''}`}
-                onClick={() => handleTabChange('instalaciones')}
-              >
-                <FaBuilding />
-                Instalaciones
-              </button>
-              <button 
-                className={`tab-button ${activeTab === 'horarios' ? 'active' : ''}`}
-                onClick={() => handleTabChange('horarios')}
-              >
-                <FaClock />
-                Horarios
-              </button>
+                <span>UBICACIÓN</span>
+              </div>
             </div>
 
-            {/* Tab Content */}
+            {/* Location Content */}
             <div className="tab-content">
-              
-              {/* Ubicación Tab */}
-              {activeTab === 'ubicacion' && (
-                <div className="tab-panel ubicacion-panel">
+              <div className="tab-panel ubicacion-panel">
                   <div className="map-container">
                     <div className="map-wrapper">
                       {!mapLoaded && (
@@ -184,7 +147,7 @@ function FindUs() {
                           <FaMapMarkerAlt />
                         </div>
                         <div className="marker-info">
-                          <h4>📍 Ubicación Exacta</h4>
+                          <h4>📍 Ubicación</h4>
                           <p><strong>ERAM S.R.L.</strong><br/>Av. San Martín 7421<br/>C1424 CABA, Buenos Aires</p>
                         </div>
                       </div>
@@ -222,70 +185,6 @@ function FindUs() {
                     </div>
                   </div>
                 </div>
-              )}
-
-              {/* Instalaciones Tab */}
-              {activeTab === 'instalaciones' && (
-                <div className="tab-panel instalaciones-panel">
-                  <div className="facility-grid">
-                    <div className="facility-image">
-                      <img src="/industria.jpg" alt="Instalaciones ERAM S.R.L." loading="lazy" />
-                      <div className="facility-overlay">
-                        <h4>Instalaciones Modernas</h4>
-                        <p>Diseñadas para brindarte la mejor experiencia</p>
-                      </div>
-                    </div>
-                    
-                    <div className="facility-info">
-                      <h4>Nuestras Instalaciones</h4>
-                      <p>
-                        Contamos con un moderno showroom donde podrás ver y probar 
-                        todos nuestros productos de seguridad industrial.
-                      </p>
-                      
-                      <div className="facility-features">
-                        {facilityFeatures.map((feature, index) => (
-                          <div key={index} className="facility-feature">
-                            <span className="feature-icon">{feature.icon}</span>
-                            <span className="feature-text">{feature.text}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Horarios Tab */}
-              {activeTab === 'horarios' && (
-                <div className="tab-panel horarios-panel">
-                  <div className="schedule-grid">
-                    <div className="schedule-card">
-                      <h4>Horarios de Atención</h4>
-                      <div className="schedule-list">
-                        <div className="schedule-item">
-                          <span className="day">Lunes a Viernes</span>
-                          <span className="time">9:00 - 17:00</span>
-                        </div>
-                        <div className="schedule-item closed">
-                          <span className="day">Sábados y Domingos</span>
-                          <span className="time">Cerrado</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="schedule-card">
-                      <h4>Servicios Disponibles</h4>
-                      <ul className="services-list">
-                        <li>Asesoramiento técnico personalizado</li>
-                        <li>Prueba de equipos de protección</li>
-                        <li>Capacitación en uso correcto</li>
-                        <li>Retiro de productos en sucursal</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>

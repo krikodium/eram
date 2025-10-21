@@ -68,22 +68,18 @@ const industryExpertise = [
   {
     icon: <FaUsers />,
     title: "Construcción",
-    description: "Protección integral para obras de distintas escalas",
-    highlight: "100+ obras"
+    description: "Protección integral para obras de distintas escalas"
   },
   {
     icon: <FaChartLine />,
     title: "Minería",
-    description: "Soluciones de seguridad para operaciones mineras",
-    highlight: "~200 operaciones"
+    description: "Soluciones de seguridad para operaciones mineras"
   },
   {
     icon: <FaHandshake />,
     title: "Ferreterías",
-    description: "Cobertura nacional de puntos de venta y distribución",
-    highlight: "~1500 puntos"
-  },
-  
+    description: "Cobertura nacional de puntos de venta y distribución"
+  }
 ];
 
 function AboutUsUnified() {
@@ -191,7 +187,6 @@ function AboutUsUnified() {
                 <div className="expertise-content">
                   <h4 className="expertise-title">{expertise.title}</h4>
                   <p className="expertise-description">{expertise.description}</p>
-                  <div className="expertise-highlight">{expertise.highlight}</div>
                 </div>
               </div>
             ))}
