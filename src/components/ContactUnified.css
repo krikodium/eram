@@ -279,12 +279,27 @@
 /* =============================================================================
    TAB NAVIGATION
 ============================================================================= */
-.contact-tabs {
-  display: flex;
-  gap: 1rem;
+/* Contact Location Header */
+.contact-location-header {
   margin-bottom: 3rem;
+  text-align: center;
+}
+
+.location-title {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.location-title svg {
+  color: var(--interactive-primary);
+  font-size: 1.3rem;
 }
 
 .contact-tab {
@@ -449,13 +464,16 @@
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  text-align: center;
 }
 
 .location-header p {
   color: var(--text-secondary);
   line-height: 1.5;
   margin: 0;
+  text-align: center;
 }
 
 /* Directions Section */

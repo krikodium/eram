@@ -4,17 +4,9 @@ import {
   FaMapMarkerAlt, 
   FaPhone, 
   FaEnvelope, 
-  FaClock,
   FaWhatsapp,
   FaDirections,
-  FaBuilding,
-  FaParking,
-  FaRoute,
-  FaInfoCircle,
-  FaHandshake,
-  FaUsers,
-  FaCalendarAlt,
-  FaHeadset
+  FaHandshake
 } from 'react-icons/fa';
 import './ContactUnified.css';
 
@@ -61,43 +53,9 @@ const contactMethods = [
   }
 ];
 
-const facilityFeatures = [
-  { icon: <FaBuilding />, text: "Showroom de 500m²" },
-  { icon: <FaParking />, text: "Estacionamiento gratuito" },
-  { icon: <FaRoute />, text: "Fácil acceso desde autopistas" },
-  { icon: <FaInfoCircle />, text: "Asesoramiento técnico presencial" }
-];
-
-const services = [
-  {
-    icon: <FaHandshake />,
-    title: "Asesoramiento Personalizado",
-    description: "Nuestros expertos te ayudan a elegir el equipo perfecto"
-  },
-  {
-    icon: <FaUsers />,
-    title: "Capacitación Gratuita",
-    description: "Entrenamiento certificado sobre el uso correcto"
-  },
-  {
-    icon: <FaCalendarAlt />,
-    title: "Visitas Programadas",
-    description: "Agendá tu cita para una atención exclusiva"
-  },
-  {
-    icon: <FaHeadset />,
-    title: "Soporte 24/7",
-    description: "Asistencia técnica cuando la necesites"
-  }
-];
 
 function ContactUnified() {
-  const [activeTab, setActiveTab] = useState('ubicacion');
   const [mapLoaded, setMapLoaded] = useState(false);
-
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
 
   return (
     <section className="contact-unified-section" id="contacto">
@@ -160,44 +118,19 @@ function ContactUnified() {
         {/* Main Content Area */}
         <div className="contact-main-content">
           
-          {/* Tab Navigation */}
-          <div className="contact-tabs">
-            <button 
-              className={`contact-tab ${activeTab === 'ubicacion' ? 'active' : ''}`}
-              onClick={() => handleTabChange('ubicacion')}
-            >
+          {/* Location Header */}
+          <div className="contact-location-header">
+            <div className="location-title">
               <FaMapMarkerAlt />
-              Ubicación
-            </button>
-            <button 
-              className={`contact-tab ${activeTab === 'instalaciones' ? 'active' : ''}`}
-              onClick={() => handleTabChange('instalaciones')}
-            >
-              <FaBuilding />
-              Instalaciones
-            </button>
-            <button 
-              className={`contact-tab ${activeTab === 'servicios' ? 'active' : ''}`}
-              onClick={() => handleTabChange('servicios')}
-            >
-              <FaHandshake />
-              Servicios
-            </button>
-            <button 
-              className={`contact-tab ${activeTab === 'horarios' ? 'active' : ''}`}
-              onClick={() => handleTabChange('horarios')}
-            >
-              <FaClock />
-              Horarios
-            </button>
+              <span>UBICACIÓN</span>
+            </div>
           </div>
 
           {/* Tab Content */}
           <div className="contact-tab-content">
             
-            {/* Ubicación Tab */}
-            {activeTab === 'ubicacion' && (
-              <div className="contact-tab-panel ubicacion-panel">
+            {/* Ubicación Content */}
+            <div className="contact-tab-panel ubicacion-panel">
                 <div className="map-section">
                   <div className="map-container">
                     <div className="map-wrapper">
@@ -224,7 +157,7 @@ function ContactUnified() {
                     
                     <div className="map-info">
                       <div className="location-header">
-                        <h4>📍 Ubicación Exacta</h4>
+                        <h4>📍 Ubicación</h4>
                         <p><strong>ERAM S.R.L.</strong><br/>Av. San Martín 7421<br/>C1424 CABA, Buenos Aires</p>
                       </div>
                       
@@ -268,89 +201,6 @@ function ContactUnified() {
                   </div>
                 </div>
               </div>
-            )}
-
-            {/* Instalaciones Tab */}
-            {activeTab === 'instalaciones' && (
-              <div className="contact-tab-panel instalaciones-panel">
-                <div className="facility-section">
-                  <div className="facility-image">
-                    <img src="/industria.jpg" alt="Instalaciones ERAM" loading="lazy" />
-                    <div className="facility-overlay">
-                      <h4>Instalaciones Modernas</h4>
-                      <p>Diseñadas para brindarte la mejor experiencia</p>
-                    </div>
-                  </div>
-                  
-                  <div className="facility-info">
-                    <h4>Nuestras Instalaciones</h4>
-                    <p>
-                      Contamos con un moderno showroom donde podrás ver y probar 
-                      todos nuestros productos de seguridad industrial.
-                    </p>
-                    
-                    <div className="facility-features">
-                      {facilityFeatures.map((feature, index) => (
-                        <div key={index} className="facility-feature">
-                          <span className="feature-icon">{feature.icon}</span>
-                          <span className="feature-text">{feature.text}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Servicios Tab */}
-            {activeTab === 'servicios' && (
-              <div className="contact-tab-panel servicios-panel">
-                <div className="services-grid">
-                  {services.map((service, index) => (
-                    <div key={index} className="service-card">
-                      <div className="service-icon">
-                        {service.icon}
-                      </div>
-                      <div className="service-content">
-                        <h4 className="service-title">{service.title}</h4>
-                        <p className="service-description">{service.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Horarios Tab */}
-            {activeTab === 'horarios' && (
-              <div className="contact-tab-panel horarios-panel">
-                <div className="schedule-section">
-                  <div className="schedule-card">
-                    <h4>Horarios de Atención</h4>
-                    <div className="schedule-list">
-                      <div className="schedule-item">
-                        <span className="day">Lunes a Viernes</span>
-                        <span className="time">9:00 - 17:00</span>
-                      </div>
-                      <div className="schedule-item closed">
-                        <span className="day">Sábados y Domingos</span>
-                        <span className="time">Cerrado</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="schedule-card">
-                    <h4>Servicios Disponibles</h4>
-                    <ul className="services-list">
-                      <li>Asesoramiento técnico personalizado</li>
-                      <li>Prueba de equipos de protección</li>
-                      <li>Capacitación en uso correcto</li>
-                      <li>Retiro de productos en sucursal</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
 
