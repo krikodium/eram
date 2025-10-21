@@ -16,6 +16,7 @@ function ProductDetail() {
   const [cantidad, setCantidad] = useState(1);
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
+  const [currentMainImage, setCurrentMainImage] = useState(null);
 
   // Memoizar la función de carga para evitar re-renders innecesarios
   const fetchProduct = useCallback(async () => {
@@ -37,6 +38,13 @@ function ProductDetail() {
   useEffect(() => {
     fetchProduct();
   }, [fetchProduct]);
+
+  // Efecto para inicializar la imagen principal
+  useEffect(() => {
+    if (producto) {
+      setCurrentMainImage(producto.imagen_url || "/default-product.jpg");
+    }
+  }, [producto]);
 
   // Limpiar sessionStorage de productos antiguos al montar el componente
   useEffect(() => {
@@ -119,6 +127,10 @@ function ProductDetail() {
   // Handlers
   const handleImageLoad = () => setImageLoading(false);
   const handleImageError = () => setImageLoading(false);
+
+  const handleThumbnailClick = (imageUrl) => {
+    setCurrentMainImage(imageUrl);
+  };
 
   const handleCantidadChange = (e) => {
     const value = parseInt(e.target.value);
@@ -209,14 +221,14 @@ function ProductDetail() {
       </nav>
 
       <div className="product-detail-container">
-        {/* Main Product Section */}
+        {/* Main Product Section - Redesigned Layout */}
         <div className="product-main-section">
-          {/* Left Column - Image & Certification */}
+          {/* Left Column - Images Only */}
           <div className="product-left-column">
             {/* Product Image */}
             <div className="product-image-section">
               <div className="product-image-container" onClick={() => setImageModalOpen(true)}>
-                {producto.imagen_url ? (
+                {currentMainImage ? (
                   <>
                     {imageLoading && (
                       <div className="image-loading-skeleton">
@@ -224,7 +236,7 @@ function ProductDetail() {
                       </div>
                     )}
                     <img 
-                      src={producto.imagen_url} 
+                      src={currentMainImage} 
                       alt={producto.nombre} 
                       className={`product-main-image ${imageLoading ? 'loading' : 'loaded'}`}
                       onLoad={handleImageLoad}
@@ -244,7 +256,125 @@ function ProductDetail() {
               </div>
             </div>
 
-            {/* IRAM Certification - Desktop Only */}
+            {/* Image Gallery Thumbnails */}
+            <div className="image-gallery-thumbnails">
+              <div className="gallery-thumbnails">
+                {/* Thumbnail 1 - Main Product Image */}
+                <div 
+                  className={`thumbnail-item ${currentMainImage === (producto.imagen_url || "/default-product.jpg") ? 'active' : ''}`}
+                  onClick={() => handleThumbnailClick(producto.imagen_url || "/default-product.jpg")}
+                >
+                  <img 
+                    src={producto.imagen_url || "/default-product.jpg"} 
+                    alt={`${producto.nombre} - Vista principal`}
+                    className="thumbnail-img"
+                  />
+                </div>
+                
+                {/* Thumbnail 2 - Second Product Image or Placeholder */}
+                {producto.imagen_url_2 ? (
+                  <div 
+                    className={`thumbnail-item ${currentMainImage === producto.imagen_url_2 ? 'active' : ''}`}
+                    onClick={() => handleThumbnailClick(producto.imagen_url_2)}
+                  >
+                    <img 
+                      src={producto.imagen_url_2} 
+                      alt={`${producto.nombre} - Vista adicional`}
+                      className="thumbnail-img"
+                    />
+                  </div>
+                ) : (
+                  <div className="thumbnail-item placeholder">
+                    <img 
+                      src="/banner-altura.jpg" 
+                      alt="Más imágenes en camino"
+                      className="thumbnail-img placeholder-img"
+                    />
+                    <div className="placeholder-overlay">
+                      <span className="placeholder-text">MÁS IMÁGENES EN CAMINO</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Product Information - Reorganized */}
+          <div className="product-right-column">
+            {/* Product Header - Compact */}
+            <div className="product-header">
+              <h1 className="product-title">{producto.nombre}</h1>
+              <div className="product-meta">
+                <span className="product-code">Código: {producto.codigo}</span>
+                {producto.categoria_nombre && (
+                  <span className="product-category">{producto.categoria_nombre}</span>
+                )}
+              </div>
+            </div>
+
+            {/* Price Section - Moved up */}
+            {formattedPrice && (
+              <div className="product-pricing">
+                <div className="price-section">
+                  <span className="price-label">Precio Unitario</span>
+                  <div className="price-value">
+                    <span className="currency">$</span>
+                    <span className="amount">{formattedPrice}</span>
+                    {producto.moneda && <span className="currency-code">({producto.moneda})</span>}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Product Description - Compact */}
+            {producto.descripcion && (
+              <div className="product-description">
+                <h3>Descripción</h3>
+                <p>{producto.descripcion}</p>
+              </div>
+            )}
+
+            {/* Actions Section - Moved up */}
+            <div className="product-actions">
+              <div className="quantity-section">
+                <label htmlFor="cantidad" className="quantity-label">Cantidad</label>
+                <div className="quantity-controls">
+                  <button 
+                    type="button" 
+                    className="quantity-btn quantity-decrease"
+                    onClick={handleCantidadDecrement}
+                    disabled={cantidad <= 1}
+                  >
+                    −
+                  </button>
+                  <input
+                    type="number"
+                    id="cantidad"
+                    value={cantidad}
+                    onChange={handleCantidadChange}
+                    min="1"
+                    className="quantity-input"
+                  />
+                  <button 
+                    type="button" 
+                    className="quantity-btn quantity-increase"
+                    onClick={handleCantidadIncrement}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              
+              <button 
+                className={`add-to-quote-btn ${showSuccessAnimation ? 'success' : ''}`}
+                onClick={handleCotizar}
+              >
+                <span className="btn-icon">{showSuccessAnimation ? '👍' : '📋'}</span>
+                <span className="btn-text">{showSuccessAnimation ? '' : 'Agregar a Cotización'}</span>
+              </button>
+            </div>
+
+            {/* IRAM Certification - Moved to bottom, more compact */}
             <div className="iram-certification-desktop">
               <div className="certification-icon">
                 <img
@@ -263,81 +393,6 @@ function ProductDetail() {
                   <span className="benefit-item">✓ Cumplimiento Normativo</span>
                   <span className="benefit-item">✓ Seguridad Certificada</span>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column - Product Information */}
-          <div className="product-right-column">
-            {/* Product Header */}
-            <div className="product-header">
-              <h1 className="product-title">{producto.nombre}</h1>
-              <div className="product-meta">
-                <span className="product-code">Código: {producto.codigo}</span>
-                {producto.categoria_nombre && (
-                  <span className="product-category">{producto.categoria_nombre}</span>
-                )}
-              </div>
-            </div>
-
-            {/* Product Description */}
-            {producto.descripcion && (
-              <div className="product-description">
-                <h3>Descripción</h3>
-                <p>{producto.descripcion}</p>
-              </div>
-            )}
-
-            {/* Price and Actions */}
-            <div className="product-pricing">
-              {formattedPrice && (
-                <div className="price-section">
-                  <span className="price-label">Precio Unitario</span>
-                  <div className="price-value">
-                    <span className="currency">$</span>
-                    <span className="amount">{formattedPrice}</span>
-                    {producto.moneda && <span className="currency-code">({producto.moneda})</span>}
-                  </div>
-                </div>
-              )}
-
-              <div className="product-actions">
-                <div className="quantity-section">
-                  <label htmlFor="cantidad" className="quantity-label">Cantidad</label>
-                  <div className="quantity-controls">
-                    <button 
-                      type="button" 
-                      className="quantity-btn quantity-decrease"
-                      onClick={handleCantidadDecrement}
-                      disabled={cantidad <= 1}
-                    >
-                      −
-                    </button>
-                    <input
-                      type="number"
-                      id="cantidad"
-                      value={cantidad}
-                      onChange={handleCantidadChange}
-                      min="1"
-                      className="quantity-input"
-                    />
-                    <button 
-                      type="button" 
-                      className="quantity-btn quantity-increase"
-                      onClick={handleCantidadIncrement}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-                
-                <button 
-                  className={`add-to-quote-btn ${showSuccessAnimation ? 'success' : ''}`}
-                  onClick={handleCotizar}
-                >
-                  <span className="btn-icon">{showSuccessAnimation ? '👍' : '📋'}</span>
-                  <span className="btn-text">{showSuccessAnimation ? '' : 'Agregar a Cotización'}</span>
-                </button>
               </div>
             </div>
           </div>
