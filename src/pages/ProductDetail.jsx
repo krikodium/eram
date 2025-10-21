@@ -38,23 +38,51 @@ function ProductDetail() {
     fetchProduct();
   }, [fetchProduct]);
 
-  // Controlar cuando el componente está completamente listo - Solo una vez por sesión
+  // Limpiar sessionStorage de productos antiguos al montar el componente
   useEffect(() => {
-    if (!loading && producto) {
-      // Verificar si ya se hizo refresh en esta sesión
-      const hasRefreshed = sessionStorage.getItem('productDetailRefreshed');
+    const cleanupOldKeys = () => {
+      try {
+        const keys = Object.keys(sessionStorage);
+        const productKeys = keys.filter(key => key.startsWith('productDetailRefreshed_'));
+        
+        // Mantener solo las últimas 10 claves para evitar acumulación
+        if (productKeys.length > 10) {
+          productKeys.slice(0, -10).forEach(key => {
+            sessionStorage.removeItem(key);
+          });
+        }
+      } catch (error) {
+        console.warn('Error al limpiar sessionStorage:', error);
+      }
+    };
+    
+    cleanupOldKeys();
+  }, []);
+
+  // Controlar cuando el componente está completamente listo - Solo una vez por producto
+  useEffect(() => {
+    if (!loading && producto && id) {
+      // Verificar si ya se hizo refresh para este producto específico
+      const productKey = `productDetailRefreshed_${id}`;
+      const hasRefreshed = sessionStorage.getItem(productKey);
       
       if (!hasRefreshed) {
-        // Refresh automático para asegurar renderizado correcto del botón
+        // Pequeño delay para asegurar que el DOM esté completamente renderizado
         const refreshTimer = setTimeout(() => {
-          sessionStorage.setItem('productDetailRefreshed', 'true');
-          window.location.reload();
-        }, 100);
+          try {
+            sessionStorage.setItem(productKey, 'true');
+            window.location.reload();
+          } catch (error) {
+            console.warn('Error al guardar en sessionStorage:', error);
+            // Si hay error con sessionStorage, hacer refresh de todas formas
+            window.location.reload();
+          }
+        }, 200);
         
         return () => clearTimeout(refreshTimer);
       }
     }
-  }, [loading, producto]);
+  }, [loading, producto, id]);
 
   // Memoizar el precio formateado
   const formattedPrice = useMemo(() => {

@@ -48,7 +48,7 @@
 .product-card-wrapper.grid-view .card-image-section {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 240px;
   overflow: hidden;
   border-radius: 12px 12px 0 0;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
@@ -72,38 +72,48 @@
 }
 
 .product-card-wrapper.grid-view .card-content {
-  padding: 2.25rem 2rem 1.5rem;
+  padding: 1.5rem 1.5rem 1rem;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   background: var(--bg-card);
+  text-align: center;
+  align-items: center;
 }
 
 .product-card-wrapper.grid-view .content-header {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
 }
 
 .product-card-wrapper.grid-view .product-category {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--interactive-primary);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   opacity: 0.9;
+  text-align: center;
+  width: 100%;
 }
 
 .product-card-wrapper.grid-view .product-title {
-  margin: 0 0 1.25rem 0;
-  font-size: 1.6rem;
+  margin: 0 0 0.75rem 0;
+  font-size: 1.4rem;
   font-weight: 800;
   line-height: 1.25;
   color: var(--text-primary);
   letter-spacing: -0.02em;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
 }
 
 .product-card-wrapper.grid-view .product-title a {
@@ -121,75 +131,91 @@
   padding: 0;
   border-radius: 0;
   border: none;
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
+  text-align: center;
+  width: 100%;
 }
 
 .product-card-wrapper.grid-view .provider-price {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
+  align-items: center;
+  text-align: center;
 }
 
 .product-card-wrapper.grid-view .price-label {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   font-weight: 500;
+  text-align: center;
 }
 
 .product-card-wrapper.grid-view .price-value {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 900;
   color: var(--interactive-primary);
+  text-align: center;
 }
 
 .product-card-wrapper.grid-view .price-info {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 0.9rem;
+  gap: 0.5rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   font-weight: 500;
+  justify-content: center;
+  text-align: center;
 }
 
 .product-card-wrapper.grid-view .price-icon {
   color: var(--interactive-primary);
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .product-card-wrapper.grid-view .product-details {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
   margin-top: auto;
+  text-align: center;
+  align-items: center;
+  width: 100%;
 }
 
 .product-card-wrapper.grid-view .detail-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
   background: transparent;
   border-radius: 0;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 200px;
 }
 
 .product-card-wrapper.grid-view .detail-label {
   font-weight: 600;
   color: var(--text-tertiary);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.3px;
+  text-align: center;
 }
 
 .product-card-wrapper.grid-view .detail-value {
   font-weight: 500;
   color: var(--text-primary);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  text-align: center;
 }
 
 .product-card-wrapper.grid-view .detail-value.in-stock {
@@ -198,26 +224,40 @@
 
 
 .product-card-wrapper.grid-view .card-actions {
-  padding: 0 2rem 2.25rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
   border-radius: 0 0 12px 12px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 
 .product-card-wrapper.grid-view .card-quote-btn {
   flex: 1;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--interactive-primary), #d32f2f);
-  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.25);
+  background: linear-gradient(135deg, rgba(211, 47, 47, 0.8), rgba(183, 28, 28, 0.9));
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 4px 12px rgba(211, 47, 47, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .product-card-wrapper.grid-view .card-quote-btn:hover {
-  background: linear-gradient(135deg, var(--interactive-primary-hover), #c62828);
+  background: linear-gradient(135deg, rgba(211, 47, 47, 0.9), rgba(183, 28, 28, 1));
+  backdrop-filter: blur(20px);
   transform: translateY(-1px) scale(1.01);
-  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.35);
+  box-shadow: 
+    0 6px 20px rgba(211, 47, 47, 0.4),
+    0 0 30px rgba(211, 47, 47, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .product-card-wrapper.grid-view .card-quote-btn:active {
@@ -659,7 +699,7 @@
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     height: auto;
-    min-height: 280px;
+    min-height: 310px;
   }
 
   .product-card-wrapper.grid-view:hover {
@@ -668,51 +708,66 @@
   }
 
   .product-card-wrapper.grid-view .card-image-section {
-    height: 140px;
+    height: 150px;
     border-radius: 10px 10px 0 0;
   }
 
   .product-card-wrapper.grid-view .card-content {
-    padding: 0.875rem;
-    gap: 0.75rem;
-  flex: 1;
-}
+    padding: 0.8rem;
+    gap: 0.6rem;
+    flex: 1;
+    text-align: center;
+    align-items: center;
+  }
 
   .product-card-wrapper.grid-view .product-title {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     line-height: 1.25;
     -webkit-line-clamp: 2;
     line-clamp: 2;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+    text-align: center;
+    width: 100%;
   }
 
   .product-card-wrapper.grid-view .product-category {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.6rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.25rem;
+    text-align: center;
+    width: 100%;
   }
 
   .product-card-wrapper.grid-view .price-value {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    text-align: center;
   }
 
   .product-card-wrapper.grid-view .price-info {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    text-align: center;
   }
 
   .product-card-wrapper.grid-view .card-actions {
-    padding: 0 0.875rem 0.875rem;
-    gap: 0.5rem;
+    padding: 0 0.75rem 0.75rem;
+    gap: 0.4rem;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
   }
 
-  .product-card-wrapper.grid-view .card-quote-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.75rem;
-    border-radius: 10px;
-    width: 100%;
-    font-weight: 600;
+  .product-card-wrapper.grid-view .card-quote-btn:hover {
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.9), rgba(183, 28, 28, 1));
+    backdrop-filter: blur(20px);
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 
+      0 6px 20px rgba(211, 47, 47, 0.4),
+      0 0 30px rgba(211, 47, 47, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 
   .product-card-wrapper.grid-view .quantity-controls {
@@ -802,7 +857,7 @@
   .product-card-wrapper.grid-view {
     border-radius: 12px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    min-height: 260px;
+    min-height: 290px;
   }
 
   .product-card-wrapper.grid-view .card-image-section {
@@ -811,46 +866,61 @@
   }
 
   .product-card-wrapper.grid-view .card-content {
-    padding: 0.75rem;
+    padding: 0.7rem;
     gap: 0.5rem;
-  flex: 1;
-}
+    flex: 1;
+    text-align: center;
+    align-items: center;
+  }
 
   .product-card-wrapper.grid-view .product-title {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
     line-height: 1.2;
     -webkit-line-clamp: 2;
     line-clamp: 2;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
+    text-align: center;
+    width: 100%;
   }
 
   .product-card-wrapper.grid-view .product-category {
-    font-size: 0.65rem;
-    padding: 0.25rem 0.5rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+    margin-bottom: 0.2rem;
+    text-align: center;
+    width: 100%;
   }
 
   .product-card-wrapper.grid-view .price-value {
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+    text-align: center;
   }
 
   .product-card-wrapper.grid-view .price-info {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
+    text-align: center;
   }
 
   .product-card-wrapper.grid-view .card-actions {
-    padding: 0 0.75rem 0.75rem;
-    gap: 0.4rem;
+    padding: 0 0.6rem 0.6rem;
+    gap: 0.3rem;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
   }
 
-  .product-card-wrapper.grid-view .card-quote-btn {
-    padding: 0.5rem 0.875rem;
-    font-size: 0.7rem;
-    border-radius: 8px;
-    width: 100%;
-    font-weight: 600;
+  .product-card-wrapper.grid-view .card-quote-btn:hover {
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.9), rgba(183, 28, 28, 1));
+    backdrop-filter: blur(20px);
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 
+      0 6px 20px rgba(211, 47, 47, 0.4),
+      0 0 30px rgba(211, 47, 47, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 
   .product-card-wrapper.grid-view .quantity-controls {

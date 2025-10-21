@@ -672,14 +672,27 @@
   box-sizing: border-box !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
-  background: linear-gradient(135deg, var(--interactive-primary), #d32f2f) !important;
-  color: white !important;
-  border: none !important;
-  cursor: pointer !important;
+  /* Efecto glass transparente */
+  background: linear-gradient(135deg, rgba(211, 47, 47, 0.8), rgba(183, 28, 28, 0.9)) !important;
+  backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 
+    0 4px 12px rgba(211, 47, 47, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4) !important;
-  position: relative !important;
-  overflow: hidden !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.card-quote-btn:hover {
+  background: linear-gradient(135deg, rgba(211, 47, 47, 0.9), rgba(183, 28, 28, 1)) !important;
+  backdrop-filter: blur(20px) !important;
+  transform: translateY(-1px) scale(1.01) !important;
+  box-shadow: 
+    0 6px 20px rgba(211, 47, 47, 0.4),
+    0 0 30px rgba(211, 47, 47, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Mobile específico para botones del catálogo */
@@ -691,17 +704,34 @@
     font-size: 0.8rem !important;
     border-radius: 10px !important;
     gap: 0.4rem !important;
+    /* Efecto glass transparente para mobile */
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.8), rgba(183, 28, 28, 0.9)) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 
+      0 4px 12px rgba(211, 47, 47, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
   }
   
-  .quantity-controls {
-    min-height: 32px !important;
-    height: 32px !important;
-    width: 95px !important;
-    gap: 0.6rem !important;
-    padding: 0.4rem 0.6rem !important;
-    border-radius: 10px !important;
-    /* Animación de entrada para mobile */
-    animation: counterSlideInMobile 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  .card-quote-btn:hover {
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.9), rgba(183, 28, 28, 1)) !important;
+    backdrop-filter: blur(20px) !important;
+    transform: translateY(-1px) scale(1.01) !important;
+    box-shadow: 
+      0 6px 20px rgba(211, 47, 47, 0.4),
+      0 0 30px rgba(211, 47, 47, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+  
+  /* Centrado específico para mobile */
+  .product-card-wrapper.grid-view .card-actions .quantity-controls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    text-align: center !important;
   }
   
   .quantity-controls .quantity-btn {
@@ -723,17 +753,34 @@
     font-size: 0.75rem !important;
     border-radius: 8px !important;
     gap: 0.3rem !important;
+    /* Efecto glass transparente para mobile pequeño */
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.8), rgba(183, 28, 28, 0.9)) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 
+      0 4px 12px rgba(211, 47, 47, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
   }
   
-  .quantity-controls {
-    min-height: 28px !important;
-    height: 28px !important;
-    width: 85px !important;
-    gap: 0.5rem !important;
-    padding: 0.3rem 0.5rem !important;
-    border-radius: 8px !important;
-    /* Animación de entrada para mobile pequeño */
-    animation: counterSlideInMobileSmall 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  .card-quote-btn:hover {
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.9), rgba(183, 28, 28, 1)) !important;
+    backdrop-filter: blur(20px) !important;
+    transform: translateY(-1px) scale(1.01) !important;
+    box-shadow: 
+      0 6px 20px rgba(211, 47, 47, 0.4),
+      0 0 30px rgba(211, 47, 47, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+  
+  /* Centrado específico para mobile pequeño */
+  .product-card-wrapper.grid-view .card-actions .quantity-controls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    text-align: center !important;
   }
   
   .quantity-controls .quantity-btn {
@@ -894,7 +941,14 @@
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) !important;
 }
 
-/* Contador fijo con estilo glass - Desktop más grande, mobile igual */
+/* Centrado específico para contador en card-actions */
+.product-card-wrapper.grid-view .card-actions .quantity-controls {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
 .quantity-controls {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -914,6 +968,7 @@
   flex-shrink: 0 !important;
   position: relative !important;
   overflow: hidden !important;
+  margin: 0 auto !important;
   /* Animación de entrada */
   animation: counterSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
