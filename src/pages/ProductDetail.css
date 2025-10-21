@@ -98,14 +98,30 @@
 .product-main-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  margin-bottom: 4rem;
-  padding: 3rem;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  padding: 2.5rem;
   background: var(--bg-card);
   border: 1px solid var(--border-primary);
-  border-radius: 24px;
+  border-radius: 20px;
   backdrop-filter: blur(10px);
   box-shadow: var(--card-shadow);
+  align-items: start;
+}
+
+/* Left Column - Image & Certification */
+.product-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Right Column - Product Information */
+.product-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-left: 1rem;
 }
 
 /* =============================================================================
@@ -211,6 +227,52 @@
    PRODUCT INFO SECTION
    ============================================================================= */
 
+/* =============================================================================
+   PRODUCT INFORMATION SECTION - ENHANCED
+   ============================================================================= */
+
+.product-right-column .product-header {
+  margin-bottom: 1.5rem;
+}
+
+.product-right-column .product-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.product-right-column .product-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.product-right-column .product-code {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  background: var(--bg-secondary);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-secondary);
+}
+
+.product-right-column .product-category {
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  background: rgba(var(--accent-rgb), 0.1);
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  display: inline-block;
+  width: fit-content;
+}
+
 .product-info-section {
   display: flex;
   flex-direction: column;
@@ -247,6 +309,166 @@
 }
 
 /* =============================================================================
+   IRAM CERTIFICATION - DESKTOP ONLY
+   ============================================================================= */
+
+.iram-certification-desktop {
+  display: none; /* Hidden by default */
+}
+
+/* Show only on desktop */
+@media (min-width: 769px) {
+  .iram-certification-desktop {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .iram-certification-desktop:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Apply same content styles to desktop version */
+  .iram-certification-desktop .certification-content h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
+  }
+
+  .iram-certification-desktop .certification-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+  }
+
+  .iram-certification-desktop .certification-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .iram-certification-desktop .benefit-item {
+    font-size: 0.9rem;
+    color: var(--success-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+/* =============================================================================
+   IRAM CERTIFICATION - MOBILE ONLY - FIXED RENDERING
+   ============================================================================= */
+
+.iram-certification-mobile {
+  display: none; /* Hidden by default */
+  min-height: 120px; /* Prevent layout shift */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Show only on mobile */
+@media (max-width: 768px) {
+  .iram-certification-mobile {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+    padding: 1.5rem !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    margin-bottom: 2rem !important;
+    text-align: center !important;
+    min-height: 120px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .iram-certification-mobile .certification-icon {
+    flex-shrink: 0 !important;
+    width: 80px !important;
+    height: 80px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .iram-certification-mobile .iram-logo {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+    filter: brightness(0) invert(1) !important;
+  }
+
+  .iram-certification-mobile .certification-content {
+    flex: 1 !important;
+    text-align: center !important;
+    min-width: 0 !important;
+  }
+
+  .iram-certification-mobile .certification-content h3 {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    margin: 0 0 0.75rem 0 !important;
+    line-height: 1.3 !important;
+  }
+
+  .iram-certification-mobile .certification-description {
+    font-size: 0.95rem !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+    margin: 0 0 1rem 0 !important;
+    font-weight: 500 !important;
+  }
+
+  .iram-certification-mobile .certification-benefits {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+  }
+
+  .iram-certification-mobile .benefit-item {
+    font-size: 0.9rem !important;
+    color: var(--success-color) !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    justify-content: center !important;
+  }
+}
+
+/* =============================================================================
    IRAM CERTIFICATION - PROFESSIONAL
    ============================================================================= */
 
@@ -274,8 +496,8 @@
 }
 
 .iram-logo {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   filter: brightness(0) invert(1);
   transition: all 0.3s ease;
@@ -292,22 +514,73 @@
 }
 
 .certification-content h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.3;
 }
 
-.certification-content p {
-  font-size: 0.9rem;
+.certification-description {
+  font-size: 0.95rem;
   color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.4;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  font-weight: 500;
+}
+
+.certification-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.benefit-item {
+  font-size: 0.9rem;
+  color: var(--success-color);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* =============================================================================
    PRODUCT DESCRIPTION
    ============================================================================= */
+
+/* =============================================================================
+   PRODUCT DESCRIPTION - ENHANCED
+   ============================================================================= */
+
+.product-right-column .product-description {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-secondary);
+  margin-bottom: 1rem;
+}
+
+.product-right-column .product-description h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.product-right-column .product-description h3::before {
+  content: "📋";
+  font-size: 1.1rem;
+}
+
+.product-right-column .product-description p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
 
 .product-description {
   padding: 1.5rem;
@@ -334,6 +607,58 @@
 /* =============================================================================
    PRICING SECTION
    ============================================================================= */
+
+/* =============================================================================
+   PRODUCT PRICING - ENHANCED
+   ============================================================================= */
+
+.product-right-column .product-pricing {
+  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.1), rgba(var(--accent-rgb), 0.05));
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  margin-bottom: 1rem;
+}
+
+.product-right-column .price-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.product-right-column .price-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.product-right-column .price-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.product-right-column .currency {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.product-right-column .amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.product-right-column .currency-code {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-left: 0.5rem;
+}
 
 .product-pricing {
   padding: 2rem;
@@ -828,7 +1153,13 @@
 @media (max-width: 1024px) {
   .product-main-section {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
+    padding: 2rem;
+  }
+
+  .product-left-column,
+  .product-right-column {
+    padding-left: 0;
   }
   
   .product-image-container {
@@ -847,9 +1178,15 @@
   }
   
   .product-main-section {
-    padding: 1rem;
-    gap: 1.5rem;
+    padding: 1.5rem;
+    gap: 2rem;
     margin-bottom: 2rem;
+  }
+
+  .product-left-column,
+  .product-right-column {
+    gap: 1.5rem;
+    padding-left: 0;
   }
   
   .product-title {
@@ -858,6 +1195,20 @@
     margin-bottom: 0.75rem;
     word-wrap: break-word;
     overflow-wrap: break-word;
+  }
+
+  .certification-content h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .certification-description {
+    font-size: 0.9rem;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .benefit-item {
+    font-size: 0.85rem;
   }
   
   .product-image-container {
@@ -926,9 +1277,15 @@
   }
   
   .product-main-section {
-    padding: 0.75rem;
-    gap: 1rem;
+    padding: 1rem;
+    gap: 1.5rem;
     margin-bottom: 1.5rem;
+  }
+
+  .product-left-column,
+  .product-right-column {
+    gap: 1rem;
+    padding-left: 0;
   }
   
   .product-title {

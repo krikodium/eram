@@ -211,52 +211,41 @@ function ProductDetail() {
       <div className="product-detail-container">
         {/* Main Product Section */}
         <div className="product-main-section">
-          {/* Product Image */}
-          <div className="product-image-section">
-            <div className="product-image-container" onClick={() => setImageModalOpen(true)}>
-              {producto.imagen_url ? (
-                <>
-                  {imageLoading && (
-                    <div className="image-loading-skeleton">
-                      <div className="loading-spinner"></div>
+          {/* Left Column - Image & Certification */}
+          <div className="product-left-column">
+            {/* Product Image */}
+            <div className="product-image-section">
+              <div className="product-image-container" onClick={() => setImageModalOpen(true)}>
+                {producto.imagen_url ? (
+                  <>
+                    {imageLoading && (
+                      <div className="image-loading-skeleton">
+                        <div className="loading-spinner"></div>
+                      </div>
+                    )}
+                    <img 
+                      src={producto.imagen_url} 
+                      alt={producto.nombre} 
+                      className={`product-main-image ${imageLoading ? 'loading' : 'loaded'}`}
+                      onLoad={handleImageLoad}
+                      onError={handleImageError}
+                      loading="lazy"
+                    />
+                    <div className="image-zoom-overlay">
+                      <span className="zoom-icon">🔍</span>
+                      <span className="zoom-text">Hacer clic para ampliar</span>
                     </div>
-                  )}
-                  <img 
-                    src={producto.imagen_url} 
-                    alt={producto.nombre} 
-                    className={`product-main-image ${imageLoading ? 'loading' : 'loaded'}`}
-                    onLoad={handleImageLoad}
-                    onError={handleImageError}
-                    loading="lazy"
-                  />
-                  <div className="image-zoom-overlay">
-                    <span className="zoom-icon">🔍</span>
-                    <span className="zoom-text">Hacer clic para ampliar</span>
+                  </>
+                ) : (
+                  <div className="no-image-placeholder">
+                    <span>Imagen Próximamente</span>
                   </div>
-                </>
-              ) : (
-                <div className="no-image-placeholder">
-                  <span>Imagen Próximamente</span>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Product Information */}
-          <div className="product-info-section">
-            {/* Product Header */}
-            <div className="product-header">
-              <h1 className="product-title">{producto.nombre}</h1>
-              <div className="product-meta">
-                <span className="product-code">Código: {producto.codigo}</span>
-                {producto.categoria_nombre && (
-                  <span className="product-category">{producto.categoria_nombre}</span>
                 )}
               </div>
             </div>
 
-            {/* IRAM Certification - Professional */}
-            <div className="iram-certification">
+            {/* IRAM Certification - Desktop Only */}
+            <div className="iram-certification-desktop">
               <div className="certification-icon">
                 <img
                   src="/iramsinfondo.png"
@@ -265,8 +254,29 @@ function ProductDetail() {
                 />
               </div>
               <div className="certification-content">
-                <h3>Certificación IRAM</h3>
-                <p>Producto certificado según normativas argentinas de seguridad industrial</p>
+                <h3>Certificación IRAM Argentina</h3>
+                <p className="certification-description">
+                  Este producto cumple con las normativas oficiales de seguridad industrial establecidas por el Instituto Argentino de Normalización y Certificación (IRAM).
+                </p>
+                <div className="certification-benefits">
+                  <span className="benefit-item">✓ Calidad Garantizada</span>
+                  <span className="benefit-item">✓ Cumplimiento Normativo</span>
+                  <span className="benefit-item">✓ Seguridad Certificada</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Product Information */}
+          <div className="product-right-column">
+            {/* Product Header */}
+            <div className="product-header">
+              <h1 className="product-title">{producto.nombre}</h1>
+              <div className="product-meta">
+                <span className="product-code">Código: {producto.codigo}</span>
+                {producto.categoria_nombre && (
+                  <span className="product-category">{producto.categoria_nombre}</span>
+                )}
               </div>
             </div>
 
@@ -338,6 +348,28 @@ function ProductDetail() {
           <div className="specs-header">
             <h2>Especificaciones Técnicas</h2>
             <p>Detalles técnicos del producto</p>
+          </div>
+
+          {/* IRAM Certification - Mobile Only */}
+          <div className="iram-certification-mobile">
+            <div className="certification-icon">
+              <img
+                src="/iramsinfondo.png"
+                alt="Logo IRAM"
+                className="iram-logo"
+              />
+            </div>
+            <div className="certification-content">
+              <h3>Certificación IRAM Argentina</h3>
+              <p className="certification-description">
+                Este producto cumple con las normativas oficiales de seguridad industrial establecidas por el Instituto Argentino de Normalización y Certificación (IRAM).
+              </p>
+              <div className="certification-benefits">
+                <span className="benefit-item">✓ Calidad Garantizada</span>
+                <span className="benefit-item">✓ Cumplimiento Normativo</span>
+                <span className="benefit-item">✓ Seguridad Certificada</span>
+              </div>
+            </div>
           </div>
           
           <div className="specs-grid">

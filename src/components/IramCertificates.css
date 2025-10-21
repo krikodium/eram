@@ -381,8 +381,8 @@
 }
 
 .iram-logo-img {
-  height: 64px;
-  width: 64px;
+  height: 80px;
+  width: 80px;
   object-fit: contain;
   background: var(--bg-primary);
   padding: 12px;
