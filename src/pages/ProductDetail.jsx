@@ -1,8 +1,8 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { productoService } from '../services/supabase';
 import { useQuote } from '../contexts/QuoteContext';
-import { useCatalog } from '../contexts/CatalogContext';
+import SimilarProducts from '../components/SimilarProducts';
 import { FaArrowLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectFade, FreeMode, Thumbs } from 'swiper/modules';
@@ -19,7 +19,6 @@ function ProductDetail() {
   const navigate = useNavigate();
   const location = useLocation();
   const { addItem } = useQuote();
-  const { getCatalogUrl, setSelectedCategory, clearSelectedCategory } = useCatalog();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -31,8 +30,8 @@ function ProductDetail() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  // Memoizar la función de carga para evitar re-renders innecesarios
-  const fetchProduct = useCallback(async () => {
+  // Función de carga del producto
+  const fetchProduct = async () => {
     if (!id) return;
     
     try {
@@ -46,43 +45,22 @@ function ProductDetail() {
     } finally {
       setLoading(false);
     }
-  }, [id]);
+  };
 
   useEffect(() => {
     fetchProduct();
-  }, [fetchProduct]);
+  }, [id]);
 
-  // Efecto para inicializar la imagen principal y detectar categoría
+  // Efecto para inicializar la imagen principal
   useEffect(() => {
     if (producto) {
       setCurrentMainImage(producto.imagen_url || "/default-product.jpg");
       setCurrentImageIndex(0);
-      
-      // Detectar categoría desde la URL o desde el producto
-      const urlParams = new URLSearchParams(location.search);
-      const categoriaIdFromUrl = urlParams.get('categoria_id');
-      
-      if (categoriaIdFromUrl) {
-        // Si hay categoría en la URL, guardarla en el contexto
-        setSelectedCategory(parseInt(categoriaIdFromUrl), {
-          id: parseInt(categoriaIdFromUrl),
-          nombre: producto.categoria_nombre || 'Categoría'
-        });
-      } else if (producto.categoria_id) {
-        // Si no hay en URL pero el producto tiene categoría, usarla
-        setSelectedCategory(producto.categoria_id, {
-          id: producto.categoria_id,
-          nombre: producto.categoria_nombre || 'Categoría'
-        });
-      } else {
-        // Si no hay categoría, limpiar el contexto
-        clearSelectedCategory();
-      }
     }
-  }, [producto, location.search, setSelectedCategory, clearSelectedCategory]);
+  }, [producto]);
 
   // Obtener todas las imágenes disponibles
-  const getAvailableImages = useCallback(() => {
+  const getAvailableImages = () => {
     if (!producto) return [];
     
     const images = [];
@@ -91,30 +69,30 @@ function ProductDetail() {
     if (producto.imagen_url_3) images.push(producto.imagen_url_3);
     
     return images.length > 0 ? images : ["/default-product.jpg"];
-  }, [producto]);
+  };
 
   // Navegación de imágenes
-  const goToNextImage = useCallback(() => {
+  const goToNextImage = () => {
     const images = getAvailableImages();
     const nextIndex = (currentImageIndex + 1) % images.length;
     setCurrentImageIndex(nextIndex);
     setCurrentMainImage(images[nextIndex]);
-  }, [currentImageIndex, getAvailableImages]);
+  };
 
-  const goToPrevImage = useCallback(() => {
+  const goToPrevImage = () => {
     const images = getAvailableImages();
     const prevIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
     setCurrentImageIndex(prevIndex);
     setCurrentMainImage(images[prevIndex]);
-  }, [currentImageIndex, getAvailableImages]);
+  };
 
-  const goToImage = useCallback((index) => {
+  const goToImage = (index) => {
     const images = getAvailableImages();
     if (index >= 0 && index < images.length) {
       setCurrentImageIndex(index);
       setCurrentMainImage(images[index]);
     }
-  }, [getAvailableImages]);
+  };
 
   // Limpiar sessionStorage de productos antiguos al montar el componente
   useEffect(() => {
@@ -137,39 +115,14 @@ function ProductDetail() {
     cleanupOldKeys();
   }, []);
 
-  // Controlar cuando el componente está completamente listo - Solo una vez por producto
-  useEffect(() => {
-    if (!loading && producto && id) {
-      // Verificar si ya se hizo refresh para este producto específico
-      const productKey = `productDetailRefreshed_${id}`;
-      const hasRefreshed = sessionStorage.getItem(productKey);
-      
-      if (!hasRefreshed) {
-        // Pequeño delay para asegurar que el DOM esté completamente renderizado
-        const refreshTimer = setTimeout(() => {
-          try {
-            sessionStorage.setItem(productKey, 'true');
-            window.location.reload();
-          } catch (error) {
-            console.warn('Error al guardar en sessionStorage:', error);
-            // Si hay error con sessionStorage, hacer refresh de todas formas
-            window.location.reload();
-          }
-        }, 200);
-        
-        return () => clearTimeout(refreshTimer);
-      }
-    }
-  }, [loading, producto, id]);
-
-  // Memoizar el precio formateado
-  const formattedPrice = useMemo(() => {
+  // Precio formateado
+  const getFormattedPrice = () => {
     if (!producto?.precio) return null;
     return parseFloat(producto.precio).toFixed(2);
-  }, [producto?.precio]);
+  };
 
-  // Memoizar las especificaciones técnicas
-  const technicalSpecs = useMemo(() => {
+  // Especificaciones técnicas
+  const getTechnicalSpecs = () => {
     if (!producto) return [];
     
     const specs = [
@@ -192,7 +145,7 @@ function ProductDetail() {
     }
 
     return specs;
-  }, [producto]);
+  };
 
   // Handlers
   const handleImageLoad = () => setImageLoading(false);
@@ -245,8 +198,7 @@ function ProductDetail() {
 
   // Función inteligente para volver al catálogo
   const handleBackToCatalog = () => {
-    const catalogUrl = getCatalogUrl();
-    navigate(catalogUrl);
+    navigate('/catalogo');
   };
 
   if (loading) {
@@ -285,7 +237,7 @@ function ProductDetail() {
         <div className="breadcrumb-path">
           <Link to="/" className="breadcrumb-link">Inicio</Link>
           <span className="breadcrumb-separator">›</span>
-          <Link to={getCatalogUrl()} className="breadcrumb-link">Catálogo</Link>
+          <Link to="/catalogo" className="breadcrumb-link">Catálogo</Link>
           <span className="breadcrumb-separator">›</span>
           <span className="breadcrumb-current">
             {producto.nombre.length > 30 
@@ -453,13 +405,13 @@ function ProductDetail() {
             </div>
 
             {/* Price Section - Moved up */}
-            {formattedPrice && (
+            {getFormattedPrice() && (
               <div className="product-pricing">
                 <div className="price-section">
                   <span className="price-label">Precio Unitario</span>
                   <div className="price-value">
                     <span className="currency">$</span>
-                    <span className="amount">{formattedPrice}</span>
+                    <span className="amount">{getFormattedPrice()}</span>
                     {producto.moneda && <span className="currency-code">({producto.moneda})</span>}
                   </div>
                 </div>
@@ -513,28 +465,6 @@ function ProductDetail() {
                 <span className="btn-text">{showSuccessAnimation ? '' : 'Agregar a Cotización'}</span>
               </button>
             </div>
-
-            {/* IRAM Certification - Moved to bottom, more compact */}
-            <div className="iram-certification-desktop">
-              <div className="certification-icon">
-                <img
-                  src="/iramsinfondo.png"
-                  alt="Logo IRAM"
-                  className="iram-logo"
-                />
-              </div>
-              <div className="certification-content">
-                <h3>Certificación IRAM Argentina</h3>
-                <p className="certification-description">
-                  Este producto cumple con las normativas oficiales de seguridad industrial establecidas por el Instituto Argentino de Normalización y Certificación (IRAM).
-                </p>
-                <div className="certification-benefits">
-                  <span className="benefit-item">✓ Calidad Garantizada</span>
-                  <span className="benefit-item">✓ Cumplimiento Normativo</span>
-                  <span className="benefit-item">✓ Seguridad Certificada</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -544,31 +474,9 @@ function ProductDetail() {
             <h2>Especificaciones Técnicas</h2>
             <p>Detalles técnicos del producto</p>
           </div>
-
-          {/* IRAM Certification - Mobile Only */}
-          <div className="iram-certification-mobile">
-            <div className="certification-icon">
-              <img
-                src="/iramsinfondo.png"
-                alt="Logo IRAM"
-                className="iram-logo"
-              />
-            </div>
-            <div className="certification-content">
-              <h3>Certificación IRAM Argentina</h3>
-              <p className="certification-description">
-                Este producto cumple con las normativas oficiales de seguridad industrial establecidas por el Instituto Argentino de Normalización y Certificación (IRAM).
-              </p>
-              <div className="certification-benefits">
-                <span className="benefit-item">✓ Calidad Garantizada</span>
-                <span className="benefit-item">✓ Cumplimiento Normativo</span>
-                <span className="benefit-item">✓ Seguridad Certificada</span>
-              </div>
-            </div>
-          </div>
           
           <div className="specs-grid">
-            {technicalSpecs.map((spec, index) => (
+            {getTechnicalSpecs().map((spec, index) => (
               <div key={index} className="spec-item">
                 <div className="spec-label">
                   {spec.icon === 'weight' && <span className="weight-icon">⚖️</span>}
@@ -580,28 +488,9 @@ function ProductDetail() {
           </div>
         </div>
 
-        {/* Bulk Prices */}
-        {producto.precios_por_bulto && Object.keys(producto.precios_por_bulto).length > 0 && (
-          <div className="bulk-prices-section">
-            <div className="bulk-prices-header">
-              <h2>Precios por Bulto</h2>
-              <p>Descuentos por cantidad</p>
-            </div>
-            <div className="bulk-prices-grid">
-              {Object.entries(producto.precios_por_bulto).map(([quantity, price]) => (
-                <div key={quantity} className="bulk-price-item">
-                  <div className="bulk-quantity">
-                    <span className="quantity-number">{quantity}</span>
-                    <span className="quantity-label">unidades</span>
-                  </div>
-                  <div className="bulk-price">
-                    <span className="price-value">${parseFloat(price).toFixed(2)}</span>
-                    <span className="price-per-unit">por unidad</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Similar Products Section - Moved after technical specs */}
+        {producto && (
+          <SimilarProducts currentProduct={producto} />
         )}
 
       </div>

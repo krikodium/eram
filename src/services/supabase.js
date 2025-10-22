@@ -250,6 +250,49 @@ export const productoService = {
       console.error('Error fetching featured products:', error)
       throw new Error('Error al obtener productos destacados')
     }
+  },
+
+  // Obtener TODOS los productos de una categoría (para random en frontend)
+  getProductosSimilares: async (categoriaId, excludeId, limit = 3) => {
+    try {
+      const { data, error } = await supabase
+        .from('productos')
+        .select(`
+          *,
+          categorias (
+            id,
+            nombre
+          )
+        `)
+        .eq('activo', true)
+        .eq('categoria_id', categoriaId)
+        .neq('id', excludeId)
+
+      if (error) throw error
+
+      // Agregar categoria_nombre para compatibilidad
+      if (data) {
+        data.forEach(product => {
+          if (product.categorias) {
+            product.categoria_nombre = product.categorias.nombre;
+          }
+        });
+      }
+
+      // Hacer random en el frontend - algoritmo Fisher-Yates
+      const shuffled = [...data];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      
+      const result = shuffled.slice(0, limit);
+      console.log(`🎲 Productos similares aleatorios para categoría ${categoriaId}:`, result.map(p => p.nombre));
+      return result;
+    } catch (error) {
+      console.error('Error fetching similar products:', error)
+      throw new Error('Error al obtener productos similares')
+    }
   }
 }
 
