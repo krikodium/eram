@@ -72,8 +72,9 @@ function HeroCarousel() {
       secondaryLink: "/capacitacion",
       icon: <FaHardHat />,
       metrics: [
-        { value: "15M", label: "ALTURA", icon: <FaHardHat /> },
-        { value: "24/7", label: "SOPORTE", icon: <FaUsers /> }
+        { value: "ARNESES", label: "PROTECCIÓN", icon: <FaHardHat /> },
+        { value: "CASCOS", label: "SEGURIDAD", icon: <FaShieldAlt /> },
+        { value: "LÍNEAS", label: "DE VIDA", icon: <FaIndustry /> }
       ]
     }
   ];

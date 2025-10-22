@@ -7,6 +7,7 @@ import './CategoryIcons.css';
 import { Link } from 'react-router-dom';
 import { categoriaService } from '../services/supabase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import LadderIcon from './LadderIcon';
 import {
   faShield,
   faHardHat,
@@ -64,7 +65,7 @@ const CATEGORY_ICONS = {
     bgColor: "rgba(121, 85, 72, 0.15)" 
   },
   "Escaleras": { 
-    icon: <FontAwesomeIcon icon={faArrowUp} size="lg" />, 
+    icon: <LadderIcon size="lg" />, 
     color: "#607D8B", 
     bgColor: "rgba(96, 125, 139, 0.15)" 
   },

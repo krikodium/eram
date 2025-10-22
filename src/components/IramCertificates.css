@@ -69,6 +69,11 @@
 .title-highlight { color: var(--text-primary); }
 .title-highlight::after { content: none; }
 
+/* Light theme corrections */
+[data-theme="light"] .title-highlight {
+  color: #0F172A !important;
+}
+
 .certificates-subtitle {
   font-size: 1.2rem;
   line-height: 1.6;

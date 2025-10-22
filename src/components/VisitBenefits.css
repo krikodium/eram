@@ -72,6 +72,15 @@
   background-clip: text;
 }
 
+/* Light theme corrections */
+[data-theme="light"] .title-highlight {
+  color: #0F172A !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+}
+
 .section-description {
   font-size: 1.1rem;
   color: var(--text-tertiary);

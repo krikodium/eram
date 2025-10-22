@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { categoriaService } from '../services/supabase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import LadderIcon from './LadderIcon';
 import {
   faShield,
   faHardHat,
@@ -62,7 +63,7 @@ const CATEGORY_ICONS = {
     bgColor: "rgba(var(--interactive-primary-rgb), 0.15)" 
   },
   "Escaleras": { 
-    icon: <FontAwesomeIcon icon={faArrowUp} size="lg" />, 
+    icon: <LadderIcon size="lg" />, 
     color: "var(--interactive-primary)", 
     bgColor: "rgba(var(--interactive-primary-rgb), 0.15)" 
   },

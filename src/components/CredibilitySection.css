@@ -94,6 +94,11 @@
 
 .title-highlight::after { content: none; }
 
+/* Light theme corrections */
+[data-theme="light"] .title-highlight {
+  color: #0F172A !important;
+}
+
 .credibility-description {
   font-size: 1.3rem;
   color: var(--text-secondary);

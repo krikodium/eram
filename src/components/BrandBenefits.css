@@ -72,6 +72,11 @@
   margin-top: 0.25rem;
 }
 
+/* Light theme corrections */
+[data-theme="light"] span.title-highlight {
+  color: #0F172A !important;
+}
+
 .benefits-description {
   font-size: 1.1rem;
   color: var(--text-tertiary);

@@ -183,24 +183,26 @@
   animation: titleSlideUp 1s ease-out 0.3s both;
 }
 
-.title-line-1 {
-  color: var(--text-primary);
+.hero-carousel-section .title-line-1 {
+  color: #FFFFFF;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.title-highlight {
-  color: var(--text-primary);
-  -webkit-text-fill-color: unset;
-  background: none;
-  text-shadow: none;
+.hero-carousel-section .title-highlight,
+[data-theme="light"] .hero-carousel-section .title-highlight,
+[data-theme="dark"] .hero-carousel-section .title-highlight {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: unset !important;
+  background: none !important;
+  text-shadow: none !important;
 }
 
 @keyframes highlightGradient { }
 
-.hero-subtitle {
+.hero-carousel-section .hero-subtitle {
   font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   font-weight: 600;
-  color: var(--text-tertiary);
+  color: #FFFFFF;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
@@ -230,10 +232,10 @@
 }
 
 /* Description */
-.hero-description {
+.hero-carousel-section .hero-description {
   font-size: clamp(1rem, 1.5vw, 1.3rem);
   line-height: 1.7;
-  color: var(--text-secondary);
+  color: #E0E0E0;
   max-width: 600px;
   margin: 0;
   animation: descriptionFadeIn 1s ease-out 0.7s both;
@@ -318,7 +320,7 @@
 
 .hero-btn.secondary {
   background: rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
+  color: #FFFFFF;
   border-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
 }
@@ -326,6 +328,7 @@
 .hero-btn.secondary:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
+  color: #000000;
   transform: translateY(-2px);
 }
 
@@ -356,14 +359,14 @@
   height: 100%;
 }
 
-.metric-card {
+.hero-carousel-section .metric-card {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  background: var(--bg-card);
+  background: rgba(30, 30, 32, 0.95) !important;
   backdrop-filter: blur(10px);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px;
   padding: 1.5rem 2rem;
   width: 320px;
   height: 100px;
@@ -382,22 +385,22 @@
   }
 }
 
-.metric-card:hover {
+.hero-carousel-section .metric-card:hover {
   transform: translateX(-5px) scale(1.02);
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15) !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.metric-icon {
+.hero-carousel-section .metric-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-md);
-  color: var(--text-primary);
+  background: rgba(30, 30, 32, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px;
+  color: #FFFFFF !important;
   font-size: 1.3rem;
   flex-shrink: 0;
   margin-right: 0.5rem;
@@ -412,17 +415,17 @@
   flex: 1;
 }
 
-.metric-value {
+.hero-carousel-section .metric-value {
   font-size: 2rem;
   font-weight: 900;
-  color: var(--text-primary);
+  color: #FFFFFF !important;
   line-height: 1;
 }
 
-.metric-label {
+.hero-carousel-section .metric-label {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #B3B3B3 !important;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-top: 0.25rem;
