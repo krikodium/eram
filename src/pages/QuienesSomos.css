@@ -1,4 +1,21 @@
-/* src/pages/QuienesSomos.css - Ultra Professional About Us Page Styles */
+/* =============================================================================
+   VIDEO HERO TEXT PRESERVATION - Force white text in light theme
+   ============================================================================= */
+[data-theme="light"] .intro-content h1 {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .intro-content p {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .intro-title {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .intro-title .title-highlight {
+  color: #FFFFFF !important;
+}
 
 /* =============================================================================
    BASE LAYOUT AND CONTAINER

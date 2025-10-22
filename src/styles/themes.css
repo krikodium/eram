@@ -90,6 +90,7 @@
   --bg-surface: #0D0D0D;
   --bg-card: #0F0F0F;
   --bg-hover: #1A1A1A;
+  --bg-overlay: rgba(255, 255, 255, 0.02);
   
   /* Text Colors - Enhanced */
   --text-primary: #FFFFFF;
@@ -98,6 +99,7 @@
   --text-muted: #888888;
   --text-disabled: #5A5A5A;
   --text-inverse: #121212;
+  --text-on-primary: #FFFFFF;
   
   /* Interactive Colors - Enhanced */
   --interactive-primary: var(--brand-red);
@@ -131,6 +133,7 @@
   
   /* Enhanced shadows for dark theme */
   --shadow-colored: 0 4px 20px rgba(211, 47, 47, 0.4);
+  --shadow-primary: 0 4px 16px rgba(211, 47, 47, 0.4);
   --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   --card-shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.6);
   --button-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
@@ -148,6 +151,7 @@
   --bg-surface: #FFFFFF;
   --bg-card: #FFFFFF;
   --bg-hover: #F6F6F6;
+  --bg-overlay: rgba(0, 0, 0, 0.02);
   
   /* Text Colors - Enhanced Contrast for Better Readability */
   --text-primary: #0F172A;
@@ -156,6 +160,7 @@
   --text-muted: #64748B;
   --text-disabled: #94A3B8;
   --text-inverse: #FFFFFF;
+  --text-on-primary: #FFFFFF;
   
   /* Interactive Colors - Sophisticated Palette */
   --interactive-primary: var(--brand-red);
@@ -195,6 +200,7 @@
   
   /* Enhanced shadows for light theme */
   --shadow-colored: 0 4px 20px rgba(211, 47, 47, 0.15);
+  --shadow-primary: 0 4px 16px rgba(211, 47, 47, 0.15);
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
   --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
   --button-shadow: 0 2px 8px rgba(211, 47, 47, 0.2);

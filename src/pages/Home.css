@@ -1,4 +1,44 @@
-/* src/pages/Home.css - Enhanced Professional Home Page Layout */
+/* =============================================================================
+   HERO TEXT PRESERVATION - Force white text in light theme
+   ============================================================================= */
+[data-theme="light"] .hero-title {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .hero-subtitle {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .hero-description {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .hero-cta {
+  background: #D32F2F !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .title-line-1 {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .title-highlight {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .hero-subtitle {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .hero-btn.secondary {
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+}
+
+[data-theme="light"] .hero-btn.secondary:hover {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+}
 
 /* =============================================================================
    HOME CONTAINER - Clean Layout Structure

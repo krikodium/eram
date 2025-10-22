@@ -23,9 +23,9 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, 
-    rgba(255, 255, 255, 0.1) 0%, 
-    rgba(255, 255, 255, 0.2) 50%, 
-    rgba(255, 255, 255, 0.1) 100%);
+    var(--bg-tertiary) 0%, 
+    var(--bg-secondary) 50%, 
+    var(--bg-tertiary) 100%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
   border-radius: 8px;
@@ -111,8 +111,8 @@
    SIDEBAR DE CATEGORÍAS - DISEÑO PROFESIONAL
    ============================================================================= */
 .categories-sidebar {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
   border-radius: 8px;
   padding: 1.5rem;
   height: fit-content;
@@ -179,8 +179,8 @@
 
 .close-sidebar-btn {
   display: none;
-  background: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-hover);
+  border: 1px solid var(--border-primary);
   color: var(--text-muted);
   font-size: 1.5rem;
   cursor: pointer;
@@ -210,8 +210,8 @@
 }
 
 .category-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
   color: var(--text-secondary);
   padding: 0.75rem 1rem;
   border-radius: 6px;
@@ -227,14 +227,14 @@
 }
 
 .category-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--bg-hover);
+  border-color: var(--border-secondary);
   color: var(--text-primary);
 }
 
 .category-btn.active {
   background: var(--interactive-primary);
-  color: white;
+  color: var(--text-on-primary);
   border-color: var(--interactive-primary);
 }
 
@@ -255,7 +255,7 @@
    BARRA DE HERRAMIENTAS - DISEÑO PROFESIONAL
    ============================================================================= */
 .toolbar-section {
-  background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-secondary) 50%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-secondary) 50%, var(--bg-overlay) 100%);
   border-bottom: 1px solid var(--border-tertiary);
   padding: 2rem 2rem;
   position: relative;
@@ -307,7 +307,7 @@
   border: 2px solid var(--border-tertiary);
   border-radius: 16px;
   font-size: 1rem;
-  background: linear-gradient(145deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(145deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-overlay) 100%);
   color: var(--text-primary);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 600;
@@ -351,11 +351,10 @@
 }
 
 .clear-search-btn:hover {
-  color: var(--interactive-primary);
+  color: var(--text-on-primary);
   background: var(--interactive-primary);
-  color: white;
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+  box-shadow: 0 4px 12px var(--shadow-primary);
 }
 
 /* Controles - Diseño Profesional */
@@ -376,7 +375,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(145deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(145deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-overlay) 100%);
   border: 2px solid var(--border-tertiary);
   color: var(--text-primary);
   padding: 1rem 1.5rem;
@@ -402,7 +401,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, var(--bg-hover), transparent);
   transition: left 0.6s ease;
   border-radius: 16px;
   z-index: 1;
@@ -434,14 +433,14 @@
 .sort-btn.active {
   border-color: var(--interactive-primary);
   background: linear-gradient(135deg, var(--interactive-primary) 0%, var(--interactive-primary-hover) 100%);
-  color: white;
+  color: var(--text-on-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(211, 47, 47, 0.4);
+  box-shadow: 0 8px 24px var(--shadow-primary);
 }
 
 .filter-count {
   background: var(--interactive-primary);
-  color: white;
+  color: var(--text-on-primary);
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
   border-radius: 50%;
@@ -555,7 +554,7 @@
 
 .category-btn.active {
   background: var(--interactive-primary);
-  color: white;
+  color: var(--text-on-primary);
   border-color: var(--interactive-primary);
 }
 
@@ -601,7 +600,7 @@
 
 .sort-option.active {
   background: var(--interactive-primary);
-  color: white;
+  color: var(--text-on-primary);
 }
 
 /* Controles de Vista - Diseño Profesional */
@@ -640,7 +639,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, var(--bg-hover), transparent);
   transition: left 0.6s ease;
   border-radius: 12px;
 }
@@ -656,9 +655,9 @@
 }
 
 .view-btn.active {
-  color: white;
+  color: var(--text-on-primary);
   background: linear-gradient(135deg, var(--interactive-primary) 0%, var(--interactive-primary-hover) 100%);
-  box-shadow: 0 4px 16px rgba(211, 47, 47, 0.4);
+  box-shadow: 0 4px 16px var(--shadow-primary);
   transform: scale(1.05);
 }
 
@@ -971,15 +970,15 @@
     border-radius: 20px;
     font-weight: 500;
     letter-spacing: 0.1px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-overlay);
+    border: 1px solid var(--border-primary);
     backdrop-filter: blur(10px);
   }
 
   .search-input:focus {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: #ff6b6b;
-    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+    background: var(--bg-hover);
+    border-color: var(--interactive-primary);
+    box-shadow: 0 0 0 3px var(--shadow-primary);
   }
 
   .controls-section {
@@ -1020,14 +1019,14 @@
     border-radius: 14px;
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
   }
 
   .view-btn.active {
-    background: linear-gradient(135deg, #ff6b6b 0%, #e55a5a 100%);
-    border-color: #ff6b6b;
-    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+    background: linear-gradient(135deg, var(--interactive-primary) 0%, var(--interactive-primary-hover) 100%);
+    border-color: var(--interactive-primary);
+    box-shadow: 0 4px 12px var(--shadow-primary);
   }
   
   /* Productos Mobile Profesional - 2 Columnas */
@@ -1155,14 +1154,14 @@
     padding: 0.875rem 1rem 0.875rem 3rem;
     border-radius: 18px;
     font-weight: 500;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--bg-overlay);
+    border: 1px solid var(--border-primary);
   }
 
   .search-input:focus {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: #ff6b6b;
-    box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.15);
+    background: var(--bg-hover);
+    border-color: var(--interactive-primary);
+    box-shadow: 0 0 0 2px var(--shadow-primary);
   }
 
   .controls-section {
@@ -1192,14 +1191,14 @@
     font-size: 0.9rem;
     border-radius: 12px;
     font-weight: 600;
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
   }
 
   .view-btn.active {
-    background: linear-gradient(135deg, #ff6b6b 0%, #e55a5a 100%);
-    border-color: #ff6b6b;
-    box-shadow: 0 3px 10px rgba(255, 107, 107, 0.25);
+    background: linear-gradient(135deg, var(--interactive-primary) 0%, var(--interactive-primary-hover) 100%);
+    border-color: var(--interactive-primary);
+    box-shadow: 0 3px 10px var(--shadow-primary);
   }
 
   /* Productos Mobile Pequeño - 2 Columnas */
@@ -1294,7 +1293,7 @@
   .sort-btn,
   .view-btn,
   .search-input {
-    -webkit-tap-highlight-color: rgba(255, 107, 107, 0.2);
+    -webkit-tap-highlight-color: var(--interactive-primary);
     touch-action: manipulation;
   }
 
@@ -1426,5 +1425,120 @@
   
   .view-btn {
     border: 1px solid currentColor;
+  }
+}
+
+/* =============================================================================
+   LIGHT THEME OVERRIDES - Force correct colors for light theme
+   ============================================================================= */
+[data-theme="light"] .catalogo-header {
+  background: #FFFFFF !important;
+}
+
+[data-theme="light"] .toolbar-section {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+[data-theme="light"] .search-input {
+  background: #FFFFFF !important;
+  border: 2px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .search-input::placeholder {
+  color: #64748B !important;
+}
+
+[data-theme="light"] .filter-btn,
+[data-theme="light"] .sort-btn {
+  background: #FFFFFF !important;
+  border: 2px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .filter-btn:hover,
+[data-theme="light"] .sort-btn:hover {
+  background: #F6F6F6 !important;
+  border-color: #E2E8F0 !important;
+}
+
+[data-theme="light"] .view-controls {
+  background: #FFFFFF !important;
+  border: 2px solid #CBD5E1 !important;
+}
+
+[data-theme="light"] .view-btn {
+  color: #64748B !important;
+}
+
+[data-theme="light"] .view-btn:hover {
+  background: #F6F6F6 !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .page-subtitle {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .page-title {
+  color: #0F172A !important;
+  text-shadow: none !important;
+}
+
+[data-theme="light"] .page-title::after {
+  display: none !important;
+}
+
+/* Mobile overrides for light theme - Preserve structure, only change colors */
+@media (max-width: 768px) {
+  [data-theme="light"] .toolbar-section {
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+  }
+  
+  [data-theme="light"] .search-input {
+    background: #FFFFFF !important;
+    border: 1px solid #CBD5E1 !important;
+    color: #0F172A !important;
+  }
+  
+  [data-theme="light"] .search-input::placeholder {
+    color: #64748B !important;
+  }
+  
+  [data-theme="light"] .search-input:focus {
+    background: #F6F6F6 !important;
+    border-color: #D32F2F !important;
+  }
+  
+  [data-theme="light"] .filter-btn,
+  [data-theme="light"] .sort-btn {
+    background: #FFFFFF !important;
+    border: 1px solid #CBD5E1 !important;
+    color: #0F172A !important;
+  }
+  
+  [data-theme="light"] .filter-btn:hover,
+  [data-theme="light"] .sort-btn:hover {
+    background: #F6F6F6 !important;
+    border-color: #E2E8F0 !important;
+    color: #0F172A !important;
+  }
+  
+  [data-theme="light"] .view-btn {
+    background: #FFFFFF !important;
+    border: 1px solid #CBD5E1 !important;
+    color: #64748B !important;
+  }
+  
+  [data-theme="light"] .view-btn:hover {
+    background: #F6F6F6 !important;
+    color: #0F172A !important;
+  }
+  
+  [data-theme="light"] .view-btn.active {
+    background: #D32F2F !important;
+    color: #FFFFFF !important;
   }
 }
