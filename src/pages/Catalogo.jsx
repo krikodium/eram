@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { productoService, categoriaService } from '../services/supabase';
+import { useCatalog } from '../contexts/CatalogContext';
 import ProductCard from '../components/ProductCard';
 import Pagination from '../components/Pagination';
 import './Catalogo.css';
@@ -16,6 +17,9 @@ import {
 } from 'react-icons/fa';
 
 const Catalogo = () => {
+  // Hook del contexto del catálogo
+  const { setSelectedCategory: setContextCategory, clearSelectedCategory, getCatalogUrl } = useCatalog();
+  
   // Estados principales
   const [productos, setProductos] = useState([]);
   const [categorias, setCategorias] = useState([]);
@@ -267,7 +271,14 @@ const Catalogo = () => {
 
   // Función para cambiar categoría
   const handleCategoryChange = (catId) => {
-    setSelectedCategory(categorias.find(cat => cat.id === catId));
+    const categoriaData = catId ? categorias.find(cat => cat.id === catId) : null;
+    
+    // Actualizar el contexto con la categoría seleccionada
+    if (catId) {
+      setContextCategory(catId, categoriaData);
+    } else {
+      clearSelectedCategory();
+    }
     fetchProducts(1, catId, searchTerm);
     setShowFilters(false);
     
@@ -285,6 +296,7 @@ const Catalogo = () => {
   // Función para limpiar filtros
   const clearFilters = () => {
     setSearchTerm('');
+    clearSelectedCategory();
     setSelectedCategory(null);
     setSortBy('nombre');
     fetchProducts(1, null, '');

@@ -1,7 +1,8 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { productoService } from '../services/supabase';
 import { useQuote } from '../contexts/QuoteContext';
+import { useCatalog } from '../contexts/CatalogContext';
 import { FaArrowLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectFade, FreeMode, Thumbs } from 'swiper/modules';
@@ -16,7 +17,9 @@ import './ProductDetail.css';
 function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { addItem } = useQuote();
+  const { getCatalogUrl, setSelectedCategory, clearSelectedCategory } = useCatalog();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -49,13 +52,34 @@ function ProductDetail() {
     fetchProduct();
   }, [fetchProduct]);
 
-  // Efecto para inicializar la imagen principal
+  // Efecto para inicializar la imagen principal y detectar categoría
   useEffect(() => {
     if (producto) {
       setCurrentMainImage(producto.imagen_url || "/default-product.jpg");
       setCurrentImageIndex(0);
+      
+      // Detectar categoría desde la URL o desde el producto
+      const urlParams = new URLSearchParams(location.search);
+      const categoriaIdFromUrl = urlParams.get('categoria_id');
+      
+      if (categoriaIdFromUrl) {
+        // Si hay categoría en la URL, guardarla en el contexto
+        setSelectedCategory(parseInt(categoriaIdFromUrl), {
+          id: parseInt(categoriaIdFromUrl),
+          nombre: producto.categoria_nombre || 'Categoría'
+        });
+      } else if (producto.categoria_id) {
+        // Si no hay en URL pero el producto tiene categoría, usarla
+        setSelectedCategory(producto.categoria_id, {
+          id: producto.categoria_id,
+          nombre: producto.categoria_nombre || 'Categoría'
+        });
+      } else {
+        // Si no hay categoría, limpiar el contexto
+        clearSelectedCategory();
+      }
     }
-  }, [producto]);
+  }, [producto, location.search, setSelectedCategory, clearSelectedCategory]);
 
   // Obtener todas las imágenes disponibles
   const getAvailableImages = useCallback(() => {
@@ -219,9 +243,10 @@ function ProductDetail() {
     }
   };
 
-  // Función simple para volver al catálogo
+  // Función inteligente para volver al catálogo
   const handleBackToCatalog = () => {
-    navigate('/catalogo');
+    const catalogUrl = getCatalogUrl();
+    navigate(catalogUrl);
   };
 
   if (loading) {
@@ -260,7 +285,7 @@ function ProductDetail() {
         <div className="breadcrumb-path">
           <Link to="/" className="breadcrumb-link">Inicio</Link>
           <span className="breadcrumb-separator">›</span>
-          <Link to="/catalogo" className="breadcrumb-link">Catálogo</Link>
+          <Link to={getCatalogUrl()} className="breadcrumb-link">Catálogo</Link>
           <span className="breadcrumb-separator">›</span>
           <span className="breadcrumb-current">
             {producto.nombre.length > 30 

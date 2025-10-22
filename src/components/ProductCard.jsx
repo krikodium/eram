@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useCatalog } from '../contexts/CatalogContext';
 import AddToQuoteButton from '../shared/components/AddToQuoteButton';
 import { 
   FaShieldAlt, 
@@ -12,9 +13,19 @@ import {
 import './ProductCard.css';
 
 function ProductCard({ producto, viewMode = 'grid' }) {
-  const { id, nombre, precio, codigo, imagen_url, descripcion, stock, destacado, categoria_nombre } = producto;
+  const { id, nombre, precio, codigo, imagen_url, descripcion, stock, destacado, categoria_nombre, categoria_id } = producto;
   const { isAuthenticated, user } = useAuth();
+  const { catalogState } = useCatalog();
   const imagenFinal = imagen_url || '/default-product.jpg';
+  
+  // Generar URL del producto con categoría si está disponible
+  const getProductUrl = () => {
+    const categoriaId = categoria_id || catalogState.selectedCategoryId;
+    if (categoriaId) {
+      return `/producto/${id}?categoria_id=${categoriaId}`;
+    }
+    return `/producto/${id}`;
+  };
   
   // Debug: Verificar que el nombre existe
   console.log('ProductCard - nombre:', nombre, 'producto completo:', producto);
@@ -29,7 +40,7 @@ function ProductCard({ producto, viewMode = 'grid' }) {
       <div className={`product-card-wrapper ${viewMode}-view ${isProvider ? 'provider-logged-in' : ''}`}>
         {/* ZONA 1 - IZQUIERDA: Imagen del producto */}
         <div className="card-image-section">
-          <Link to={`/producto/${id}`} className="image-link">
+          <Link to={getProductUrl()} className="image-link">
             <img
               src={imagenFinal}
               alt={nombre}
@@ -44,7 +55,7 @@ function ProductCard({ producto, viewMode = 'grid' }) {
           {/* Bloque principal alineado verticalmente */}
           <div className="main-content-block">
             <h3 className="product-title">
-              <Link to={`/producto/${id}`}>
+              <Link to={getProductUrl()}>
                 {nombre}
               </Link>
             </h3>
@@ -101,7 +112,7 @@ function ProductCard({ producto, viewMode = 'grid' }) {
       <div className="product-card">
         {/* Card Header with Image */}
         <div className="card-image-section">
-          <Link to={`/producto/${id}`} className="image-link">
+          <Link to={getProductUrl()} className="image-link">
             <img
               src={imagenFinal}
               alt={nombre}
@@ -125,7 +136,7 @@ function ProductCard({ producto, viewMode = 'grid' }) {
               {categoria_nombre}
             </div>
             <h3 className="product-title">
-              <Link to={`/producto/${id}`}>
+              <Link to={getProductUrl()}>
                 {nombre}
               </Link>
             </h3>

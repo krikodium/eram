@@ -16,6 +16,7 @@ export const CatalogProvider = ({ children }) => {
   const [catalogState, setCatalogState] = useState({
     currentPage: 1,
     selectedCategory: null,
+    selectedCategoryId: null, // ID de la categoría seleccionada para navegación
     searchTerm: '',
     sortBy: 'nombre',
     viewMode: 'grid',
@@ -48,6 +49,7 @@ export const CatalogProvider = ({ children }) => {
     setCatalogState({
       currentPage: 1,
       selectedCategory: null,
+      selectedCategoryId: null,
       searchTerm: '',
       sortBy: 'nombre',
       viewMode: 'grid',
@@ -72,13 +74,43 @@ export const CatalogProvider = ({ children }) => {
     }));
   }, []);
 
+  // Función para establecer la categoría seleccionada
+  const setSelectedCategory = useCallback((categoryId, categoryData = null) => {
+    setCatalogState(prev => ({
+      ...prev,
+      selectedCategoryId: categoryId,
+      selectedCategory: categoryData,
+      lastVisitedFrom: 'catalog'
+    }));
+  }, []);
+
+  // Función para limpiar la categoría seleccionada
+  const clearSelectedCategory = useCallback(() => {
+    setCatalogState(prev => ({
+      ...prev,
+      selectedCategoryId: null,
+      selectedCategory: null
+    }));
+  }, []);
+
+  // Función para obtener la URL de navegación basada en la categoría seleccionada
+  const getCatalogUrl = useCallback(() => {
+    if (catalogState.selectedCategoryId) {
+      return `/catalogo?categoria_id=${catalogState.selectedCategoryId}`;
+    }
+    return '/catalogo';
+  }, [catalogState.selectedCategoryId]);
+
   const value = {
     catalogState,
     updateCatalogState,
     saveCatalogState,
     clearCatalogState,
     restoreCatalogState,
-    updateBreadcrumb
+    updateBreadcrumb,
+    setSelectedCategory,
+    clearSelectedCategory,
+    getCatalogUrl
   };
 
   return (

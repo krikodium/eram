@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { QuoteProvider } from './contexts/QuoteContext';
+import { CatalogProvider, useCatalog } from './contexts/CatalogContext';
 import useScrollToTop from './hooks/useScrollToTop';
 
 // Eager load critical components
@@ -31,9 +32,11 @@ function App() {
       <ThemeProvider>
         <AuthProvider>
           <QuoteProvider>
-            <BrowserRouter>
-              <AppContent />
-            </BrowserRouter>
+            <CatalogProvider>
+              <BrowserRouter>
+                <AppContent />
+              </BrowserRouter>
+            </CatalogProvider>
           </QuoteProvider>
         </AuthProvider>
       </ThemeProvider>
