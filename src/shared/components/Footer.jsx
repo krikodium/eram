@@ -51,7 +51,7 @@ const Footer = () => {
                 <FaMapMarkerAlt />
                 <div>
                   <strong>Oficina Principal</strong>
-                  <p>Av. Corrientes 1234<br />Buenos Aires, Argentina</p>
+                  <p>Av. San Martín 7421, CABA<br />Buenos Aires, Argentina</p>
                 </div>
               </div>
               

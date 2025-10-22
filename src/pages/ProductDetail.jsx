@@ -2,7 +2,15 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { productoService } from '../services/supabase';
 import { useQuote } from '../contexts/QuoteContext';
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, EffectFade, FreeMode, Thumbs } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import 'swiper/css/free-mode';
+import 'swiper/css/thumbs';
 import './ProductDetail.css';
 
 function ProductDetail() {
@@ -17,6 +25,8 @@ function ProductDetail() {
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
   const [currentMainImage, setCurrentMainImage] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   // Memoizar la función de carga para evitar re-renders innecesarios
   const fetchProduct = useCallback(async () => {
@@ -43,8 +53,44 @@ function ProductDetail() {
   useEffect(() => {
     if (producto) {
       setCurrentMainImage(producto.imagen_url || "/default-product.jpg");
+      setCurrentImageIndex(0);
     }
   }, [producto]);
+
+  // Obtener todas las imágenes disponibles
+  const getAvailableImages = useCallback(() => {
+    if (!producto) return [];
+    
+    const images = [];
+    if (producto.imagen_url) images.push(producto.imagen_url);
+    if (producto.imagen_url_2) images.push(producto.imagen_url_2);
+    if (producto.imagen_url_3) images.push(producto.imagen_url_3);
+    
+    return images.length > 0 ? images : ["/default-product.jpg"];
+  }, [producto]);
+
+  // Navegación de imágenes
+  const goToNextImage = useCallback(() => {
+    const images = getAvailableImages();
+    const nextIndex = (currentImageIndex + 1) % images.length;
+    setCurrentImageIndex(nextIndex);
+    setCurrentMainImage(images[nextIndex]);
+  }, [currentImageIndex, getAvailableImages]);
+
+  const goToPrevImage = useCallback(() => {
+    const images = getAvailableImages();
+    const prevIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
+    setCurrentImageIndex(prevIndex);
+    setCurrentMainImage(images[prevIndex]);
+  }, [currentImageIndex, getAvailableImages]);
+
+  const goToImage = useCallback((index) => {
+    const images = getAvailableImages();
+    if (index >= 0 && index < images.length) {
+      setCurrentImageIndex(index);
+      setCurrentMainImage(images[index]);
+    }
+  }, [getAvailableImages]);
 
   // Limpiar sessionStorage de productos antiguos al montar el componente
   useEffect(() => {
@@ -129,7 +175,12 @@ function ProductDetail() {
   const handleImageError = () => setImageLoading(false);
 
   const handleThumbnailClick = (imageUrl) => {
-    setCurrentMainImage(imageUrl);
+    const images = getAvailableImages();
+    const index = images.findIndex(img => img === imageUrl);
+    if (index !== -1) {
+      setCurrentImageIndex(index);
+      setCurrentMainImage(imageUrl);
+    }
   };
 
   const handleCantidadChange = (e) => {
@@ -225,65 +276,129 @@ function ProductDetail() {
         <div className="product-main-section">
           {/* Left Column - Images Only */}
           <div className="product-left-column">
-            {/* Product Image */}
+            {/* Product Image Gallery */}
             <div className="product-image-section">
-              <div className="product-image-container" onClick={() => setImageModalOpen(true)}>
-                {currentMainImage ? (
-                  <>
-                    {imageLoading && (
-                      <div className="image-loading-skeleton">
-                        <div className="loading-spinner"></div>
+              <div className="image-gallery-container">
+                {/* Desktop Navigation Arrows */}
+                <div className="desktop-nav-arrows">
+                  <button 
+                    className="nav-arrow nav-arrow-prev"
+                    onClick={goToPrevImage}
+                    aria-label="Imagen anterior"
+                  >
+                    <FaChevronLeft />
+                  </button>
+                  <button 
+                    className="nav-arrow nav-arrow-next"
+                    onClick={goToNextImage}
+                    aria-label="Siguiente imagen"
+                  >
+                    <FaChevronRight />
+                  </button>
+                </div>
+
+                {/* Mobile Swiper */}
+                <div className="mobile-swiper-container">
+                  <Swiper
+                    modules={[Navigation, Pagination, EffectFade, Thumbs]}
+                    spaceBetween={0}
+                    slidesPerView={1}
+                    navigation={false}
+                    pagination={false}
+                    effect="fade"
+                    fadeEffect={{ crossFade: true }}
+                    speed={300}
+                    onSlideChange={(swiper) => {
+                      setCurrentImageIndex(swiper.activeIndex);
+                      const images = getAvailableImages();
+                      setCurrentMainImage(images[swiper.activeIndex]);
+                    }}
+                    className="mobile-image-swiper"
+                  >
+                    {getAvailableImages().map((image, index) => (
+                      <SwiperSlide key={index}>
+                        <div 
+                          className="product-image-container" 
+                          onClick={() => setImageModalOpen(true)}
+                        >
+                          {imageLoading && index === currentImageIndex && (
+                            <div className="image-loading-skeleton">
+                              <div className="loading-spinner"></div>
+                            </div>
+                          )}
+                          <img 
+                            src={image} 
+                            alt={`${producto.nombre} - Vista ${index + 1}`}
+                            className={`product-main-image ${imageLoading && index === currentImageIndex ? 'loading' : 'loaded'}`}
+                            onLoad={handleImageLoad}
+                            onError={handleImageError}
+                            loading="lazy"
+                          />
+                          <div className="image-zoom-overlay">
+                            <span className="zoom-icon">🔍</span>
+                            <span className="zoom-text">Toca para ampliar</span>
+                          </div>
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+
+                {/* Desktop Static Image */}
+                <div className="desktop-image-container">
+                  <div 
+                    className="product-image-container" 
+                    onClick={() => setImageModalOpen(true)}
+                  >
+                    {currentMainImage ? (
+                      <>
+                        {imageLoading && (
+                          <div className="image-loading-skeleton">
+                            <div className="loading-spinner"></div>
+                          </div>
+                        )}
+                        <img 
+                          src={currentMainImage} 
+                          alt={producto.nombre} 
+                          className={`product-main-image ${imageLoading ? 'loading' : 'loaded'}`}
+                          onLoad={handleImageLoad}
+                          onError={handleImageError}
+                          loading="lazy"
+                        />
+                        <div className="image-zoom-overlay">
+                          <span className="zoom-icon">🔍</span>
+                          <span className="zoom-text">Hacer clic para ampliar</span>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="no-image-placeholder">
+                        <span>Imagen Próximamente</span>
                       </div>
                     )}
-                    <img 
-                      src={currentMainImage} 
-                      alt={producto.nombre} 
-                      className={`product-main-image ${imageLoading ? 'loading' : 'loaded'}`}
-                      onLoad={handleImageLoad}
-                      onError={handleImageError}
-                      loading="lazy"
-                    />
-                    <div className="image-zoom-overlay">
-                      <span className="zoom-icon">🔍</span>
-                      <span className="zoom-text">Hacer clic para ampliar</span>
-                    </div>
-                  </>
-                ) : (
-                  <div className="no-image-placeholder">
-                    <span>Imagen Próximamente</span>
                   </div>
-                )}
+                </div>
               </div>
             </div>
 
-            {/* Image Gallery Thumbnails */}
+            {/* Image Gallery Thumbnails - Responsive */}
             <div className="image-gallery-thumbnails">
               <div className="gallery-thumbnails">
-                {/* Thumbnail 1 - Main Product Image */}
-                <div 
-                  className={`thumbnail-item ${currentMainImage === (producto.imagen_url || "/default-product.jpg") ? 'active' : ''}`}
-                  onClick={() => handleThumbnailClick(producto.imagen_url || "/default-product.jpg")}
-                >
-                  <img 
-                    src={producto.imagen_url || "/default-product.jpg"} 
-                    alt={`${producto.nombre} - Vista principal`}
-                    className="thumbnail-img"
-                  />
-                </div>
-                
-                {/* Thumbnail 2 - Second Product Image or Placeholder */}
-                {producto.imagen_url_2 ? (
+                {getAvailableImages().map((image, index) => (
                   <div 
-                    className={`thumbnail-item ${currentMainImage === producto.imagen_url_2 ? 'active' : ''}`}
-                    onClick={() => handleThumbnailClick(producto.imagen_url_2)}
+                    key={index}
+                    className={`thumbnail-item ${currentImageIndex === index ? 'active' : ''}`}
+                    onClick={() => goToImage(index)}
                   >
                     <img 
-                      src={producto.imagen_url_2} 
-                      alt={`${producto.nombre} - Vista adicional`}
+                      src={image} 
+                      alt={`${producto.nombre} - Vista ${index + 1}`}
                       className="thumbnail-img"
                     />
                   </div>
-                ) : (
+                ))}
+                
+                {/* Placeholder for missing images */}
+                {getAvailableImages().length < 3 && (
                   <div className="thumbnail-item placeholder">
                     <img 
                       src="/banner-altura.jpg" 
@@ -466,7 +581,7 @@ function ProductDetail() {
 
       </div>
 
-      {/* Image Modal */}
+      {/* Image Modal with Swiper */}
       {imageModalOpen && (
         <div className="image-modal-overlay" onClick={() => setImageModalOpen(false)}>
           <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
@@ -476,14 +591,41 @@ function ProductDetail() {
             >
               ×
             </button>
-            <img 
-              src={producto.imagen_url} 
-              alt={producto.nombre}
-              className="modal-image"
-            />
+            
+            <Swiper
+              modules={[Navigation, Pagination, EffectFade, Thumbs]}
+              spaceBetween={0}
+              slidesPerView={1}
+              navigation={true}
+              pagination={{ clickable: true }}
+              effect="fade"
+              fadeEffect={{ crossFade: true }}
+              speed={300}
+              initialSlide={currentImageIndex}
+              onSlideChange={(swiper) => {
+                setCurrentImageIndex(swiper.activeIndex);
+                const images = getAvailableImages();
+                setCurrentMainImage(images[swiper.activeIndex]);
+              }}
+              className="modal-swiper"
+            >
+              {getAvailableImages().map((image, index) => (
+                <SwiperSlide key={index}>
+                  <img 
+                    src={image} 
+                    alt={`${producto.nombre} - Vista ${index + 1}`}
+                    className="modal-image"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            
             <div className="modal-image-info">
               <h3>{producto.nombre}</h3>
               <p>Código: {producto.codigo}</p>
+              <p className="image-counter">
+                {currentImageIndex + 1} de {getAvailableImages().length}
+              </p>
             </div>
           </div>
         </div>
