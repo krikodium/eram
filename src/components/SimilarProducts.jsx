@@ -53,7 +53,16 @@ function SimilarProducts({ currentProduct }) {
             3
           );
           
-          setSimilarProducts(data || []);
+          // Filtrar productos sin fotos (mismo filtro que el catálogo)
+          const productosConFotos = (data || []).filter(producto => {
+            const imagenUrl = producto.imagen_url;
+            return imagenUrl && 
+                   imagenUrl.trim() !== '' && 
+                   !imagenUrl.includes('default-product.jpg') &&
+                   (imagenUrl.startsWith('http') || imagenUrl.startsWith('/'));
+          });
+          
+          setSimilarProducts(productosConFotos);
         } catch (err) {
           console.error('Error al obtener productos similares:', err);
           setError('No se pudieron cargar productos similares');
