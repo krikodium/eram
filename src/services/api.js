@@ -160,8 +160,8 @@ export const authService = {
         user: {
           id: 1,
           email: credentials.email,
-          role: 'proveedor',
-          name: 'Usuario Proveedor'
+          role: 'cliente',
+          name: 'Usuario Cliente'
         },
         token: 'mock-jwt-token'
       };

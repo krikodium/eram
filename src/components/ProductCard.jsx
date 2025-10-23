@@ -30,14 +30,14 @@ function ProductCard({ producto, viewMode = 'grid' }) {
   // Debug: Verificar que el nombre existe
   console.log('ProductCard - nombre:', nombre, 'producto completo:', producto);
   
-  // Check if user is a provider (supplier)
-  const isProvider = isAuthenticated && user?.role === 'proveedor';
+  // Check if user is a client
+  const isClient = isAuthenticated && user?.role === 'cliente';
   const isInStock = stock > 0;
   const isFeatured = destacado || false;
 
   if (viewMode === 'list') {
     return (
-      <div className={`product-card-wrapper ${viewMode}-view ${isProvider ? 'provider-logged-in' : ''}`}>
+      <div className={`product-card-wrapper ${viewMode}-view ${isClient ? 'provider-logged-in' : ''}`}>
         {/* ZONA 1 - IZQUIERDA: Imagen del producto */}
         <div className="card-image-section">
           <Link to={getProductUrl()} className="image-link">
@@ -62,7 +62,7 @@ function ProductCard({ producto, viewMode = 'grid' }) {
             
             {/* Fila de acción: Ícono + Texto alineados horizontalmente */}
             <div className="action-row">
-              {isProvider ? (
+              {isClient ? (
                 <div className="provider-price">
                   <span className="price-value">${Number(precio).toFixed(2)}</span>
                 </div>
@@ -108,7 +108,7 @@ function ProductCard({ producto, viewMode = 'grid' }) {
   }
 
   return (
-    <div className={`product-card-wrapper ${viewMode}-view ${isProvider ? 'provider-logged-in' : ''}`}>
+    <div className={`product-card-wrapper ${viewMode}-view ${isClient ? 'provider-logged-in' : ''}`}>
       <div className="product-card">
         {/* Card Header with Image */}
         <div className="card-image-section">
@@ -144,15 +144,15 @@ function ProductCard({ producto, viewMode = 'grid' }) {
 
           {/* Price Section */}
           <div className="price-section">
-            {isProvider ? (
+            {isClient ? (
               <div className="provider-price">
-                <span className="price-label">Precio Proveedor:</span>
+                <span className="price-label">Precio Cliente:</span>
                 <span className="price-value">${Number(precio).toFixed(2)}</span>
               </div>
             ) : (
               <div className="price-info">
                 <FaShieldAlt className="price-icon" />
-                <span>Inicia sesión como proveedor para ver precios</span>
+                <span>Inicia sesión como cliente para ver precios</span>
               </div>
             )}
           </div>
@@ -166,10 +166,10 @@ function ProductCard({ producto, viewMode = 'grid' }) {
           </div>
 
           {/* Provider Badge */}
-          {isProvider && (
+          {isClient && (
             <div className="provider-badge">
               <FaShieldAlt className="badge-icon" />
-              <span>Vista de Proveedor</span>
+              <span>Vista de Cliente</span>
             </div>
           )}
         </div>

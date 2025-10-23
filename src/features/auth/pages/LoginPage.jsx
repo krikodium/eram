@@ -59,30 +59,6 @@ const LoginPage = () => {
     setShowPassword(!showPassword);
   };
 
-  // Demo login function
-  const handleDemoLogin = async () => {
-    setFormData({
-      email: 'proveedor@eram.com',
-      password: 'demo123'
-    });
-    
-    setIsLoading(true);
-    
-    try {
-      const result = await login({
-        email: 'proveedor@eram.com',
-        password: 'demo123'
-      });
-      
-      if (result.success) {
-        navigate('/catalogo');
-      }
-    } catch (err) {
-      setError('Error en login demo');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <div className="login-page">
@@ -91,7 +67,7 @@ const LoginPage = () => {
           <div className="login-icon">
             <FaShieldAlt />
           </div>
-          <h1>Área de Proveedores</h1>
+          <h1>Área de Cliente</h1>
           <p>Accede a precios especiales y condiciones exclusivas</p>
         </div>
 
@@ -160,28 +136,9 @@ const LoginPage = () => {
           </button>
         </form>
 
-        <div className="login-demo">
-          <div className="demo-divider">
-            <span>Demo para pruebas</span>
-          </div>
-          
-          <button
-            onClick={handleDemoLogin}
-            className="demo-button"
-            disabled={isLoading}
-          >
-            Probar con cuenta demo
-          </button>
-          
-          <div className="demo-info">
-            <p><strong>Cuenta Demo:</strong></p>
-            <p>Email: proveedor@eram.com</p>
-            <p>Contraseña: demo123</p>
-          </div>
-        </div>
 
         <div className="login-features">
-          <h3>Beneficios del Área de Proveedores:</h3>
+          <h3>Beneficios del Área de Cliente:</h3>
           <ul>
             <li>✅ Precios especiales para mayoristas</li>
             <li>✅ Condiciones de pago preferenciales</li>
@@ -192,7 +149,6 @@ const LoginPage = () => {
 
         <div className="login-footer">
           <p>¿No tienes cuenta? <span className="contact-info">Contacta a nuestro equipo comercial</span></p>
-          <p className="note">* En esta demo, la autenticación es simulada para efectos de demostración.</p>
         </div>
       </div>
     </div>

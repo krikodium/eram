@@ -59,7 +59,7 @@ const companyValues = [
   {
     icon: <FaHandshake />,
     title: "Relaciones Duraderas",
-    description: "Construimos relaciones de confianza a largo plazo con nuestros clientes y proveedores",
+    description: "Construimos relaciones de confianza a largo plazo con nuestros clientes",
     color: "#FF6B35"
   }
 ];

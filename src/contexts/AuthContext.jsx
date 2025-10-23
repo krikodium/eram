@@ -25,8 +25,8 @@ export const AuthProvider = ({ children }) => {
       const mockUser = {
         id: 1,
         email: credentials.email,
-        role: 'proveedor', // supplier role
-        name: 'Usuario Proveedor',
+        role: 'cliente', // client role
+        name: 'Usuario Cliente',
       };
       
       setUser(mockUser);
