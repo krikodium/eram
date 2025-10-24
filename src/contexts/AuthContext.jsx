@@ -21,12 +21,13 @@ export const AuthProvider = ({ children }) => {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Mock successful login
+      // Mock successful login - determinar rol basado en email
+      const isAdmin = credentials.email === 'admin@eram.com' || credentials.email.includes('admin');
       const mockUser = {
-        id: 1,
+        id: isAdmin ? 1 : 2,
         email: credentials.email,
-        role: 'cliente', // client role
-        name: 'Usuario Cliente',
+        role: isAdmin ? 'admin' : 'cliente',
+        name: isAdmin ? 'Administrador ERAM' : 'Usuario Cliente',
       };
       
       setUser(mockUser);
@@ -56,6 +57,18 @@ export const AuthProvider = ({ children }) => {
       } catch (error) {
         localStorage.removeItem('eram-auth');
       }
+    } else {
+      // Para desarrollo: auto-login como admin si no hay sesión guardada
+      // Esto se puede quitar en producción
+      const devAdmin = {
+        id: 1,
+        email: 'admin@eram.com',
+        role: 'admin',
+        name: 'Administrador ERAM',
+      };
+      setUser(devAdmin);
+      setIsAuthenticated(true);
+      localStorage.setItem('eram-auth', JSON.stringify(devAdmin));
     }
   }, []);
 
