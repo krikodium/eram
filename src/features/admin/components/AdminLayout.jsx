@@ -1,6 +1,6 @@
 // src/features/admin/components/AdminLayout.jsx - Layout principal del panel admin
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../../contexts/AuthContext';
+import { useAdminAuth } from '../contexts/AdminAuthContext';
 import { Navigate } from 'react-router-dom';
 import AdminSidebar from './AdminSidebar';
 import ToastContainer from './ToastContainer';
@@ -9,11 +9,12 @@ import GlobalSearch from './GlobalSearch';
 import HelpCenter from './HelpCenter';
 import LoadingSpinner from '../../../shared/components/LoadingSpinner';
 import { useAutoBackup } from '../hooks/useAutoBackup';
+import { FaSignOutAlt, FaUser } from 'react-icons/fa';
 import '../../../features/admin/styles/admin-theme.css';
 import '../../../features/admin/styles/admin-components.css';
 
 const AdminLayout = ({ children }) => {
-  const { user, isAuthenticated } = useAuth();
+  const { adminUser, isAuthenticated, logout } = useAdminAuth();
   const [isLoading, setIsLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showGlobalSearch, setShowGlobalSearch] = useState(false);
@@ -67,13 +68,8 @@ const AdminLayout = ({ children }) => {
   }
 
   // Redirigir si no está autenticado
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  // Verificar rol de administrador
-  if (user?.role !== 'admin') {
-    return <Navigate to="/" replace />;
+  if (!isAuthenticated()) {
+    return <Navigate to="/dasheram/login" replace />;
   }
 
   return (
@@ -84,11 +80,19 @@ const AdminLayout = ({ children }) => {
       />
       
       <main className="admin-main">
-        {/* Barra superior con búsqueda global y ayuda */}
-        <div className="admin-top-bar">
-          <div className="admin-actions">
+        {/* Barra superior reorganizada */}
+        <div className="admin-top-bar" style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '1rem 2rem',
+          background: 'var(--admin-bg-primary)',
+          borderBottom: '1px solid var(--admin-border)',
+          gap: '1rem'
+        }}>
+          {/* Lado izquierdo - Acciones */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <button
-              className="admin-btn admin-btn-secondary"
               onClick={() => setShowGlobalSearch(true)}
               style={{
                 display: 'flex',
@@ -154,6 +158,79 @@ const AdminLayout = ({ children }) => {
                 <path d="M12 17h.01"></path>
               </svg>
               <span>Centro de Ayuda</span>
+            </button>
+          </div>
+
+          {/* Lado derecho - Usuario y logout */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {/* Información del usuario */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              padding: '0.5rem 1rem',
+              background: 'var(--admin-bg-secondary)',
+              borderRadius: '0.5rem',
+              border: '1px solid var(--admin-border)'
+            }}>
+              <div style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                background: 'var(--admin-accent)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                fontSize: '0.9rem'
+              }}>
+                <FaUser />
+              </div>
+              <div>
+                <div style={{
+                  color: 'var(--admin-text-primary)',
+                  fontSize: '0.9rem',
+                  fontWeight: '500'
+                }}>
+                  {adminUser?.name || 'Administrador'}
+                </div>
+                <div style={{
+                  color: 'var(--admin-text-muted)',
+                  fontSize: '0.75rem'
+                }}>
+                  {adminUser?.username || 'admin'}
+                </div>
+              </div>
+            </div>
+
+            {/* Botón de logout separado */}
+            <button
+              onClick={logout}
+              style={{
+                padding: '0.75rem',
+                background: 'var(--admin-error)',
+                border: 'none',
+                borderRadius: '0.5rem',
+                color: 'white',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.2s ease',
+                minWidth: '48px',
+                height: '48px'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#dc2626';
+                e.target.style.transform = 'scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'var(--admin-error)';
+                e.target.style.transform = 'scale(1)';
+              }}
+              title="Cerrar sesión"
+            >
+              <FaSignOutAlt />
             </button>
           </div>
         </div>

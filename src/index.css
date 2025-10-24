@@ -158,6 +158,31 @@ body {
   transition: background-color var(--transition-normal), color var(--transition-normal);
   overflow-x: hidden;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page container styles to prevent content cutting */
+.page-container {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  padding-top: 80px; /* Compensar altura del navbar fijo */
+}
+
+/* Ensure all elements respect viewport boundaries */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal overflow on all containers */
+main, section, div, article, aside, header, footer {
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 /* Theme-specific global backgrounds */
